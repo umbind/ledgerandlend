@@ -1,0 +1,9 @@
+# Robots.txt for Essential Calculators Hub
+# https://ledgerandlend.netlify.app
+
+User-agent: *
+Allow: /
+Disallow: /scratch/
+
+# Major Search Engine Sitemaps
+Sitemap: https://ledgerandlend.netlify.app/sitemap.xml
