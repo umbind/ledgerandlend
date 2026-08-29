@@ -586,55 +586,60 @@ select option, .calc-select option, #language-selector option, #currency-selecto
 }
 
 /* Modals & Drawers */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+.modal-backdrop, .modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(11, 15, 25, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.25s ease, visibility 0.25s ease !important;
 }
 
-.modal-overlay.open {
-  opacity: 1;
-  pointer-events: auto;
+.modal-backdrop.open, .modal-overlay.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
-.modal-content {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  max-width: 580px;
-  width: 100%;
-  box-shadow: var(--shadow-lg);
-  transform: scale(0.95);
-  transition: transform 0.2s ease;
-  overflow: hidden;
+.modal, .modal-content {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 1rem !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  max-height: 90vh !important;
+  transform: scale(0.95) !important;
+  transition: transform 0.2s ease !important;
+  overflow: hidden !important;
 }
 
-.modal-overlay.open .modal-content {
-  transform: scale(1);
+.modal-backdrop.open .modal, .modal-overlay.open .modal-content {
+  transform: scale(1) !important;
 }
 
 .drawer-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9990 !important;
+  background: rgba(11, 15, 25, 0.7) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease !important;
 }
 
 .drawer-backdrop.open {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .drawer {

@@ -93,6 +93,7 @@ class App {
     this.renderCalculatorGrid();
     this.renderFavoritesChips();
     this.setupEventListeners();
+
     // Delegated click handler for calculator cards (handles statically pre-rendered links)
     document.addEventListener('click', (e) => {
       const card = e.target.closest('.calc-card-item');
@@ -107,6 +108,60 @@ class App {
         }
       }
     });
+
+    // Delegated click handler for Category Pills
+    document.addEventListener('click', (e) => {
+      const catBtn = e.target.closest('.category-pill');
+      if (catBtn && catBtn.dataset.cat) {
+        e.preventDefault();
+        const container = document.getElementById('category-pills-container');
+        if (container) {
+          container.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+        }
+        catBtn.classList.add('active');
+        this.activeCategory = catBtn.dataset.cat;
+        this.renderCalculatorGrid();
+      }
+    });
+
+    // Delegated click handler for FAQ Accordion buttons
+    document.addEventListener('click', (e) => {
+      const faqBtn = e.target.closest('.faq-question-btn');
+      if (faqBtn) {
+        e.preventDefault();
+        const item = faqBtn.closest('.faq-item');
+        if (item) {
+          const ans = item.querySelector('.faq-answer');
+          const arrow = item.querySelector('.faq-arrow');
+          if (ans) {
+            const isOpen = !ans.classList.contains('hidden');
+            if (isOpen) {
+              ans.classList.add('hidden');
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+              item.classList.remove('border-accent-primary');
+            } else {
+              ans.classList.remove('hidden');
+              if (arrow) arrow.style.transform = 'rotate(180deg)';
+              item.classList.add('border-accent-primary');
+            }
+          }
+        }
+      }
+    });
+
+    // Delegated click handler for Knowledge Guides (.article-card)
+    document.addEventListener('click', (e) => {
+      const articleCard = e.target.closest('.article-card');
+      if (articleCard && articleCard.dataset.id) {
+        e.preventDefault();
+        if (this.knowledge) {
+          const article = this.knowledge.articles?.find(a => a.id === articleCard.dataset.id) || 
+                          { id: articleCard.dataset.id, title: articleCard.querySelector('h3')?.textContent || 'Guide', category: 'finance', readTime: '5 min read', content: '<p>Detailed educational content for this calculator guide.</p>' };
+          this.knowledge.openArticleModal(article);
+        }
+      }
+    });
+
     this.setupLegalModal();
     this.setupEmbedModal();
     this.setupExportModal();
