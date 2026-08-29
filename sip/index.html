@@ -779,8 +779,15 @@
   <!-- Toast Notification System -->
   <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Application Module Script -->
-  <script type="module" src="../js/app.js?v=3.0"></script>
+    <!-- Application Module Script -->
+  <script type="module" src="../js/app.js?v=3.1"></script>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+    window.addEventListener('load', function() {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+
 
   <!-- PWA Service Worker Registration -->
   <script>

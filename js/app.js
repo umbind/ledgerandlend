@@ -1047,7 +1047,12 @@ class App {
   }
 }
 
-// Instantiate on DOM load
-document.addEventListener('DOMContentLoaded', () => {
+// Safely instantiate App regardless of DOM loading state
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.calcApp = new App();
+  });
+} else {
   window.calcApp = new App();
-});
+}
+
