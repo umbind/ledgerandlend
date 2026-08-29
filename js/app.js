@@ -243,31 +243,49 @@ class App {
 
   renderCalculatorGrid() {
     const grid = document.getElementById('calculator-selector-grid');
+    const countEl = document.getElementById('grid-tool-count');
+    const titleEl = document.getElementById('grid-category-title');
     if (!grid) return;
 
     const filtered = this.activeCategory === 'all'
       ? allCalculators
       : allCalculators.filter(c => c.category === this.activeCategory);
 
+    if (countEl) countEl.textContent = `${filtered.length} tools available`;
+    if (titleEl) {
+      const catLabels = { all: 'All Calculators', finance: 'Finance & Loans', health: 'Health & Fitness', medical: 'Clinical & Medical', math: 'Math & Utilities' };
+      titleEl.textContent = catLabels[this.activeCategory] || 'Calculators';
+    }
+
     grid.innerHTML = filtered.map(c => `
-      <div class="glass-card p-3.5 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item ${this.currentCalc?.id === c.id ? 'border-accent-primary bg-accent-primary-light' : ''}" data-id="${c.id}">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center ${this.getCategoryBg(c.category)}">
+      <a href="#${c.id}" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all ${this.currentCalc?.id === c.id ? 'ring-2 ring-accent-primary border-accent-primary bg-accent-primary-light shadow-md' : 'opacity-90 hover:opacity-100'}" data-id="${c.id}">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${this.getCategoryBg(c.category)} shadow-sm">
             <i data-lucide="${c.icon}" class="w-4 h-4 text-white"></i>
           </div>
-          <div>
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors">${c.title}</div>
-            <div class="text-[11px] text-muted truncate max-w-[170px] sm:max-w-[220px]">${c.description}</div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">${c.title}</div>
+            <div class="text-[10px] text-muted truncate">${c.description}</div>
           </div>
         </div>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-      </div>
+        <div class="shrink-0 flex items-center ml-2">
+          ${this.currentCalc?.id === c.id ? '<span class="w-2 h-2 rounded-full bg-accent-primary animate-pulse mr-1"></span>' : ''}
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
     `).join('');
 
     grid.querySelectorAll('.calc-card-item').forEach(card => {
-      card.addEventListener('click', () => {
-        this.switchCalculator(card.dataset.id);
-        window.scrollTo({ top: 180, behavior: 'smooth' });
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cid = card.dataset.id;
+        this.switchCalculator(cid);
+        const stage = document.getElementById('calc-mount');
+        if (stage) {
+          const yOffset = -100;
+          const y = stage.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       });
     });
 
