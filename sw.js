@@ -3,7 +3,7 @@
  * Comprehensive Offline Pre-caching, Stale Cache Cleanup & Network-Resilient Strategies
  */
 
-const CACHE_NAME = 'ledger-lend-v2.5';
+const CACHE_NAME = 'ledger-lend-v3.0';
 
 const STATIC_ASSETS = [
   './',
@@ -40,6 +40,12 @@ const STATIC_ASSETS = [
   './js/calculators/health/target-heart-rate.js',
   './js/calculators/health/waist-hip.js',
   './js/calculators/health/water-intake.js',
+  // Medical & Clinical Calculators
+  './js/calculators/medical/pregnancy-due-date.js',
+  './js/calculators/medical/body-surface-area.js',
+  './js/calculators/medical/mean-arterial-pressure.js',
+  './js/calculators/medical/dosage-calculator.js',
+  './js/calculators/medical/egfr-kidney.js',
   // Math & Utility Calculators
   './js/calculators/math/age-date.js',
   './js/calculators/math/fuel-cost.js',
@@ -50,6 +56,7 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
@@ -58,6 +65,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  event.waitUntil(clients.claim());
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
