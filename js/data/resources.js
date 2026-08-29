@@ -4,7 +4,7 @@
  * You can replace these with your own affiliate tracking URLs anytime you join affiliate programs.
  */
 
-export const affiliateOffers = {
+export const resourceOffers = {
   finance: [
     {
       id: "fin-1",
@@ -98,7 +98,7 @@ export const affiliateOffers = {
   ]
 };
 
-export function getAffiliateOffer(category) {
-  const list = affiliateOffers[category] || affiliateOffers.finance;
+export function getResourceOffer(category) {
+  const list = resourceOffers[category] || resourceOffers.finance;
   return list[Math.floor(Math.random() * list.length)];
 }

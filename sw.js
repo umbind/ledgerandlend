@@ -3,7 +3,7 @@
  * Comprehensive Offline Pre-caching, Stale Cache Cleanup & Network-Resilient Strategies
  */
 
-const CACHE_NAME = 'ledger-lend-v3.0';
+const CACHE_NAME = 'ledger-lend-v3.2';
 
 const STATIC_ASSETS = [
   './',
@@ -13,7 +13,7 @@ const STATIC_ASSETS = [
   './assets/icon.svg',
   './js/app.js',
   './js/components/knowledge.js',
-  './js/data/affiliates.js',
+  './js/data/resources.js',
   './js/data/articles.js',
   './js/data/faqs.js',
   './js/data/i18n.js',

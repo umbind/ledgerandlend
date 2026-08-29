@@ -42,7 +42,7 @@ import { supportedLanguages, getLanguage, setLanguage, t } from './data/i18n.js'
 import { KnowledgeComponent } from './components/knowledge.js';
 import { legalDocs } from './data/legal.js';
 import { searchSynonyms } from './data/searchIndex.js';
-import { getAffiliateOffer } from './data/affiliates.js';
+import { getResourceOffer } from './data/resources.js';
 import { parseShareUrl, generateShareUrl, downloadCsvFile, generateMarkdownSummary } from './utils/exportShare.js';
 import { diagnosticSuite } from './data/diagnosticRunner.js';
 
@@ -353,11 +353,11 @@ class App {
     });
   }
 
-  renderAffiliateRecommendation(category) {
-    const mount = document.getElementById('calc-affiliate-mount');
+  renderResourceRecommendation(category) {
+    const mount = document.getElementById('calc-resource-mount');
     if (!mount) return;
 
-    const offer = getAffiliateOffer(category);
+    const offer = getResourceOffer(category);
     if (!offer) {
       mount.innerHTML = '';
       return;
@@ -449,7 +449,7 @@ class App {
     }
 
     // Render Contextual Affiliate / Sponsor Recommendation
-    this.renderAffiliateRecommendation(calc.category);
+    this.renderResourceRecommendation(calc.category);
 
     // Render Calculator Specific FAQs & Formulas
     const faqMount = document.getElementById('calc-faq-mount');
