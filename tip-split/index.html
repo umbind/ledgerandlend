@@ -288,23 +288,23 @@
     <!-- Category Filter Bar (Large, Prominent Pills) -->
     <div class="py-1">
       <nav class="flex items-center gap-2.5 overflow-x-auto pb-1" id="category-pills-container" aria-label="Calculator Categories">
-        <button class="category-pill active" data-cat="all">
+        <button type="button" class="category-pill active" data-cat="all">
           <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
           <span>All Tools</span>
         </button>
-        <button class="category-pill" data-cat="finance">
+        <button type="button" class="category-pill" data-cat="finance">
           <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
           <span>Finance & Loans</span>
         </button>
-        <button class="category-pill" data-cat="health">
+        <button type="button" class="category-pill" data-cat="health">
           <i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i>
           <span>Health & Fitness</span>
         </button>
-        <button class="category-pill" data-cat="medical">
+        <button type="button" class="category-pill" data-cat="medical">
           <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
           <span>Clinical & Medical</span>
         </button>
-        <button class="category-pill" data-cat="math">
+        <button type="button" class="category-pill" data-cat="math">
           <i data-lucide="function-square" class="w-3.5 h-3.5"></i>
           <span>Math & Utilities</span>
         </button>
@@ -321,11 +321,390 @@
         <span class="text-xs text-muted" id="grid-tool-count">24 tools available</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5" id="calculator-selector-grid">
-      <a href="#emi" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all ring-2 ring-accent-primary border-accent-primary bg-accent-primary-light shadow-md" data-id="emi">
+      <a href="./emi/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all ring-2 ring-accent-primary border-accent-primary bg-accent-primary-light shadow-md" data-id="emi" data-category="finance">
         <div class="flex items-center gap-3 min-w-0">
           <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
             <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
           </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Loan & EMI Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate monthly loan EMIs, total interest payable, and amortization schedules for home loans, car loans, and personal loans with Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          <span class="w-2 h-2 rounded-full bg-accent-primary animate-pulse mr-1"></span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./sip/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="sip" data-category="finance">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">SIP & Compound Interest Calculator</div>
+            <div class="text-[10px] text-muted truncate">Forecast mutual fund SIP wealth creation, compound interest returns, and step-up inflation-adjusted growth trajectories with Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./mortgage/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="mortgage" data-category="finance">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Mortgage & Property Loan Calculator</div>
+            <div class="text-[10px] text-muted truncate">Estimate monthly mortgage payments including principal, interest, property taxes, homeowners insurance, and PMI with Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./tax-discount/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="tax-discount" data-category="finance">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Sales Tax & Discount Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate sales tax, GST, VAT, reverse tax amounts, and stacked promotional discounts with instant net price breakdown on Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./tip-split/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="tip-split" data-category="finance">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Tip & Bill Split Calculator</div>
+            <div class="text-[10px] text-muted truncate">Easily calculate dining gratuities and split restaurant bills among party members with custom tip percentages on Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./bmi/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="bmi" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">BMI & Healthy Weight Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your Body Mass Index (BMI) using Metric or Imperial units and check your WHO health weight category with Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./ideal-weight/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="ideal-weight" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Ideal Body Weight (IBW) Calculator</div>
+            <div class="text-[10px] text-muted truncate">Compare your ideal body weight across medical formulas including Devine, Robinson, Miller, and Hamwi equations on Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./waist-hip/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="waist-hip" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Waist-to-Hip Ratio Calculator</div>
+            <div class="text-[10px] text-muted truncate">Evaluate abdominal fat distribution, body shape (apple vs pear), and cardiovascular health risk with the Waist-to-Hip Ratio tool.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./target-heart-rate/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="target-heart-rate" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Target Heart Rate Zones Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your maximum heart rate and training zones (Fat Burn, Aerobic, Anaerobic, VO2 Max) using Karvonen and Tanaka formulas.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./macro-calculator/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="macro-calculator" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Macronutrient Diet Split Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your optimal daily macronutrient gram targets for Balanced, Low Carb, Keto, and High Protein diets on Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./calorie-tdee/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="calorie-tdee" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">TDEE & Daily Calorie Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) to plan weight loss deficits or muscle building bulking.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./body-fat/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="body-fat" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Body Fat Percentage Calculator</div>
+            <div class="text-[10px] text-muted truncate">Estimate your body fat percentage, lean body mass, and fat mass using the validated US Navy circumference method on Ledger & Lend.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./water-intake/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="water-intake" data-category="health">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Daily Water Intake Hydration Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate optimal daily water intake recommendations based on your body weight, activity level, and climate conditions.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./pregnancy-due-date/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="pregnancy-due-date" data-category="medical">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Pregnancy Due Date & Gestational Age Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./body-surface-area/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="body-surface-area" data-category="medical">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Body Surface Area (BSA) Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate clinical Body Surface Area (BSA in m²) using Mosteller, DuBois, and Haycock formulas for chemotherapy and medication dosing.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./mean-arterial-pressure/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="mean-arterial-pressure" data-category="medical">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Mean Arterial Pressure (MAP) Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate Mean Arterial Pressure (MAP) and Pulse Pressure from systolic and diastolic blood pressure to assess vital organ perfusion.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./dosage-calculator/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="dosage-calculator" data-category="medical">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Pediatric & Weight-Based Dosage Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate clinical pediatric and adult medication dosages by weight (mg/kg/day), divided daily single doses, and liquid suspension mL volumes.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./egfr-kidney/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="egfr-kidney" data-category="medical">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">eGFR Kidney Function (CKD-EPI 2021) Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate Estimated Glomerular Filtration Rate (eGFR) using the official 2021 CKD-EPI equation and determine KDIGO Chronic Kidney Disease stages.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./scientific/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="scientific" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Scientific & Engineering Calculator</div>
+            <div class="text-[10px] text-muted truncate">Free online scientific calculator with operator precedence, trigonometric functions in DEG/RAD, logarithms, exponents, and memory registers.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./percentage/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="percentage" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">4-in-1 Percentage Suite Calculator</div>
+            <div class="text-[10px] text-muted truncate">Comprehensive 4-in-1 percentage calculator to find percentage of a number, percentage increase/decrease, percentage difference, and ratios.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./unit-converter/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="unit-converter" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Universal Multi-Unit Converter</div>
+            <div class="text-[10px] text-muted truncate">Real-time universal unit converter across Length, Mass, Temperature, Area, Volume, Speed, and Digital Data Storage units.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./age-date/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="age-date" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Exact Age & Date Difference Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate your exact age in years, months, weeks, days, and hours, plus next birthday countdown and time duration between two dates.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./fuel-cost/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="fuel-cost" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Fuel Cost & Road Trip Economy Calculator</div>
+            <div class="text-[10px] text-muted truncate">Estimate fuel consumption, total gas cost for road trips, vehicle fuel efficiency (MPG vs L/100km), and split travel costs per person.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+
+      <a href="./time-duration/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="time-duration" data-category="math">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
+            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Time & Shift Duration Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate hours and minutes between two timestamps, shift durations, clock arithmetic, and decimal hours for payroll and billing.</div>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center ml-2">
+          
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
+        </div>
+      </a>
+</div>
           <div class="min-w-0">
             <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Loan & EMI Calculator</div>
             <div class="text-[10px] text-muted truncate">Calculate monthly loan EMIs, total interest payable, and amortization schedules for home loans, car loans, and personal loans with Ledger & Lend.</div>
@@ -774,29 +1153,120 @@
         </div>
 
         <!-- Mounted Calculator Dynamic Form -->
-        
-        <!-- PRE-RENDERED AEO & AI CITATION FORMULA CARD -->
-        <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-secondary to-tertiary border border-subtle mb-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold text-accent-primary uppercase tracking-wider flex items-center gap-1.5">
-              <i data-lucide="award" class="w-3.5 h-3.5"></i>
-              Verified Mathematical & Clinical Specification
-            </span>
-            <span class="text-[10px] text-muted font-mono">Formula Benchmark</span>
-          </div>
-          <div class="p-3 rounded-lg bg-primary border border-subtle font-mono text-xs sm:text-sm text-primary font-bold overflow-x-auto">
-            Amount Per Person = (Bill Total + (Bill Total × Tip %)) / Number of Guests
-          </div>
-          <p class="text-xs text-secondary leading-relaxed">Calculates individual share, tip amount per person, and rounded totals for seamless bill sharing.</p>
-          
-          <!-- Related Tools Cluster -->
-          <div class="pt-2 border-t border-subtle flex flex-wrap items-center gap-2">
-            <span class="text-[11px] text-muted font-medium">Related Finance & Loans Tools:</span>
-            <a href="../emi/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="calculator" class="w-3.5 h-3.5"></i><span>Loan & EMI Calculator</span></a><a href="../sip/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i><span>SIP & Compound Interest Calculator</span></a><a href="../mortgage/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="landmark" class="w-3.5 h-3.5"></i><span>Mortgage & Property Loan Calculator</span></a><a href="../tax-discount/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="tag" class="w-3.5 h-3.5"></i><span>Sales Tax & Discount Calculator</span></a>
+        <div id="calc-mount">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Inputs Section -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="glass-card p-5">
+            <h3 class="text-base font-bold text-primary mb-4 flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-accent-primary"></i>
+              Loan Parameters
+            </h3>
+
+            <!-- Loan Amount -->
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <span>Loan Amount</span>
+                <span class="font-mono text-accent-primary font-bold" id="emi-amount-display">$100,000</span>
+              </div>
+              <div class="calc-input-wrapper has-prefix">
+                <span class="calc-input-prefix font-bold">$</span>
+                <input type="number" id="emi-amount" class="calc-input" value="100000" min="1000" max="10000000" step="1000">
+              </div>
+              <input type="range" id="emi-amount-range" class="calc-range" value="100000" min="10000" max="1000000" step="5000">
+              <!-- Quick Preset Chips -->
+              <div class="flex items-center gap-1.5 overflow-x-auto pt-1 text-[11px]" id="emi-amount-presets">
+                <span class="text-muted text-[10px] uppercase font-bold shrink-0">Presets:</span>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="25000">$25k</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="50000">$50k</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="100000">$100k</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="250000">$250k</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="500000">$500k</button>
+              </div>
+            </div>
+
+            <!-- Interest Rate -->
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <span>Annual Interest Rate (%)</span>
+                <span class="font-mono text-accent-primary font-bold" id="emi-rate-display">8.5%</span>
+              </div>
+              <div class="calc-input-wrapper has-suffix">
+                <input type="number" id="emi-rate" class="calc-input" value="8.5" min="0.1" max="40" step="0.1">
+                <span class="calc-input-suffix font-bold">%</span>
+              </div>
+              <input type="range" id="emi-rate-range" class="calc-range" value="8.5" min="1" max="25" step="0.1">
+            </div>
+
+            <!-- Loan Tenure -->
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <span>Loan Tenure</span>
+                <span class="font-mono text-accent-primary font-bold" id="emi-tenure-display">15 Years</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="col-span-2 calc-input-wrapper">
+                  <input type="number" id="emi-tenure" class="calc-input" value="15" min="1" max="40" step="1">
+                </div>
+                <select id="emi-tenure-unit" class="calc-select">
+                  <option value="years" selected>Years</option>
+                  <option value="months">Months</option>
+                </select>
+              </div>
+              <input type="range" id="emi-tenure-range" class="calc-range" value="15" min="1" max="30" step="1">
+              <!-- Quick Tenure Presets -->
+              <div class="flex items-center gap-1.5 overflow-x-auto pt-1 text-[11px]" id="emi-tenure-presets">
+                <span class="text-muted text-[10px] uppercase font-bold shrink-0">Tenure:</span>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="5">5 Yrs</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="10">10 Yrs</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="15">15 Yrs</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="20">20 Yrs</button>
+                <button type="button" class="px-2 py-0.5 rounded bg-tertiary hover:bg-border-subtle text-secondary font-medium transition-all" data-val="30">30 Yrs</button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div id="calc-mount"></div>
+        <!-- Results & Summary Section -->
+        <div class="lg:col-span-6 space-y-4">
+          <!-- Primary Monthly Payment Card -->
+          <div class="result-card group cursor-pointer" id="copyable-emi-card" title="Click to copy EMI amount">
+            <div class="flex items-center justify-between">
+              <div class="result-label">Monthly EMI Payment</div>
+              <span class="text-[10px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1">
+                <i data-lucide="copy" class="w-3 h-3"></i> Click to Copy
+              </span>
+            </div>
+            <div class="result-value text-accent-primary text-3xl sm:text-4xl" id="emi-monthly-res">$984.74</div>
+            <div class="result-subtext">Principal + Interest per month</div>
+          </div>
+
+          <!-- Secondary Metric Breakdown Cards -->
+          <div class="grid grid-cols-2 gap-3">
+            <div class="result-card warning">
+              <div class="result-label">Total Interest</div>
+              <div class="result-value text-accent-amber text-lg sm:text-xl" id="emi-interest-res">$77,253.20</div>
+              <div class="result-subtext" id="emi-interest-pct">77.3% of loan</div>
+            </div>
+
+            <div class="result-card success">
+              <div class="result-label">Total Amount Payable</div>
+              <div class="result-value text-accent-emerald text-lg sm:text-xl" id="emi-total-res">$177,253.20</div>
+              <div class="result-subtext">Principal + Total Interest</div>
+            </div>
+          </div>
+
+          <!-- Quick Benefits -->
+          <div class="glass-card p-4 space-y-2 text-xs">
+            <div class="font-bold text-primary flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4 text-accent-primary"></i>
+              Instant Loan Amortization Insights
+            </div>
+            <p class="text-secondary">With Ledger &amp; Lend, your data is 100% secure and processed locally. Prepaying an additional 5% annually can shorten your tenure by up to 3.2 years and save over $18,000 in interest.</p>
+          </div>
+        </div>
+      </div>
+</div>
 
         <!-- Contextual High-Converting Affiliate / Sponsor Recommendation Box -->
         <div id="calc-resource-mount" class="mt-6"></div>
@@ -1186,5 +1656,39 @@
       });
     }
   </script>
+
+  <script>
+    // Bulletproof Category Pill & Card Filtering Engine
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.lucide) window.lucide.createIcons();
+
+      // Category filter buttons
+      var pills = document.querySelectorAll('#category-pills-container .category-pill');
+      pills.forEach(function(pill) {
+        pill.addEventListener('click', function(e) {
+          e.preventDefault();
+          var cat = pill.dataset.cat;
+          pills.forEach(function(p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+
+          var cards = document.querySelectorAll('#calculator-selector-grid .calc-card-item');
+          var visibleCount = 0;
+          cards.forEach(function(card) {
+            var cardCat = card.dataset.category;
+            if (cat === 'all' || cardCat === cat) {
+              card.style.display = 'flex';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          var countEl = document.getElementById('grid-tool-count');
+          if (countEl) countEl.textContent = visibleCount + ' tools available';
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
