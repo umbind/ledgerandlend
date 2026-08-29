@@ -93,6 +93,20 @@ class App {
     this.renderCalculatorGrid();
     this.renderFavoritesChips();
     this.setupEventListeners();
+    // Delegated click handler for calculator cards (handles statically pre-rendered links)
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.calc-card-item');
+      if (card && card.dataset.id) {
+        e.preventDefault();
+        this.switchCalculator(card.dataset.id);
+        const stage = document.getElementById('calc-mount') || document.getElementById('active-calc-stage');
+        if (stage) {
+          const yOffset = -80;
+          const y = stage.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    });
     this.setupLegalModal();
     this.setupEmbedModal();
     this.setupExportModal();
@@ -296,9 +310,9 @@ class App {
         e.preventDefault();
         const cid = card.dataset.id;
         this.switchCalculator(cid);
-        const stage = document.getElementById('calc-mount');
+        const stage = document.getElementById('calc-mount') || document.getElementById('active-calc-stage');
         if (stage) {
-          const yOffset = -100;
+          const yOffset = -80;
           const y = stage.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
