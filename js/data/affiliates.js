@@ -19,10 +19,10 @@ export const affiliateOffers = {
     {
       id: "fin-2",
       badge: "Financial Guide",
-      title: "Master Compounding & Long-Term Wealth Strategies",
-      desc: "Read Investopedia's comprehensive guide on compound interest, SIP investing, and portfolio allocation.",
-      cta: "Read Wealth Guide",
-      url: "https://www.investopedia.com/terms/c/compoundinterest.asp",
+      title: "Master Personal Finance & Compounding with Khan Academy",
+      desc: "Access Khan Academy's free world-class education on compound growth, investing, and financial planning.",
+      cta: "Explore Free Course",
+      url: "https://www.khanacademy.org/college-careers-more/personal-finance",
       icon: "badge-percent",
       color: "emerald"
     }
@@ -52,10 +52,10 @@ export const affiliateOffers = {
     {
       id: "health-3",
       badge: "Cardio Health",
-      title: "American Heart Association Target Heart Rate Guide",
-      desc: "Explore clinical target heart rate zones and cardiovascular endurance guidelines from heart.org.",
-      cta: "View Heart Rate Chart",
-      url: "https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates",
+      title: "NHS UK Cardiovascular Endurance & Exercise Guidelines",
+      desc: "Explore clinical cardiovascular training, aerobic zones, and physical fitness guidelines from the NHS.",
+      cta: "View NHS Exercise Guide",
+      url: "https://www.nhs.uk/live-well/exercise/running-and-aerobic-exercises/",
       icon: "activity",
       color: "rose"
     }
