@@ -105,10 +105,26 @@ class App {
     this.knowledge = new KnowledgeComponent(this);
 
     // Detect calculator from clean path (e.g. /emi/) or hash (e.g. #emi)
-    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const pathParts = rawPath.split('/');
+    const cleanPathId = pathParts[pathParts.length - 1];
     const hash = window.location.hash.replace('#', '');
-    const initialCalcId = (path && allCalculators.some(c => c.id === path)) ? path : (hash || 'emi');
+    
+    let initialCalcId = 'emi';
+    if (cleanPathId && allCalculators.some(c => c.id === cleanPathId)) {
+      initialCalcId = cleanPathId;
+    } else if (hash && allCalculators.some(c => c.id === hash)) {
+      initialCalcId = hash;
+    }
+    
     this.switchCalculator(initialCalcId, false);
+
+    window.addEventListener('popstate', () => {
+      const p = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/').pop();
+      if (p && allCalculators.some(c => c.id === p)) {
+        this.switchCalculator(p, false);
+      }
+    });
 
     window.addEventListener('hashchange', () => {
       const h = window.location.hash.replace('#', '');
@@ -395,8 +411,17 @@ class App {
     this.currentCalc = calc;
 
     if (updateHash) {
-      const queryStr = new URLSearchParams(params).toString();
-      window.location.hash = queryStr ? `${calc.id}?${queryStr}` : calc.id;
+      try {
+        const queryStr = new URLSearchParams(params).toString();
+        const newUrl = queryStr ? `/${calc.id}/?${queryStr}` : `/${calc.id}/`;
+        if (window.location.protocol.startsWith('http')) {
+          window.history.pushState({ calcId: calc.id }, '', newUrl);
+        } else {
+          window.location.hash = queryStr ? `${calc.id}?${queryStr}` : calc.id;
+        }
+      } catch (e) {
+        window.location.hash = calc.id;
+      }
     }
 
     // Dynamically update document title, meta description & canonical URL for SEO
