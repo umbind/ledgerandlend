@@ -137,6 +137,7 @@
   }
   </script>
 
+  <!-- JSON-LD SEO Structured Data for Pregnancy Due Date & Gestational Age Calculator -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -168,7 +169,7 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Medical",
+            "name": "Clinical & Medical",
             "item": "https://ledgerandlend.netlify.app/#medical"
           },
           {
@@ -178,6 +179,28 @@
             "item": "https://ledgerandlend.netlify.app/pregnancy-due-date/"
           }
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ledgerandlend.netlify.app/pregnancy-due-date/#faq",
+        "mainEntity": [
+          {
+                    "@type": "Question",
+                    "name": "How does Naegele's Rule calculate the Estimated Due Date (EDD)?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Naegele's Rule calculates delivery date based on a 280-day human gestation: EDD = LMP + 1 Year \u2013 3 Months + 7 Days (adjusted for cycle length)."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What is the difference between Gestational Age and Fetal Age?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Gestational Age is measured from the first day of your last period (~2 weeks before conception), whereas Fetal Age measures embryonic age from fertilization."
+                    }
+          }
+]
       }
     ]
   }
@@ -287,7 +310,18 @@
       </div>
 
       <!-- Dynamic Breadcrumb Navigation -->
-      <nav id="calc-breadcrumbs" class="flex items-center shrink-0" aria-label="Breadcrumbs"></nav>
+      <nav id="calc-breadcrumbs" class="flex items-center shrink-0" aria-label="Breadcrumbs">
+      <div class="breadcrumb-bar">
+        <a href="../" class="hover:text-accent-primary transition-colors flex items-center gap-1 text-xs">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>Home</span>
+        </a>
+        <span class="text-muted/50">/</span>
+        <a href="../#medical" class="hover:text-accent-primary transition-colors text-xs font-medium">Clinical & Medical</a>
+        <span class="text-muted/50">/</span>
+        <span class="text-primary font-bold text-xs">Pregnancy Due Date & Gestational Age Calculator</span>
+      </div>
+</nav>
     </div>
 
     <!-- Active Calculator Stage with Desktop Grid -->
@@ -303,10 +337,10 @@
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <h1 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight" id="active-calc-title">Loan & EMI Calculator</h1>
-                <span class="badge" id="active-calc-badge">FINANCE</span>
+                <h1 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight" id="active-calc-title">Pregnancy Due Date & Gestational Age Calculator</h1>
+                <span class="badge badge-medical" id="active-calc-badge">MEDICAL</span>
               </div>
-              <p class="text-xs sm:text-sm text-secondary mt-0.5" id="active-calc-desc">Calculate monthly loan installments and view detailed amortization schedule.</p>
+              <p class="text-xs sm:text-sm text-secondary mt-0.5" id="active-calc-desc">Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.</p>
             </div>
           </div>
 
@@ -331,13 +365,66 @@
         </div>
 
         <!-- Mounted Calculator Dynamic Form -->
+        
+        <!-- PRE-RENDERED AEO & AI CITATION FORMULA CARD -->
+        <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-secondary to-tertiary border border-subtle mb-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold text-accent-primary uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+              Verified Mathematical & Clinical Specification
+            </span>
+            <span class="text-[10px] text-muted font-mono">Formula Benchmark</span>
+          </div>
+          <div class="p-3 rounded-lg bg-primary border border-subtle font-mono text-xs sm:text-sm text-primary font-bold overflow-x-auto">
+            EDD = Last Menstrual Period (LMP) + 1 Year - 3 Months + 7 Days (280 Days)
+          </div>
+          <p class="text-xs text-secondary leading-relaxed">Standard clinical Naegele's rule with automatic menstrual cycle length deviation adjustment.</p>
+          
+          <!-- Related Tools Cluster -->
+          <div class="pt-2 border-t border-subtle flex flex-wrap items-center gap-2">
+            <span class="text-[11px] text-muted font-medium">Related Clinical & Medical Tools:</span>
+            <a href="../body-surface-area/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i><span>Body Surface Area (BSA) Calculator</span></a><a href="../mean-arterial-pressure/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="stethoscope" class="w-3.5 h-3.5"></i><span>Mean Arterial Pressure (MAP) Calculator</span></a><a href="../dosage-calculator/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="pill" class="w-3.5 h-3.5"></i><span>Pediatric & Weight-Based Dosage Calculator</span></a><a href="../egfr-kidney/" class="text-xs font-semibold text-accent-primary hover:underline px-2.5 py-1 rounded bg-accent-primary-light flex items-center gap-1.5"><i data-lucide="dna" class="w-3.5 h-3.5"></i><span>eGFR Kidney Function (CKD-EPI 2021) Calculator</span></a>
+          </div>
+        </div>
+
         <div id="calc-mount"></div>
 
         <!-- Contextual High-Converting Affiliate / Sponsor Recommendation Box -->
         <div id="calc-affiliate-mount" class="mt-6"></div>
 
         <!-- Mounted Calculator-Specific FAQs & Mathematical Formulas -->
-        <div id="calc-faq-mount"></div>
+        
+        <div id="calc-faq-mount" class="mt-6">
+          <div class="glass-card p-5 border-t-2 border-t-accent-primary">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-base font-bold text-primary flex items-center gap-2">
+                <i data-lucide="help-circle" class="w-4 h-4 text-accent-primary"></i>
+                <span>Frequently Asked Questions & Educational Guide</span>
+              </h2>
+              <span class="text-[11px] text-muted font-bold uppercase tracking-wider">2 Answers</span>
+            </div>
+            <div class="space-y-3">
+              
+      <div class="border border-subtle rounded-lg bg-tertiary p-4 space-y-1.5">
+        <div class="text-xs sm:text-sm font-bold text-primary flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-4 h-4 text-accent-primary shrink-0"></i>
+          <span>How does Naegele's Rule calculate the Estimated Due Date (EDD)?</span>
+        </div>
+        <p class="text-xs text-secondary leading-relaxed pl-6">Naegele's Rule calculates delivery date based on a 280-day human gestation: EDD = LMP + 1 Year – 3 Months + 7 Days (adjusted for cycle length).</p>
+      </div>
+    
+      <div class="border border-subtle rounded-lg bg-tertiary p-4 space-y-1.5">
+        <div class="text-xs sm:text-sm font-bold text-primary flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-4 h-4 text-accent-primary shrink-0"></i>
+          <span>What is the difference between Gestational Age and Fetal Age?</span>
+        </div>
+        <p class="text-xs text-secondary leading-relaxed pl-6">Gestational Age is measured from the first day of your last period (~2 weeks before conception), whereas Fetal Age measures embryonic age from fertilization.</p>
+      </div>
+    
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
