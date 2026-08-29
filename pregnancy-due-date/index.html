@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCZ04EYSVB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YCZ04EYSVB', {
+      page_title: 'Ledger & Lend | Calculators & Financial Planning',
+      page_path: window.location.pathname + window.location.hash
+    });
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Pregnancy Due Date Calculator | Naegele's Rule & Gestational Age - Ledger & Lend</title>
+  <meta name="title" content="Pregnancy Due Date Calculator | Naegele's Rule & Gestational Age - Ledger & Lend">
+  <meta name="description" content="Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.">
+  <meta name="keywords" content="Ledger and Lend, EMI calculator, loan calculator, SIP calculator, mutual fund, compound interest, mortgage calculator, BMI calculator, ideal body weight, waist to hip ratio, target heart rate, macros calculator, TDEE calculator, body fat calculator, unit converter, free online calculators">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="Ledger & Lend">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="canonical" href="https://ledgerandlend.netlify.app/pregnancy-due-date/">
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ledgerandlend.netlify.app/pregnancy-due-date/">
+  <meta property="og:title" content="Pregnancy Due Date Calculator | Naegele's Rule & Gestational Age - Ledger & Lend">
+  <meta property="og:description" content="Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.">
+  <meta property="og:image" content="https://ledgerandlend.netlify.app/assets/icon.svg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ledgerandlend.netlify.app/">
+  <meta name="twitter:title" content="Pregnancy Due Date Calculator | Naegele's Rule & Gestational Age - Ledger & Lend">
+  <meta name="twitter:description" content="Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.">
+  <meta name="twitter:image" content="https://ledgerandlend.netlify.app/assets/icon.svg">
+
+  <!-- Google Fonts Preload & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'text-primary': 'var(--text-primary)',
+            'text-secondary': 'var(--text-secondary)',
+            'text-muted': 'var(--text-muted)',
+            'accent-primary': 'var(--accent-primary)',
+            'accent-primary-hover': 'var(--accent-primary-hover)',
+            'accent-primary-light': 'var(--accent-primary-light)',
+            'accent-emerald': 'var(--accent-emerald)',
+            'accent-emerald-light': 'var(--accent-emerald-light)',
+            'accent-violet': 'var(--accent-violet)',
+            'accent-violet-light': 'var(--accent-violet-light)',
+            'accent-amber': 'var(--accent-amber)',
+            'accent-amber-light': 'var(--accent-amber-light)',
+            'accent-rose': 'var(--accent-rose)',
+            'accent-rose-light': 'var(--accent-rose-light)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=2.5">
+  <link rel="manifest" href="../manifest.json">
+
+  <!-- JSON-LD SEO Structured Data (WebApplication, Organization & BreadcrumbList) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ledgerandlend.netlify.app/#webapp",
+        "name": "Ledger & Lend Calculators",
+        "applicationCategory": "BusinessApplication, UtilitiesApplication, HealthApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "url": "https://ledgerandlend.netlify.app",
+        "description": "Comprehensive suite of 19 financial, health, and mathematical calculators with multi-language support by Ledger & Lend.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ledgerandlend.netlify.app/#organization",
+        "name": "Ledger & Lend",
+        "url": "https://ledgerandlend.netlify.app",
+        "logo": "https://ledgerandlend.netlify.app/assets/icon.svg"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ledgerandlend.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://ledgerandlend.netlify.app/#all"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Knowledge Guides",
+            "item": "https://ledgerandlend.netlify.app/#knowledge-section"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ledgerandlend.netlify.app/pregnancy-due-date/#app",
+        "name": "Pregnancy Due Date & Gestational Age Calculator",
+        "url": "https://ledgerandlend.netlify.app/pregnancy-due-date/",
+        "description": "Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.",
+        "applicationCategory": "UtilitiesApplication, BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ledgerandlend.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Medical",
+            "item": "https://ledgerandlend.netlify.app/#medical"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Pregnancy Due Date & Gestational Age Calculator",
+            "item": "https://ledgerandlend.netlify.app/pregnancy-due-date/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+  <!-- Accessibility: Skip to Main Content Link -->
+  <a href="#main-content" class="sr-only skip-to-content focus:not-sr-only">Skip to main content</a>
+
+  <!-- Offline PWA Notification Banner -->
+  <div id="offline-banner" class="hidden bg-amber-500 text-slate-950 px-4 py-2 text-xs font-semibold text-center sticky top-0 z-50 flex items-center justify-center gap-2 shadow-sm transition-all" role="status">
+    <i data-lucide="wifi-off" class="w-4 h-4"></i>
+    <span>You are currently offline. Ledger &amp; Lend is running seamlessly from your local cache.</span>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-subtle backdrop-blur-md" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Logo & Brand -->
+      <a href="#" class="flex items-center gap-2.5 no-underline shrink-0 group" aria-label="Ledger & Lend Home">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform" aria-hidden="true">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-base tracking-tight text-primary">Ledger<span class="text-accent-primary">&Lend</span></span>
+          <span data-i18n="appBadge" class="hidden sm:inline-block text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-accent-primary-light text-accent-primary ml-1.5">Essential</span>
+        </div>
+      </a>
+
+      <!-- Quick Search Trigger -->
+      <button class="search-bar-trigger hidden md:flex items-center gap-3 px-3.5 py-1.5 rounded-lg bg-tertiary border border-subtle text-muted hover:text-primary hover:border-accent-primary transition-all text-xs w-64 justify-between" aria-label="Search calculators, formulas or guides">
+        <span class="flex items-center gap-2">
+          <i data-lucide="search" class="w-3.5 h-3.5" aria-hidden="true"></i>
+          <span data-i18n="searchPlaceholder">Search calculators & guides...</span>
+        </span>
+        <kbd class="px-1.5 py-0.5 rounded bg-secondary border border-subtle text-[10px] font-mono font-bold">Ctrl K</kbd>
+      </button>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2">
+        <a href="#knowledge-section" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-accent-primary px-2.5 py-1.5 rounded-lg hover:bg-tertiary transition-all">
+          <i data-lucide="book-open" class="w-3.5 h-3.5" aria-hidden="true"></i>
+          <span data-i18n="guidesAndFaqs">Guides & FAQs</span>
+        </a>
+
+        <!-- Language Selector -->
+        <div class="relative">
+          <label for="language-selector" class="sr-only">Select Language</label>
+          <select id="language-selector" class="calc-select text-xs py-1.5 px-2.5 font-bold cursor-pointer rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 shadow-sm" title="Select Language"></select>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="relative hidden sm:block">
+          <label for="currency-selector" class="sr-only">Select Currency</label>
+          <select id="currency-selector" class="calc-select text-xs py-1.5 px-2.5 font-bold cursor-pointer rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 shadow-sm" title="Select Currency"></select>
+        </div>
+
+        <!-- History Drawer Button -->
+        <button id="open-history-btn" class="btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" title="Calculation History" aria-label="Open Calculation History">
+          <i data-lucide="history" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" class="btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" title="Toggle Dark/Light Mode" aria-label="Toggle Dark and Light theme">
+          <i data-lucide="sun-medium" class="w-4 h-4 dark:hidden" aria-hidden="true"></i>
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:inline-block" aria-hidden="true"></i>
+        </button>
+
+        <!-- Mobile Search Button -->
+        <button class="search-bar-trigger md:hidden btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" aria-label="Search">
+          <i data-lucide="search" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6" role="main">
+    
+    <!-- AD SLOT 1: TOP HEADER LEADERBOARD (IAB 728x90) -->
+    <div class="ad-banner-wrapper no-print" role="region" aria-label="Advertisement">
+      <span class="ad-label" data-i18n="advertisement">Advertisement</span>
+      <div class="ad-slot ad-slot-leaderboard p-3">
+        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono">
+          <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-accent-emerald" aria-hidden="true"></i>
+          <span data-i18n="topBannerAd">Top Banner Ad Space (728x90 / Responsive Leaderboard)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Bar (Large, Prominent Pills) -->
+    <div class="py-1">
+      <nav class="flex items-center gap-2.5 overflow-x-auto pb-1" id="category-pills-container" aria-label="Calculator Categories"></nav>
+    </div>
+
+    <!-- Quick Favorites & Breadcrumbs Toolbar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1 pb-1">
+      <!-- Quick Favorites Bar -->
+      <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
+        <span class="text-secondary text-xs font-bold flex items-center gap-1.5 shrink-0">
+          <i data-lucide="star" class="w-4 h-4 text-accent-amber fill-accent-amber" aria-hidden="true"></i>
+          <span data-i18n="favorites">Favorites:</span>
+        </span>
+        <div class="flex items-center gap-2" id="favorites-chips-container"></div>
+      </div>
+
+      <!-- Dynamic Breadcrumb Navigation -->
+      <nav id="calc-breadcrumbs" class="flex items-center shrink-0" aria-label="Breadcrumbs"></nav>
+    </div>
+
+    <!-- Active Calculator Stage with Desktop Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Main Stage Container -->
+      <div class="lg:col-span-12 glass-panel p-5 sm:p-7 shadow-lg relative">
+        <!-- Calculator Header & Utility Controls -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-subtle">
+          <div class="flex items-center gap-3.5">
+            <div id="active-calc-icon-container" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md" aria-hidden="true">
+              <i data-lucide="calculator" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight" id="active-calc-title">Loan & EMI Calculator</h1>
+                <span class="badge" id="active-calc-badge">FINANCE</span>
+              </div>
+              <p class="text-xs sm:text-sm text-secondary mt-0.5" id="active-calc-desc">Calculate monthly loan installments and view detailed amortization schedule.</p>
+            </div>
+          </div>
+
+          <!-- Utility Buttons -->
+          <div class="flex items-center gap-1.5 self-end sm:self-auto shrink-0">
+            <button id="header-fav-btn" class="btn btn-secondary btn-sm" title="Bookmark Calculator" aria-label="Bookmark Calculator">
+              <i data-lucide="star" class="w-4 h-4 text-muted" aria-hidden="true"></i>
+            </button>
+            <button id="header-embed-btn" class="btn btn-secondary btn-sm" title="Embed Calculator Widget" aria-label="Embed Widget">
+              <i data-lucide="code" class="w-4 h-4" aria-hidden="true"></i>
+              <span class="hidden sm:inline text-xs">Embed</span>
+            </button>
+            <button id="header-share-btn" class="btn btn-secondary btn-sm" title="Share Calculator Link" aria-label="Share Calculator Link">
+              <i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>
+              <span class="hidden sm:inline text-xs" data-i18n="share">Share</span>
+            </button>
+            <button id="header-print-btn" class="btn btn-secondary btn-sm" title="Print / Export Result" aria-label="Print or Export Result">
+              <i data-lucide="printer" class="w-4 h-4" aria-hidden="true"></i>
+              <span class="hidden sm:inline text-xs" data-i18n="print">Print</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mounted Calculator Dynamic Form -->
+        <div id="calc-mount"></div>
+
+        <!-- Contextual High-Converting Affiliate / Sponsor Recommendation Box -->
+        <div id="calc-affiliate-mount" class="mt-6"></div>
+
+        <!-- Mounted Calculator-Specific FAQs & Mathematical Formulas -->
+        <div id="calc-faq-mount"></div>
+      </div>
+    </div>
+
+    <!-- AD SLOT 2: MID-CONTENT RECTANGLE / NATIVE BANNER -->
+    <div class="ad-banner-wrapper no-print" role="region" aria-label="Advertisement">
+      <span class="ad-label" data-i18n="advertisement">Advertisement</span>
+      <div class="ad-slot ad-slot-responsive max-w-4xl p-4">
+        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono py-2">
+          <i data-lucide="layout" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+          <span data-i18n="midBannerAd">Mid-Content Native / In-Feed Ad Space (Auto-Responsive)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Switcher Directory Grid (All 19 Tools) -->
+    <div class="pt-2">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-base font-bold text-primary flex items-center gap-2">
+          <i data-lucide="layout-grid" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+          <span data-i18n="exploreAllTools">Explore All Essential Calculators</span>
+        </h2>
+        <span class="text-xs text-muted" data-i18n="toolsAvailable">24 tools available</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="calculator-selector-grid"></div>
+    </div>
+
+    <!-- KNOWLEDGE BASE & EDUCATIONAL GUIDES SECTION -->
+    <section id="knowledge-section" class="pt-8 border-t border-subtle space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold text-primary flex items-center gap-2">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-accent-emerald" aria-hidden="true"></i>
+            <span data-i18n="knowledgeHubTitle">Knowledge Hub: In-Depth Financial & Health Guides</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-secondary mt-0.5" data-i18n="knowledgeHubSubtitle">Explore the mathematics, scientific formulas, and proven strategies behind our calculators.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="knowledge-articles-grid"></div>
+    </section>
+
+    <!-- LONG-TERM EARNABILITY: LEAD CAPTURE & NEWSLETTER CARD -->
+    <section class="p-6 sm:p-8 rounded-2xl bg-gradient-to-tr from-accent-primary-light via-secondary to-accent-emerald-light border border-accent-primary/30 shadow-md">
+      <div class="max-w-3xl mx-auto text-center space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 text-accent-primary text-xs font-bold uppercase tracking-wider">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+          Free Financial & Health Toolkits
+        </div>
+        <h3 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight">
+          Master Your Wealth & Health with Ledger & Lend Cheat Sheets
+        </h3>
+        <p class="text-xs sm:text-sm text-secondary max-w-xl mx-auto leading-relaxed">
+          Join 25,000+ subscribers receiving our monthly SIP Compound Growth blueprint, Loan Amortization Prepayment Cheat Sheets, and Macro Diet guides directly in their inbox.
+        </p>
+
+        <!-- Newsletter Subscription Form -->
+        <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto pt-2">
+          <input type="email" id="newsletter-email" placeholder="Enter your email address..." required class="w-full sm:flex-1 px-4 py-2.5 rounded-lg bg-secondary border border-subtle text-primary text-xs outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all font-medium">
+          <button type="submit" class="w-full sm:w-auto btn btn-primary text-xs whitespace-nowrap py-2.5 px-5">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Get Free Toolkit</span>
+          </button>
+        </form>
+        <p class="text-[11px] text-muted">🔒 100% Privacy Protected • Unsubscribe anytime with 1 click.</p>
+      </div>
+    </section>
+
+    <!-- GLOBAL FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section class="pt-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg sm:text-xl font-extrabold text-primary flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-5 h-5 text-accent-violet" aria-hidden="true"></i>
+          <span data-i18n="faqsTitle">Frequently Asked Questions (FAQs)</span>
+        </h2>
+        <span class="text-xs text-muted" data-i18n="faqsSubtitle">Essential Answers</span>
+      </div>
+
+      <div class="space-y-2.5" id="global-faq-list"></div>
+    </section>
+
+    <!-- AD SLOT 3: BOTTOM LEADERBOARD -->
+    <div class="ad-banner-wrapper no-print pt-6" role="region" aria-label="Advertisement">
+      <span class="ad-label" data-i18n="advertisement">Advertisement</span>
+      <div class="ad-slot ad-slot-leaderboard p-3">
+        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono">
+          <i data-lucide="sparkles" class="w-4 h-4 text-accent-amber" aria-hidden="true"></i>
+          <span data-i18n="bottomBannerAd">Bottom Leaderboard Ad Space (728x90 Banner)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Anchor Ad (High-CTR / Mobile Unit with Dismiss) -->
+  <div id="sticky-bottom-ad-container" class="sticky-bottom-ad no-print" role="region" aria-label="Sticky Bottom Ad">
+    <div class="max-w-4xl w-full mx-auto flex items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-2 text-muted text-[11px] font-mono">
+        <span class="ad-label mb-0" data-i18n="advertisement">Ad</span>
+        <span>Sticky High-Viewability Banner (320x50 / 728x90)</span>
+      </div>
+      <button id="close-sticky-ad-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" title="Dismiss Ad" aria-label="Dismiss sticky ad">
+        <i data-lucide="x" class="w-3.5 h-3.5" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating "Back to Top" Action Button -->
+  <button id="back-to-top-btn" class="fixed bottom-14 right-6 z-40 p-2.5 rounded-full bg-secondary border border-subtle text-secondary hover:text-primary hover:border-accent-primary shadow-lg transition-all opacity-0 pointer-events-none" title="Back to Top" aria-label="Scroll back to top">
+    <i data-lucide="arrow-up" class="w-4 h-4" aria-hidden="true"></i>
+  </button>
+
+  <!-- Comprehensive Footer with Legal, Disclaimers & Sitemap Links -->
+  <footer class="mt-16 border-t border-subtle bg-secondary/60 py-10 text-xs text-secondary" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <!-- Top Row: Brand & Privacy Guarantee -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-subtle">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-accent-primary flex items-center justify-center text-white text-xs font-bold shadow-sm" aria-hidden="true">
+            <i data-lucide="calculator" class="w-4 h-4"></i>
+          </div>
+          <span class="font-extrabold text-sm text-primary">Ledger & Lend</span>
+          <span class="text-muted" data-i18n="freeOpenSuite">• Free & Open Online Tool Suite</span>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] text-muted">
+          <i data-lucide="shield-check" class="w-4 h-4 text-accent-emerald" aria-hidden="true"></i>
+          <span data-i18n="noSignup">No sign-up required • 100% Client-Side Privacy</span>
+        </div>
+      </div>
+
+      <!-- Middle Row: Legal & Compliance Navigation -->
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-xs">
+        <a href="#" class="legal-link hover:text-accent-primary transition-colors" data-doc="privacy" data-i18n="privacyPolicy">Privacy Policy</a>
+        <a href="#" class="legal-link hover:text-accent-primary transition-colors" data-doc="terms" data-i18n="termsOfService">Terms of Service</a>
+        <a href="#" class="legal-link hover:text-accent-primary transition-colors" data-doc="disclaimer" data-i18n="disclaimer">Financial & Medical Disclaimer</a>
+        <a href="#" class="legal-link hover:text-accent-primary transition-colors" data-doc="cookies" data-i18n="cookiePolicy">Cookie Policy</a>
+        <a href="#" class="legal-link hover:text-accent-primary transition-colors" data-doc="about" data-i18n="aboutUs">About Us</a>
+        <a href="./sitemap.xml" target="_blank" class="hover:text-accent-primary transition-colors flex items-center gap-1">
+          <i data-lucide="network" class="w-3 h-3" aria-hidden="true"></i>
+          <span data-i18n="sitemap">XML Sitemap</span>
+        </a>
+        <a href="#" id="open-diagnostics-link" class="hover:text-accent-emerald transition-colors flex items-center gap-1">
+          <i data-lucide="check-circle-2" class="w-3 h-3 text-accent-emerald" aria-hidden="true"></i>
+          <span>Formula Verification</span>
+        </a>
+      </div>
+
+      <!-- Bottom Row: Copyright & Disclaimers -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-muted pt-2">
+        <p>© 2026 Ledger & Lend. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
+        <p class="text-center sm:text-right">Calculations are estimates for educational use. Please verify with certified advisors.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="search-modal-label">
+    <div class="modal-content">
+      <div class="p-3.5 border-b border-subtle flex items-center gap-3">
+        <i data-lucide="search" class="w-4 h-4 text-muted" aria-hidden="true"></i>
+        <label for="search-modal-input" id="search-modal-label" class="sr-only">Search calculators</label>
+        <input type="text" id="search-modal-input" class="w-full bg-transparent text-primary text-sm outline-none placeholder:text-muted" placeholder="Search calculators, formulas, or financial guides (Ctrl+K)...">
+        <button id="close-search-btn" class="text-muted hover:text-primary text-xs px-1.5 py-0.5 rounded bg-tertiary border border-subtle">ESC</button>
+      </div>
+      <div class="p-2 max-h-[380px] overflow-y-auto space-y-1" id="search-modal-results"></div>
+    </div>
+  </div>
+
+  <!-- Article Reader Modal -->
+  <div id="article-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="article-modal-title">
+    <div class="modal-content max-w-2xl max-h-[85vh] flex flex-col">
+      <div class="p-4 border-b border-subtle flex items-center justify-between bg-tertiary/50">
+        <div class="flex items-center gap-2">
+          <span class="badge" id="article-modal-badge">FINANCE</span>
+          <span class="text-xs text-muted" id="article-modal-time">5 min read</span>
+        </div>
+        <button id="close-article-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close article modal">
+          <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-primary leading-tight" id="article-modal-title"></h2>
+        <div class="prose dark:prose-invert text-xs sm:text-sm text-secondary leading-relaxed space-y-3" id="article-modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal & Compliance Reader Modal -->
+  <div id="legal-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+    <div class="modal-content max-w-2xl max-h-[85vh] flex flex-col">
+      <div class="p-4 border-b border-subtle flex items-center justify-between bg-tertiary/50">
+        <div class="flex items-center gap-2">
+          <span class="badge badge-finance" id="legal-modal-badge">LEGAL</span>
+          <span class="text-xs text-muted" id="legal-modal-updated">Last Updated: August 2026</span>
+        </div>
+        <button id="close-legal-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close legal modal">
+          <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-primary leading-tight" id="legal-modal-title"></h2>
+        <div class="prose dark:prose-invert text-xs sm:text-sm text-secondary leading-relaxed space-y-3" id="legal-modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embed Widget Modal (Generates Viral Backlinks & Embeds) -->
+  <div id="embed-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="embed-modal-title">
+    <div class="modal-content max-w-lg flex flex-col">
+      <div class="p-4 border-b border-subtle flex items-center justify-between bg-tertiary/50">
+        <h3 class="font-bold text-sm text-primary flex items-center gap-2" id="embed-modal-title">
+          <i data-lucide="code" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+          Embed Calculator On Your Website
+        </h3>
+        <button id="close-embed-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close embed modal">
+          <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="p-5 space-y-3 text-xs">
+        <p class="text-secondary font-medium">Copy and paste this lightweight, responsive iframe code onto your blog or website to embed this calculator:</p>
+        <textarea id="embed-code-textarea" class="w-full h-24 p-3 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-[11px] text-slate-900 dark:text-slate-100 focus:outline-none focus:border-accent-primary resize-none select-all shadow-inner leading-relaxed" readonly></textarea>
+        <div class="flex justify-end gap-2">
+          <button id="copy-embed-code-btn" class="btn btn-primary btn-sm">
+            <i data-lucide="copy" class="w-3.5 h-3.5" aria-hidden="true"></i> Copy Embed Code
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Export & Share Modal -->
+  <div id="export-share-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="export-modal-title">
+    <div class="modal-content max-w-xl flex flex-col">
+      <div class="p-4 border-b border-subtle flex items-center justify-between bg-tertiary/50">
+        <h3 class="font-bold text-sm text-primary flex items-center gap-2" id="export-modal-title">
+          <i data-lucide="share-2" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+          Export &amp; Share Calculation
+        </h3>
+        <button id="close-export-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close export modal">
+          <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="p-3 border-b border-subtle flex items-center gap-1.5 bg-secondary text-xs font-medium overflow-x-auto">
+        <button class="export-tab-btn active px-3 py-1.5 rounded-md font-bold text-accent-primary bg-accent-primary-light" data-tab="share-link">
+          <i data-lucide="link" class="w-3.5 h-3.5 inline mr-1"></i> Direct Link
+        </button>
+        <button class="export-tab-btn px-3 py-1.5 rounded-md text-secondary hover:text-primary" data-tab="pdf-report">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 inline mr-1"></i> Print / PDF
+        </button>
+        <button class="export-tab-btn px-3 py-1.5 rounded-md text-secondary hover:text-primary" data-tab="csv-data">
+          <i data-lucide="table" class="w-3.5 h-3.5 inline mr-1"></i> CSV Data
+        </button>
+        <button class="export-tab-btn px-3 py-1.5 rounded-md text-secondary hover:text-primary" data-tab="md-summary">
+          <i data-lucide="copy" class="w-3.5 h-3.5 inline mr-1"></i> Summary Text
+        </button>
+      </div>
+      <div class="p-5 space-y-4 text-xs" id="export-tab-contents">
+        <!-- Tab 1: Direct Share Link -->
+        <div id="tab-share-link" class="export-tab-pane space-y-3">
+          <p class="text-secondary">Share this exact calculation scenario with pre-filled inputs via direct URL:</p>
+          <div class="flex items-center gap-2">
+            <input type="text" id="share-link-input" class="w-full p-2.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-primary font-mono text-xs select-all outline-none" readonly>
+            <button id="copy-share-link-btn" class="btn btn-primary btn-sm shrink-0">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Link
+            </button>
+          </div>
+        </div>
+        <!-- Tab 2: Print / PDF Report -->
+        <div id="tab-pdf-report" class="export-tab-pane hidden space-y-3">
+          <p class="text-secondary">Preview and generate a clean, executive PDF summary report with input parameters and results:</p>
+          <div id="pdf-report-preview" class="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-subtle max-h-48 overflow-y-auto space-y-2 font-mono text-[11px]"></div>
+          <div class="flex justify-end gap-2">
+            <button id="trigger-print-report-btn" class="btn btn-primary btn-sm">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i> Print / Save as PDF
+            </button>
+          </div>
+        </div>
+        <!-- Tab 3: CSV Data Export -->
+        <div id="tab-csv-data" class="export-tab-pane hidden space-y-3">
+          <p class="text-secondary" id="csv-export-description">Export tabular breakdown data (amortization schedule, growth trajectory, or logs) directly to an Excel-compatible CSV file:</p>
+          <div class="flex justify-end gap-2">
+            <button id="trigger-csv-download-btn" class="btn btn-primary btn-sm">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Download CSV Data
+            </button>
+          </div>
+        </div>
+        <!-- Tab 4: Markdown Summary -->
+        <div id="tab-md-summary" class="export-tab-pane hidden space-y-3">
+          <p class="text-secondary">Formatted markdown text ready to paste into WhatsApp, Slack, emails, or notes:</p>
+          <textarea id="md-summary-textarea" class="w-full h-32 p-3 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-[11px] text-primary focus:outline-none resize-none select-all shadow-inner leading-relaxed" readonly></textarea>
+          <div class="flex justify-end gap-2">
+            <button id="copy-md-summary-btn" class="btn btn-primary btn-sm">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Summary
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mathematical Formula Diagnostics Modal -->
+  <div id="diagnostics-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="diagnostics-modal-title">
+    <div class="modal-content max-w-2xl max-h-[85vh] flex flex-col">
+      <div class="p-4 border-b border-subtle flex items-center justify-between bg-tertiary/50">
+        <div class="flex items-center gap-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-accent-emerald" aria-hidden="true"></i>
+          <h3 class="font-bold text-sm text-primary" id="diagnostics-modal-title">Mathematical Formula Verification Suite</h3>
+        </div>
+        <button id="close-diagnostics-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close diagnostics modal">
+          <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="p-5 overflow-y-auto space-y-4 text-xs">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-lg bg-tertiary border border-subtle">
+          <div>
+            <span class="font-bold text-primary text-sm">Real-Time Formula Health Engine</span>
+            <p class="text-[11px] text-muted">Executes 13+ client-side mathematical assertions across all calculator formulas.</p>
+          </div>
+          <button id="run-diagnostics-btn" class="btn btn-primary btn-sm shrink-0">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Run Verification
+          </button>
+        </div>
+        <div id="diagnostics-summary-bar" class="hidden p-3 rounded-lg flex items-center justify-between text-xs font-bold font-mono"></div>
+        <div id="diagnostics-results-list" class="space-y-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Drawer -->
+  <div id="history-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="history-drawer" class="drawer" role="complementary" aria-label="Calculation History Drawer">
+    <div class="p-4 border-b border-subtle flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="history" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+        <h3 class="font-bold text-sm text-primary" data-i18n="history">Calculation History</h3>
+      </div>
+      <button id="close-history-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close history drawer">
+        <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-2" id="history-items-list"></div>
+
+    <div class="p-4 border-t border-subtle flex justify-between items-center bg-tertiary/50">
+      <button id="clear-history-btn" class="btn btn-ghost btn-sm text-accent-rose text-xs">
+        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> <span data-i18n="clearAll">Clear All</span>
+      </button>
+      <span class="text-[11px] text-muted" data-i18n="savedInStorage">Saved in LocalStorage</span>
+    </div>
+  </aside>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Application Module Script -->
+  <script type="module" src="../js/app.js"></script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

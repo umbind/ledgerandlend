@@ -104,9 +104,11 @@ class App {
 
     this.knowledge = new KnowledgeComponent(this);
 
-    // Check hash URL or default to emi
-    const hash = window.location.hash.replace('#', '') || 'emi';
-    this.switchCalculator(hash, false);
+    // Detect calculator from clean path (e.g. /emi/) or hash (e.g. #emi)
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const hash = window.location.hash.replace('#', '');
+    const initialCalcId = (path && allCalculators.some(c => c.id === path)) ? path : (hash || 'emi');
+    this.switchCalculator(initialCalcId, false);
 
     window.addEventListener('hashchange', () => {
       const h = window.location.hash.replace('#', '');
@@ -378,6 +380,13 @@ class App {
       const queryStr = new URLSearchParams(params).toString();
       window.location.hash = queryStr ? `${calc.id}?${queryStr}` : calc.id;
     }
+
+    // Dynamically update document title, meta description & canonical URL for SEO
+    document.title = `${calc.title} | Free Online Calculator - Ledger & Lend`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', `${calc.title}: ${calc.description} Free, privacy-first online calculations with instant accuracy.`);
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) canonicalLink.setAttribute('href', `https://ledgerandlend.netlify.app/#${calc.id}`);
 
     // Update active Header
     const titleEl = document.getElementById('active-calc-title');
