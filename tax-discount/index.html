@@ -417,6 +417,50 @@
         </a>
       </div>
     </section>
+
+
+    <!-- Interactive Multilingual FAQ Accordion Section -->
+    <section class="mt-12 pt-8 border-t border-subtle" id="faq-section">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-xs font-bold uppercase tracking-wider mb-2">
+            <i data-lucide="message-circle-question" class="w-3.5 h-3.5"></i>
+            <span data-i18n="faqSectionTitle">Frequently Asked Questions</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-primary" data-i18n="faqSectionTitle">Frequently Asked Questions</h2>
+          <p class="text-xs sm:text-sm text-muted mt-1" data-i18n="faqSectionSubtitle">Expert guidance, calculation formulas, and clear answers.</p>
+        </div>
+
+        <div class="space-y-3" id="faq-accordion-container">
+
+        <div class="faq-item bg-secondary border border-subtle rounded-2xl overflow-hidden transition-all duration-200">
+          <button type="button" aria-expanded="false" class="faq-accordion-header w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-tertiary/50 transition-colors focus:outline-none" data-faq="faq_td_1">
+            <span class="font-bold text-sm sm:text-base text-primary flex items-center gap-2.5">
+              <i data-lucide="help-circle" class="w-4 h-4 text-accent-primary shrink-0"></i>
+              <span data-i18n="faq_td_1">How are stacked discounts and coupons calculated?</span>
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-muted shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-accordion-body hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle/50" data-i18n="ans_td_1">
+            The primary percentage discount is deducted first from the retail price, followed by any additional promotional coupon or flat amount before sales tax/GST is applied.
+          </div>
+        </div>
+
+        <div class="faq-item bg-secondary border border-subtle rounded-2xl overflow-hidden transition-all duration-200">
+          <button type="button" aria-expanded="false" class="faq-accordion-header w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-tertiary/50 transition-colors focus:outline-none" data-faq="faq_td_2">
+            <span class="font-bold text-sm sm:text-base text-primary flex items-center gap-2.5">
+              <i data-lucide="help-circle" class="w-4 h-4 text-accent-primary shrink-0"></i>
+              <span data-i18n="faq_td_2">Is sales tax applied before or after discount?</span>
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-muted shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-accordion-body hidden px-5 pb-5 pt-1 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle/50" data-i18n="ans_td_2">
+            In almost all standard retail jurisdictions, sales tax / GST is applied directly to the net discounted sale price, saving you money on taxes as well.
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Global Footer -->
@@ -619,1733 +663,16 @@
   <script>
     if (window.lucide) lucide.createIcons();
   </script>
-
-<!-- UNIFIED GLOBAL CONTROLLER: CURRENCY, I18N LIVE TRANSLATION, FAVORITES, EMBED MODAL, SHARE, PRINT & TOASTS -->
-<div id="toast-notification" class="fixed bottom-5 right-5 z-[9999] flex items-center gap-2 bg-slate-900/95 text-white border border-slate-700 px-4 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none text-xs font-semibold backdrop-blur-md">
-  <span id="toast-icon" class="text-accent-primary">ℹ️</span>
-  <span id="toast-message">Notification</span>
-</div>
-
-<div id="embed-code-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200 p-4" role="dialog" aria-modal="true" aria-labelledby="embed-modal-title">
-  <div class="relative w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-6 overflow-hidden transform scale-95 transition-transform duration-200" id="embed-modal-card">
-    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-accent-primary/20 text-accent-primary flex items-center justify-center font-bold">
-          &lt;/&gt;
-        </div>
-        <div>
-          <h3 class="text-sm font-bold text-white tracking-tight" id="embed-modal-title">Embed Calculator Widget</h3>
-          <p class="text-[11px] text-slate-400">Place this interactive tool on your website or blog</p>
-        </div>
-      </div>
-      <button type="button" id="close-embed-modal-btn" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors font-bold text-base" aria-label="Close embed modal">✕</button>
-    </div>
-    <div class="flex items-center gap-2 mb-3 text-[11px] font-semibold text-slate-300">
-      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">100% Responsive</span>
-      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Height: 650px</span>
-      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Live Auto Sync</span>
-    </div>
-    <div class="space-y-1.5 mb-5">
-      <div class="flex items-center justify-between text-[11px]">
-        <label for="embed-code-box" class="font-bold text-slate-300">HTML Iframe Embed Code:</label>
-        <span class="text-slate-400 text-[10px]">Click to select all</span>
-      </div>
-      <textarea id="embed-code-box" readonly rows="4" class="w-full font-mono text-xs text-emerald-400 bg-black/60 border border-slate-700 rounded-xl p-3 focus:border-accent-primary focus:outline-none select-all resize-none shadow-inner leading-relaxed" onclick="this.select();"></textarea>
-    </div>
-    <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-800">
-      <button type="button" id="cancel-embed-modal-btn" class="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Cancel</button>
-      <button type="button" id="copy-embed-code-btn" class="px-4 py-2 text-xs font-bold text-white bg-accent-primary hover:bg-accent-primary-hover rounded-lg shadow-md transition-all">Copy Embed Code</button>
-    </div>
-  </div>
-</div>
-
-<script>
-(function() {
-  // 1. Multilingual Translations Dictionary
-  var i18nDict = {
-  "en": {
-    "appName": "Ledger & Lend",
-    "appTagline": "Financial & Wealth Intelligence",
-    "searchPlaceholder": "Search financial tools (Ctrl+K)...",
-    "currencyLabel": "Select Global Currency",
-    "langLabel": "Select Global Language",
-    "allFinancial": "All Financial (8)",
-    "loansMortgages": "Loans & Mortgages",
-    "investingWealth": "Investing & Wealth",
-    "taxesSpending": "Taxes & Spending",
-    "financialSuiteTitle": "Financial Calculators Suite",
-    "financialSuiteSubtitle": "Select any specialized loan, investing, or tax tool",
-    "guidesTitle": "Personal Finance & Investment Guides",
-    "guidesSubtitle": "Deep dive educational guides on compounding, debt reduction, and financial independence",
-    "favorite": "Favorite",
-    "embed": "Embed",
-    "share": "Share",
-    "print": "Print",
-    "copy": "Click to Copy",
-    "copied": "✓ Copied!",
-    "presets": "Presets:",
-    "eraseData": "Erase All My Data",
-    "privacyFooter": "© 2026 Ledger & Lend. 100% Privacy-First Financial Computing.",
-    "embedTitle": "Embed Calculator Widget",
-    "embedDesc": "Place this interactive tool on your website or blog",
-    "copyEmbed": "Copy Embed Code",
-    "cancel": "Cancel",
-    "welcomeTitle": "Welcome to Ledger & Lend",
-    "welcomeDesc": "Intelligent Language Preference",
-    "continue": "Continue",
-    "changeLang": "Change language...",
-    "sipTitle": "SIP & Wealth Calculator",
-    "sipDesc": "Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.",
-    "sipParams": "Investment Parameters",
-    "monthlySip": "Monthly SIP",
-    "lumpsum": "One-Time Lumpsum",
-    "monthlyInvestment": "Monthly Investment Amount",
-    "expectedReturn": "Expected Return Rate (p.a)",
-    "timePeriod": "Investment Time Period",
-    "totalFutureWealth": "Total Future Wealth",
-    "maturityValue": "Maturity value after compound growth",
-    "investedAmount": "Invested Amount",
-    "principalContrib": "Principal contributions",
-    "estimatedGains": "Estimated Gains",
-    "portfolioRatio": "Portfolio Asset Ratio",
-    "amountInvested": "Amount Invested",
-    "estimatedReturns": "Estimated Returns",
-    "wealthMultiplier": "Wealth Multiplier",
-    "emiTitle": "Loan & EMI Calculator",
-    "emiDesc": "Calculate monthly loan EMI payments, principal versus interest breakdown, and view the full yearly amortization schedule.",
-    "loanParams": "Loan Parameters",
-    "loanPrincipal": "Loan Principal Amount",
-    "annualInterestRate": "Annual Interest Rate (%)",
-    "loanTenure": "Loan Tenure",
-    "years": "Years",
-    "months": "Months",
-    "monthlyEmi": "Monthly EMI Payment",
-    "emiSubtext": "Principal + Interest per month",
-    "totalInterest": "Total Interest",
-    "totalPayable": "Total Amount Payable",
-    "payableSubtext": "Principal + Total Interest",
-    "loanRatio": "Loan Payment Ratio",
-    "principalLoanAmt": "Principal Loan Amount",
-    "yearlySchedule": "Yearly Amortization Schedule",
-    "year": "Year",
-    "openingBalance": "Opening Balance",
-    "emiPaidYr": "EMI Paid (Yr)",
-    "principalPaid": "Principal Paid",
-    "interestPaid": "Interest Paid",
-    "closingBalance": "Closing Balance",
-    "mortgageTitle": "Mortgage & Home Loan Calculator",
-    "mortgageDesc": "Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).",
-    "propertyInputs": "Property & Loan Inputs",
-    "homePrice": "Home Purchase Price",
-    "downPayment": "Down Payment Percentage",
-    "loanTerm": "Loan Term",
-    "propertyTax": "Property Tax/yr",
-    "homeIns": "Home Ins/yr",
-    "hoaFees": "HOA Fees/mo",
-    "totalMonthlyPayment": "Total Monthly Payment",
-    "pitiSubtext": "Principal, Interest, Taxes & Insurance (PITI)",
-    "principalInterest": "Principal & Interest",
-    "taxesInsurance": "Taxes & Insurance",
-    "escrowEst": "Monthly escrow estimate",
-    "ciTitle": "Compound Interest & Wealth Calculator",
-    "ciDesc": "Calculate compound interest growth, annual compounding returns, and future portfolio value over time.",
-    "ciParams": "Principal & Contribution Inputs",
-    "initialPrincipal": "Initial Principal Balance",
-    "monthlyAddition": "Monthly Addition",
-    "totalFutureVal": "Total Future Value",
-    "totalPrincipalInvested": "Total Principal Invested",
-    "totalCompoundInterest": "Total Compound Interest",
-    "compoundedBalance": "Compounded portfolio balance",
-    "extraGrowth": "extra growth",
-    "taxTitle": "Sales Tax & Discount Calculator",
-    "taxDesc": "Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.",
-    "priceTaxParams": "Price & Tax Parameters",
-    "retailPrice": "Original Retail Price",
-    "primaryDiscount": "Primary Discount (%)",
-    "salesTaxVat": "Sales Tax / VAT (%)",
-    "extraCoupon": "Extra Coupon (%)",
-    "finalPrice": "Final Out-of-Pocket Price",
-    "youSave": "You save",
-    "discountedPreTax": "Discounted Pre-Tax",
-    "salesTaxAmount": "Sales Tax Amount",
-    "tipTitle": "Tip & Bill Split Calculator",
-    "tipDesc": "Calculate gratuity percentages and split restaurant checks equally or with custom tip amounts.",
-    "billGratuityParams": "Bill & Gratuity Inputs",
-    "totalBill": "Total Bill Amount",
-    "tipPercentage": "Tip Percentage (%)",
-    "splitPeople": "Split Amongst People",
-    "totalPerPerson": "Total Per Person (Bill + Tip)",
-    "totalGratuity": "Total Gratuity / Tip",
-    "grandTotalBill": "Grand Total Bill",
-    "people": "People",
-    "person": "Person",
-    "fuelTitle": "Fuel Cost & Road Trip Economy Calculator",
-    "fuelDesc": "Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.",
-    "tripVehicleParams": "Trip & Vehicle Parameters",
-    "tripDistance": "Trip Distance (miles)",
-    "fuelEfficiency": "Fuel Efficiency (MPG)",
-    "gasPrice": "Gas Price ($/gal)",
-    "numPassengers": "Number of Passengers",
-    "totalFuelCost": "Total Road Trip Fuel Cost",
-    "costPerPerson": "Cost Per Person",
-    "gallonsConsumed": "Gallons consumed",
-    "timeTitle": "Time & Shift Wage Calculator",
-    "timeDesc": "Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.",
-    "shiftTimestamps": "Shift Timestamps",
-    "shiftStart": "Shift Start Time",
-    "shiftEnd": "Shift End Time",
-    "unpaidBreak": "Unpaid Break (Mins)",
-    "hourlyRate": "Hourly Rate ($)",
-    "workDuration": "Net Payable Work Duration",
-    "grossShiftPay": "Gross Shift Pay",
-    "billableHours": "decimal billable hours"
-  },
-  "hi": {
-    "appName": "लेज़र एंड लेंड (Ledger & Lend)",
-    "appTagline": "वित्तीय एवं धन संचय इंटेलिजेंस",
-    "searchPlaceholder": "वित्तीय उपकरण खोजें (Ctrl+K)...",
-    "currencyLabel": "मुद्रा चुनें",
-    "langLabel": "भाषा चुनें",
-    "allFinancial": "सभी वित्तीय (8)",
-    "loansMortgages": "ऋण एवं होम लोन (Loans)",
-    "investingWealth": "निवेश एवं संपत्ति (Investing)",
-    "taxesSpending": "टैक्स एवं खर्च (Taxes)",
-    "financialSuiteTitle": "वित्तीय कैलकुलेटर सुइट",
-    "financialSuiteSubtitle": "ऋण, निवेश, टैक्स अथवा बचत कैलकुलेटर चुनें",
-    "guidesTitle": "व्यक्तिगत वित्त एवं निवेश गाइड",
-    "guidesSubtitle": "चक्रवृद्धि ब्याज, ऋण मुक्ति और वित्तीय स्वतंत्रता पर विस्तृत मार्गदर्शिका",
-    "favorite": "पसंदीदा",
-    "embed": "एम्बेड",
-    "share": "शेयर",
-    "print": "प्रिंट",
-    "copy": "कॉपी करें",
-    "copied": "✓ कॉपी हो गया!",
-    "presets": "प्रीसेट:",
-    "eraseData": "मेरा सारा डेटा मिटाएं",
-    "privacyFooter": "© 2026 लेज़र एंड लेंड. 100% सुरक्षित और गोपनीयता-केंद्रित गणना।",
-    "embedTitle": "कैलकुलेटर विजेट एम्बेड करें",
-    "embedDesc": "इस कैलकुलेटर को अपनी वेबसाइट या ब्लॉग में लगाएं",
-    "copyEmbed": "एम्बेड कोड कॉपी करें",
-    "cancel": "रद्द करें",
-    "welcomeTitle": "लेज़र एंड लेंड में आपका स्वागत है",
-    "welcomeDesc": "स्मार्ट भाषा प्राथमिकता",
-    "continue": "आगे बढ़ें",
-    "changeLang": "भाषा बदलें...",
-    "sipTitle": "एसआईपी (SIP) एवं धन संचय कैलकुलेटर",
-    "sipDesc": "मासिक एसआईपी, वार्षिक स्टेप-अप चक्रवृद्धि और मुद्रास्फीति समायोजित रिटर्न की गणना करें।",
-    "sipParams": "निवेश पैरामीटर",
-    "monthlySip": "मासिक एसआईपी (SIP)",
-    "lumpsum": "एकमुश्त निवेश (Lumpsum)",
-    "monthlyInvestment": "मासिक निवेश राशि",
-    "expectedReturn": "अपेक्षित वार्षिक रिटर्न दर (% p.a)",
-    "timePeriod": "निवेश की समय अवधि",
-    "totalFutureWealth": "कुल संचित धन (भविष्य का मूल्य)",
-    "maturityValue": "चक्रवृद्धि के बाद कुल परिपक्वता मूल्य",
-    "investedAmount": "कुल निवेशित राशि",
-    "principalContrib": "मूल योगदान",
-    "estimatedGains": "अनुमानित मुनाफा (ब्याज)",
-    "portfolioRatio": "पोर्टफोलियो अनुपात",
-    "amountInvested": "निवेशित राशि",
-    "estimatedReturns": "अनुमानित रिटर्न",
-    "wealthMultiplier": "धन गुणक (Multiplier)",
-    "emiTitle": "ऋण एवं ईएमआई (EMI) कैलकुलेटर",
-    "emiDesc": "मासिक ऋण ईएमआई, मूलधन बनाम ब्याज और संपूर्ण वार्षिक भुगतान तालिका की गणना करें।",
-    "loanParams": "ऋण पैरामीटर",
-    "loanPrincipal": "ऋण मूलधन राशि (Principal)",
-    "annualInterestRate": "वार्षिक ब्याज दर (%)",
-    "loanTenure": "ऋण अवधि",
-    "years": "वर्ष",
-    "months": "महीने",
-    "monthlyEmi": "मासिक ईएमआई (EMI)",
-    "emiSubtext": "प्रति माह मूलधन + ब्याज",
-    "totalInterest": "कुल देय ब्याज",
-    "totalPayable": "कुल देय राशि",
-    "payableSubtext": "मूलधन + कुल ब्याज",
-    "loanRatio": "ऋण भुगतान अनुपात",
-    "principalLoanAmt": "मूल ऋण राशि",
-    "yearlySchedule": "वार्षिक परिशोधन अनुसूची (Amortization)",
-    "year": "वर्ष",
-    "openingBalance": "प्रारंभिक शेष",
-    "emiPaidYr": "वार्षिक ईएमआई",
-    "principalPaid": "चुकाया गया मूलधन",
-    "interestPaid": "चुकाया गया ब्याज",
-    "closingBalance": "अंतिम शेष",
-    "mortgageTitle": "होम लोन एवं बंधक (Mortgage) कैलकुलेटर",
-    "mortgageDesc": "मूलधन, ब्याज, संपत्ति कर, गृह बीमा और रखरखाव शुल्क सहित कुल मासिक भुगतान की गणना करें।",
-    "propertyInputs": "संपत्ति एवं ऋण इनपुट",
-    "homePrice": "घर का खरीद मूल्य",
-    "downPayment": "डाउन पेमेंट प्रतिशत (%)",
-    "loanTerm": "ऋण की अवधि",
-    "propertyTax": "वार्षिक संपत्ति कर",
-    "homeIns": "वार्षिक गृह बीमा",
-    "hoaFees": "मासिक रखरखाव शुल्क (HOA)",
-    "totalMonthlyPayment": "कुल मासिक भुगतान (PITI)",
-    "pitiSubtext": "मूलधन, ब्याज, टैक्स और बीमा",
-    "principalInterest": "मूलधन एवं ब्याज",
-    "taxesInsurance": "टैक्स एवं बीमा",
-    "escrowEst": "मासिक एस्क्रो अनुमान",
-    "ciTitle": "चक्रवृद्धि ब्याज एवं संपत्ति कैलकुलेटर",
-    "ciDesc": "चक्रवृद्धि ब्याज वृद्धि, नियमित मासिक जमा और भविष्य के पोर्टफोलियो मूल्य की गणना करें।",
-    "ciParams": "मूलधन और योगदान इनपुट",
-    "initialPrincipal": "प्रारंभिक मूलधन शेष",
-    "monthlyAddition": "मासिक अतिरिक्त जमा",
-    "totalFutureVal": "कुल भविष्य मूल्य",
-    "totalPrincipalInvested": "कुल निवेशित मूलधन",
-    "totalCompoundInterest": "कुल चक्रवृद्धि ब्याज",
-    "compoundedBalance": "चक्रवृद्धि पोर्टफोलियो शेष",
-    "extraGrowth": "अतिरिक्त वृद्धि",
-    "taxTitle": "बिक्री कर, जीएसटी एवं छूट (Discount) कैलकुलेटर",
-    "taxDesc": "बिक्री कर, जीएसटी, वैट और छूट के बाद अंतिम शुद्ध मूल्य की तुरंत गणना करें।",
-    "priceTaxParams": "मूल्य एवं टैक्स पैरामीटर",
-    "retailPrice": "वास्तविक खुदरा मूल्य (MRP)",
-    "primaryDiscount": "प्राथमिक छूट (Discount %)",
-    "salesTaxVat": "बिक्री कर / जीएसटी (%)",
-    "extraCoupon": "अतिरिक्त कूपन (%)",
-    "finalPrice": "अंतिम शुद्ध देय मूल्य",
-    "youSave": "आपकी कुल बचत",
-    "discountedPreTax": "छूट के बाद कर-पूर्व मूल्य",
-    "salesTaxAmount": "टैक्स (जीएसटी) राशि",
-    "tipTitle": "टिप एवं बिल विभाजन (Tip & Split) कैलकुलेटर",
-    "tipDesc": "रेस्तरां बिल में टिप जोड़ें और दोस्तों के बीच प्रति व्यक्ति खर्च समान रूप से बांटें।",
-    "billGratuityParams": "बिल एवं टिप इनपुट",
-    "totalBill": "कुल बिल राशि",
-    "tipPercentage": "टिप प्रतिशत (%)",
-    "splitPeople": "व्यक्तियों की संख्या",
-    "totalPerPerson": "प्रति व्यक्ति कुल खर्च",
-    "totalGratuity": "कुल टिप राशि",
-    "grandTotalBill": "अंतिम कुल बिल",
-    "people": "लोग",
-    "person": "व्यक्ति",
-    "fuelTitle": "ईंधन लागत एवं यात्रा व्यय कैलकुलेटर",
-    "fuelDesc": "सड़क यात्रा के लिए पेट्रोल/डीजल का खर्च, माइलेज और प्रति यात्री साझा लागत की गणना करें।",
-    "tripVehicleParams": "यात्रा एवं वाहन पैरामीटर",
-    "tripDistance": "यात्रा की दूरी (किमी / मील)",
-    "fuelEfficiency": "माइलेज / ईंधन दक्षता (MPG)",
-    "gasPrice": "ईंधन का मूल्य (प्रति लीटर / गैलन)",
-    "numPassengers": "यात्रियों की संख्या",
-    "totalFuelCost": "कुल ईंधन लागत",
-    "costPerPerson": "प्रति यात्री लागत",
-    "gallonsConsumed": "खपत हुआ ईंधन",
-    "timeTitle": "कार्य समय एवं वेतन कैलकुलेटर",
-    "timeDesc": "काम के घंटे, ब्रेक कटौती, दशमलव बिलिंग समय और कुल मजदूरी की सटीक गणना करें।",
-    "shiftTimestamps": "शिफ्ट समय इनपुट",
-    "shiftStart": "शिफ्ट शुरू होने का समय",
-    "shiftEnd": "शिफ्ट समाप्त होने का समय",
-    "unpaidBreak": "बिना वेतन ब्रेक (मिनट)",
-    "hourlyRate": "प्रति घंटा वेतन दर",
-    "workDuration": "कुल शुद्ध कार्य समय",
-    "grossShiftPay": "कुल शिफ्ट वेतन",
-    "billableHours": "दशमलव बिल योग्य घंटे"
-  },
-  "es": {
-    "appName": "Ledger & Lend",
-    "appTagline": "Inteligencia Financiera y Patrimonial",
-    "searchPlaceholder": "Buscar herramientas financieras (Ctrl+K)...",
-    "currencyLabel": "Seleccionar Moneda",
-    "langLabel": "Seleccionar Idioma",
-    "allFinancial": "Todo Financiero (8)",
-    "loansMortgages": "Préstamos e Hipotecas",
-    "investingWealth": "Inversión y Patrimonio",
-    "taxesSpending": "Impuestos y Gastos",
-    "financialSuiteTitle": "Suite de Calculadoras Financieras",
-    "financialSuiteSubtitle": "Seleccione una herramienta especializada de préstamos, inversión o impuestos",
-    "guidesTitle": "Guías de Finanzas Personales e Inversión",
-    "guidesSubtitle": "Guías educativas sobre interés compuesto, reducción de deudas e independencia financiera",
-    "favorite": "Favorito",
-    "embed": "Insertar",
-    "share": "Compartir",
-    "print": "Imprimir",
-    "copy": "Copiar",
-    "copied": "✓ ¡Copiado!",
-    "presets": "Valores:",
-    "eraseData": "Borrar Mis Datos",
-    "privacyFooter": "© 2026 Ledger & Lend. Cálculo 100% privado y seguro.",
-    "embedTitle": "Insertar Widget de Calculadora",
-    "embedDesc": "Coloque esta herramienta interactiva en su sitio web o blog",
-    "copyEmbed": "Copiar Código",
-    "cancel": "Cancelar",
-    "welcomeTitle": "Bienvenido a Ledger & Lend",
-    "welcomeDesc": "Preferencia de Idioma Inteligente",
-    "continue": "Continuar",
-    "changeLang": "Cambiar idioma...",
-    "sipTitle": "Calculadora de SIP e Inversión",
-    "sipDesc": "Calcule la acumulación de patrimonio mediante aportaciones mensuales, interés compuesto y ajustes de inflación.",
-    "sipParams": "Parámetros de Inversión",
-    "monthlySip": "SIP Mensual",
-    "lumpsum": "Inversión Única",
-    "monthlyInvestment": "Monto de Inversión Mensual",
-    "expectedReturn": "Rendimiento Anual Esperado (%)",
-    "timePeriod": "Período de Tiempo",
-    "totalFutureWealth": "Patrimonio Futuro Total",
-    "maturityValue": "Valor al vencimiento con interés compuesto",
-    "investedAmount": "Monto Invertido",
-    "principalContrib": "Aportaciones de capital",
-    "estimatedGains": "Ganancias Estimadas",
-    "portfolioRatio": "Distribución del Portafolio",
-    "amountInvested": "Capital Invertido",
-    "estimatedReturns": "Rendimientos Estimados",
-    "wealthMultiplier": "Multiplicador de Capital",
-    "emiTitle": "Calculadora de Préstamos y Cuotas (EMI)",
-    "emiDesc": "Calcule la cuota mensual de su préstamo, desglose de capital vs intereses y tabla de amortización anual.",
-    "loanParams": "Parámetros del Préstamo",
-    "loanPrincipal": "Monto del Préstamo",
-    "annualInterestRate": "Tasa de Interés Anual (%)",
-    "loanTenure": "Plazo del Préstamo",
-    "years": "Años",
-    "months": "Meses",
-    "monthlyEmi": "Pago Mensual (Cuota)",
-    "emiSubtext": "Capital + Intereses por mes",
-    "totalInterest": "Interés Total",
-    "totalPayable": "Monto Total a Pagar",
-    "payableSubtext": "Capital + Interés Total",
-    "loanRatio": "Proporción del Préstamo",
-    "principalLoanAmt": "Capital del Préstamo",
-    "yearlySchedule": "Tabla de Amortización Anual",
-    "year": "Año",
-    "openingBalance": "Saldo Inicial",
-    "emiPaidYr": "Cuota Anual",
-    "principalPaid": "Capital Pagado",
-    "interestPaid": "Interés Pagado",
-    "closingBalance": "Saldo Final",
-    "mortgageTitle": "Calculadora de Hipoteca y Vivienda",
-    "mortgageDesc": "Calcule cuotas hipotecarias incluyendo Capital, Interés, Impuestos a la propiedad, Seguro y Gastos de comunidad.",
-    "propertyInputs": "Datos de la Propiedad y Préstamo",
-    "homePrice": "Precio de Compra de la Vivienda",
-    "downPayment": "Porcentaje de Entrada / Enganche (%)",
-    "loanTerm": "Plazo del Préstamo",
-    "propertyTax": "Impuesto sobre Bienes Inmuebles/año",
-    "homeIns": "Seguro de Hogar/año",
-    "hoaFees": "Comunidad / HOA mensual",
-    "totalMonthlyPayment": "Pago Mensual Total",
-    "pitiSubtext": "Capital, Interés, Impuestos y Seguro",
-    "principalInterest": "Capital e Interés",
-    "taxesInsurance": "Impuestos y Seguros",
-    "escrowEst": "Estimación mensual de depósito en garantía",
-    "ciTitle": "Calculadora de Interés Compuesto",
-    "ciDesc": "Calcule el crecimiento del interés compuesto, aportaciones regulares y valor futuro del portafolio.",
-    "ciParams": "Capital e Inversión Periódica",
-    "initialPrincipal": "Capital Inicial",
-    "monthlyAddition": "Aportación Mensual",
-    "totalFutureVal": "Valor Futuro Total",
-    "totalPrincipalInvested": "Capital Total Invertido",
-    "totalCompoundInterest": "Total Interés Compuesto",
-    "compoundedBalance": "Saldo acumulado del portafolio",
-    "extraGrowth": "crecimiento adicional",
-    "taxTitle": "Calculadora de Impuestos y Descuentos",
-    "taxDesc": "Calcule descuentos aplicados, impuestos sobre ventas (IVA) y precio final neto al instante.",
-    "priceTaxParams": "Parámetros de Precio e Impuestos",
-    "retailPrice": "Precio de Venta Original",
-    "primaryDiscount": "Descuento Principal (%)",
-    "salesTaxVat": "Impuesto / IVA (%)",
-    "extraCoupon": "Cupón Adicional (%)",
-    "finalPrice": "Precio Final a Pagar",
-    "youSave": "Ahorras",
-    "discountedPreTax": "Precio con Descuento",
-    "salesTaxAmount": "Importe de Impuestos",
-    "tipTitle": "Calculadora de Propinas y División de Cuenta",
-    "tipDesc": "Calcule el porcentaje de propina y divida la cuenta del restaurante equitativamente por persona.",
-    "billGratuityParams": "Datos de la Cuenta y Propina",
-    "totalBill": "Total de la Cuenta",
-    "tipPercentage": "Porcentaje de Propina (%)",
-    "splitPeople": "Dividir entre Personas",
-    "totalPerPerson": "Total por Persona (Cuenta + Propina)",
-    "totalGratuity": "Propina Total",
-    "grandTotalBill": "Total General",
-    "people": "Personas",
-    "person": "Persona",
-    "fuelTitle": "Calculadora de Coste de Combustible",
-    "fuelDesc": "Estime el consumo de gasolina, eficiencia y gasto compartido por pasajero en su viaje.",
-    "tripVehicleParams": "Parámetros del Viaje y Vehículo",
-    "tripDistance": "Distancia del Viaje (millas/km)",
-    "fuelEfficiency": "Eficiencia de Combustible (MPG)",
-    "gasPrice": "Precio de Combustible",
-    "numPassengers": "Número de Pasajeros",
-    "totalFuelCost": "Coste Total de Combustible",
-    "costPerPerson": "Coste por Persona",
-    "gallonsConsumed": "Galones/Litros consumidos",
-    "timeTitle": "Calculadora de Horas de Trabajo y Salario",
-    "timeDesc": "Calcule horas trabajadas, pausas no remuneradas y salario bruto por turno.",
-    "shiftTimestamps": "Registro de Horario",
-    "shiftStart": "Hora de Entrada",
-    "shiftEnd": "Hora de Salida",
-    "unpaidBreak": "Pausa / Descanso (Minutos)",
-    "hourlyRate": "Salario por Hora",
-    "workDuration": "Duración Neta Trabajada",
-    "grossShiftPay": "Salario Bruto del Turno",
-    "billableHours": "horas facturables decimales"
-  },
-  "fr": {
-    "appName": "Ledger & Lend",
-    "appTagline": "Intelligence Financière et Patrimoniale",
-    "searchPlaceholder": "Rechercher des outils financiers (Ctrl+K)...",
-    "currencyLabel": "Sélectionner la Devise",
-    "langLabel": "Sélectionner la Langue",
-    "allFinancial": "Tous les Outils (8)",
-    "loansMortgages": "Prêts & Hypothèques",
-    "investingWealth": "Investissement & Épargne",
-    "taxesSpending": "Taxes & Dépenses",
-    "financialSuiteTitle": "Suite de Calculateurs Financiers",
-    "financialSuiteSubtitle": "Sélectionnez un outil spécialisé pour prêts, investissements ou fiscalité",
-    "guidesTitle": "Guides de Finances Personnelles",
-    "guidesSubtitle": "Guides complets sur les intérêts composés et l'optimisation financière",
-    "favorite": "Favori",
-    "embed": "Intégrer",
-    "share": "Partager",
-    "print": "Imprimer",
-    "copy": "Copier",
-    "copied": "✓ Copié !",
-    "presets": "Préréglages :",
-    "eraseData": "Effacer Mes Données",
-    "privacyFooter": "© 2026 Ledger & Lend. Calcul 100% privé et confidentiel.",
-    "embedTitle": "Intégrer le Widget",
-    "embedDesc": "Intégrez ce calculateur sur votre site web ou blog",
-    "copyEmbed": "Copier le Code",
-    "cancel": "Annuler",
-    "welcomeTitle": "Bienvenue sur Ledger & Lend",
-    "welcomeDesc": "Préférence Linguistique Intelligente",
-    "continue": "Continuer",
-    "changeLang": "Changer de langue...",
-    "sipTitle": "Calculateur d'Épargne Programmée (SIP)",
-    "sipDesc": "Calculez l'accumulation de patrimoine via versements réguliers et intérêts composés.",
-    "sipParams": "Paramètres d'Investissement",
-    "monthlySip": "Versement Mensuel",
-    "lumpsum": "Paiement Unique",
-    "monthlyInvestment": "Montant de l'Investissement Mensuel",
-    "expectedReturn": "Rendement Annuel Attendu (%)",
-    "timePeriod": "Durée de l'Investissement",
-    "totalFutureWealth": "Patrimoine Futur Total",
-    "maturityValue": "Valeur finale avec intérêts composés",
-    "investedAmount": "Montant Total Investi",
-    "principalContrib": "Total des versements",
-    "estimatedGains": "Gains Estimés",
-    "portfolioRatio": "Répartition du Portefeuille",
-    "amountInvested": "Capital Investi",
-    "estimatedReturns": "Rendements Estimés",
-    "wealthMultiplier": "Multiplicateur de Capital",
-    "emiTitle": "Calculateur de Prêt et Mensualités",
-    "emiDesc": "Calculez la mensualité de votre crédit, le détail capital/intérêts et le tableau d'amortissement.",
-    "loanParams": "Paramètres du Prêt",
-    "loanPrincipal": "Montant du Capital Emprunté",
-    "annualInterestRate": "Taux d'Intérêt Annuel (%)",
-    "loanTenure": "Durée du Crédit",
-    "years": "Ans",
-    "months": "Mois",
-    "monthlyEmi": "Mensualité de Remboursement",
-    "emiSubtext": "Capital + Intérêts par mois",
-    "totalInterest": "Total des Intérêts",
-    "totalPayable": "Montant Total Remboursé",
-    "payableSubtext": "Capital + Total des Intérêts",
-    "loanRatio": "Répartition du Remboursement",
-    "principalLoanAmt": "Capital Initial",
-    "yearlySchedule": "Tableau d'Amortissement Annuel",
-    "year": "Année",
-    "openingBalance": "Solde Initial",
-    "emiPaidYr": "Mensualités Annuelles",
-    "principalPaid": "Capital Amorti",
-    "interestPaid": "Intérêts Payés",
-    "closingBalance": "Solde Restant Dû",
-    "mortgageTitle": "Calculateur de Prêt Immobilier",
-    "mortgageDesc": "Calculez les mensualités incluant Capital, Intérêts, Taxe foncière et Assurance emprunteur.",
-    "propertyInputs": "Données du Bien et du Prêt",
-    "homePrice": "Prix d'Achat du Bien",
-    "downPayment": "Apport Personnel (%)",
-    "loanTerm": "Durée du Prêt",
-    "propertyTax": "Taxe Foncière/an",
-    "homeIns": "Assurance Habitation/an",
-    "hoaFees": "Charges de Copropriété/mois",
-    "totalMonthlyPayment": "Mensualité Globale",
-    "pitiSubtext": "Capital, Intérêts, Taxes et Assurances",
-    "principalInterest": "Capital & Intérêts",
-    "taxesInsurance": "Taxes & Assurances",
-    "escrowEst": "Estimation mensuelle séquestre",
-    "ciTitle": "Calculateur d'Intérêts Composés",
-    "ciDesc": "Calculez la croissance exponentielle du capital avec intérêts réinvestis.",
-    "ciParams": "Capital et Versements",
-    "initialPrincipal": "Capital Initial",
-    "monthlyAddition": "Ajout Mensuel",
-    "totalFutureVal": "Valeur Future Totale",
-    "totalPrincipalInvested": "Total Capital Versé",
-    "totalCompoundInterest": "Total des Intérêts Composés",
-    "compoundedBalance": "Solde final composé",
-    "extraGrowth": "croissance additionnelle",
-    "taxTitle": "Calculateur de Remise et TVA",
-    "taxDesc": "Calculez les réductions promotionnelles, la TVA et le prix final net.",
-    "priceTaxParams": "Prix et Fiscalité",
-    "retailPrice": "Prix Initial",
-    "primaryDiscount": "Remise Principale (%)",
-    "salesTaxVat": "Taxe / TVA (%)",
-    "extraCoupon": "Coupon Supplémentaire (%)",
-    "finalPrice": "Prix Final Net",
-    "youSave": "Vous économisez",
-    "discountedPreTax": "Prix Remisé Hors Taxe",
-    "salesTaxAmount": "Montant de la Taxe",
-    "tipTitle": "Calculateur de Pourboire et Partage",
-    "tipDesc": "Calculez le pourboire et divisez la note de restaurant par convive.",
-    "billGratuityParams": "Montant et Pourboire",
-    "totalBill": "Montant Total de l'Addition",
-    "tipPercentage": "Pourcentage de Pourboire (%)",
-    "splitPeople": "Nombre de Personnes",
-    "totalPerPerson": "Total par Personne",
-    "totalGratuity": "Pourboire Total",
-    "grandTotalBill": "Total Général",
-    "people": "Personnes",
-    "person": "Personne",
-    "fuelTitle": "Calculateur de Coût de Carburant",
-    "fuelDesc": "Estimez les frais d'essence et le coût partagé par passager pour un trajet.",
-    "tripVehicleParams": "Trajet et Véhicule",
-    "tripDistance": "Distance du Trajet",
-    "fuelEfficiency": "Consommation (MPG / L/100km)",
-    "gasPrice": "Prix du Carburant",
-    "numPassengers": "Nombre de Passagers",
-    "totalFuelCost": "Coût Total du Carburant",
-    "costPerPerson": "Coût par Passager",
-    "gallonsConsumed": "Volume de Carburant Consommé",
-    "timeTitle": "Calculateur de Salaire et Heures de Travail",
-    "timeDesc": "Calculez vos heures de travail effectives et votre rémunération brute.",
-    "shiftTimestamps": "Horaires de Travail",
-    "shiftStart": "Heure de Début",
-    "shiftEnd": "Heure de Fin",
-    "unpaidBreak": "Pause Non Payée (Minutes)",
-    "hourlyRate": "Taux Horaire",
-    "workDuration": "Durée Nette Travaillée",
-    "grossShiftPay": "Salaire Brut du Shift",
-    "billableHours": "heures facturables décimales"
-  },
-  "de": {
-    "appName": "Ledger & Lend",
-    "appTagline": "Finanz- & Vermögensrechner",
-    "searchPlaceholder": "Finanzrechner suchen (Ctrl+K)...",
-    "currencyLabel": "Währung wählen",
-    "langLabel": "Sprache wählen",
-    "allFinancial": "Alle Rechner (8)",
-    "loansMortgages": "Kredite & Hypotheken",
-    "investingWealth": "Investieren & Sparen",
-    "taxesSpending": "Steuern & Ausgaben",
-    "financialSuiteTitle": "Finanzrechner-Suite",
-    "financialSuiteSubtitle": "Wählen Sie ein Spezialwerkzeug für Kredite, Investitionen oder Steuern",
-    "guidesTitle": "Ratgeber für persönliche Finanzen",
-    "guidesSubtitle": "Tiefgehende Leitfäden zu Zinseszins, Schuldenabbau und Vermögensaufbau",
-    "favorite": "Favorit",
-    "embed": "Einbetten",
-    "share": "Teilen",
-    "print": "Drucken",
-    "copy": "Kopieren",
-    "copied": "✓ Kopiert!",
-    "presets": "Vorlagen:",
-    "eraseData": "Alle meine Daten löschen",
-    "privacyFooter": "© 2026 Ledger & Lend. 100% datenschutzfreundliche Finanzberechnung.",
-    "embedTitle": "Rechner-Widget einbetten",
-    "embedDesc": "Binden Sie diesen Rechner in Ihre Website oder Ihren Blog ein",
-    "copyEmbed": "Code kopieren",
-    "cancel": "Abbrechen",
-    "welcomeTitle": "Willkommen bei Ledger & Lend",
-    "welcomeDesc": "Intelligente Spracheinstellung",
-    "continue": "Weiter",
-    "changeLang": "Sprache wechseln...",
-    "sipTitle": "Sparplan- & Vermögensrechner (SIP)",
-    "sipDesc": "Berechnen Sie den Vermögensaufbau durch monatliche Sparraten und Zinseszinseffekt.",
-    "sipParams": "Investitionsparameter",
-    "monthlySip": "Monatlicher Sparplan",
-    "lumpsum": "Einmalanlage",
-    "monthlyInvestment": "Monatliche Sparrate",
-    "expectedReturn": "Erwartete Rendite p.a. (%)",
-    "timePeriod": "Anlagezeitraum",
-    "totalFutureWealth": "Gesamtes Endvermögen",
-    "maturityValue": "Endwert nach Zinseszins",
-    "investedAmount": "Eingezahltes Kapital",
-    "principalContrib": "Eigene Einzahlungen",
-    "estimatedGains": "Geschätzter Zinsgewinn",
-    "portfolioRatio": "Portfolio-Zusammensetzung",
-    "amountInvested": "Eingezahltes Kapital",
-    "estimatedReturns": "Erwirtschaftete Zinsen",
-    "wealthMultiplier": "Vermögensmultiplikator",
-    "emiTitle": "Kredit- & Tilgungsrechner",
-    "emiDesc": "Berechnen Sie monatliche Kreditraten, Zinsanteil und den jährlichen Tilgungsplan.",
-    "loanParams": "Kreditparameter",
-    "loanPrincipal": "Nettodarlehensbetrag",
-    "annualInterestRate": "Sollzinssatz p.a. (%)",
-    "loanTenure": "Kreditlaufzeit",
-    "years": "Jahre",
-    "months": "Monate",
-    "monthlyEmi": "Monatliche Kreditrate",
-    "emiSubtext": "Tilgung + Zinsen pro Monat",
-    "totalInterest": "Gesamtzinsen",
-    "totalPayable": "Gesamter Rückzahlungsbetrag",
-    "payableSubtext": "Darlehensbetrag + Gesamtzinsen",
-    "loanRatio": "Zahlungsverhältnis",
-    "principalLoanAmt": "Ursprünglicher Kreditbetrag",
-    "yearlySchedule": "Jährlicher Tilgungsplan",
-    "year": "Jahr",
-    "openingBalance": "Anfangsbestand",
-    "emiPaidYr": "Jahresrate",
-    "principalPaid": "Getilgter Betrag",
-    "interestPaid": "Gezahlte Zinsen",
-    "closingBalance": "Restschuld",
-    "mortgageTitle": "Baufinanzierungs- & Hypothekenrechner",
-    "mortgageDesc": "Berechnen Sie die monatliche Rate für Immobilienkauf inkl. Zins, Tilgung, Steuer und Versicherung.",
-    "propertyInputs": "Immobilien- & Finanzierungsdaten",
-    "homePrice": "Kaufpreis der Immobilie",
-    "downPayment": "Eigenkapitalanteil (%)",
-    "loanTerm": "Zinsbindungsdauer",
-    "propertyTax": "Grundsteuer/Jahr",
-    "homeIns": "Wohngebäudeversicherung/Jahr",
-    "hoaFees": "Hausgeld / Nebenkosten/Monat",
-    "totalMonthlyPayment": "Monatliche Gesamtrate",
-    "pitiSubtext": "Zins, Tilgung, Steuern und Versicherung",
-    "principalInterest": "Zins & Tilgung",
-    "taxesInsurance": "Steuern & Nebenkosten",
-    "escrowEst": "Geschätzte monatliche Nebenkosten",
-    "ciTitle": "Zinseszinsrechner",
-    "ciDesc": "Berechnen Sie den exponentiellen Zinszuwachs bei regelmäßigen Einzahlungen.",
-    "ciParams": "Kapital & Sparrate",
-    "initialPrincipal": "Startkapital",
-    "monthlyAddition": "Monatliche Einzahlung",
-    "totalFutureVal": "Gesamtes Endkapital",
-    "totalPrincipalInvested": "Gesamteinzahlung",
-    "totalCompoundInterest": "Gesamte Zinseszinsen",
-    "compoundedBalance": "Verzinstes Endvermögen",
-    "extraGrowth": "zusätzlicher Zuwachs",
-    "taxTitle": "Rabatt- & Mehrwertsteuerrechner",
-    "taxDesc": "Berechnen Sie Rabatte, Mehrwertsteuer (MwSt.) und den Endpreis.",
-    "priceTaxParams": "Preis & Steuerparameter",
-    "retailPrice": "Ursprünglicher Preis",
-    "primaryDiscount": "Haupt-Rabatt (%)",
-    "salesTaxVat": "Mehrwertsteuer (%)",
-    "extraCoupon": "Zusatz-Gutschein (%)",
-    "finalPrice": "Endpreis",
-    "youSave": "Sie sparen",
-    "discountedPreTax": "Preis nach Rabatt (netto)",
-    "salesTaxAmount": "Steuerbetrag",
-    "tipTitle": "Trinkgeld- & Rechnungsrechner",
-    "tipDesc": "Berechnen Sie Trinkgeldbeträge und teilen Sie die Rechnung gleichmäßig auf.",
-    "billGratuityParams": "Rechnungsbetrag & Trinkgeld",
-    "totalBill": "Rechnungsbetrag",
-    "tipPercentage": "Trinkgeld (%)",
-    "splitPeople": "Aufteilen auf Personen",
-    "totalPerPerson": "Betrag pro Person",
-    "totalGratuity": "Gesamtes Trinkgeld",
-    "grandTotalBill": "Gesamtbetrag",
-    "people": "Personen",
-    "person": "Person",
-    "fuelTitle": "Spritkostenrechner",
-    "fuelDesc": "Berechnen Sie Kraftstoffverbrauch, Benzinkosten und Fahrtkosten pro Mitfahrer.",
-    "tripVehicleParams": "Fahrt & Fahrzeugdaten",
-    "tripDistance": "Fahrtstrecke (km / Meilen)",
-    "fuelEfficiency": "Verbrauch (l/100km / MPG)",
-    "gasPrice": "Kraftstoffpreis",
-    "numPassengers": "Anzahl der Mitfahrer",
-    "totalFuelCost": "Gesamte Treibstoffkosten",
-    "costPerPerson": "Kosten pro Person",
-    "gallonsConsumed": "Verbrauchter Treibstoff",
-    "timeTitle": "Arbeitszeit- & Lohnrechner",
-    "timeDesc": "Berechnen Sie gearbeitete Netto-Stunden, Pausenabzug und den Bruttolohn.",
-    "shiftTimestamps": "Arbeitszeiten",
-    "shiftStart": "Arbeitsbeginn",
-    "shiftEnd": "Arbeitsende",
-    "unpaidBreak": "Unbezahlte Pause (Minuten)",
-    "hourlyRate": "Stundenlohn",
-    "workDuration": "Netto-Arbeitszeit",
-    "grossShiftPay": "Bruttolohn für diese Schicht",
-    "billableHours": "Dezimalstunden"
-  },
-  "ja": {
-    "appName": "Ledger & Lend",
-    "appTagline": "財務および資産インテリジェンス",
-    "searchPlaceholder": "金融ツールを検索 (Ctrl+K)...",
-    "currencyLabel": "通貨を選択",
-    "langLabel": "言語を選択",
-    "allFinancial": "すべての金融ツール (8)",
-    "loansMortgages": "ローン＆住宅ローン",
-    "investingWealth": "投資＆資産形成",
-    "taxesSpending": "税金＆支出",
-    "financialSuiteTitle": "金融計算機スイート",
-    "financialSuiteSubtitle": "ローン、投資、税金計算ツールを選択してください",
-    "guidesTitle": "パーソナルファイナンス＆投資ガイド",
-    "guidesSubtitle": "複利、負債削減、経済的自立に関する完全ガイド",
-    "favorite": "お気に入り",
-    "embed": "埋め込み",
-    "share": "共有",
-    "print": "印刷",
-    "copy": "コピー",
-    "copied": "✓ コピー完了！",
-    "presets": "プリセット:",
-    "eraseData": "すべてのデータを削除",
-    "privacyFooter": "© 2026 Ledger & Lend. 100%完全なプライバシー保護計算。",
-    "embedTitle": "計算機ウィジェットの埋め込み",
-    "embedDesc": "この計算機をあなたのウェブサイトやブログに埋め込む",
-    "copyEmbed": "コードをコピー",
-    "cancel": "キャンセル",
-    "welcomeTitle": "Ledger & Lend へようこそ",
-    "welcomeDesc": "言語設定の自動検出",
-    "continue": "続ける",
-    "changeLang": "言語を変更...",
-    "sipTitle": "積立投資 (SIP) ＆ 資産形成計算機",
-    "sipDesc": "毎月の積立投資、複利運用、インフレ調整後の将来資産額を計算します。",
-    "sipParams": "投資パラメータ",
-    "monthlySip": "毎月の積立額",
-    "lumpsum": "一括投資",
-    "monthlyInvestment": "毎月の投資額",
-    "expectedReturn": "想定年利回り (%)",
-    "timePeriod": "投資期間",
-    "totalFutureWealth": "将来の総資産額",
-    "maturityValue": "複利運用後の満期受取額",
-    "investedAmount": "元本総額",
-    "principalContrib": "自己拠出元本",
-    "estimatedGains": "想定運用収益",
-    "portfolioRatio": "ポートフォリオ資産比率",
-    "amountInvested": "元本投資額",
-    "estimatedReturns": "運用収益",
-    "wealthMultiplier": "資産倍率",
-    "emiTitle": "ローン＆毎月返済額 (EMI) 計算機",
-    "emiDesc": "毎月の返済額、元金と利息の内訳、年次返済スケジュールを計算します。",
-    "loanParams": "ローン借入条件",
-    "loanPrincipal": "借入金額 (元金)",
-    "annualInterestRate": "借入金利 (年利 %)",
-    "loanTenure": "返済期間",
-    "years": "年",
-    "months": "ヶ月",
-    "monthlyEmi": "毎月の返済額",
-    "emiSubtext": "月々の元金＋利息返済額",
-    "totalInterest": "支払利息総額",
-    "totalPayable": "総返済支払額",
-    "payableSubtext": "借入元金 ＋ 利息総額",
-    "loanRatio": "返済構成比率",
-    "principalLoanAmt": "借入元金",
-    "yearlySchedule": "年次返済スケジュール",
-    "year": "年次",
-    "openingBalance": "期首残高",
-    "emiPaidYr": "年間返済額",
-    "principalPaid": "元金返済額",
-    "interestPaid": "利息支払額",
-    "closingBalance": "期末借入残高",
-    "mortgageTitle": "住宅ローン計算機",
-    "mortgageDesc": "元金、利息、固定資産税、火災保険料を含む毎月の住宅ローン総支払額を計算します。",
-    "propertyInputs": "物件およびローン情報",
-    "homePrice": "物件購入価格",
-    "downPayment": "頭金比率 (%)",
-    "loanTerm": "返済期間",
-    "propertyTax": "年間固定資産税",
-    "homeIns": "年間火災保険料",
-    "hoaFees": "月額管理費・修繕積立金",
-    "totalMonthlyPayment": "毎月の総支払額",
-    "pitiSubtext": "元金、利息、税金、保険料合計",
-    "principalInterest": "元金 ＆ 利息",
-    "taxesInsurance": "税金 ＆ 保険料",
-    "escrowEst": "月々の税・保険積立見積",
-    "ciTitle": "複利運用計算機",
-    "ciDesc": "初期元本と毎月の追加投資による複利効果と将来価値を計算します。",
-    "ciParams": "元本および追加積立設定",
-    "initialPrincipal": "初期投資元本",
-    "monthlyAddition": "毎月の追加積立額",
-    "totalFutureVal": "将来の総評価額",
-    "totalPrincipalInvested": "投資元本累計額",
-    "totalCompoundInterest": "累計複利収益",
-    "compoundedBalance": "複利運用資産残高",
-    "extraGrowth": "複利による追加成長",
-    "taxTitle": "消費税・割引計算機",
-    "taxDesc": "割引率、消費税、追加クーポン適用後の最終支払価格を即座に計算します。",
-    "priceTaxParams": "価格および税率設定",
-    "retailPrice": "通常本体価格",
-    "primaryDiscount": "割引率 (%)",
-    "salesTaxVat": "消費税率 (%)",
-    "extraCoupon": "追加クーポン (%)",
-    "finalPrice": "最終支払価格",
-    "youSave": "割引節約額",
-    "discountedPreTax": "割引後税抜価格",
-    "salesTaxAmount": "消費税額",
-    "tipTitle": "チップ＆割り勘計算機",
-    "tipDesc": "チップ金額を計算し、グループ全員で均等に割り勘します。",
-    "billGratuityParams": "お会計およびチップ設定",
-    "totalBill": "お会計総額",
-    "tipPercentage": "チップ率 (%)",
-    "splitPeople": "人数",
-    "totalPerPerson": "1人あたりの支払額",
-    "totalGratuity": "チップ合計額",
-    "grandTotalBill": "総支払額",
-    "people": "人",
-    "person": "人",
-    "fuelTitle": "ガソリン代・交通費計算機",
-    "fuelDesc": "走行距離、燃費、ガソリン価格から移動費用と1人あたりの負担額を計算します。",
-    "tripVehicleParams": "走行ルートおよび車両情報",
-    "tripDistance": "走行距離",
-    "fuelEfficiency": "燃費 (km/L または MPG)",
-    "gasPrice": "ガソリン単価",
-    "numPassengers": "同乗人数",
-    "totalFuelCost": "総ガソリン代",
-    "costPerPerson": "1人あたりの負担額",
-    "gallonsConsumed": "消費燃料量",
-    "timeTitle": "勤務時間＆給与計算機",
-    "timeDesc": "実働時間、休憩時間控除、時給から総支給額を計算します。",
-    "shiftTimestamps": "シフト勤務時間",
-    "shiftStart": "出勤時刻",
-    "shiftEnd": "退勤時刻",
-    "unpaidBreak": "無給休憩時間 (分)",
-    "hourlyRate": "時給単価",
-    "workDuration": "実働勤務時間",
-    "grossShiftPay": "総支給給与額",
-    "billableHours": "10進法請求可能時間"
-  },
-  "pt": {
-    "appName": "Ledger & Lend",
-    "appTagline": "Inteligência Financeira e Patrimonial",
-    "searchPlaceholder": "Pesquisar ferramentas financeiras (Ctrl+K)...",
-    "currencyLabel": "Selecionar Moeda",
-    "langLabel": "Selecionar Idioma",
-    "allFinancial": "Todas as Finanças (8)",
-    "loansMortgages": "Empréstimos e Hipotecas",
-    "investingWealth": "Investimentos e Riqueza",
-    "taxesSpending": "Impostos e Despesas",
-    "financialSuiteTitle": "Suíte de Calculadoras Financeiras",
-    "financialSuiteSubtitle": "Selecione uma ferramenta especializada de empréstimos, investimentos ou impostos",
-    "guidesTitle": "Guias de Finanças Pessoais",
-    "guidesSubtitle": "Guias sobre juros compostos, quitação de dívidas e independência financeira",
-    "favorite": "Favorito",
-    "embed": "Incorporar",
-    "share": "Compartilhar",
-    "print": "Imprimir",
-    "copy": "Copiar",
-    "copied": "✓ Copiado!",
-    "presets": "Valores:",
-    "eraseData": "Apagar Todos os Meus Dados",
-    "privacyFooter": "© 2026 Ledger & Lend. Computação 100% privada e segura.",
-    "embedTitle": "Incorporar Widget da Calculadora",
-    "embedDesc": "Insira esta ferramenta interativa em seu site ou blog",
-    "copyEmbed": "Copiar Código",
-    "cancel": "Cancelar",
-    "welcomeTitle": "Bem-vindo ao Ledger & Lend",
-    "welcomeDesc": "Preferência de Idioma Inteligente",
-    "continue": "Continuar",
-    "changeLang": "Mudar idioma...",
-    "sipTitle": "Calculadora de Investimento Mensal (SIP)",
-    "sipDesc": "Calcule o acúmulo de patrimônio através de aportes regulares e juros compostos.",
-    "sipParams": "Parâmetros de Investimento",
-    "monthlySip": "Aporte Mensal",
-    "lumpsum": "Aporte Único",
-    "monthlyInvestment": "Valor do Investimento Mensal",
-    "expectedReturn": "Taxa de Retorno Esperada (% a.a.)",
-    "timePeriod": "Prazo do Investimento",
-    "totalFutureWealth": "Patrimônio Futuro Total",
-    "maturityValue": "Valor final acumulado com juros compostos",
-    "investedAmount": "Total Investido",
-    "principalContrib": "Aportes realizados",
-    "estimatedGains": "Rendimentos Estimados",
-    "portfolioRatio": "Proporção da Carteira",
-    "amountInvested": "Valor Investido",
-    "estimatedReturns": "Rendimentos Estimados",
-    "wealthMultiplier": "Multiplicador de Patrimônio",
-    "emiTitle": "Calculadora de Empréstimo e Financiamento",
-    "emiDesc": "Calcule a parcela mensal, divisão de juros vs amortização e cronograma anual de pagamentos.",
-    "loanParams": "Parâmetros do Empréstimo",
-    "loanPrincipal": "Valor Principal do Empréstimo",
-    "annualInterestRate": "Taxa de Juros Anual (%)",
-    "loanTenure": "Prazo do Financiamento",
-    "years": "Anos",
-    "months": "Meses",
-    "monthlyEmi": "Parcela Mensal",
-    "emiSubtext": "Amortização + Juros por mês",
-    "totalInterest": "Total de Juros",
-    "totalPayable": "Total a Pagar",
-    "payableSubtext": "Principal + Total de Juros",
-    "loanRatio": "Composição do Financiamento",
-    "principalLoanAmt": "Valor Principal Financiado",
-    "yearlySchedule": "Tabela de Amortização Anual",
-    "year": "Ano",
-    "openingBalance": "Saldo Devedor Inicial",
-    "emiPaidYr": "Total Pago no Ano",
-    "principalPaid": "Principal Amortizado",
-    "interestPaid": "Juros Pagos",
-    "closingBalance": "Saldo Devedor Final",
-    "mortgageTitle": "Calculadora de Financiamento Imobiliário",
-    "mortgageDesc": "Calcule parcelas imobiliárias incluindo amortização, juros, IPTU, seguro e condomínio.",
-    "propertyInputs": "Dados do Imóvel e Financiamento",
-    "homePrice": "Valor de Compra do Imóvel",
-    "downPayment": "Entrada (%)",
-    "loanTerm": "Prazo do Financiamento",
-    "propertyTax": "IPTU / Imposto anual",
-    "homeIns": "Seguro Habitacional anual",
-    "hoaFees": "Condomínio mensal",
-    "totalMonthlyPayment": "Parcela Mensal Total",
-    "pitiSubtext": "Principal, Juros, Impostos e Seguros",
-    "principalInterest": "Principal & Juros",
-    "taxesInsurance": "Impostos & Seguros",
-    "escrowEst": "Estimativa mensal de encargos",
-    "ciTitle": "Calculadora de Juros Compostos",
-    "ciDesc": "Calcule o crescimento exponencial com aportes regulares e juros reinvestidos.",
-    "ciParams": "Capital e Aportes",
-    "initialPrincipal": "Capital Inicial",
-    "monthlyAddition": "Aporte Mensal",
-    "totalFutureVal": "Valor Futuro Total",
-    "totalPrincipalInvested": "Total de Capital Aportado",
-    "totalCompoundInterest": "Total de Juros Compostos",
-    "compoundedBalance": "Saldo final acumulado",
-    "extraGrowth": "crescimento adicional",
-    "taxTitle": "Calculadora de Desconto e Impostos",
-    "taxDesc": "Calcule descontos, impostos sobre vendas e preço final líquido.",
-    "priceTaxParams": "Preço e Impostos",
-    "retailPrice": "Preço Original",
-    "primaryDiscount": "Desconto Principal (%)",
-    "salesTaxVat": "Imposto / ICMS (%)",
-    "extraCoupon": "Cupom Adicional (%)",
-    "finalPrice": "Preço Final a Pagar",
-    "youSave": "Você economiza",
-    "discountedPreTax": "Preço com Desconto",
-    "salesTaxAmount": "Valor dos Impostos",
-    "tipTitle": "Calculadora de Gorjeta e Divisão de Conta",
-    "tipDesc": "Calcule a gorjeta e divida a conta do restaurante igualmente por pessoa.",
-    "billGratuityParams": "Conta e Gorjeta",
-    "totalBill": "Valor Total da Conta",
-    "tipPercentage": "Porcentagem da Gorjeta (%)",
-    "splitPeople": "Dividir entre Pessoas",
-    "totalPerPerson": "Total por Pessoa",
-    "totalGratuity": "Gorjeta Total",
-    "grandTotalBill": "Total Geral",
-    "people": "Pessoas",
-    "person": "Pessoa",
-    "fuelTitle": "Calculadora de Combustível e Viagem",
-    "fuelDesc": "Estime o consumo de combustível e a divisão de despesas por passageiro.",
-    "tripVehicleParams": "Dados da Viagem e Veículo",
-    "tripDistance": "Distância da Viagem (km/milhas)",
-    "fuelEfficiency": "Consumo Médio (km/L ou MPG)",
-    "gasPrice": "Preço do Combustível",
-    "numPassengers": "Número de Passageiros",
-    "totalFuelCost": "Custo Total de Combustível",
-    "costPerPerson": "Custo por Passageiro",
-    "gallonsConsumed": "Combustível Consumido",
-    "timeTitle": "Calculadora de Horas de Trabalho e Salário",
-    "timeDesc": "Calcule horas trabalhadas, desconto de pausas e salário bruto recebido.",
-    "shiftTimestamps": "Horários do Turno",
-    "shiftStart": "Início do Turno",
-    "shiftEnd": "Fim do Turno",
-    "unpaidBreak": "Pausa não remunerada (Minutos)",
-    "hourlyRate": "Valor da Hora",
-    "workDuration": "Duração Líquida Trabalhada",
-    "grossShiftPay": "Salário Bruto do Turno",
-    "billableHours": "horas faturáveis decimais"
-  },
-  "zh": {
-    "appName": "Ledger & Lend",
-    "appTagline": "财务与财富智能平台",
-    "searchPlaceholder": "搜索财务计算工具 (Ctrl+K)...",
-    "currencyLabel": "选择币种",
-    "langLabel": "选择语言",
-    "allFinancial": "全部财务工具 (8)",
-    "loansMortgages": "贷款与房贷",
-    "investingWealth": "投资与财富",
-    "taxesSpending": "税费与消费",
-    "financialSuiteTitle": "财务计算器套件",
-    "financialSuiteSubtitle": "选择专用的贷款、投资、房贷或税务计算器",
-    "guidesTitle": "个人理财与投资指南",
-    "guidesSubtitle": "关于复利增值、债务优化与财务自由的深度指南",
-    "favorite": "收藏",
-    "embed": "嵌入",
-    "share": "分享",
-    "print": "打印",
-    "copy": "点击复制",
-    "copied": "✓ 已复制！",
-    "presets": "预设:",
-    "eraseData": "清除我的所有数据",
-    "privacyFooter": "© 2026 Ledger & Lend. 100% 保护隐私的本地计算平台。",
-    "embedTitle": "嵌入计算器小部件",
-    "embedDesc": "将此交互式计算器嵌入到您的网站或博客中",
-    "copyEmbed": "复制代码",
-    "cancel": "取消",
-    "welcomeTitle": "欢迎使用 Ledger & Lend",
-    "welcomeDesc": "智能语言偏好设置",
-    "continue": "继续",
-    "changeLang": "切换语言...",
-    "sipTitle": "定投 (SIP) 与财富增长计算器",
-    "sipDesc": "计算定期定额投资、年度复利增长及通胀调整后的预期财富累积。",
-    "sipParams": "投资参数",
-    "monthlySip": "每月定投",
-    "lumpsum": "单笔投资",
-    "monthlyInvestment": "每月投资金额",
-    "expectedReturn": "预期年化收益率 (%)",
-    "timePeriod": "投资年限",
-    "totalFutureWealth": "未来总财富",
-    "maturityValue": "复利到期总收益值",
-    "investedAmount": "投入本金总额",
-    "principalContrib": "本金投入",
-    "estimatedGains": "预期收益",
-    "portfolioRatio": "资产配比图",
-    "amountInvested": "已投本金",
-    "estimatedReturns": "预期收益",
-    "wealthMultiplier": "财富乘数",
-    "emiTitle": "贷款与等额月供 (EMI) 计算器",
-    "emiDesc": "计算每月还款额、本金与利息明细以及完整的年度还款计划表。",
-    "loanParams": "贷款参数",
-    "loanPrincipal": "贷款本金总额",
-    "annualInterestRate": "年利率 (%)",
-    "loanTenure": "贷款期限",
-    "years": "年",
-    "months": "个月",
-    "monthlyEmi": "每月还款额 (月供)",
-    "emiSubtext": "每月本金 + 利息",
-    "totalInterest": "支付利息总额",
-    "totalPayable": "还款总金额",
-    "payableSubtext": "贷款本金 + 全部利息",
-    "loanRatio": "还款比例",
-    "principalLoanAmt": "贷款本金",
-    "yearlySchedule": "年度还款计划表",
-    "year": "年份",
-    "openingBalance": "期初余额",
-    "emiPaidYr": "年度还款",
-    "principalPaid": "已偿还本金",
-    "interestPaid": "已支付利息",
-    "closingBalance": "期末剩余本金",
-    "mortgageTitle": "房贷与购房月供计算器",
-    "mortgageDesc": "计算包括本金、利息、房产税、房屋保险和物业费在内的每月综合还款。",
-    "propertyInputs": "房产与贷款输入",
-    "homePrice": "房屋购买价格",
-    "downPayment": "首付比例 (%)",
-    "loanTerm": "贷款年限",
-    "propertyTax": "年度房产税",
-    "homeIns": "年度房屋保险",
-    "hoaFees": "每月物业费",
-    "totalMonthlyPayment": "每月综合还款总额",
-    "pitiSubtext": "本金、利息、税费与保险综合支出",
-    "principalInterest": "本金与利息",
-    "taxesInsurance": "税金与保险",
-    "escrowEst": "月度托管估算",
-    "ciTitle": "复利增值计算器",
-    "ciDesc": "计算复利投资在定期追加投入下的指数级增长与未来资产规模。",
-    "ciParams": "本金与追加投入",
-    "initialPrincipal": "初始本金余额",
-    "monthlyAddition": "每月追加投入",
-    "totalFutureVal": "未来总价值",
-    "totalPrincipalInvested": "投入本金总计",
-    "totalCompoundInterest": "累计复利收益",
-    "compoundedBalance": "复利资产净值",
-    "extraGrowth": "复利带来的超额增长",
-    "taxTitle": "销售税、折扣与增值税计算器",
-    "taxDesc": "即时计算促销折扣、多重优惠券叠加及含税实付总额。",
-    "priceTaxParams": "价格与税率参数",
-    "retailPrice": "原始零售价",
-    "primaryDiscount": "基础折扣 (%)",
-    "salesTaxVat": "销售税 / 增值税 (%)",
-    "extraCoupon": "额外优惠券 (%)",
-    "finalPrice": "最终实付总价",
-    "youSave": "为您节省",
-    "discountedPreTax": "折后税前价格",
-    "salesTaxAmount": "税费金额",
-    "tipTitle": "小费与AA账单分摊计算器",
-    "tipDesc": "计算就餐小费并按人数均摊餐费。",
-    "billGratuityParams": "账单与小费输入",
-    "totalBill": "账单总金额",
-    "tipPercentage": "小费比例 (%)",
-    "splitPeople": "分摊人数",
-    "totalPerPerson": "每人应付总额",
-    "totalGratuity": "小费总额",
-    "grandTotalBill": "最终账单总计",
-    "people": "人",
-    "person": "人",
-    "fuelTitle": "自驾燃油费用分摊计算器",
-    "fuelDesc": "估算长途自驾燃油消耗、百公里油耗及乘客AA分摊费用。",
-    "tripVehicleParams": "行程与车辆参数",
-    "tripDistance": "行程距离 (公里/英里)",
-    "fuelEfficiency": "燃油经济性 (MPG / 油耗)",
-    "gasPrice": "油价 (每升/加仑)",
-    "numPassengers": "乘车人数",
-    "totalFuelCost": "总燃油费用",
-    "costPerPerson": "每人分摊费用",
-    "gallonsConsumed": "燃油消耗总量",
-    "timeTitle": "工时与薪资计算器",
-    "timeDesc": "计算实际出勤工时、扣除无薪休息时间及应得薪资总额。",
-    "shiftTimestamps": "班次打卡时间",
-    "shiftStart": "上班打卡时间",
-    "shiftEnd": "下班打卡时间",
-    "unpaidBreak": "无薪休息时长 (分钟)",
-    "hourlyRate": "时薪标准",
-    "workDuration": "净出勤工时",
-    "grossShiftPay": "本班次应得税前薪资",
-    "billableHours": "十进制计费工时"
-  },
-  "ar": {
-    "appName": "ليدجر آند ليند (Ledger & Lend)",
-    "appTagline": "الذكاء المالي وإدارة الثروات",
-    "searchPlaceholder": "البحث في الأدوات المالية (Ctrl+K)...",
-    "currencyLabel": "اختر العملة",
-    "langLabel": "اختر اللغة",
-    "allFinancial": "جميع الأدوات المالية (8)",
-    "loansMortgages": "القروض والتمويل العقاري",
-    "investingWealth": "الاستثمار وبناء الثروة",
-    "taxesSpending": "الضرائب والمصروفات",
-    "financialSuiteTitle": "مجموعة الآلات الحاسبة المالية",
-    "financialSuiteSubtitle": "اختر أي أداة متخصصة للقروض أو الاستثمار أو الضرائب",
-    "guidesTitle": "أدلة التمويل الشخصي والاستثمار",
-    "guidesSubtitle": "أدلة تعليمية متعمقة حول الفائدة المركبة، وسداد الديون، والحرية المالية",
-    "favorite": "المفضلة",
-    "embed": "تضمين",
-    "share": "مشاركة",
-    "print": "طباعة",
-    "copy": "انقر للنسخ",
-    "copied": "✓ تم النسخ!",
-    "presets": "القيم الافتراضية:",
-    "eraseData": "مسح جميع بياناتي",
-    "privacyFooter": "© 2026 ليدجر آند ليند. حسابات مالية خاصة وآمنة بنسبة 100%.",
-    "embedTitle": "تضمين أداة الحاسبة",
-    "embedDesc": "ضع هذه الحاسبة التفاعلية في موقعك أو مدونتك",
-    "copyEmbed": "نسخ الكود",
-    "cancel": "إلغاء",
-    "welcomeTitle": "مرحبًا بك في Ledger & Lend",
-    "welcomeDesc": "تفضيل اللغة الذكي",
-    "continue": "متابعة",
-    "changeLang": "تغيير اللغة...",
-    "sipTitle": "حاسبة الاستثمار الشهري (SIP) وبناء الثروة",
-    "sipDesc": "احسب تراكم الثروة عبر الاستثمارات الدورية المنتظمة، والفائدة المركبة، وتعديل التضخم.",
-    "sipParams": "معايير الاستثمار",
-    "monthlySip": "الاستثمار الشهري",
-    "lumpsum": "استثمار بمبلغ إجمالي",
-    "monthlyInvestment": "مبلغ الاستثمار الشهري",
-    "expectedReturn": "معدل العائد السنوي المتوقع (%)",
-    "timePeriod": "فترة الاستثمار",
-    "totalFutureWealth": "إجمالي الثروة المستقبلية",
-    "maturityValue": "قيمة الاستحقاق بعد النمو المركب",
-    "investedAmount": "المبلغ المستثمر الإجمالي",
-    "principalContrib": "إجمالي المساهمات الأصلية",
-    "estimatedGains": "الأرباح التقديرية",
-    "portfolioRatio": "نسبة مكونات المحفظة",
-    "amountInvested": "المبلغ المستثمر",
-    "estimatedReturns": "العوائد المقدرة",
-    "wealthMultiplier": "مضاعف الثروة",
-    "emiTitle": "حاسبة القروض والأقساط الشهرية (EMI)",
-    "emiDesc": "احسب القسط الشهري للقرض، وتوزيع الأصل مقابل الفائدة، وجدول السداد السنوي الكامل.",
-    "loanParams": "معايير القرض",
-    "loanPrincipal": "مبلغ القرض الأساسي",
-    "annualInterestRate": "معدل الفائدة السنوي (%)",
-    "loanTenure": "مدة القرض",
-    "years": "سنوات",
-    "months": "أشهر",
-    "monthlyEmi": "القسط الشهري للقرض",
-    "emiSubtext": "الأصل + الفائدة شهرياً",
-    "totalInterest": "إجمالي الفوائد",
-    "totalPayable": "إجمالي المبلغ المستحق للدفع",
-    "payableSubtext": "أصل القرض + إجمالي الفوائد",
-    "loanRatio": "نسبة سداد القرض",
-    "principalLoanAmt": "أصل مبلغ القرض",
-    "yearlySchedule": "جدول استهلاك القرض السنوي",
-    "year": "السنة",
-    "openingBalance": "الرصيد الافتتاحي",
-    "emiPaidYr": "الأقساط السنوية",
-    "principalPaid": "الأصل المسدد",
-    "interestPaid": "الفائدة المسددة",
-    "closingBalance": "الرصيد المتبقي",
-    "mortgageTitle": "حاسبة التمويل العقاري والرهن",
-    "mortgageDesc": "احسب الدفعات الشهرية لشراء منزل شاملة الأصل والفائدة والضرائب والتأمين ورسوم الخدمات.",
-    "propertyInputs": "بيانات العقار والقرض",
-    "homePrice": "سعر شراء العقار",
-    "downPayment": "نسبة الدفعة الأولى (%)",
-    "loanTerm": "مدة التمويل",
-    "propertyTax": "ضريبة العقار السنوية",
-    "homeIns": "تأمين المنزل السنوي",
-    "hoaFees": "رسوم الصيانة الشهرية",
-    "totalMonthlyPayment": "إجمالي الدفعة الشهرية",
-    "pitiSubtext": "الأصل والفائدة والضرائب والتأمين",
-    "principalInterest": "الأصل والفائدة",
-    "taxesInsurance": "الضرائب والتأمين",
-    "escrowEst": "تقدير الضمان الشهري",
-    "ciTitle": "حاسبة الفائدة المركبة",
-    "ciDesc": "احسب النمو المتضاعف للفائدة المركبة مع الإيداعات الدورية وقيمة المحفظة المستقبلية.",
-    "ciParams": "الأصل والإيداعات الدورية",
-    "initialPrincipal": "الرصيد الأولي للأصل",
-    "monthlyAddition": "الإيداع الإضافي الشهري",
-    "totalFutureVal": "القيمة المستقبلية الإجمالية",
-    "totalPrincipalInvested": "إجمالي رأس المال المستثمر",
-    "totalCompoundInterest": "إجمالي الفائدة المركبة",
-    "compoundedBalance": "رصيد المحفظة المركب",
-    "extraGrowth": "نمو إضافي",
-    "taxTitle": "حاسبة ضريبة المبيعات والخصم",
-    "taxDesc": "احسب الخصومات، وضريبة القيمة المضافة (VAT)، والسعر النهائي الصافي فوراً.",
-    "priceTaxParams": "معايير السعر والضريبة",
-    "retailPrice": "سعر البيع الأصلي",
-    "primaryDiscount": "نسبة الخصم الأساسي (%)",
-    "salesTaxVat": "ضريبة المبيعات / القيمة المضافة (%)",
-    "extraCoupon": "كوبون إضافي (%)",
-    "finalPrice": "السعر النهائي للدفع",
-    "youSave": "إجمالي التوفير",
-    "discountedPreTax": "السعر بعد الخصم وقبل الضريبة",
-    "salesTaxAmount": "مبلغ الضريبة",
-    "tipTitle": "حاسبة الإكرامية وتقسيم الفاتورة",
-    "tipDesc": "احسب نسبة الإكرامية وقسم فاتورة المطعم بالتساوي على عدد الأشخاص.",
-    "billGratuityParams": "الفاتورة والإكرامية",
-    "totalBill": "إجمالي مبلغ الفاتورة",
-    "tipPercentage": "نسبة الإكرامية (%)",
-    "splitPeople": "تقسيم على عدد الأشخاص",
-    "totalPerPerson": "الإجمالي لكل شخص",
-    "totalGratuity": "إجمالي الإكرامية",
-    "grandTotalBill": "إجمالي الفاتورة النهائي",
-    "people": "أشخاص",
-    "person": "شخص",
-    "fuelTitle": "حاسبة تكلفة الوقود وتقاسم السفر",
-    "fuelDesc": "احسب استهلاك الوقود للرحلات، وكفاءة استهلاك البنزين، وتقاسم التكلفة مع الركاب.",
-    "tripVehicleParams": "معايير الرحلة والمركبة",
-    "tripDistance": "مسافة الرحلة (كم / ميل)",
-    "fuelEfficiency": "كفاءة استهلاك الوقود (MPG)",
-    "gasPrice": "سعر الوقود",
-    "numPassengers": "عدد الركاب",
-    "totalFuelCost": "إجمالي تكلفة الوقود للرحلة",
-    "costPerPerson": "التكلفة لكل راكب",
-    "gallonsConsumed": "كمية الوقود المستهلكة",
-    "timeTitle": "حاسبة ساعات العمل والراتب",
-    "timeDesc": "احسب ساعات العمل الفعلية، وخصم فترات الاستراحة، وإجمالي الراتب المستحق للوردية.",
-    "shiftTimestamps": "مواعيد الوردية",
-    "shiftStart": "وقت بدء العمل",
-    "shiftEnd": "وقت انتهاء العمل",
-    "unpaidBreak": "استراحة غير مدفوعة (دقائق)",
-    "hourlyRate": "أجر الساعة",
-    "workDuration": "صافي مدة العمل المستحقة",
-    "grossShiftPay": "إجمالي أجر الوردية",
-    "billableHours": "ساعات العمل العشرية القابلة للفوترة"
-  }
-};
-
-  // 2. Toast Notification System
-  window.showToast = function(msg, icon) {
-    var toast = document.getElementById('toast-notification');
-    var msgEl = document.getElementById('toast-message');
-    var iconEl = document.getElementById('toast-icon');
-    if (!toast || !msgEl) return;
-    msgEl.textContent = msg;
-    if (iconEl) iconEl.textContent = icon || '✓';
-    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-    toast.classList.add('translate-y-0', 'opacity-100');
-    clearTimeout(window._toastTimeout);
-    window._toastTimeout = setTimeout(function() {
-      toast.classList.remove('translate-y-0', 'opacity-100');
-      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-    }, 2800);
-  };
-
-  // 3. Currency Management
-  var currencyMap = {
-    USD: { symbol: '$', name: 'US Dollar', locale: 'en-US' },
-    EUR: { symbol: '€', name: 'Euro', locale: 'de-DE' },
-    GBP: { symbol: '£', name: 'British Pound', locale: 'en-GB' },
-    INR: { symbol: '₹', name: 'Indian Rupee', locale: 'en-IN' },
-    AUD: { symbol: 'A$', name: 'Australian Dollar', locale: 'en-AU' },
-    CAD: { symbol: 'C$', name: 'Canadian Dollar', locale: 'en-CA' },
-    JPY: { symbol: '¥', name: 'Japanese Yen', locale: 'ja-JP' },
-    AED: { symbol: 'AED ', name: 'UAE Dirham', locale: 'ar-AE' }
-  };
-
-  function getGlobalCurrency() {
-    var saved = localStorage.getItem('calc_currency');
-    return (saved && currencyMap[saved]) ? saved : 'USD';
-  }
-
-  function getGlobalCurrencySymbol() {
-    var curr = getGlobalCurrency();
-    return currencyMap[curr]?.symbol || '$';
-  }
-  window.getGlobalCurrency = getGlobalCurrency;
-  window.getGlobalCurrencySymbol = getGlobalCurrencySymbol;
-
-  function updateCurrencyDOM() {
-    var sym = getGlobalCurrencySymbol();
-    document.querySelectorAll('.calc-input-prefix').forEach(function(el) {
-      el.textContent = sym;
-    });
-
-    document.querySelectorAll('[id$="-presets"] button').forEach(function(btn) {
-      var val = btn.getAttribute('data-val');
-      if (val && !isNaN(val)) {
-        var num = Number(val);
-        var formatted = num >= 1000 ? (num / 1000) + 'k' : num;
-        btn.textContent = sym + formatted;
-      }
-    });
-
-    window.dispatchEvent(new CustomEvent('currency-changed', { detail: { symbol: sym, currency: getGlobalCurrency() } }));
-
-    if (typeof window.calculateSIP === 'function') window.calculateSIP();
-    if (typeof window.calculateEMI === 'function') window.calculateEMI();
-    if (typeof window.calculateMortgage === 'function') window.calculateMortgage();
-    if (typeof window.calculateCI === 'function') window.calculateCI();
-    if (typeof window.calculateTaxDiscount === 'function') window.calculateTaxDiscount();
-    if (typeof window.calculateTip === 'function') window.calculateTip();
-    if (typeof window.calculateFuel === 'function') window.calculateFuel();
-    if (typeof window.calculateTimeDuration === 'function') window.calculateTimeDuration();
-  }
-  window.updateCurrencyDOM = updateCurrencyDOM;
-
-  // 4. Language & Live DOM Translation Engine
-  var langNames = {
-    en: { name: 'English', dir: 'ltr' },
-    hi: { name: 'हिन्दी', dir: 'ltr' },
-    es: { name: 'Español', dir: 'ltr' },
-    fr: { name: 'Français', dir: 'ltr' },
-    de: { name: 'Deutsch', dir: 'ltr' },
-    ja: { name: '日本語', dir: 'ltr' },
-    pt: { name: 'Português', dir: 'ltr' },
-    zh: { name: '中文', dir: 'ltr' },
-    ar: { name: 'العربية', dir: 'rtl' }
-  };
-
-  function getGlobalLanguage() {
-    return localStorage.getItem('calc_hub_lang') || localStorage.getItem('calc_language') || 'en';
-  }
-
-  function t(key, lang) {
-    var l = lang || getGlobalLanguage();
-    var dict = i18nDict[l] || i18nDict.en || {};
-    return dict[key] || (i18nDict.en ? i18nDict.en[key] : key) || key;
-  }
-  window.t = t;
-
-  function updateLanguageDOM() {
-    var lang = getGlobalLanguage();
-    var dict = i18nDict[lang] || i18nDict.en || {};
-    var dir = langNames[lang]?.dir || 'ltr';
-
-    document.documentElement.setAttribute('dir', dir);
-    document.documentElement.setAttribute('lang', lang);
-
-    // Translate Core UI Elements
-    var titleEl = document.querySelector('header a span.font-extrabold');
-    if (titleEl && dict.appName) {
-      titleEl.innerHTML = dict.appName + ' <span class="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20">Finance</span>';
-    }
-    var subtitleEl = document.querySelector('header a span.block');
-    if (subtitleEl && dict.appTagline) subtitleEl.textContent = dict.appTagline;
-
-    var searchInput = document.querySelector('.search-bar-trigger span');
-    if (searchInput && dict.searchPlaceholder) searchInput.textContent = dict.searchPlaceholder;
-
-    // Action Buttons text
-    var embedBtnText = document.querySelector('#calc-embed-btn span, #header-embed-btn span');
-    if (embedBtnText && dict.embed) embedBtnText.textContent = dict.embed;
-    var shareBtnText = document.querySelector('#calc-share-btn span, #header-share-btn span');
-    if (shareBtnText && dict.share) shareBtnText.textContent = dict.share;
-    var printBtnText = document.querySelector('#calc-print-btn span, #header-print-btn span');
-    if (printBtnText && dict.print) printBtnText.textContent = dict.print;
-
-    // Category Filter Pills
-    var pills = document.querySelectorAll('#category-pills-container a');
-    if (pills && pills.length >= 4) {
-      if (pills[0].querySelector('span')) pills[0].querySelector('span').textContent = dict.allFinancial || 'All Financial (8)';
-      if (pills[1].querySelector('span')) pills[1].querySelector('span').textContent = dict.loansMortgages || 'Loans & Mortgages';
-      if (pills[2].querySelector('span')) pills[2].querySelector('span').textContent = dict.investingWealth || 'Investing & Wealth';
-      if (pills[3].querySelector('span')) pills[3].querySelector('span').textContent = dict.taxesSpending || 'Taxes & Spending';
-    }
-
-    // Section Titles
-    var suiteH2 = document.querySelector('#top-tool-selector-section h2 span');
-    if (suiteH2 && dict.financialSuiteTitle) suiteH2.textContent = dict.financialSuiteTitle;
-    var suiteP = document.querySelector('#top-tool-selector-section p');
-    if (suiteP && dict.financialSuiteSubtitle) suiteP.textContent = dict.financialSuiteSubtitle;
-
-    var guidesH2 = document.querySelector('section:last-of-type h2 span');
-    if (guidesH2 && dict.guidesTitle) guidesH2.textContent = dict.guidesTitle;
-    var guidesP = document.querySelector('section:last-of-type p');
-    if (guidesP && dict.guidesSubtitle) guidesP.textContent = dict.guidesSubtitle;
-
-    // Active Calculator Titles & Fields based on current page
-    var currentPath = window.location.pathname.replace(/^\/|\/$/g, '') || 'home';
-    if (currentPath === 'sip' || currentPath.indexOf('sip') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.sipTitle) h1.textContent = dict.sipTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.sipDesc) desc.textContent = dict.sipDesc;
-      var pLbl = document.querySelector('label[for="sip-amount"]'); if (pLbl && dict.monthlyInvestment) pLbl.textContent = dict.monthlyInvestment;
-      var rLbl = document.querySelector('label[for="sip-rate"]'); if (rLbl && dict.expectedReturn) rLbl.textContent = dict.expectedReturn;
-      var yLbl = document.querySelector('label[for="sip-years"]'); if (yLbl && dict.timePeriod) yLbl.textContent = dict.timePeriod;
-      var bSip = document.getElementById('sip-mode-sip'); if (bSip && dict.monthlySip) bSip.textContent = dict.monthlySip;
-      var bLump = document.getElementById('sip-mode-lump'); if (bLump && dict.lumpsum) bLump.textContent = dict.lumpsum;
-      var cLbl = document.querySelector('#copyable-sip-card .result-label'); if (cLbl && dict.totalFutureWealth) cLbl.textContent = dict.totalFutureWealth;
-      var cSub = document.querySelector('#copyable-sip-card .result-subtext'); if (cSub && dict.maturityValue) cSub.textContent = dict.maturityValue;
-      var invLbl = document.querySelector('#sip-invested-res')?.parentElement?.querySelector('.result-label'); if (invLbl && dict.investedAmount) invLbl.textContent = dict.investedAmount;
-      var gnLbl = document.querySelector('#sip-gains-res')?.parentElement?.querySelector('.result-label'); if (gnLbl && dict.estimatedGains) gnLbl.textContent = dict.estimatedGains;
-    } else if (currentPath === 'emi' || currentPath.indexOf('emi') !== -1 || currentPath === 'home' || currentPath === '') {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.emiTitle) h1.textContent = dict.emiTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.emiDesc) desc.textContent = dict.emiDesc;
-      var pLbl = document.querySelector('label[for="emi-amount"]'); if (pLbl && dict.loanPrincipal) pLbl.textContent = dict.loanPrincipal;
-      var rLbl = document.querySelector('label[for="emi-rate"]'); if (rLbl && dict.annualInterestRate) rLbl.textContent = dict.annualInterestRate;
-      var tLbl = document.querySelector('label[for="emi-tenure"]'); if (tLbl && dict.loanTenure) tLbl.textContent = dict.loanTenure;
-      var uYr = document.getElementById('emi-unit-yr'); if (uYr && dict.years) uYr.textContent = dict.years;
-      var uMo = document.getElementById('emi-unit-mo'); if (uMo && dict.months) uMo.textContent = dict.months;
-      var emiLbl = document.querySelector('#copyable-emi-card .result-label'); if (emiLbl && dict.monthlyEmi) emiLbl.textContent = dict.monthlyEmi;
-      var emiSub = document.querySelector('#copyable-emi-card .result-subtext'); if (emiSub && dict.emiSubtext) emiSub.textContent = dict.emiSubtext;
-      var intLbl = document.querySelector('#emi-interest-res')?.parentElement?.querySelector('.result-label'); if (intLbl && dict.totalInterest) intLbl.textContent = dict.totalInterest;
-      var totLbl = document.querySelector('#emi-total-res')?.parentElement?.querySelector('.result-label'); if (totLbl && dict.totalPayable) totLbl.textContent = dict.totalPayable;
-      
-      var ths = document.querySelectorAll('#emi-schedule-table th');
-      if (ths && ths.length >= 6) {
-        if (dict.year) ths[0].textContent = dict.year;
-        if (dict.openingBalance) ths[1].textContent = dict.openingBalance;
-        if (dict.emiPaidYr) ths[2].textContent = dict.emiPaidYr;
-        if (dict.principalPaid) ths[3].textContent = dict.principalPaid;
-        if (dict.interestPaid) ths[4].textContent = dict.interestPaid;
-        if (dict.closingBalance) ths[5].textContent = dict.closingBalance;
-      }
-    } else if (currentPath === 'mortgage' || currentPath.indexOf('mortgage') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.mortgageTitle) h1.textContent = dict.mortgageTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.mortgageDesc) desc.textContent = dict.mortgageDesc;
-      var pLbl = document.querySelector('label[for="mg-price"]'); if (pLbl && dict.homePrice) pLbl.textContent = dict.homePrice;
-      var dpLbl = document.querySelector('label[for="mg-dp"]'); if (dpLbl && dict.downPayment) dpLbl.textContent = dict.downPayment;
-      var trmLbl = document.querySelector('label[for="mg-term"]'); if (trmLbl && dict.loanTerm) trmLbl.textContent = dict.loanTerm;
-      var mgLbl = document.querySelector('#copyable-mg-card .result-label'); if (mgLbl && dict.totalMonthlyPayment) mgLbl.textContent = dict.totalMonthlyPayment;
-      var mgSub = document.querySelector('#copyable-mg-card .result-subtext'); if (mgSub && dict.pitiSubtext) mgSub.textContent = dict.pitiSubtext;
-      var piLbl = document.querySelector('#mg-pi-res')?.parentElement?.querySelector('.result-label'); if (piLbl && dict.principalInterest) piLbl.textContent = dict.principalInterest;
-      var escLbl = document.querySelector('#mg-escrow-res')?.parentElement?.querySelector('.result-label'); if (escLbl && dict.taxesInsurance) escLbl.textContent = dict.taxesInsurance;
-    } else if (currentPath === 'compound-interest' || currentPath.indexOf('compound-interest') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.ciTitle) h1.textContent = dict.ciTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.ciDesc) desc.textContent = dict.ciDesc;
-      var pLbl = document.querySelector('label[for="ci-principal"]'); if (pLbl && dict.initialPrincipal) pLbl.textContent = dict.initialPrincipal;
-      var aLbl = document.querySelector('label[for="ci-addition"]'); if (aLbl && dict.monthlyAddition) aLbl.textContent = dict.monthlyAddition;
-      var ciLbl = document.querySelector('#copyable-ci-card .result-label'); if (ciLbl && dict.totalFutureVal) ciLbl.textContent = dict.totalFutureVal;
-      var ciSub = document.querySelector('#copyable-ci-card .result-subtext'); if (ciSub && dict.compoundedBalance) ciSub.textContent = dict.compoundedBalance;
-      var tpLbl = document.querySelector('#ci-total-principal')?.parentElement?.querySelector('.result-label'); if (tpLbl && dict.totalPrincipalInvested) tpLbl.textContent = dict.totalPrincipalInvested;
-      var tiLbl = document.querySelector('#ci-total-interest')?.parentElement?.querySelector('.result-label'); if (tiLbl && dict.totalCompoundInterest) tiLbl.textContent = dict.totalCompoundInterest;
-    } else if (currentPath === 'tax-discount' || currentPath.indexOf('tax-discount') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.taxTitle) h1.textContent = dict.taxTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.taxDesc) desc.textContent = dict.taxDesc;
-      var pLbl = document.querySelector('label[for="td-price"]'); if (pLbl && dict.retailPrice) pLbl.textContent = dict.retailPrice;
-      var dLbl = document.querySelector('label[for="td-disc"]'); if (dLbl && dict.primaryDiscount) dLbl.textContent = dict.primaryDiscount;
-      var tLbl = document.querySelector('label[for="td-tax"]'); if (tLbl && dict.salesTaxVat) tLbl.textContent = dict.salesTaxVat;
-      var cLbl = document.querySelector('label[for="td-coupon"]'); if (cLbl && dict.extraCoupon) cLbl.textContent = dict.extraCoupon;
-      var resLbl = document.querySelector('#copyable-td-card .result-label'); if (resLbl && dict.finalPrice) resLbl.textContent = dict.finalPrice;
-      var ptLbl = document.querySelector('#td-pretax-res')?.parentElement?.querySelector('.result-label'); if (ptLbl && dict.discountedPreTax) ptLbl.textContent = dict.discountedPreTax;
-      var txLbl = document.querySelector('#td-tax-amt-res')?.parentElement?.querySelector('.result-label'); if (txLbl && dict.salesTaxAmount) txLbl.textContent = dict.salesTaxAmount;
-    } else if (currentPath === 'tip-split' || currentPath.indexOf('tip-split') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.tipTitle) h1.textContent = dict.tipTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.tipDesc) desc.textContent = dict.tipDesc;
-      var bLbl = document.querySelector('label[for="tip-bill"]'); if (bLbl && dict.totalBill) bLbl.textContent = dict.totalBill;
-      var pLbl = document.querySelector('label[for="tip-pct"]'); if (pLbl && dict.tipPercentage) pLbl.textContent = dict.tipPercentage;
-      var sLbl = document.querySelector('label[for="tip-people"]'); if (sLbl && dict.splitPeople) sLbl.textContent = dict.splitPeople;
-      var resLbl = document.querySelector('#copyable-tip-card .result-label'); if (resLbl && dict.totalPerPerson) resLbl.textContent = dict.totalPerPerson;
-      var grLbl = document.querySelector('#tip-total-amt-res')?.parentElement?.querySelector('.result-label'); if (grLbl && dict.totalGratuity) grLbl.textContent = dict.totalGratuity;
-      var totLbl = document.querySelector('#tip-grand-total-res')?.parentElement?.querySelector('.result-label'); if (totLbl && dict.grandTotalBill) totLbl.textContent = dict.grandTotalBill;
-    } else if (currentPath === 'fuel-cost' || currentPath.indexOf('fuel-cost') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.fuelTitle) h1.textContent = dict.fuelTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.fuelDesc) desc.textContent = dict.fuelDesc;
-      var dLbl = document.querySelector('label[for="fuel-dist"]'); if (dLbl && dict.tripDistance) dLbl.textContent = dict.tripDistance;
-      var eLbl = document.querySelector('label[for="fuel-mpg"]'); if (eLbl && dict.fuelEfficiency) eLbl.textContent = dict.fuelEfficiency;
-      var pLbl = document.querySelector('label[for="fuel-price"]'); if (pLbl && dict.gasPrice) pLbl.textContent = dict.gasPrice;
-      var nLbl = document.querySelector('label[for="fuel-passengers"]'); if (nLbl && dict.numPassengers) nLbl.textContent = dict.numPassengers;
-      var resLbl = document.querySelector('#copyable-fuel-card .result-label'); if (resLbl && dict.totalFuelCost) resLbl.textContent = dict.totalFuelCost;
-      var cpLbl = document.querySelector('#fuel-per-person-res')?.parentElement?.querySelector('.result-label'); if (cpLbl && dict.costPerPerson) cpLbl.textContent = dict.costPerPerson;
-    } else if (currentPath === 'time-duration' || currentPath.indexOf('time-duration') !== -1) {
-      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.timeTitle) h1.textContent = dict.timeTitle;
-      var desc = document.getElementById('active-calc-desc'); if (desc && dict.timeDesc) desc.textContent = dict.timeDesc;
-      var sLbl = document.querySelector('label[for="time-start"]'); if (sLbl && dict.shiftStart) sLbl.textContent = dict.shiftStart;
-      var eLbl = document.querySelector('label[for="time-end"]'); if (eLbl && dict.shiftEnd) eLbl.textContent = dict.shiftEnd;
-      var bLbl = document.querySelector('label[for="time-break"]'); if (bLbl && dict.unpaidBreak) bLbl.textContent = dict.unpaidBreak;
-      var rLbl = document.querySelector('label[for="time-rate"]'); if (rLbl && dict.hourlyRate) rLbl.textContent = dict.hourlyRate;
-      var resLbl = document.querySelector('#copyable-time-card .result-label'); if (resLbl && dict.workDuration) resLbl.textContent = dict.workDuration;
-      var gpLbl = document.querySelector('#time-pay-res')?.parentElement?.querySelector('.result-label'); if (gpLbl && dict.grossShiftPay) gpLbl.textContent = dict.grossShiftPay;
-    }
-
-    // Presets Label
-    document.querySelectorAll('[id$="-presets"] > span:first-child').forEach(function(el) {
-      if (dict.presets) el.textContent = dict.presets;
-    });
-
-    // Footer & Data Wipe
-    var eraseBtn = document.getElementById('privacy-data-wipe-btn');
-    if (eraseBtn && dict.eraseData) eraseBtn.textContent = dict.eraseData;
-    var footerSpan = document.querySelector('footer div.flex span');
-    if (footerSpan && dict.privacyFooter) footerSpan.textContent = dict.privacyFooter;
-
-    // Dispatch global language-changed event and recalculate
-    window.dispatchEvent(new CustomEvent('language-changed', { detail: { lang: lang, dir: dir } }));
-
-    if (typeof window.calculateSIP === 'function') window.calculateSIP();
-    if (typeof window.calculateEMI === 'function') window.calculateEMI();
-    if (typeof window.calculateMortgage === 'function') window.calculateMortgage();
-    if (typeof window.calculateCI === 'function') window.calculateCI();
-    if (typeof window.calculateTaxDiscount === 'function') window.calculateTaxDiscount();
-    if (typeof window.calculateTip === 'function') window.calculateTip();
-    if (typeof window.calculateFuel === 'function') window.calculateFuel();
-    if (typeof window.calculateTimeDuration === 'function') window.calculateTimeDuration();
-  }
-  window.updateLanguageDOM = updateLanguageDOM;
-
-  function setGlobalLanguage(lang) {
-    if (langNames[lang]) {
-      localStorage.setItem('calc_hub_lang', lang);
-      localStorage.setItem('calc_language', lang);
-      updateLanguageDOM();
-    }
-  }
-  window.setGlobalLanguage = setGlobalLanguage;
-
-  // 5. Header Actions: Favorite, Embed Modal, Share, Print
-  function initHeaderActions() {
-    // A. Currency Dropdown
-    var currSelect = document.getElementById('currency-selector');
-    if (currSelect) {
-      currSelect.value = getGlobalCurrency();
-      currSelect.addEventListener('change', function(e) {
-        var val = e.target.value;
-        localStorage.setItem('calc_currency', val);
-        updateCurrencyDOM();
-        showToast('Currency changed to ' + val + ' (' + getGlobalCurrencySymbol() + ')', '💰');
-      });
-    }
-
-    // B. Language Dropdown
-    var langSelect = document.getElementById('language-selector');
-    if (langSelect) {
-      langSelect.value = getGlobalLanguage();
-      langSelect.addEventListener('change', function(e) {
-        var val = e.target.value;
-        setGlobalLanguage(val);
-        showToast('Language changed to ' + (langNames[val]?.name || val), '🌐');
-      });
-    }
-
-    // Initial Currency & Language DOM update
-    updateCurrencyDOM();
-    updateLanguageDOM();
-
-    // C. Favorite Button
-    var currentPath = window.location.pathname.replace(/^\/|\/$/g, '') || 'home';
-    var favBtn = document.getElementById('calc-fav-btn') || document.getElementById('header-fav-btn');
-    var favs = [];
-    try { favs = JSON.parse(localStorage.getItem('calc_favorites') || '[]'); } catch (e) {}
-    var isFav = favs.indexOf(currentPath) !== -1;
-
-    function renderFavIcon() {
-      if (!favBtn) return;
-      if (isFav) {
-        favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
-        favBtn.classList.add('border-accent-amber');
-      } else {
-        favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
-        favBtn.classList.remove('border-accent-amber');
-      }
-    }
-    renderFavIcon();
-
-    if (favBtn) {
-      favBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        try { favs = JSON.parse(localStorage.getItem('calc_favorites') || '[]'); } catch (e) { favs = []; }
-        var idx = favs.indexOf(currentPath);
-        if (idx === -1) {
-          favs.push(currentPath);
-          isFav = true;
-          showToast('Added to Favorites!', '⭐');
-        } else {
-          favs.splice(idx, 1);
-          isFav = false;
-          showToast('Removed from Favorites', '☆');
-        }
-        try { localStorage.setItem('calc_favorites', JSON.stringify(favs)); } catch (e) {}
-        renderFavIcon();
-      });
-    }
-
-    // D. Embed Modal
-    var embedBtn = document.getElementById('calc-embed-btn') || document.getElementById('header-embed-btn');
-    var embedModal = document.getElementById('embed-code-modal');
-    var embedCard = document.getElementById('embed-modal-card');
-    var embedBox = document.getElementById('embed-code-box');
-    var closeEmbedBtn = document.getElementById('close-embed-modal-btn');
-    var cancelEmbedBtn = document.getElementById('cancel-embed-modal-btn');
-    var copyEmbedBtn = document.getElementById('copy-embed-code-btn');
-
-    function openEmbed() {
-      if (!embedModal || !embedBox) return;
-      var currentUrl = window.location.href;
-      var title = document.title || 'Financial Calculator';
-      var iframeHtml = '<iframe src="' + currentUrl + '" width="100%" height="650" frameborder="0" style="border-radius:12px; border:1px solid #334155; box-shadow:0 8px 24px rgba(0,0,0,0.2);" title="' + title + '"></iframe>\n<p style="text-align:right; font-size:11px; color:#64748b;">Powered by <a href="' + window.location.origin + '" target="_blank" rel="noopener">Ledger &amp; Lend</a></p>';
-      embedBox.value = iframeHtml;
-      embedModal.classList.remove('hidden');
-      setTimeout(function() {
-        embedModal.classList.remove('opacity-0');
-        if (embedCard) embedCard.classList.remove('scale-95');
-      }, 10);
-    }
-
-    function closeEmbed() {
-      if (!embedModal) return;
-      embedModal.classList.add('opacity-0');
-      if (embedCard) embedCard.classList.add('scale-95');
-      setTimeout(function() {
-        embedModal.classList.add('hidden');
-        if (copyEmbedBtn) copyEmbedBtn.textContent = 'Copy Embed Code';
-      }, 200);
-    }
-
-    if (embedBtn) embedBtn.addEventListener('click', function(e) { e.preventDefault(); openEmbed(); });
-    if (closeEmbedBtn) closeEmbedBtn.addEventListener('click', closeEmbed);
-    if (cancelEmbedBtn) cancelEmbedBtn.addEventListener('click', closeEmbed);
-    if (embedModal) {
-      embedModal.addEventListener('click', function(e) {
-        if (e.target === embedModal) closeEmbed();
-      });
-    }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && embedModal && !embedModal.classList.contains('hidden')) {
-        closeEmbed();
-      }
-    });
-
-    if (copyEmbedBtn) {
-      copyEmbedBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (embedBox) {
-          navigator.clipboard.writeText(embedBox.value).then(function() {
-            copyEmbedBtn.textContent = '✓ Copied!';
-            showToast('Embed snippet copied to clipboard!', '📋');
-            setTimeout(closeEmbed, 1000);
-          }).catch(function() {
-            embedBox.select();
-            document.execCommand('copy');
-            copyEmbedBtn.textContent = '✓ Copied!';
-            showToast('Embed snippet copied to clipboard!', '📋');
-            setTimeout(closeEmbed, 1000);
-          });
-        }
-      });
-    }
-
-    // E. Share Button
-    var shareBtn = document.getElementById('calc-share-btn') || document.getElementById('header-share-btn');
-    if (shareBtn) {
-      shareBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (navigator.share) {
-          navigator.share({
-            title: document.title,
-            url: window.location.href
-          }).catch(function() {});
-        } else if (navigator.clipboard) {
-          navigator.clipboard.writeText(window.location.href).then(function() {
-            showToast('Calculator link copied to clipboard!', '🔗');
-          });
-        } else {
-          showToast('Link: ' + window.location.href, '🔗');
-        }
-      });
-    }
-
-    // F. Print Button
-    var printBtn = document.getElementById('calc-print-btn') || document.getElementById('header-print-btn');
-    if (printBtn) {
-      printBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.print();
-      });
-    }
-  }
-
-  window.addEventListener('DOMContentLoaded', initHeaderActions);
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    initHeaderActions();
-  }
-})();
-</script>
-
-
 <script>
 /**
  * Ledger & Lend - Unified Production Client Controller
  * Multilingual Translation, Multi-Currency Sync, Live Search (Ctrl+K),
- * Embed Generator, Theme Switcher, and Export Actions.
+ * Interactive Multilingual FAQ Accordions, Embed Generator, Theme Switcher.
  */
 (function() {
   'use strict';
 
-  // 1. Dictionaries
+  // 1. Dictionaries (9 Languages)
   var i18nDict = {
   "en": {
     "appName": "Ledger & Lend",
@@ -2482,7 +809,53 @@
     "hourlyRate": "Hourly Rate ($)",
     "workDuration": "Net Payable Work Duration",
     "grossShiftPay": "Gross Shift Pay",
-    "billableHours": "decimal billable hours"
+    "billableHours": "decimal billable hours",
+    "faqSectionTitle": "Frequently Asked Questions",
+    "faqSectionSubtitle": "Expert guidance, calculation formulas, and clear answers.",
+    "faq_home_1": "What is Ledger & Lend?",
+    "ans_home_1": "Ledger & Lend is a professional-grade suite of 8 client-side financial calculators for investments, loans, mortgages, compounding growth, taxes, and budgeting.",
+    "faq_home_2": "Is my financial data secure and private?",
+    "ans_home_2": "Yes, 100%. All calculation math, inputs, and amortization schedules run entirely in your local browser. Zero financial data is ever transmitted to or stored on a server.",
+    "faq_home_3": "How do multi-currency conversions work?",
+    "ans_home_3": "You can instantly switch between USD ($), EUR (€), GBP (£), INR (₹), JPY (¥), AED, AUD (A$), and CAD (C$). All inputs, summaries, and charts update in real-time.",
+    "faq_home_4": "Can I use these calculators offline?",
+    "ans_home_4": "Yes! Ledger & Lend is built as a Progressive Web App (PWA) with smart service worker caching, functioning reliably even without an internet connection.",
+    "faq_sip_1": "What is a Systematic Investment Plan (SIP)?",
+    "ans_sip_1": "A SIP allows you to invest a fixed sum regularly into mutual funds or index funds, leveraging rupee/dollar-cost averaging and compounding returns.",
+    "faq_sip_2": "How does the Annual Step-Up increase my returns?",
+    "ans_sip_2": "Increasing your monthly contribution by 10% each year as your income grows can nearly double your total wealth corpus over a 15-20 year investment horizon.",
+    "faq_sip_3": "What is the mathematical formula for SIP?",
+    "ans_sip_3": "The future value is calculated using M = P × [((1 + i)^n - 1) / i] × (1 + i), where P is monthly deposit, i is monthly rate (annual rate / 12), and n is number of months.",
+    "faq_emi_1": "How is loan EMI calculated?",
+    "ans_emi_1": "EMI uses the reducing balance formula: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is Principal, r is periodic interest rate, and n is total monthly tenure.",
+    "faq_emi_2": "What is an amortization schedule?",
+    "ans_emi_2": "An amortization schedule details every payment over time, showing the exact portion going toward reducing the principal versus paying interest charges.",
+    "faq_emi_3": "How can I reduce my total loan interest?",
+    "ans_emi_3": "Making periodic prepayments toward the principal balance or opting for a shorter tenure dramatically decreases the compounding interest over the life of the loan.",
+    "faq_mg_1": "What is PITI in a mortgage calculation?",
+    "ans_mg_1": "PITI stands for Principal, Interest, Property Taxes, and Homeowners Insurance—representing your full all-inclusive monthly housing expense.",
+    "faq_mg_2": "When is Private Mortgage Insurance (PMI) required?",
+    "ans_mg_2": "Lenders typically require PMI if your down payment is less than 20% of the home purchase price. It protects the lender in case of loan default.",
+    "faq_ci_1": "What is the difference between simple and compound interest?",
+    "ans_ci_1": "Simple interest is calculated solely on the original principal, while compound interest is calculated on the principal plus all accumulated interest over time.",
+    "faq_ci_2": "How does compounding frequency affect returns?",
+    "ans_ci_2": "The more frequently interest compounds (e.g. daily or monthly vs annually), the faster your money grows because newly earned interest immediately begins generating returns.",
+    "faq_td_1": "How are stacked discounts and coupons calculated?",
+    "ans_td_1": "The primary percentage discount is deducted first from the retail price, followed by any additional promotional coupon or flat amount before sales tax/GST is applied.",
+    "faq_td_2": "Is sales tax applied before or after discount?",
+    "ans_td_2": "In almost all standard retail jurisdictions, sales tax / GST is applied directly to the net discounted sale price, saving you money on taxes as well.",
+    "faq_tip_1": "What is the standard restaurant tip percentage?",
+    "ans_tip_1": "Typical gratuity etiquette is 15% for standard service, 18-20% for good service, and 22-25% for exceptional dining experiences.",
+    "faq_tip_2": "How is the bill split equally among guests?",
+    "ans_tip_2": "The calculator sums the base bill and total tip, then divides the grand total equally by the number of paying guests.",
+    "faq_fuel_1": "How do I calculate trip fuel costs?",
+    "ans_fuel_1": "Divide total distance by vehicle MPG or fuel efficiency (km/L), then multiply the gallons/liters required by the fuel price per unit.",
+    "faq_fuel_2": "How does passenger split calculation work?",
+    "ans_fuel_2": "Total trip fuel expenses are divided equally among all traveling passengers or carpool members for fair ride sharing.",
+    "faq_time_1": "How are billable work hours calculated in decimals?",
+    "ans_time_1": "Minutes are converted to decimals by dividing by 60 (e.g., 7 hours and 30 minutes equals 7.50 decimal hours), which is multiplied by your hourly wage.",
+    "faq_time_2": "Does this calculator support overnight shifts crossing midnight?",
+    "ans_time_2": "Yes! When your shift ends the next morning (e.g., 10:00 PM to 6:00 AM), the calculator seamlessly computes the 24-hour rollover and subtracts unpaid breaks accurately."
   },
   "hi": {
     "appName": "लेज़र एंड लेंड (Ledger & Lend)",
@@ -2619,7 +992,53 @@
     "hourlyRate": "प्रति घंटा वेतन दर",
     "workDuration": "कुल शुद्ध कार्य समय",
     "grossShiftPay": "कुल शिफ्ट वेतन",
-    "billableHours": "दशमलव बिल योग्य घंटे"
+    "billableHours": "दशमलव बिल योग्य घंटे",
+    "faqSectionTitle": "अक्सर पूछे जाने वाले प्रश्न (FAQ)",
+    "faqSectionSubtitle": "विशेषज्ञ मार्गदर्शन, गणना सूत्र और स्पष्ट उत्तर।",
+    "faq_home_1": "लेजर एंड लेंड (Ledger & Lend) क्या है?",
+    "ans_home_1": "लेजर एंड लेंड 8 सटीक वित्तीय कैलकुलेटरों का एक पेशेवर सूट है जो निवेश, ऋण, गृह बंधक (मॉर्टगेज), चक्रवृद्धि ब्याज, कर और बजट के लिए 100% क्लाइंट-साइड काम करता है।",
+    "faq_home_2": "क्या मेरा वित्तीय डेटा सुरक्षित और निजी है?",
+    "ans_home_2": "हाँ, 100%। सभी गणना गणित, इनपुट और परिशोधन तालिकाएँ पूरी तरह से आपके स्थानीय ब्राउज़र में चलती हैं। कोई भी वित्तीय डेटा कभी सर्वर पर नहीं भेजा जाता है।",
+    "faq_home_3": "बहु-मुद्रा (Multi-Currency) चयन कैसे काम करता है?",
+    "ans_home_3": "आप तुरंत USD ($), EUR (€), GBP (£), INR (₹), JPY (¥), AED, AUD (A$), और CAD (C$) के बीच स्विच कर सकते हैं। सभी इनपुट, परिणाम और चार्ट वास्तविक समय में अपडेट होते हैं।",
+    "faq_home_4": "क्या मैं इन कैलकुलेटरों का उपयोग ऑफ़लाइन कर सकता हूँ?",
+    "ans_home_4": "हाँ! लेजर एंड लेंड एक प्रोग्रेसिव वेब ऐप (PWA) के रूप में निर्मित है, जो बिना इंटरनेट कनेक्शन के भी विश्वसनीय रूप से काम करता है।",
+    "faq_sip_1": "सिस्टमैटिक इन्वेस्टमेंट प्लान (SIP) क्या है?",
+    "ans_sip_1": "SIP आपको म्यूचुअल फंड या इंडेक्स फंड में नियमित रूप से एक निश्चित राशि निवेश करने की अनुमति देता है, जिससे लागत औसत और चक्रवृद्धि रिटर्न का लाभ मिलता है।",
+    "faq_sip_2": "वार्षिक स्टेप-अप (Step-Up) मेरे रिटर्न को कैसे बढ़ाता है?",
+    "ans_sip_2": "अपनी आय बढ़ने के साथ हर साल अपने मासिक निवेश में 10% की वृद्धि करने से 15-20 वर्षों में आपका कुल परिपक्वता कोष लगभग दोगुना हो सकता है।",
+    "faq_sip_3": "SIP गणना का गणितीय सूत्र क्या है?",
+    "ans_sip_3": "भविष्य के मूल्य की गणना सूत्र M = P × [((1 + i)^n - 1) / i] × (1 + i) का उपयोग करके की जाती है, जहाँ P मासिक जमा है, i मासिक ब्याज दर है, और n कुल महीने हैं।",
+    "faq_emi_1": "ऋण EMI की गणना कैसे की जाती है?",
+    "ans_emi_1": "EMI घटते शेष सूत्र का उपयोग करता है: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1], जहाँ P मूलधन है, r मासिक ब्याज दर है, और n कुल महीने हैं।",
+    "faq_emi_2": "ऋण परिशोधन (Amortization) तालिका क्या है?",
+    "ans_emi_2": "एक परिशोधन अनुसूची समय के साथ प्रत्येक भुगतान का विवरण देती है, जो दिखाती है कि मूलधन को कम करने और ब्याज शुल्क का भुगतान करने में कितनी राशि जाती है।",
+    "faq_emi_3": "मैं अपने कुल ऋण ब्याज को कैसे कम कर सकता हूँ?",
+    "ans_emi_3": "मूलधन शेष राशि में नियमित पूर्व-भुगतान (Prepayment) करने या छोटी अवधि चुनने से ऋण की अवधि में कुल ब्याज काफी कम हो जाता है।",
+    "faq_mg_1": "मॉर्टगेज गणना में PITI क्या है?",
+    "ans_mg_1": "PITI का अर्थ है मूलधन (Principal), ब्याज (Interest), संपत्ति कर (Taxes), और गृह बीमा (Insurance)—जो आपके कुल मासिक आवास खर्च को दर्शाता है।",
+    "faq_mg_2": "प्राइवेट मॉर्टगेज इंश्योरेंस (PMI) कब आवश्यक होता है?",
+    "ans_mg_2": "यदि आपका डाउन पेमेंट घर के खरीद मूल्य के 20% से कम है, तो ऋणदाता आमतौर पर PMI की मांग करते हैं। यह डिफ़ॉल्ट की स्थिति में ऋणदाता की रक्षा करता है।",
+    "faq_ci_1": "साधारण ब्याज और चक्रवृद्धि ब्याज में क्या अंतर है?",
+    "ans_ci_1": "साधारण ब्याज की गणना केवल मूलधन पर की जाती है, जबकि चक्रवृद्धि ब्याज की गणना मूलधन और उस पर समय के साथ अर्जित ब्याज दोनों पर की जाती है।",
+    "faq_ci_2": "चक्रवृद्धि आवृत्ति (Compounding Frequency) रिटर्न को कैसे प्रभावित करती है?",
+    "ans_ci_2": "जितनी अधिक बार ब्याज चक्रवृद्धि होता है (जैसे वार्षिक के मुकाबले दैनिक या मासिक), आपका पैसा उतनी ही तेजी से बढ़ता है क्योंकि नया अर्जित ब्याज तुरंत रिटर्न देना शुरू कर देता है।",
+    "faq_td_1": "एकाधिक छूट (Stacked Discounts) और कूपन की गणना कैसे की जाती है?",
+    "ans_td_1": "प्राथमिक प्रतिशत छूट पहले खुदरा मूल्य से काटी जाती है, जिसके बाद बिक्री कर/जीएसटी लागू होने से पहले कोई अतिरिक्त कूपन या फ्लैट राशि घटाई जाती है।",
+    "faq_td_2": "क्या बिक्री कर (Sales Tax) छूट से पहले या बाद में लगाया जाता है?",
+    "ans_td_2": "लगभग सभी मानक खुदरा क्षेत्रों में, बिक्री कर / जीएसटी सीधे शुद्ध रियायती बिक्री मूल्य पर लागू होता है, जिससे आपके करों की भी बचत होती है।",
+    "faq_tip_1": "रेस्तरां में टिप देने का सामान्य प्रतिशत क्या है?",
+    "ans_tip_1": "मानक सेवा के लिए सामान्य ग्रेच्युटी 15%, अच्छी सेवा के लिए 18-20%, और असाधारण भोजन अनुभव के लिए 22-25% होती है।",
+    "faq_tip_2": "मेहमानों के बीच बिल को समान रूप से कैसे विभाजित किया जाता है?",
+    "ans_tip_2": "कैलकुलेटर मूल बिल और कुल टिप को जोड़ता है, फिर कुल राशि को भुगतान करने वाले मेहमानों की संख्या से समान रूप से विभाजित करता है।",
+    "faq_fuel_1": "सड़क यात्रा के लिए ईंधन लागत की गणना कैसे करें?",
+    "ans_fuel_1": "कुल दूरी को वाहन की ईंधन दक्षता (माइलेज MPG या किमी/लीटर) से विभाजित करें, फिर आवश्यक ईंधन को प्रति यूनिट ईंधन की कीमत से गुणा करें।",
+    "faq_fuel_2": "यात्रियों के बीच लागत विभाजन कैसे काम करता है?",
+    "ans_fuel_2": "उचित लागत साझाकरण के लिए कुल यात्रा ईंधन व्यय को सभी यात्रा करने वाले यात्रियों या कारपूल सदस्यों के बीच समान रूप से विभाजित किया जाता है।",
+    "faq_time_1": "पेरोल के लिए दशमलव में काम के घंटों की गणना कैसे की जाती है?",
+    "ans_time_1": "मिनटों को 60 से विभाजित करके दशमलव में बदला जाता है (उदाहरण के लिए, 7 घंटे 30 मिनट = 7.50 दशमलव घंटे), जिसे आपके प्रति घंटे वेतन से गुणा किया जाता है।",
+    "faq_time_2": "क्या यह कैलकुलेटर आधी रात (Midnight) पार करने वाली नाइट शिफ्ट का समर्थन करता है?",
+    "ans_time_2": "हाँ! जब आपकी शिफ्ट अगली सुबह समाप्त होती है (जैसे, रात 10:00 बजे से सुबह 6:00 बजे तक), तो कैलकुलेटर निर्बाध रूप से 24 घंटे के रोलओवर की गणना करता है।"
   },
   "es": {
     "appName": "Ledger & Lend",
@@ -2756,7 +1175,53 @@
     "hourlyRate": "Salario por Hora",
     "workDuration": "Duración Neta Trabajada",
     "grossShiftPay": "Salario Bruto del Turno",
-    "billableHours": "horas facturables decimales"
+    "billableHours": "horas facturables decimales",
+    "faqSectionTitle": "Preguntas Frecuentes (FAQ)",
+    "faqSectionSubtitle": "Guía experta, fórmulas de cálculo y respuestas claras.",
+    "faq_home_1": "¿Qué es Ledger & Lend?",
+    "ans_home_1": "Ledger & Lend es una suite profesional de 8 calculadoras financieras del lado del cliente para inversiones, préstamos, hipotecas, impuestos y presupuestos.",
+    "faq_home_2": "¿Mis datos financieros son seguros y privados?",
+    "ans_home_2": "Sí, 100%. Todos los cálculos, datos y tablas de amortización se ejecutan localmente en su navegador. No se envía ningún dato a ningún servidor.",
+    "faq_home_3": "¿Cómo funciona el cambio de múltiples monedas?",
+    "ans_home_3": "Puede cambiar instantáneamente entre USD, EUR, GBP, INR, JPY, AED, AUD y CAD. Todas las entradas y gráficos se actualizan en tiempo real.",
+    "faq_home_4": "¿Puedo usar estas calculadoras sin conexión?",
+    "ans_home_4": "¡Sí! Ledger & Lend funciona como una PWA con almacenamiento en caché, funcionando sin conexión a Internet.",
+    "faq_sip_1": "¿Qué es un Plan de Inversión Sistemática (SIP)?",
+    "ans_sip_1": "Un SIP le permite invertir una cantidad fija periódicamente en fondos indexados o mutuos, aprovechando el interés compuesto.",
+    "faq_sip_2": "¿Cómo aumenta mis ganancias el incremento anual (Step-Up)?",
+    "ans_sip_2": "Aumentar su contribución mensual en un 10% cada año puede duplicar su patrimonio final en un plazo de 15 a 20 años.",
+    "faq_sip_3": "¿Cuál es la fórmula matemática para SIP?",
+    "ans_sip_3": "Se calcula usando M = P × [((1 + i)^n - 1) / i] × (1 + i), donde P es el pago mensual, i la tasa mensual y n los meses.",
+    "faq_emi_1": "¿Cómo se calcula la cuota EMI del préstamo?",
+    "ans_emi_1": "Se calcula con la fórmula de saldo decreciente: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1].",
+    "faq_emi_2": "¿Qué es una tabla de amortización?",
+    "ans_emi_2": "Muestra el desglose exacto de cada cuota entre el pago del principal y los intereses acumulados a lo largo del tiempo.",
+    "faq_emi_3": "¿Cómo puedo reducir el interés total de mi préstamo?",
+    "ans_emi_3": "Realizar amortizaciones anticipadas o elegir un plazo más corto reduce drásticamente el interés total acumulado.",
+    "faq_mg_1": "¿Qué significa PITI en una hipoteca?",
+    "ans_mg_1": "PITI representa Principal, Interés, Impuestos sobre la propiedad y Seguro del hogar: su costo mensual total.",
+    "faq_mg_2": "¿Cuándo es necesario el seguro hipotecario privado (PMI)?",
+    "ans_mg_2": "Generalmente se requiere si el pago inicial es menor al 20% del valor de la vivienda.",
+    "faq_ci_1": "¿Cuál es la diferencia entre interés simple y compuesto?",
+    "ans_ci_1": "El interés simple se calcula solo sobre el capital inicial, mientras que el compuesto se calcula sobre el capital más los intereses acumulados.",
+    "faq_ci_2": "¿Cómo influye la frecuencia de capitalización en las ganancias?",
+    "ans_ci_2": "Cuanto más frecuente sea la capitalización (diaria o mensual frente a anual), más rápido crece el dinero.",
+    "faq_td_1": "¿Cómo se calculan los descuentos y cupones acumulados?",
+    "ans_td_1": "El descuento principal se aplica primero al precio original y luego se descuenta el cupón antes de sumar los impuestos.",
+    "faq_td_2": "¿El impuesto se calcula antes o después del descuento?",
+    "ans_td_2": "En la mayoría de los casos, los impuestos se calculan sobre el precio final con descuento aplicado.",
+    "faq_tip_1": "¿Cuál es el porcentaje estándar de propina?",
+    "ans_tip_1": "La propina habitual es del 15% por buen servicio y del 18-20% por un servicio excelente.",
+    "faq_tip_2": "¿Cómo se divide la cuenta a partes iguales entre los comensales?",
+    "ans_tip_2": "Suma la cuenta base y la propina total, dividiendo el importe total en partes iguales entre las personas.",
+    "faq_fuel_1": "¿Cómo se calcula el costo de combustible para un viaje?",
+    "ans_fuel_1": "Divida la distancia por el rendimiento del combustible y multiplique por el precio por litro o galón.",
+    "faq_fuel_2": "¿Cómo se divide el costo entre los pasajeros?",
+    "ans_fuel_2": "El costo total de la gasolina se divide equitativamente entre todos los pasajeros del vehículo.",
+    "faq_time_1": "¿Cómo se calculan las horas laborales en formato decimal?",
+    "ans_time_1": "Los minutos se dividen entre 60 (p. ej., 7 horas y 30 min = 7,50 horas decimales) para multiplicarse por el salario por hora.",
+    "faq_time_2": "¿Admite turnos nocturnos que cruzan la medianoche?",
+    "ans_time_2": "¡Sí! Si el turno termina a la mañana siguiente, calcula automáticamente el ciclo de 24 horas y resta los descansos."
   },
   "fr": {
     "appName": "Ledger & Lend",
@@ -2893,7 +1358,53 @@
     "hourlyRate": "Taux Horaire",
     "workDuration": "Durée Nette Travaillée",
     "grossShiftPay": "Salaire Brut du Shift",
-    "billableHours": "heures facturables décimales"
+    "billableHours": "heures facturables décimales",
+    "faqSectionTitle": "Foire Aux Questions (FAQ)",
+    "faqSectionSubtitle": "Conseils d'experts, formules de calcul et réponses claires.",
+    "faq_home_1": "Qu'est-ce que Ledger & Lend ?",
+    "ans_home_1": "Ledger & Lend est une suite professionnelle de 8 calculateurs financiers côté client pour les investissements, les prêts, les hypothèques, les impôts et le budget.",
+    "faq_home_2": "Mes données financières sont-elles sécurisées et privées ?",
+    "ans_home_2": "Oui, à 100%. Tous les calculs, saisies et tableaux d'amortissement s'exécutent localement dans votre navigateur. Aucune donnée n'est envoyée à un serveur.",
+    "faq_home_3": "Comment fonctionne la conversion multi-devises ?",
+    "ans_home_3": "Vous pouvez basculer instantanément entre USD, EUR, GBP, INR, JPY, AED, AUD et CAD. Toutes les entrées et graphiques se mettent à jour en temps réel.",
+    "faq_home_4": "Puis-je utiliser ces calculateurs hors ligne ?",
+    "ans_home_4": "Oui ! Ledger & Lend est une PWA avec mise en cache, fonctionnant parfaitement sans connexion Internet.",
+    "faq_sip_1": "Qu'est-ce qu'un plan d'investissement systématique (SIP) ?",
+    "ans_sip_1": "Un SIP vous permet d'investir régulièrement une somme fixe dans des fonds communs, profitant des intérêts composés.",
+    "faq_sip_2": "Comment le Step-Up annuel augmente-t-il mes rendements ?",
+    "ans_sip_2": "Augmenter votre versement mensuel de 10% chaque année peut doubler votre capital final sur 15 à 20 ans.",
+    "faq_sip_3": "Quelle est la formule mathématique du SIP ?",
+    "ans_sip_3": "La formule est M = P × [((1 + i)^n - 1) / i] × (1 + i), où P est le versement mensuel, i le taux mensuel et n le nombre de mois.",
+    "faq_emi_1": "Comment est calculée la mensualité (EMI) ?",
+    "ans_emi_1": "Elle utilise la formule à capital restant dû : E = [P × r × (1 + r)^n] / [(1 + r)^n - 1].",
+    "faq_emi_2": "Qu'est-ce qu'un tableau d'amortissement ?",
+    "ans_emi_2": "Il détaille chaque paiement, montrant la part exacte affectée au remboursement du capital et aux intérêts.",
+    "faq_emi_3": "Comment réduire le coût total des intérêts de mon prêt ?",
+    "ans_emi_3": "Faire des remboursements anticipés ou choisir une durée plus courte réduit considérablement le coût total des intérêts.",
+    "faq_mg_1": "Que signifie PITI dans un calcul hypothécaire ?",
+    "ans_mg_1": "PITI signifie Principal, Intérêts, Taxes foncières et Assurance habitation : votre mensualité globale complète.",
+    "faq_mg_2": "Quand l'assurance emprunteur (PMI) est-elle requise ?",
+    "ans_mg_2": "Elle est généralement requise si votre apport personnel est inférieur à 20% du prix du bien.",
+    "faq_ci_1": "Quelle est la différence entre intérêts simples et composés ?",
+    "ans_ci_1": "Les intérêts simples portent uniquement sur le capital initial, tandis que les intérêts composés s'appliquent au capital et aux intérêts cumulés.",
+    "faq_ci_2": "Comment la fréquence de capitalisation affecte-t-elle les gains ?",
+    "ans_ci_2": "Plus la capitalisation est fréquente (mensuelle ou quotidienne vs annuelle), plus votre argent fructifie rapidement.",
+    "faq_td_1": "Comment sont calculés les remises et coupons cumulés ?",
+    "ans_td_1": "La remise principale est déduite en premier, puis le coupon supplémentaire avant d'appliquer la taxe (TVA).",
+    "faq_td_2": "La taxe est-elle calculée avant ou après la remise ?",
+    "ans_td_2": "Dans la plupart des cas, la taxe s'applique sur le prix final après application de la réduction.",
+    "faq_tip_1": "Quel est le pourcentage de pourboire habituel ?",
+    "ans_tip_1": "Le pourboire standard est de 15% pour un service normal et 18-20% pour un très bon service.",
+    "faq_tip_2": "Comment l'addition est-elle partagée équitablement ?",
+    "ans_tip_2": "Le calculateur additionne la note et le pourboire, puis divise le total par le nombre de convives.",
+    "faq_fuel_1": "Comment calculer le coût du carburant d'un trajet ?",
+    "ans_fuel_1": "Divisez la distance par la consommation du véhicule, puis multipliez par le prix du litre de carburant.",
+    "faq_fuel_2": "Comment fonctionne le partage des frais entre passagers ?",
+    "ans_fuel_2": "Les frais totaux de carburant sont divisés équitablement entre tous les passagers.",
+    "faq_time_1": "Comment les heures de travail sont-elles converties en décimales ?",
+    "ans_time_1": "Les minutes sont divisées par 60 (ex. 7h30 = 7,50 heures décimales) pour être multipliées par le taux horaire.",
+    "faq_time_2": "Prend-il en charge les quarts de nuit après minuit ?",
+    "ans_time_2": "Oui ! Si votre quart se termine le lendemain matin, il gère automatiquement le cycle de 24 heures et déduit les pauses."
   },
   "de": {
     "appName": "Ledger & Lend",
@@ -3030,7 +1541,53 @@
     "hourlyRate": "Stundenlohn",
     "workDuration": "Netto-Arbeitszeit",
     "grossShiftPay": "Bruttolohn für diese Schicht",
-    "billableHours": "Dezimalstunden"
+    "billableHours": "Dezimalstunden",
+    "faqSectionTitle": "Häufig Gestellte Fragen (FAQ)",
+    "faqSectionSubtitle": "Expertenrat, Berechnungsformeln und klare Antworten.",
+    "faq_home_1": "Was ist Ledger & Lend?",
+    "ans_home_1": "Ledger & Lend ist eine professionelle Suite aus 8 clientseitigen Finanzrechnern für Investitionen, Kredite, Hypotheken, Steuern und Budgetierung.",
+    "faq_home_2": "Sind meine Finanzdaten sicher und privat?",
+    "ans_home_2": "Ja, zu 100%. Alle Berechnungen und Tilgungspläne laufen vollständig in Ihrem Browser ab. Es werden niemals Finanzdaten an einen Server übertragen.",
+    "faq_home_3": "Wie funktioniert die Mehrwährungsumschaltung?",
+    "ans_home_3": "Sie können sofort zwischen USD, EUR, GBP, INR, JPY, AED, AUD und CAD wechseln. Alle Eingaben und Diagramme werden in Echtzeit aktualisiert.",
+    "faq_home_4": "Kann ich diese Rechner offline verwenden?",
+    "ans_home_4": "Ja! Ledger & Lend ist als PWA mit Service-Worker-Caching aufgebaut und funktioniert auch ohne Internetverbindung.",
+    "faq_sip_1": "Was ist ein Sparplan (SIP)?",
+    "ans_sip_1": "Ein SIP-Sparplan ermöglicht regelmäßige feste Einzahlungen in Fonds, um vom Zinseszinseffekt zu profitieren.",
+    "faq_sip_2": "Wie steigert eine jährliche Dynamisierung (Step-Up) meine Rendite?",
+    "ans_sip_2": "Eine jährliche Erhöhung der Sparrate um 10% kann das Endkapital über 15-20 Jahre hinweg nahezu verdoppeln.",
+    "faq_sip_3": "Wie lautet die mathematische Formel für den Sparplan?",
+    "ans_sip_3": "Die Formel lautet M = P × [((1 + i)^n - 1) / i] × (1 + i), wobei P die monatliche Rate, i der Monatszins und n die Laufzeit in Monaten ist.",
+    "faq_emi_1": "Wie wird die monatliche Kreditrate berechnet?",
+    "ans_emi_1": "Die Annuität berechnet sich nach der Zinseszinsformel: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1].",
+    "faq_emi_2": "Was ist ein Tilgungsplan?",
+    "ans_emi_2": "Ein Tilgungsplan zeigt für jede Rate genau den Anteil an Zinstilgung und Restschuldrückzahlung.",
+    "faq_emi_3": "Wie kann ich die Gesamtzinsen meines Kredits senken?",
+    "ans_emi_3": "Sondertilgungen oder eine kürzere Laufzeit senken die Gesamtzinslast erheblich.",
+    "faq_mg_1": "Was bedeutet PITI bei einer Hypothek?",
+    "ans_mg_1": "PITI steht für Tilgung (Principal), Zinsen (Interest), Grundsteuer (Taxes) und Gebäudeversicherung (Insurance).",
+    "faq_mg_2": "Wann ist eine private Hypothekenversicherung (PMI) erforderlich?",
+    "ans_mg_2": "Wird typischerweise verlangt, wenn das eingebrachte Eigenkapital unter 20% des Kaufpreises liegt.",
+    "faq_ci_1": "Was ist der Unterschied zwischen einfachen Zinsen und Zinseszinsen?",
+    "ans_ci_1": "Einfache Zinsen werden nur auf das Anfangskapital berechnet, Zinseszinsen hingegen auch auf die bereits erwirtschafteten Zinsen.",
+    "faq_ci_2": "Wie beeinflusst das Zinsintervall die Rendite?",
+    "ans_ci_2": "Je häufiger die Zinsen gutgeschrieben werden (z.B. monatlich oder täglich statt jährlich), desto schneller wächst das Vermögen.",
+    "faq_td_1": "Wie werden gestaffelte Rabatte und Gutscheine berechnet?",
+    "ans_td_1": "Der Hauptprozentsatz wird zuerst abgezogen, dann der Gutschein, bevor die Mehrwertsteuer aufgeschlagen wird.",
+    "faq_td_2": "Wird die Steuer vor oder nach dem Rabatt berechnet?",
+    "ans_td_2": "In der Regel wird die Mehrwertsteuer auf den rabattierten Endpreis erhoben.",
+    "faq_tip_1": "Wie viel Trinkgeld gibt man üblicherweise?",
+    "ans_tip_1": "Üblich sind 10-15% für guten Service und 18-20% für hervorragenden Service.",
+    "faq_tip_2": "Wie wird die Rechnung gleichmäßig aufgeteilt?",
+    "ans_tip_2": "Die Gesamtrechnung inklusive Trinkgeld wird exakt durch die Anzahl der zahlenden Personen geteilt.",
+    "faq_fuel_1": "Wie berechnet man die Spritkosten für eine Reise?",
+    "ans_fuel_1": "Teilen Sie die Gesamtstrecke durch den Verbrauch und multiplizieren Sie mit dem aktuellen Kraftstoffpreis.",
+    "faq_fuel_2": "Wie werden die Fahrtkosten unter Mitfahrern aufgeteilt?",
+    "ans_fuel_2": "Die gesamten Kraftstoffkosten werden fair durch alle Mitfahrer geteilt.",
+    "faq_time_1": "Wie werden Arbeitsstunden in Dezimalstunden umgerechnet?",
+    "ans_time_1": "Minuten werden durch 60 geteilt (z.B. 7 Std. 30 Min. = 7,50 Dezimalstunden) und mit dem Stundensatz multipliziert.",
+    "faq_time_2": "Werden Nachtschichten über Mitternacht hinweg unterstützt?",
+    "ans_time_2": "Ja! Wenn die Schicht am nächsten Morgen endet, wird der 24-Stunden-Übertrag automatisch berücksichtigt."
   },
   "ja": {
     "appName": "Ledger & Lend",
@@ -3167,7 +1724,53 @@
     "hourlyRate": "時給単価",
     "workDuration": "実働勤務時間",
     "grossShiftPay": "総支給給与額",
-    "billableHours": "10進法請求可能時間"
+    "billableHours": "10進法請求可能時間",
+    "faqSectionTitle": "よくある質問（FAQ）",
+    "faqSectionSubtitle": "専門家のアドバイス、計算式、明確な回答。",
+    "faq_home_1": "Ledger & Lend とは何ですか？",
+    "ans_home_1": "Ledger & Lend は、投資、ローン、住宅ローン、複利、税金、予算編成のための8つのプロフェッショナルなクライアントサイド金融計算スイートです。",
+    "faq_home_2": "私の財務データは安全でプライベートですか？",
+    "ans_home_2": "はい、100％です。すべての計算、入力、償却スケジュールはブラウザ内でローカルに実行されます。サーバーにデータが送信されることはありません。",
+    "faq_home_3": "多通貨切り替えはどのように機能しますか？",
+    "ans_home_3": "USD、EUR、GBP、INR、JPY、AED、AUD、CADを瞬時に切り替えることができます。すべての入力とグラフがリアルタイムで更新されます。",
+    "faq_home_4": "これらの計算機をオフラインで使用できますか？",
+    "ans_home_4": "はい！Ledger & Lend は PWA として構築されており、インターネット接続がなくてもオフラインで動作します。",
+    "faq_sip_1": "積立投資プラン（SIP）とは何ですか？",
+    "ans_sip_1": "SIPは、投資信託に定期的に一定額を投資し、ドルコスト平均法と複利効果を活用する手法です。",
+    "faq_sip_2": "毎年のステップアップ（増額）はどのようにリターンを増やしますか？",
+    "ans_sip_2": "毎年積立額を10％増額することで、15〜20年の投資期間で最終的な資産額を約2倍に増やすことができます。",
+    "faq_sip_3": "SIP計算の数式は何ですか？",
+    "ans_sip_3": "将来価値は M = P × [((1 + i)^n - 1) / i] × (1 + i) で計算されます。ここでPは毎月の積立額、iは月利、nは総月数です。",
+    "faq_emi_1": "ローンのEMI（毎月返済額）はどのように計算されますか？",
+    "ans_emi_1": "元利均等返済の計算式 E = [P × r × (1 + r)^n] / [(1 + r)^n - 1] を使用して算出します。",
+    "faq_emi_2": "ローン償却スケジュール表とは何ですか？",
+    "ans_emi_2": "毎回の返済額のうち、元金返済に充てられる分と利息に充てられる分の内訳を時系列で表した表です。",
+    "faq_emi_3": "ローンの総利息を減らすにはどうすればよいですか？",
+    "ans_emi_3": "繰り上げ返済を行ったり、返済期間を短縮することで、支払う総利息を大幅に削減できます。",
+    "faq_mg_1": "住宅ローンの PITI とは何ですか？",
+    "ans_mg_1": "PITIは元金、利息、固定資産税、住宅保険の頭文字で、毎月の総住宅関連費用を表します。",
+    "faq_mg_2": "民間の住宅ローン保険（PMI）はいつ必要ですか？",
+    "ans_mg_2": "頭金が購入価格の20％未満の場合、貸し手を保護するためにPMIが必要になります。",
+    "faq_ci_1": "単利と複利の違いは何ですか？",
+    "ans_ci_1": "単利は元金のみに利息がつきますが、複利は元金とこれまでに得た利息の合計に対してさらに利息がつきます。",
+    "faq_ci_2": "複利の頻度はリターンにどのように影響しますか？",
+    "ans_ci_2": "利息がより頻繁に複利計算されるほど（年1回より毎月や毎日）、新しく得た利息がすぐに利益を生み出すため資産の成長が速くなります。",
+    "faq_td_1": "複数割引やクーポンの重ねがけはどのように計算されますか？",
+    "ans_td_1": "まず定価から主要な割引率が引かれ、その後にクーポン割引が適用され、最後に消費税が加算されます。",
+    "faq_td_2": "消費税は割引の前と後のどちらで計算されますか？",
+    "ans_td_2": "ほとんどの小売店では、割引後の正味販売価格に対して消費税が課税されます。",
+    "faq_tip_1": "レストランでの標準的なチップの割合はどのくらいですか？",
+    "ans_tip_1": "一般的なチップは標準的なサービスで15％、優れたサービスで18〜20％程度です。",
+    "faq_tip_2": "割り勘の計算はどのように行われますか？",
+    "ans_tip_2": "飲食代の小計にチップを加算した総額を、支払人数で均等に分割して算出します。",
+    "faq_fuel_1": "ドライブのガソリン代はどのように計算しますか？",
+    "ans_fuel_1": "総走行距離を燃費で割り、必要なガソリン量にガソリン単価を掛けて計算します。",
+    "faq_fuel_2": "同乗者間でのガソリン代の割り勘はどのように機能しますか？",
+    "ans_fuel_2": "ガソリン代の合計額を乗車人数で等分し、1人あたりの負担額を算出します。",
+    "faq_time_1": "給与計算用の10進法労働時間はどのように計算されますか？",
+    "ans_time_1": "分を60で割って小数に換算します（例：7時間30分 = 7.50時間）。これに時給を掛けて総支給額を算出します。",
+    "faq_time_2": "深夜（日をまたぐ）シフトの計算に対応していますか？",
+    "ans_time_2": "はい！夜10時から翌朝6時までのような日をまたぐ勤務でも、正確に総労働時間と休憩時間を計算します。"
   },
   "pt": {
     "appName": "Ledger & Lend",
@@ -3304,7 +1907,53 @@
     "hourlyRate": "Valor da Hora",
     "workDuration": "Duração Líquida Trabalhada",
     "grossShiftPay": "Salário Bruto do Turno",
-    "billableHours": "horas faturáveis decimais"
+    "billableHours": "horas faturáveis decimais",
+    "faqSectionTitle": "Perguntas Frequentes (FAQ)",
+    "faqSectionSubtitle": "Orientação especializada, fórmulas de cálculo e respostas claras.",
+    "faq_home_1": "O que é o Ledger & Lend?",
+    "ans_home_1": "O Ledger & Lend é uma suíte profissional de 8 calculadoras financeiras do lado do cliente para investimentos, empréstimos, hipotecas, impostos e orçamento.",
+    "faq_home_2": "Meus dados financeiros são seguros e privados?",
+    "ans_home_2": "Sim, 100%. Todos os cálculos, entradas e tabelas de amortização são executados no seu navegador. Nenhum dado é enviado a um servidor.",
+    "faq_home_3": "Como funciona a alternância de várias moedas?",
+    "ans_home_3": "Você pode alternar instantaneamente entre USD, EUR, GBP, INR, JPY, AED, AUD e CAD. Todas as entradas e gráficos são atualizados em tempo real.",
+    "faq_home_4": "Posso usar essas calculadoras offline?",
+    "ans_home_4": "Sim! O Ledger & Lend é um PWA com cache integrado, funcionando perfeitamente sem conexão com a internet.",
+    "faq_sip_1": "O que é um Plano de Investimento Sistemático (SIP)?",
+    "ans_sip_1": "Um SIP permite investir um valor fixo regularmente em fundos, aproveitando o poder dos juros compostos.",
+    "faq_sip_2": "Como o Step-Up anual aumenta meus rendimentos?",
+    "ans_sip_2": "Aumentar sua contribuição mensal em 10% a cada ano pode quase dobrar seu patrimônio em 15 a 20 anos.",
+    "faq_sip_3": "Qual é a fórmula matemática para o SIP?",
+    "ans_sip_3": "O valor futuro é calculado por M = P × [((1 + i)^n - 1) / i] × (1 + i), onde P é o depósito mensal, i a taxa mensal e n os meses.",
+    "faq_emi_1": "Como a parcela do empréstimo (EMI) é calculada?",
+    "ans_emi_1": "A parcela é calculada pela fórmula de saldo devedor: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1].",
+    "faq_emi_2": "O que é uma tabela de amortização?",
+    "ans_emi_2": "Um cronograma de amortização detalha a divisão de cada parcela entre amortização do principal e juros.",
+    "faq_emi_3": "Como posso reduzir o total de juros do meu empréstimo?",
+    "ans_emi_3": "Fazer amortizações extraordinárias ou escolher um prazo menor reduz drasticamente o total de juros pagos.",
+    "faq_mg_1": "O que significa PITI em uma hipoteca?",
+    "ans_mg_1": "PITI significa Principal, Juros, Impostos Prediais e Seguro Habitacional — compondo seu custo mensal total.",
+    "faq_mg_2": "Quando o seguro hipotecário privado (PMI) é obrigatório?",
+    "ans_mg_2": "Geralmente é exigido se a entrada for inferior a 20% do valor do imóvel.",
+    "faq_ci_1": "Qual é a diferença entre juros simples e compostos?",
+    "ans_ci_1": "O juro simples incide apenas sobre o principal, enquanto os juros compostos incidem sobre o principal somado aos juros acumulados.",
+    "faq_ci_2": "Como a frequência de capitalização afeta o rendimento?",
+    "ans_ci_2": "Quanto mais frequente for a capitalização (diária ou mensal vs anual), mais rápido o dinheiro rende.",
+    "faq_td_1": "Como descontos acumulados e cupons são calculados?",
+    "ans_td_1": "O desconto principal é subtraído primeiro do valor original e depois o cupom é aplicado antes dos impostos.",
+    "faq_td_2": "O imposto é aplicado antes ou depois do desconto?",
+    "ans_td_2": "Geralmente os impostos incidem sobre o valor final já com o desconto aplicado.",
+    "faq_tip_1": "Qual é a porcentagem padrão de gorjeta?",
+    "ans_tip_1": "A gorjeta média varia entre 10% e 15% para serviços normais e 18-20% para atendimento excelente.",
+    "faq_tip_2": "Como a conta é dividida igualmente entre as pessoas?",
+    "ans_tip_2": "A calculadora soma o valor da conta e a gorjeta, dividindo o total pelo número de pessoas.",
+    "faq_fuel_1": "Como calcular o custo de combustível para uma viagem?",
+    "ans_fuel_1": "Divida a distância pelo consumo médio do veículo e multiplique pelo preço do combustível.",
+    "faq_fuel_2": "Como funciona a divisão de custos entre passageiros?",
+    "ans_fuel_2": "O gasto total com combustível é dividido igualmente entre todos os passageiros.",
+    "faq_time_1": "Como as horas de trabalho são calculadas em decimal?",
+    "ans_time_1": "Os minutos são divididos por 60 (ex: 7h30 = 7,50 horas decimais) e multiplicados pelo valor da hora.",
+    "faq_time_2": "A calculadora suporta turnos noturnos que passam da meia-noite?",
+    "ans_time_2": "Sim! Quando o turno termina no dia seguinte, calcula automaticamente o período de 24 horas."
   },
   "zh": {
     "appName": "Ledger & Lend",
@@ -3441,7 +2090,53 @@
     "hourlyRate": "时薪标准",
     "workDuration": "净出勤工时",
     "grossShiftPay": "本班次应得税前薪资",
-    "billableHours": "十进制计费工时"
+    "billableHours": "十进制计费工时",
+    "faqSectionTitle": "常见问题解答（FAQ）",
+    "faqSectionSubtitle": "专业财务指导、数学计算公式与权威解答。",
+    "faq_home_1": "什么是 Ledger & Lend？",
+    "ans_home_1": "Ledger & Lend 是一个专业的纯前端金融计算套件，包含投资、贷款、房贷、复利、税费和预算等8大精准工具。",
+    "faq_home_2": "我的财务数据安全和私密吗？",
+    "ans_home_2": "是的，100% 安全。所有计算、输入参数和还款计划表均在本地浏览器中运行，绝不向任何服务器传输或存储数据。",
+    "faq_home_3": "多货币切换是如何运作的？",
+    "ans_home_3": "您可以即时在 USD、EUR、GBP、INR、JPY、AED、AUD 和 CAD 之间切换，所有输入框、结果和图表均实时同步更新。",
+    "faq_home_4": "我可以离线使用这些计算器吗？",
+    "ans_home_4": "可以！Ledger & Lend 采用渐进式网页应用（PWA）技术构建，支持本地离线缓存，无网络也能流畅使用。",
+    "faq_sip_1": "什么是定期定额投资计划（SIP）？",
+    "ans_sip_1": "定期定额投资（SIP）让您能够定期向基金投资固定金额，摊薄买入成本并享受复利增长。",
+    "faq_sip_2": "每年递增定投（Step-Up）如何提高收益？",
+    "ans_sip_2": "随着收入增长每年将月定投额递增10%，可在15至20年的周期内让最终财富总额翻倍。",
+    "faq_sip_3": "定投计算的数学公式是什么？",
+    "ans_sip_3": "计算公式为：M = P × [((1 + i)^n - 1) / i] × (1 + i)，其中 P 为月定投金额，i 为月收益率，n 为总月数。",
+    "faq_emi_1": "贷款等额本息（EMI）是如何计算的？",
+    "ans_emi_1": "等额本息计算公式为：E = [P × r × (1 + r)^n] / [(1 + r)^n - 1]，其中 P 为本金，r 为月利率，n 为还款期数。",
+    "faq_emi_2": "什么是贷款还款摊销计划表？",
+    "ans_emi_2": "还款计划表详细列出了每期还款中本金和利息的精确分配比例以及剩余贷款余额。",
+    "faq_emi_3": "如何减少贷款的总利息支出？",
+    "ans_emi_3": "提前部分还贷抵扣本金或选择较短的还款年限，可以显著大幅减少整个贷款周期的利息支出。",
+    "faq_mg_1": "房贷中的 PITI 是什么意思？",
+    "ans_mg_1": "PITI 代表本金（Principal）、利息（Interest）、房产税（Taxes）和房屋保险（Insurance），即每月的全包总支出。",
+    "faq_mg_2": "什么时候需要购买私人房贷保险（PMI）？",
+    "ans_mg_2": "当您的首付比例低于房屋购买总价的20%时，贷款机构通常会强制要求购买 PMI 贷款违约保险。",
+    "faq_ci_1": "单利和复利有什么区别？",
+    "ans_ci_1": "单利仅按原始本金计算利息，而复利（利滚利）则是按本金加上前期累计的所有利息共同计息。",
+    "faq_ci_2": "复利计息频率如何影响收益？",
+    "ans_ci_2": "计息频率越高（如按天或按月相比按年计息），新产生的利息就会越快投入下一轮计息，从而产生更高的有效年化收益。",
+    "faq_td_1": "多重叠加折扣和优惠券是如何计算的？",
+    "ans_td_1": "系统先对原价扣除主要百分比折扣，再扣减追加的优惠券或立减金，最后在折后净价基础上计算增值税/消费税。",
+    "faq_td_2": "消费税是在打折前还是打折后计算？",
+    "ans_td_2": "在绝大多数标准商业法规中，消费税/增值税均按照折后实际成交净价计征，因此打折同时也为您节省了税费。",
+    "faq_tip_1": "标准的餐厅小费比例是多少？",
+    "ans_tip_1": "通常标准小费为15%，优质服务为18%-20%，极佳体验可给22%-25%。",
+    "faq_tip_2": "账单是如何在用餐者之间平均分摊的？",
+    "ans_tip_2": "计算器自动将餐费总价与小费相加，再除以总用餐人数得出每人应付金额。",
+    "faq_fuel_1": "自驾游燃油费用是如何计算的？",
+    "ans_fuel_1": "将总行驶里程除以车辆百公里油耗（或每升公里数），再乘以每升油价即可得出全程燃油总开销。",
+    "faq_fuel_2": "同行乘客如何平摊油费？",
+    "ans_fuel_2": "全程油费总额均摊给所有同行乘车人员，方便拼车出行结算。",
+    "faq_time_1": "工资结算时的小时数如何换算为十进制？",
+    "ans_time_1": "工作分钟数除以60换算为十进制（例如7小时30分钟换算为7.50工时），再乘以时薪得出应付总工资。",
+    "faq_time_2": "该计算器支持跨午夜的通宵夜班打卡吗？",
+    "ans_time_2": "支持！当您的下班时间在次日清晨（例如晚10点到早6点），系统会自动按24小时制跨日计算并准确扣除休息时间。"
   },
   "ar": {
     "appName": "ليدجر آند ليند (Ledger & Lend)",
@@ -3578,7 +2273,53 @@
     "hourlyRate": "أجر الساعة",
     "workDuration": "صافي مدة العمل المستحقة",
     "grossShiftPay": "إجمالي أجر الوردية",
-    "billableHours": "ساعات العمل العشرية القابلة للفوترة"
+    "billableHours": "ساعات العمل العشرية القابلة للفوترة",
+    "faqSectionTitle": "الأسئلة الشائعة (FAQ)",
+    "faqSectionSubtitle": "إرشادات الخبراء وصيغ الحساب وإجابات واضحة.",
+    "faq_home_1": "ما هو Ledger & Lend؟",
+    "ans_home_1": "Ledger & Lend عبارة عن مجموعة احترافية من 8 حاسبات مالية تعمل بالكامل من جانب العميل للاستثمارات والقروض والرهون العقارية والضرائب والميزانية.",
+    "faq_home_2": "هل بياناتي المالية آمنة وخصوصية؟",
+    "ans_home_2": "نعم، 100٪. تعمل جميع العمليات الحسابية والمدخلات وجداول السداد محليًا داخل متصفحك دون إرسال أي بيانات إلى أي خادم.",
+    "faq_home_3": "كيف يعمل التبديل بين العملات المتعددة؟",
+    "ans_home_3": "يمكنك التبديل فورًا بين USD وEUR وGBP وINR وJPY وAED وAUD وCAD. يتم تحديث جميع المدخلات والرسوم البيانية في الوقت الفعلي.",
+    "faq_home_4": "هل يمكنني استخدام هذه الحاسبات في وضع عدم الاتصال؟",
+    "ans_home_4": "نعم! تم بناء Ledger & Lend كتطبيق ويب تقدمي (PWA) مع تخزين مؤقت يعمل بشكل موثوق بدون اتصال بالإنترنت.",
+    "faq_sip_1": "ما هي خطة الاستثمار المنهجية (SIP)؟",
+    "ans_sip_1": "تتيح لك SIP استثمار مبلغ ثابت بانتظام في الصناديق المشتركة للاستفادة من متوسط التكلفة والعوائد المركبة.",
+    "faq_sip_2": "كيف تزيد الزيادة السنوية (Step-Up) من عوائدي؟",
+    "ans_sip_2": "إن زيادة مساهمتك الشهرية بنسبة 10٪ كل عام يمكن أن تضاعف ثروتك الإجمالية على مدى 15-20 عامًا.",
+    "faq_sip_3": "ما هي المعادلة الرياضية لحساب SIP؟",
+    "ans_sip_3": "يتم الحساب باستخدام المعادلة M = P × [((1 + i)^n - 1) / i] × (1 + i) حيث P الإيداع الشهري وi المعدل الشهري وn عدد الأشهر.",
+    "faq_emi_1": "كيف يتم حساب القسط الشهري للقرض (EMI)؟",
+    "ans_emi_1": "تستخدم صيغة الرصيد المتناقص: E = [P × r × (1 + r)^n] / [(1 + r)^n - 1].",
+    "faq_emi_2": "ما هو جدول إطفاء القرض (السداد)؟",
+    "ans_emi_2": "يوضح جدول الإطفاء تفاصيل كل دفعة بمرور الوقت، موضحًا الجزء المخصص لسداد أصل المبلغ مقابل الفائدة.",
+    "faq_emi_3": "كيف يمكنني تقليل إجمالي فوائد القرض؟",
+    "ans_emi_3": "يؤدي سداد دفعات إضافية مبكرة لأصل المبلغ أو اختيار مدة أقصر إلى تقليل الفائدة التراكمية بشكل كبير.",
+    "faq_mg_1": "ما هو PITI في حساب الرهن العقاري؟",
+    "ans_mg_1": "PITI يرمز إلى أصل الدين والفائدة وضريبة العقار وتأمين المنزل — وهو يمثل إجمالي مصاريف السكن الشهرية.",
+    "faq_mg_2": "متى يكون التأمين العقاري الخاص (PMI) مطلوبًا؟",
+    "ans_mg_2": "يطلب المقرضون التأمين العقاري عادة إذا كانت الدفعة الأولى أقل من 20٪ من سعر شراء المنزل.",
+    "faq_ci_1": "ما هو الفرق بين الفائدة البسيطة والفائدة المركبة؟",
+    "ans_ci_1": "تحسب الفائدة البسيطة على أصل المبلغ فقط، بينما تحسب الفائدة المركبة على أصل المبلغ بالإضافة إلى الفوائد المتراكمة.",
+    "faq_ci_2": "كيف يؤثر تكرار الفائدة المركبة على العوائد؟",
+    "ans_ci_2": "كلما زاد تكرار حساب الفائدة (يوميًا أو شهريًا مقابل سنويًا)، زادت سرعة نمو أموالك لأن الفوائد تبدأ في جني أرباح فورًا.",
+    "faq_td_1": "كيف يتم حساب الخصومات والقسائم التراكمية؟",
+    "ans_td_1": "يتم خصم النسبة الأساسية أولاً من السعر، ثم يتم خصم القسيمة الإضافية قبل إضافة ضريبة المبيعات.",
+    "faq_td_2": "هل يتم احتساب الضريبة قبل الخصم أم بعده؟",
+    "ans_td_2": "في جميع اللوائح التجارية تقريبًا، يتم احتساب الضريبة على سعر البيع النهائي بعد الخصم.",
+    "faq_tip_1": "ما هي النسبة المئوية القياسية للبقشيش؟",
+    "ans_tip_1": "تتراوح النسبة المعتادة بين 15% للخدمة العادية و18-20% للخدمة الممتازة.",
+    "faq_tip_2": "كيف يتم تقسيم الفاتورة بالتساوي بين الضيوف؟",
+    "ans_tip_2": "تجمع الحاسبة الفاتورة الإجمالية مع البقشيش وتقسم المبلغ بالتساوي على عدد الأشخاص.",
+    "faq_fuel_1": "كيف أحسب تكلفة الوقود للرحلة؟",
+    "ans_fuel_1": "اقسم المسافة الإجمالية على كفاءة استهلاك الوقود ثم اضرب النتيجة في سعر الوقود.",
+    "faq_fuel_2": "كيف يتم تقسيم تكلفة الوقود بين الركاب؟",
+    "ans_fuel_2": "يتم تقسيم إجمالي مصاريف الوقود بالتساوي بين جميع الركاب المشاركين في الرحلة.",
+    "faq_time_1": "كيف يتم حساب ساعات العمل العشرية للرواتب؟",
+    "ans_time_1": "يتم تحويل الدقائق إلى كسور عشرية بالقسمة على 60 (مثلاً 7 ساعات و30 دقيقة = 7.50 ساعة) وتُضرب في الأجر بالساعة.",
+    "faq_time_2": "هل تدعم هذه الحاسبة المناوبات الليلية التي تتجاوز منتصف الليل؟",
+    "ans_time_2": "نعم! عندما تنتهي مناوبتك في صباح اليوم التالي، تحسب الحاسبة دورة الـ 24 ساعة بدقة مع خصم فترات الراحة."
   }
 };
 
@@ -3762,12 +2503,25 @@
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', dir);
 
+    // 1. Generic data-i18n elements (including all FAQs, titles, answers, and labels)
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (key && dict[key]) {
+        if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+          el.setAttribute('placeholder', dict[key]);
+        } else {
+          el.textContent = dict[key];
+        }
+      }
+    });
+
+    // 2. Search placeholder
     var searchInputSpan = document.querySelector('.search-bar-trigger span');
     if (searchInputSpan && dict.searchPlaceholder) searchInputSpan.textContent = dict.searchPlaceholder;
     var searchInput = document.getElementById('calc-search-input');
     if (searchInput && dict.searchPlaceholder) searchInput.setAttribute('placeholder', dict.searchPlaceholder);
 
-    // Filter pills
+    // 3. Category Filter pills
     var pillAll = document.querySelector('.home-cat-tab[data-cat="all"] span, .category-pill[data-cat="all"] span');
     if (pillAll && dict.allTools) pillAll.textContent = dict.allTools;
     var pillLoans = document.querySelector('.home-cat-tab[data-cat="loans"] span, .category-pill[data-cat="loans"] span');
@@ -3777,14 +2531,42 @@
     var pillTax = document.querySelector('.home-cat-tab[data-cat="taxes"] span, .category-pill[data-cat="taxes"] span');
     if (pillTax && dict.taxesPill) pillTax.textContent = dict.taxesPill;
 
-    // Presets
+    // 4. Presets
     document.querySelectorAll('[id$="-presets"] > span:first-child').forEach(function(el) {
       if (dict.presets) el.textContent = dict.presets;
     });
 
-    // Footer & Data Wipe
+    // 5. Footer & Data Wipe
     var eraseBtn = document.getElementById('privacy-data-wipe-btn');
     if (eraseBtn && dict.eraseData) eraseBtn.textContent = dict.eraseData;
+
+    // 6. Active Calculator Title & Description
+    var currentPath = window.location.pathname.replace(/^\/|\/$/g, '') || 'home';
+    if (currentPath === 'sip') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.sipTitle) h1.textContent = dict.sipTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.sipDesc) desc.textContent = dict.sipDesc;
+    } else if (currentPath === 'emi') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.emiTitle) h1.textContent = dict.emiTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.emiDesc) desc.textContent = dict.emiDesc;
+    } else if (currentPath === 'mortgage') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.mortgageTitle) h1.textContent = dict.mortgageTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.mortgageDesc) desc.textContent = dict.mortgageDesc;
+    } else if (currentPath === 'compound-interest') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.ciTitle) h1.textContent = dict.ciTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.ciDesc) desc.textContent = dict.ciDesc;
+    } else if (currentPath === 'tax-discount') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.taxTitle) h1.textContent = dict.taxTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.taxDesc) desc.textContent = dict.taxDesc;
+    } else if (currentPath === 'tip-split') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.tipTitle) h1.textContent = dict.tipTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.tipDesc) desc.textContent = dict.tipDesc;
+    } else if (currentPath === 'fuel-cost') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.fuelTitle) h1.textContent = dict.fuelTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.fuelDesc) desc.textContent = dict.fuelDesc;
+    } else if (currentPath === 'time-duration') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.timeTitle) h1.textContent = dict.timeTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.timeDesc) desc.textContent = dict.timeDesc;
+    }
 
     window.dispatchEvent(new CustomEvent('language-changed', { detail: { lang: lang, dir: dir } }));
   }
@@ -3876,7 +2658,6 @@
       }
     }
 
-    // Trigger button clicks
     document.querySelectorAll('.search-bar-trigger').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -3884,30 +2665,26 @@
       });
     });
 
-    // Close button
     if (closeBtn) closeBtn.addEventListener('click', function(e) { e.preventDefault(); closeSearch(); });
 
-    // Close on backdrop click
     if (searchDialog) {
       searchDialog.addEventListener('click', function(e) {
         if (e.target === searchDialog) closeSearch();
       });
     }
 
-    // Live search input
     if (searchInput) {
       searchInput.addEventListener('input', function(e) {
         renderSearchResults(e.target.value);
       });
     }
 
-    // Keyboard Shortcuts: Ctrl+K / Cmd+K and Navigation
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
         e.preventDefault();
         if (searchDialog && searchDialog.hasAttribute('open')) {
           closeSearch();
-        } else {
+        }} else {
           openSearch();
         }
       } else if (e.key === 'Escape' && searchDialog && searchDialog.hasAttribute('open')) {
@@ -3948,7 +2725,34 @@
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  // 5. Embed Modal Controller
+  // 5. Interactive FAQ Accordion Controller
+  function initFaqAccordions() {
+    document.addEventListener('click', function(e) {
+      var header = e.target.closest('.faq-accordion-header');
+      if (header) {
+        e.preventDefault();
+        var item = header.closest('.faq-item');
+        var body = item ? item.querySelector('.faq-accordion-body') : null;
+        var chevron = header.querySelector('.faq-chevron');
+        if (body) {
+          var isHidden = body.classList.contains('hidden');
+          if (isHidden) {
+            body.classList.remove('hidden');
+            header.setAttribute('aria-expanded', 'true');
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+            if (item) item.classList.add('border-accent-primary');
+          } else {
+            body.classList.add('hidden');
+            header.setAttribute('aria-expanded', 'false');
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
+            if (item) item.classList.remove('border-accent-primary');
+          }
+        }
+      }
+    });
+  }
+
+  // 6. Embed Modal Controller
   function initEmbedModal() {
     var embedDialog = document.getElementById('embed-dialog');
     var embedBtn = document.getElementById('calc-embed-btn') || document.getElementById('header-embed-btn');
@@ -4004,7 +2808,7 @@
     }
   }
 
-  // 6. Theme Toggle Controller
+  // 7. Theme Toggle Controller
   function initThemeController() {
     var themeBtn = document.getElementById('theme-toggle-btn');
     var themeIcon = document.getElementById('theme-icon');
@@ -4036,7 +2840,7 @@
     updateThemeIcon();
   }
 
-  // 7. Privacy Wipe Controller
+  // 8. Privacy Wipe Controller
   function initPrivacyWipe() {
     var wipeBtn = document.getElementById('privacy-data-wipe-btn');
     if (wipeBtn) {
@@ -4052,7 +2856,7 @@
     }
   }
 
-  // 8. Main App Initialization
+  // 9. Main App Initialization
   function initApp() {
     var currSelect = document.getElementById('currency-selector');
     if (currSelect) {
@@ -4078,11 +2882,11 @@
     updateCurrencyDOM();
     updateLanguageDOM();
     initSearchModal();
+    initFaqAccordions();
     initEmbedModal();
     initThemeController();
     initPrivacyWipe();
 
-    // Share Button
     var shareBtn = document.getElementById('calc-share-btn');
     if (shareBtn) {
       shareBtn.addEventListener('click', function(e) {
@@ -4097,7 +2901,6 @@
       });
     }
 
-    // Print Button
     var printBtn = document.getElementById('calc-print-btn');
     if (printBtn) {
       printBtn.addEventListener('click', function(e) {
@@ -4115,6 +2918,5 @@
   }
 })();
 </script>
-
 </body>
 </html>
