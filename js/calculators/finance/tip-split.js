@@ -2,6 +2,7 @@
  * Tip & Bill Split Calculator
  */
 import { formatCurrency } from '../../utils/formatters.js';
+import { createDonutChart } from '../../utils/charts.js';
 
 export const tipSplitCalculator = {
   id: 'tip-split',
@@ -92,6 +93,12 @@ export const tipSplitCalculator = {
               <div class="result-subtext">Bill + Gratuity</div>
             </div>
           </div>
+
+          <!-- Donut Breakdown Chart -->
+          <div class="glass-card p-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-muted mb-3">Bill Breakdown</h4>
+            <div id="tip-chart-container"></div>
+          </div>
         </div>
       </div>
     `;
@@ -111,6 +118,7 @@ export const tipSplitCalculator = {
     const totalTipRes = container.querySelector('#tip-total-amt-res');
     const perPersonTip = container.querySelector('#tip-per-person-tip');
     const grandTotalRes = container.querySelector('#tip-grand-total-res');
+    const chartContainer = container.querySelector('#tip-chart-container');
 
     function calculate() {
       const bill = Math.max(0, parseFloat(billInput.value) || 0);
@@ -138,6 +146,13 @@ export const tipSplitCalculator = {
       totalTipRes.textContent = formatCurrency(tipAmt);
       perPersonTip.textContent = `${formatCurrency(perPersonTipAmt)} tip / person`;
       grandTotalRes.textContent = formatCurrency(grandTotal);
+
+      if (chartContainer) {
+        chartContainer.innerHTML = createDonutChart([
+          { label: 'Base Bill Subtotal', value: bill, color: '#3b82f6' },
+          { label: 'Total Gratuity (Tip)', value: tipAmt, color: '#10b981' }
+        ], 135);
+      }
     }
 
     container.querySelectorAll('.tip-preset').forEach(btn => {

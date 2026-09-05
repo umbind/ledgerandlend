@@ -2,6 +2,7 @@
  * Sales Tax, GST & Discount Calculator
  */
 import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatters.js';
+import { createDonutChart } from '../../utils/charts.js';
 
 export const taxDiscountCalculator = {
   id: 'tax-discount',
@@ -98,6 +99,12 @@ export const taxDiscountCalculator = {
             </div>
           </div>
 
+          <!-- Donut Breakdown Chart -->
+          <div class="glass-card p-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-muted mb-3">Price & Tax Composition</h4>
+            <div id="td-chart-container"></div>
+          </div>
+
           <div class="glass-card p-4">
             <h4 class="text-xs font-bold uppercase tracking-wider text-muted mb-3">Itemized Summary</h4>
             <div class="space-y-2 text-xs" id="td-itemized-summary"></div>
@@ -122,6 +129,7 @@ export const taxDiscountCalculator = {
     const pretaxLabel = container.querySelector('#pretax-label');
     const pretaxRes = container.querySelector('#td-pretax-res');
     const taxAmtRes = container.querySelector('#td-tax-amt-res');
+    const chartContainer = container.querySelector('#td-chart-container');
     const itemizedSummary = container.querySelector('#td-itemized-summary');
 
     function calculate() {
@@ -148,6 +156,14 @@ export const taxDiscountCalculator = {
           ? `You save ${formatCurrency(totalDiscountAmt)} (${totalDiscountPct.toFixed(1)}% total discount)`
           : `No discount applied`;
 
+        if (chartContainer) {
+          chartContainer.innerHTML = createDonutChart([
+            { label: 'Discounted Price', value: priceAfterD2, color: '#10b981' },
+            { label: 'Tax Amount', value: taxAmount, color: '#f59e0b' },
+            { label: 'Total Discount Savings', value: totalDiscountAmt, color: '#3b82f6' }
+          ], 135);
+        }
+
         itemizedSummary.innerHTML = `
           <div class="flex justify-between py-1 border-b border-subtle"><span>Original Price:</span><span class="font-mono">${formatCurrency(price)}</span></div>
           ${d1 > 0 ? `<div class="flex justify-between py-1 border-b border-subtle text-accent-emerald"><span>Discount (${d1}%):</span><span class="font-mono">-${formatCurrency(price * (d1 / 100))}</span></div>` : ''}
@@ -165,6 +181,13 @@ export const taxDiscountCalculator = {
         pretaxRes.textContent = formatCurrency(price);
         taxAmtRes.textContent = formatCurrency(taxAmount);
         savingsPill.textContent = `Extracted from gross amount of ${formatCurrency(price)}`;
+
+        if (chartContainer) {
+          chartContainer.innerHTML = createDonutChart([
+            { label: 'Pre-Tax Base Price', value: preTax, color: '#10b981' },
+            { label: 'Tax Content', value: taxAmount, color: '#f59e0b' }
+          ], 135);
+        }
 
         itemizedSummary.innerHTML = `
           <div class="flex justify-between py-1 border-b border-subtle"><span>Gross Total (Tax-Included):</span><span class="font-mono font-bold">${formatCurrency(price)}</span></div>

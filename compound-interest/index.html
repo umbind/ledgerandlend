@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Time & Shift Wage Calculator | Ledger & Lend</title>
-  <meta name="description" content="Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.">
-  <link rel="canonical" href="https://ledgerandlend.netlify.app/time-duration/">
+  <title>Compound Interest & Wealth Calculator | Ledger & Lend</title>
+  <meta name="description" content="Calculate compound interest growth, annual compounding returns, and future portfolio value over time.">
+  <link rel="canonical" href="https://ledgerandlend.netlify.app/compound-interest/">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#3b82f6">
 
@@ -52,17 +52,17 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "@id": "https://ledgerandlend.netlify.app/time-duration/#webapp",
-      "name": "Time & Shift Wage Calculator",
-      "url": "https://ledgerandlend.netlify.app/time-duration/",
-      "description": "Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.",
+      "@id": "https://ledgerandlend.netlify.app/compound-interest/#webapp",
+      "name": "Compound Interest & Wealth Calculator",
+      "url": "https://ledgerandlend.netlify.app/compound-interest/",
+      "description": "Calculate compound interest growth, annual compounding returns, and future portfolio value over time.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript. Requires HTML5."
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://ledgerandlend.netlify.app/time-duration/#breadcrumb",
+      "@id": "https://ledgerandlend.netlify.app/compound-interest/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -73,29 +73,29 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Time & Shift Wage Calculator",
-          "item": "https://ledgerandlend.netlify.app/time-duration/"
+          "name": "Compound Interest & Wealth Calculator",
+          "item": "https://ledgerandlend.netlify.app/compound-interest/"
         }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://ledgerandlend.netlify.app/time-duration/#faq",
+      "@id": "https://ledgerandlend.netlify.app/compound-interest/#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How are decimal billable hours calculated?",
+          "name": "What is the difference between simple and compound interest?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Total net minutes worked (excluding unpaid breaks) are divided by 60 to give the exact decimal value for payroll."
+            "text": "Simple interest calculates interest solely on initial principal, while compound interest earns interest on both principal and accumulated interest."
           }
         },
         {
           "@type": "Question",
-          "name": "Does this calculator support overnight work shifts?",
+          "name": "How often should interest be compounded?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. If shift end time occurs earlier in the clock than start time, overnight 24-hour rollover is automatically calculated."
+            "text": "More frequent compounding periods (e.g. monthly or daily) yield slightly higher annual percentage yields (APY) than annual compounding."
           }
         }
       ]
@@ -185,16 +185,16 @@
     <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-subtle">
       <div class="flex items-start gap-4">
         <div class="w-12 h-12 rounded-2xl gradient-finance flex items-center justify-center shrink-0 shadow-lg text-white" aria-hidden="true">
-          <i data-lucide="clock" class="w-6 h-6"></i>
+          <i data-lucide="piggy-bank" class="w-6 h-6"></i>
         </div>
         <div>
           <nav aria-label="Breadcrumbs" class="flex items-center gap-1.5 text-xs text-muted mb-1">
             <a href="/" class="hover:text-primary transition-colors">Home</a>
             <i data-lucide="chevron-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span class="text-accent-primary font-semibold">Time & Shift Wage Calculator</span>
+            <span class="text-accent-primary font-semibold">Compound Interest & Wealth Calculator</span>
           </nav>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">Time & Shift Wage Calculator</h1>
-          <p class="text-xs sm:text-sm text-secondary mt-1">Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.</p>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">Compound Interest & Wealth Calculator</h1>
+          <p class="text-xs sm:text-sm text-secondary mt-1">Calculate compound interest growth, annual compounding returns, and future portfolio value over time.</p>
         </div>
       </div>
 
@@ -227,47 +227,69 @@
         <div class="lg:col-span-6 space-y-4">
           <div class="glass-card p-5">
             <h2 class="text-base font-bold text-primary mb-4 flex items-center gap-2">
-              <i data-lucide="clock" class="w-4 h-4 text-accent-primary"></i>
-              <span>Shift Timestamps</span>
+              <i data-lucide="piggy-bank" class="w-4 h-4 text-accent-emerald"></i>
+              <span>Principal &amp; Contribution Inputs</span>
             </h2>
-            <div class="grid grid-cols-2 gap-3 mb-3">
-              <div class="calc-input-group">
-                <div class="calc-label"><label for="time-start">Shift Start Time</label></div>
-                <input type="time" id="time-start" aria-label="Shift Start Time" class="calc-input font-bold" value="09:00" onchange="calculateTimeDuration()">
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <label for="ci-principal">Initial Principal Balance</label>
+                <span class="font-mono text-accent-emerald font-bold" id="ci-principal-display">$10,000</span>
               </div>
-              <div class="calc-input-group">
-                <div class="calc-label"><label for="time-end">Shift End Time</label></div>
-                <input type="time" id="time-end" aria-label="Shift End Time" class="calc-input font-bold" value="17:30" onchange="calculateTimeDuration()">
+              <div class="calc-input-wrapper has-prefix">
+                <span class="calc-input-prefix font-bold" aria-hidden="true">$</span>
+                <input type="number" id="ci-principal" aria-label="Initial Principal Balance" class="calc-input" value="10000" min="0" max="10000000" step="500" oninput="calculateCI()">
+              </div>
+            </div>
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <label for="ci-addition">Monthly Addition</label>
+                <span class="font-mono text-accent-emerald font-bold" id="ci-addition-display">$300</span>
+              </div>
+              <div class="calc-input-wrapper has-prefix">
+                <span class="calc-input-prefix font-bold" aria-hidden="true">$</span>
+                <input type="number" id="ci-addition" aria-label="Monthly Additional Deposit" class="calc-input" value="300" min="0" max="1000000" step="50" oninput="calculateCI()">
               </div>
             </div>
             <div class="grid grid-cols-2 gap-3">
               <div class="calc-input-group">
-                <div class="calc-label"><label for="time-break">Unpaid Break (Mins)</label></div>
-                <input type="number" id="time-break" aria-label="Unpaid Break Duration in Minutes" class="calc-input" value="30" min="0" max="240" step="5" oninput="calculateTimeDuration()">
+                <div class="calc-label"><label for="ci-rate">Annual Interest (%)</label></div>
+                <div class="calc-input-wrapper has-suffix">
+                  <input type="number" id="ci-rate" aria-label="Annual Compound Interest Rate" class="calc-input" value="8" min="0.1" max="40" step="0.5" oninput="calculateCI()">
+                  <span class="calc-input-suffix font-bold" aria-hidden="true">%</span>
+                </div>
               </div>
               <div class="calc-input-group">
-                <div class="calc-label"><label for="time-rate">Hourly Rate ($)</label></div>
-                <div class="calc-input-wrapper has-prefix">
-                  <span class="calc-input-prefix font-bold" aria-hidden="true">$</span>
-                  <input type="number" id="time-rate" aria-label="Hourly Pay Rate" class="calc-input" value="25.00" min="0" max="1000" step="0.5" oninput="calculateTimeDuration()">
+                <div class="calc-label"><label for="ci-years">Time Period (Years)</label></div>
+                <div class="calc-input-wrapper has-suffix">
+                  <input type="number" id="ci-years" aria-label="Investment Period in Years" class="calc-input" value="10" min="1" max="50" step="1" oninput="calculateCI()">
+                  <span class="calc-input-suffix font-bold" aria-hidden="true">Yrs</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="lg:col-span-6 space-y-4">
-          <div class="result-card success group cursor-pointer" id="copyable-time-card" title="Click to copy Shift Duration" tabindex="0" role="button" aria-label="Click to copy Net Payable Work Duration">
+          <div class="result-card violet group cursor-pointer" id="copyable-ci-card" title="Click to copy Future Value" tabindex="0" role="button" aria-label="Click to copy Total Future Value">
             <div class="flex items-center justify-between">
-              <div class="result-label">Net Payable Work Duration</div>
-              <span class="badge badge-health">Timesheet Ready</span>
+              <div class="result-label">Total Future Value</div>
+              <span class="text-[10px] font-bold text-muted group-hover:text-accent-violet flex items-center gap-1">
+                <i data-lucide="copy" class="w-3 h-3"></i> Click to Copy
+              </span>
             </div>
-            <div class="result-value text-accent-emerald text-3xl sm:text-4xl font-mono font-extrabold" id="time-duration-res">8 hrs 0 mins</div>
-            <div class="result-subtext" id="time-decimal-res">8.00 decimal billable hours</div>
+            <div class="result-value text-accent-violet text-3xl sm:text-4xl font-mono font-extrabold" id="ci-future-val">$77,080</div>
+            <div class="result-subtext">Compounded portfolio balance</div>
           </div>
-          <div class="result-card">
-            <div class="result-label">Gross Shift Pay</div>
-            <div class="result-value text-accent-primary text-xl font-mono font-bold" id="time-pay-res">$200.00</div>
-            <div class="result-subtext">Earnings for this shift</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="result-card">
+              <div class="result-label">Total Principal Invested</div>
+              <div class="result-value text-accent-primary text-xl font-mono font-bold" id="ci-total-principal">$46,000</div>
+              <div class="result-subtext">Initial + Monthly deposits</div>
+            </div>
+            <div class="result-card success">
+              <div class="result-label">Total Compound Interest</div>
+              <div class="result-value text-accent-emerald text-xl font-mono font-bold" id="ci-total-interest">$31,080</div>
+              <div class="result-subtext" id="ci-interest-share">67.6% extra growth</div>
+            </div>
           </div>
         </div>
       </div>
@@ -339,7 +361,7 @@
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
 
-        <a href="/compound-interest/" aria-label="Open Compound Interest & Wealth Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="investing">
+        <a href="/compound-interest/" aria-label="Open Compound Interest & Wealth Calculator" class="quick-calc-card border-accent-primary bg-tertiary text-primary shadow-sm ring-1 ring-accent-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="investing">
           <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
             <i data-lucide="piggy-bank" class="w-4 h-4 text-white"></i>
           </div>
@@ -383,7 +405,7 @@
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
 
-        <a href="/time-duration/" aria-label="Open Time & Shift Wage Calculator" class="quick-calc-card border-accent-primary bg-tertiary text-primary shadow-sm ring-1 ring-accent-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
+        <a href="/time-duration/" aria-label="Open Time & Shift Wage Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
           <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
             <i data-lucide="clock" class="w-4 h-4 text-white"></i>
           </div>
@@ -547,47 +569,50 @@
 <script>
 (function() {
   function getSym() { return (window.getGlobalCurrencySymbol ? window.getGlobalCurrencySymbol() : '$'); }
-  function formatCurrency(n) { return getSym() + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function formatCurrency(n) { return getSym() + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
 
-  function calculateTimeDuration() {
-    var start = document.getElementById('time-start')?.value || '09:00';
-    var end = document.getElementById('time-end')?.value || '17:30';
-    var brk = parseFloat(document.getElementById('time-break')?.value) || 0;
-    var rate = parseFloat(document.getElementById('time-rate')?.value) || 25.0;
+  function calculateCI() {
+    var p = parseFloat(document.getElementById('ci-principal')?.value) || 0;
+    var pmt = parseFloat(document.getElementById('ci-addition')?.value) || 0;
+    var rAnnual = parseFloat(document.getElementById('ci-rate')?.value) || 8;
+    var y = parseFloat(document.getElementById('ci-years')?.value) || 10;
+    var n = 12;
 
-    var sParts = start.split(':');
-    var eParts = end.split(':');
-    var sMins = parseInt(sParts[0], 10) * 60 + parseInt(sParts[1], 10);
-    var eMins = parseInt(eParts[0], 10) * 60 + parseInt(eParts[1], 10);
+    var r = (rAnnual / 100.0) / n;
+    var totalPeriods = y * n;
+    var fvPrincipal = p * Math.pow(1 + r, totalPeriods);
+    var fvAdditions = r > 0 ? pmt * ((Math.pow(1 + r, totalPeriods) - 1) / r) : pmt * totalPeriods;
 
-    if (eMins < sMins) eMins += 24 * 60;
-    var netMins = Math.max(0, (eMins - sMins) - brk);
-    var hrs = Math.floor(netMins / 60);
-    var mins = netMins % 60;
-    var decimalHrs = netMins / 60.0;
-    var pay = decimalHrs * rate;
+    var futureValue = fvPrincipal + fvAdditions;
+    var totalPrincipalInvested = p + (pmt * 12 * y);
+    var totalInterest = Math.max(0, futureValue - totalPrincipalInvested);
 
-    var durEl = document.getElementById('time-duration-res');
-    var decEl = document.getElementById('time-decimal-res');
-    var payEl = document.getElementById('time-pay-res');
+    var pDisp = document.getElementById('ci-principal-display');
+    var aDisp = document.getElementById('ci-addition-display');
+    if (pDisp) pDisp.textContent = formatCurrency(p);
+    if (aDisp) aDisp.textContent = formatCurrency(pmt);
 
-    if (durEl) durEl.textContent = hrs + ' hrs ' + mins + ' mins';
-    if (decEl) decEl.textContent = decimalHrs.toFixed(2) + ' decimal billable hours';
-    if (payEl) payEl.textContent = formatCurrency(pay);
+    var fvEl = document.getElementById('ci-future-val');
+    var tpEl = document.getElementById('ci-total-principal');
+    var tiEl = document.getElementById('ci-total-interest');
+
+    if (fvEl) fvEl.textContent = formatCurrency(futureValue);
+    if (tpEl) tpEl.textContent = formatCurrency(totalPrincipalInvested);
+    if (tiEl) tiEl.textContent = formatCurrency(totalInterest);
   }
 
   function bindEvents() {
     var stage = document.getElementById('calc-mount') || document.body;
     stage.querySelectorAll('input').forEach(function(el) {
-      el.addEventListener('input', calculateTimeDuration);
-      el.addEventListener('change', calculateTimeDuration);
+      el.addEventListener('input', calculateCI);
+      el.addEventListener('change', calculateCI);
     });
   }
 
-  window.calculateTimeDuration = calculateTimeDuration;
-  window.addEventListener('currency-changed', calculateTimeDuration);
-  window.addEventListener('DOMContentLoaded', function() { bindEvents(); calculateTimeDuration(); });
-  if (document.readyState === 'complete' || document.readyState === 'interactive') { bindEvents(); calculateTimeDuration(); }
+  window.calculateCI = calculateCI;
+  window.addEventListener('currency-changed', calculateCI);
+  window.addEventListener('DOMContentLoaded', function() { bindEvents(); calculateCI(); });
+  if (document.readyState === 'complete' || document.readyState === 'interactive') { bindEvents(); calculateCI(); }
 })();
 </script>
 

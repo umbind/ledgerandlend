@@ -1,334 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Homepage & Master Tool Suite -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ledgerandlend.netlify.app/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ledgerandlend.netlify.app/#lang=en" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://ledgerandlend.netlify.app/#lang=es" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ledgerandlend.netlify.app/#lang=fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://ledgerandlend.netlify.app/#lang=de" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://ledgerandlend.netlify.app/#lang=hi" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://ledgerandlend.netlify.app/#lang=ja" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ledgerandlend.netlify.app/#lang=pt" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://ledgerandlend.netlify.app/#lang=zh" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://ledgerandlend.netlify.app/#lang=ar" />
   </url>
-
-  <!-- Loan & EMI Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/emi/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#emi</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <!-- SIP & Compound Interest Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/sip/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#sip</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <!-- Mortgage & Property Loan Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/mortgage/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ledgerandlend.netlify.app/#mortgage</loc>
+    <loc>https://ledgerandlend.netlify.app/compound-interest/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
-  <!-- Sales Tax & Discount Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/tax-discount/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#tax-discount</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Tip & Bill Split Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/tip-split/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#tip-split</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- BMI & Healthy Weight Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/bmi/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#bmi</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <!-- Ideal Body Weight (IBW) Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/ideal-weight/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#ideal-weight</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Waist-to-Hip Ratio Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/waist-hip/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#waist-hip</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Target Heart Rate Zones Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/target-heart-rate/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#target-heart-rate</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Macronutrient Diet Split Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/macro-calculator/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#macro-calculator</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- TDEE & Daily Calorie Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/calorie-tdee/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#calorie-tdee</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Body Fat Percentage Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/body-fat/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#body-fat</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Daily Water Intake Hydration Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/water-intake/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#water-intake</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Pregnancy Due Date & Gestational Age Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/pregnancy-due-date/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#pregnancy-due-date</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <!-- Body Surface Area (BSA) Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/body-surface-area/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#body-surface-area</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Mean Arterial Pressure (MAP) Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/mean-arterial-pressure/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#mean-arterial-pressure</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Pediatric & Weight-Based Dosage Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/dosage-calculator/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#dosage-calculator</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- eGFR Kidney Function (CKD-EPI 2021) Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/egfr-kidney/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#egfr-kidney</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <!-- Scientific & Engineering Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/scientific/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#scientific</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- 4-in-1 Percentage Suite Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/percentage/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#percentage</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Universal Multi-Unit Converter -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/unit-converter/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#unit-converter</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Exact Age & Date Difference Calculator -->
-  <url>
-    <loc>https://ledgerandlend.netlify.app/age-date/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#age-date</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Fuel Cost & Road Trip Economy Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/fuel-cost/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#fuel-cost</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- Time & Shift Duration Calculator -->
   <url>
     <loc>https://ledgerandlend.netlify.app/time-duration/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ledgerandlend.netlify.app/#time-duration</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -27,6 +27,12 @@ export function getGlobalCurrency() {
   return (saved && currencies[saved]) ? saved : 'USD';
 }
 
+export function getGlobalCurrencySymbol(currencyCode = null) {
+  const code = currencyCode || getGlobalCurrency();
+  const curr = currencies[code] || currencies.USD;
+  return curr.symbol || '$';
+}
+
 export function formatCurrency(amount, currencyCode = null, maxDecimals = 2) {
   const code = currencyCode || getGlobalCurrency();
   const curr = currencies[code] || currencies.USD;

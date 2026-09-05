@@ -14,7 +14,7 @@
   
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-muted: #64748b;
   
   --accent-primary: #3b82f6;
   --accent-primary-hover: #2563eb;
@@ -53,7 +53,7 @@
   
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --text-muted: #64748b;
   
   --accent-primary-light: rgba(59, 130, 246, 0.15);
   --accent-emerald-light: rgba(16, 185, 129, 0.15);
@@ -510,6 +510,60 @@ select option, .calc-select option, #language-selector option, #currency-selecto
   font-weight: 700;
 }
 
+/* Category Filter Pills */
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  border-radius: 9999px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.category-pill:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.category-pill.active {
+  background-color: var(--accent-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-primary) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+}
+
+.category-pill.active i {
+  color: #ffffff !important;
+}
+
+/* Calculator Grid Card Filtering */
+.calc-card-item.is-hidden,
+.calc-card-item.hidden,
+.calc-card-item[data-visible="false"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.calc-card-item.is-visible,
+.calc-card-item[data-visible="true"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Breadcrumbs Navigation Bar */
 .breadcrumb-bar {
   display: inline-flex;
@@ -764,4 +818,52 @@ select option, .calc-select option, #language-selector option, #currency-selecto
   background-color: rgba(14, 165, 233, 0.2);
   color: #38bdf8;
   border-color: rgba(14, 165, 233, 0.4);
+}
+
+
+/* ==========================================================================
+   Zero-CLS Protective Min-Height & Pre-Reserved Layout Sizing
+   ========================================================================== */
+#calc-mount {
+  min-height: 480px;
+  contain: layout style;
+}
+
+.chart-container, [id$="-chart-container"], [id$="-chart-wrapper"] {
+  min-height: 145px;
+}
+
+#calculator-selector-grid {
+  min-height: 160px;
+}
+
+#knowledge-articles-grid {
+  min-height: 140px;
+}
+
+.result-card {
+  min-height: 110px;
+}
+
+.glass-card {
+  contain: paint;
+}
+
+/* Accessibility Focus Ring Styles */
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

@@ -3,7 +3,7 @@
  * Comprehensive Offline Pre-caching, Stale Cache Cleanup & Network-Resilient Strategies
  */
 
-const CACHE_NAME = 'ledger-lend-v3.2';
+const CACHE_NAME = 'ledger-lend-v11.0-complete-emi-ui';
 
 const STATIC_ASSETS = [
   './',
@@ -82,30 +82,19 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // For same-origin static assets: Cache First, Network Fallback
+  // For same-origin static assets: Network First, Cache Fallback (Ensures fresh code on normal refresh)
   if (url.origin === location.origin) {
     event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          // Fetch update in background for next time (Stale-while-revalidate)
-          fetch(event.request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, networkResponse);
-              });
-            }
-          }).catch(() => {/* Offline fallback ignore */});
-          return cachedResponse;
+      fetch(event.request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
         }
-        return fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
-          }
-          return networkResponse;
-        });
+        return networkResponse;
+      }).catch(() => {
+        return caches.match(event.request);
       })
     );
     return;

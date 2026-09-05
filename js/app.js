@@ -3,35 +3,13 @@
  * With Instant i18n, Deep Synonym Search, Affiliate Engine, Embed Widget, Breadcrumbs & Lead Capture
  */
 
-// Import Finance Calculators
+// Pure Financial Calculators Suite
 import { emiCalculator } from './calculators/finance/emi.js';
 import { sipCalculator } from './calculators/finance/sip.js';
 import { mortgageCalculator } from './calculators/finance/mortgage.js';
+import { compoundInterestCalculator } from './calculators/finance/compound-interest.js';
 import { taxDiscountCalculator } from './calculators/finance/tax-discount.js';
 import { tipSplitCalculator } from './calculators/finance/tip-split.js';
-
-// Import Health & Fitness Calculators
-import { bmiCalculator } from './calculators/health/bmi.js';
-import { idealWeightCalculator } from './calculators/health/ideal-weight.js';
-import { waistHipCalculator } from './calculators/health/waist-hip.js';
-import { targetHeartRateCalculator } from './calculators/health/target-heart-rate.js';
-import { macroCalculator } from './calculators/health/macro-calculator.js';
-import { calorieTdeeCalculator } from './calculators/health/calorie-tdee.js';
-import { bodyFatCalculator } from './calculators/health/body-fat.js';
-import { waterIntakeCalculator } from './calculators/health/water-intake.js';
-
-// Import Clinical & Medical Calculators
-import { pregnancyCalculator } from './calculators/medical/pregnancy-due-date.js';
-import { bsaCalculator } from './calculators/medical/body-surface-area.js';
-import { mapCalculator } from './calculators/medical/mean-arterial-pressure.js';
-import { dosageCalculator } from './calculators/medical/dosage-calculator.js';
-import { egfrCalculator } from './calculators/medical/egfr-kidney.js';
-
-// Import Math & Utility Calculators
-import { scientificCalculator } from './calculators/math/scientific.js';
-import { percentageCalculator } from './calculators/math/percentage.js';
-import { unitConverter } from './calculators/math/unit-converter.js';
-import { ageDateCalculator } from './calculators/math/age-date.js';
 import { fuelCostCalculator } from './calculators/math/fuel-cost.js';
 import { timeDurationCalculator } from './calculators/math/time-duration.js';
 
@@ -47,32 +25,12 @@ import { parseShareUrl, generateShareUrl, downloadCsvFile, generateMarkdownSumma
 import { diagnosticSuite } from './data/diagnosticRunner.js';
 
 const allCalculators = [
-  // Finance
   emiCalculator,
   sipCalculator,
   mortgageCalculator,
+  compoundInterestCalculator,
   taxDiscountCalculator,
   tipSplitCalculator,
-  // Health
-  bmiCalculator,
-  idealWeightCalculator,
-  waistHipCalculator,
-  targetHeartRateCalculator,
-  macroCalculator,
-  calorieTdeeCalculator,
-  bodyFatCalculator,
-  waterIntakeCalculator,
-    // Clinical & Medical Suite
-  pregnancyCalculator,
-  bsaCalculator,
-  mapCalculator,
-  dosageCalculator,
-  egfrCalculator,
-  // Math & Utilities
-  scientificCalculator,
-  percentageCalculator,
-  unitConverter,
-  ageDateCalculator,
   fuelCostCalculator,
   timeDurationCalculator
 ];
@@ -85,16 +43,58 @@ class App {
     this.init();
   }
 
-  init() {
-    this.initTheme();
-    this.initLanguage();
-    this.initCurrency();
-    this.renderCategoryPills();
-    this.renderCalculatorGrid();
-    this.renderFavoritesChips();
-    this.setupEventListeners();
+  safeExecute(fn, name) {
+    try {
+      fn();
+    } catch (e) {
+      console.warn(`[CalcApp] ${name} initialized with warning:`, e);
+    }
+  }
 
-    // Delegated click handler for calculator cards (handles statically pre-rendered links)
+  init() {
+    this.safeExecute(() => this.initTheme(), 'Theme');
+
+    // Declared language-changed listener early
+    window.addEventListener('language-changed', () => {
+      this.safeExecute(() => this.applyLanguageTranslations(), 'applyLanguageTranslations');
+      this.safeExecute(() => this.renderCategoryPills(), 'renderCategoryPills');
+      this.safeExecute(() => this.renderCalculatorGrid(), 'renderCalculatorGrid');
+      this.safeExecute(() => this.renderFavoritesChips(), 'renderFavoritesChips');
+      if (this.currentCalc) {
+        this.safeExecute(() => this.switchCalculator(this.currentCalc.id, false), 'switchCalculator');
+      }
+      this.safeExecute(() => this.knowledge?.renderGlobalKnowledgeSection(), 'renderGlobalKnowledgeSection');
+      this.safeExecute(() => this.knowledge?.renderGlobalFaqSection(), 'renderGlobalFaqSection');
+      this.safeExecute(() => this.renderHistoryDrawer(), 'renderHistoryDrawer');
+    });
+
+    this.safeExecute(() => { this.knowledge = new KnowledgeComponent(this); }, 'KnowledgeComponent');
+    this.safeExecute(() => this.initLanguage(), 'Language');
+    this.safeExecute(() => this.initCurrency(), 'Currency');
+    this.safeExecute(() => this.renderCategoryPills(), 'CategoryPills');
+    this.safeExecute(() => this.renderCalculatorGrid(), 'CalculatorGrid');
+    this.safeExecute(() => this.renderFavoritesChips(), 'FavoritesChips');
+    this.safeExecute(() => this.setupEventListeners(), 'EventListeners');
+
+    // Delegated click handler for search bar trigger
+    document.addEventListener('click', (e) => {
+      const searchBtn = e.target.closest('.search-bar-trigger');
+      if (searchBtn) {
+        e.preventDefault();
+        const searchModal = document.getElementById('search-modal');
+        const searchInput = document.getElementById('search-modal-input');
+        if (searchModal) {
+          this.openModal(searchModal);
+          if (searchInput) {
+            searchInput.value = '';
+            this.renderSearchResults('');
+            setTimeout(() => searchInput.focus(), 100);
+          }
+        }
+      }
+    });
+
+    // Delegated click handler for calculator cards
     document.addEventListener('click', (e) => {
       const card = e.target.closest('.calc-card-item');
       if (card && card.dataset.id) {
@@ -109,18 +109,62 @@ class App {
       }
     });
 
-    // Delegated click handler for Category Pills
+    // Delegated click handler for Category Pills (Instant DOM Filtering & Highlighting)
     document.addEventListener('click', (e) => {
       const catBtn = e.target.closest('.category-pill');
-      if (catBtn && catBtn.dataset.cat) {
+      if (catBtn) {
+        const cat = catBtn.getAttribute('data-cat') || catBtn.dataset.cat;
+        if (!cat) return;
+
         e.preventDefault();
-        const container = document.getElementById('category-pills-container');
-        if (container) {
-          container.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+        e.stopPropagation();
+        this.activeCategory = cat;
+
+        // 1. Update active styling across all pills immediately
+        document.querySelectorAll('.category-pill').forEach(b => {
+          const bCat = b.getAttribute('data-cat') || b.dataset.cat;
+          if (bCat === cat) {
+            b.classList.add('active');
+            b.style.cssText = 'background-color: #3b82f6 !important; color: #ffffff !important; border-color: #3b82f6 !important; font-weight: 700 !important; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;';
+          } else {
+            b.classList.remove('active');
+            b.style.cssText = '';
+          }
+        });
+
+        // 2. Filter static DOM cards directly for zero latency
+        const cards = document.querySelectorAll('#calculator-selector-grid .calc-card-item');
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const cardCat = card.getAttribute('data-category') || card.dataset.category;
+          if (cat === 'all' || cardCat === cat) {
+            card.classList.remove('hidden', 'is-hidden');
+            card.classList.add('is-visible');
+            card.setAttribute('data-visible', 'true');
+            card.style.cssText = 'display: flex !important;';
+            visibleCount++;
+          } else {
+            card.classList.remove('is-visible');
+            card.classList.add('hidden', 'is-hidden');
+            card.setAttribute('data-visible', 'false');
+            card.style.cssText = 'display: none !important;';
+          }
+        });
+
+        // 3. Update title and count headers
+        const titleEl = document.getElementById('grid-category-title');
+        const countEl = document.getElementById('grid-tool-count');
+        const catLabels = { all: 'All Calculators', finance: 'Finance & Loans', health: 'Health & Fitness', medical: 'Clinical & Medical', math: 'Math & Utilities' };
+        if (titleEl) titleEl.textContent = catLabels[cat] || 'Calculators';
+        if (countEl) countEl.textContent = `${visibleCount} tools available`;
+
+        // 4. Smooth scroll down to selector grid if clicked from another section
+        const section = document.getElementById('top-tool-selector-section');
+        if (section) {
+          const yOffset = -70;
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
-        catBtn.classList.add('active');
-        this.activeCategory = catBtn.dataset.cat;
-        this.renderCalculatorGrid();
       }
     });
 
@@ -134,15 +178,17 @@ class App {
           const ans = item.querySelector('.faq-answer');
           const arrow = item.querySelector('.faq-arrow');
           if (ans) {
-            const isOpen = !ans.classList.contains('hidden');
-            if (isOpen) {
-              ans.classList.add('hidden');
-              if (arrow) arrow.style.transform = 'rotate(0deg)';
-              item.classList.remove('border-accent-primary');
-            } else {
+            const isHidden = ans.classList.contains('hidden') || ans.style.display === 'none' || getComputedStyle(ans).display === 'none';
+            if (isHidden) {
               ans.classList.remove('hidden');
+              ans.style.display = 'block';
               if (arrow) arrow.style.transform = 'rotate(180deg)';
               item.classList.add('border-accent-primary');
+            } else {
+              ans.classList.add('hidden');
+              ans.style.display = 'none';
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+              item.classList.remove('border-accent-primary');
             }
           }
         }
@@ -154,44 +200,60 @@ class App {
       const articleCard = e.target.closest('.article-card');
       if (articleCard && articleCard.dataset.id) {
         e.preventDefault();
-        if (this.knowledge) {
-          const article = this.knowledge.articles?.find(a => a.id === articleCard.dataset.id) || 
-                          { id: articleCard.dataset.id, title: articleCard.querySelector('h3')?.textContent || 'Guide', category: 'finance', readTime: '5 min read', content: '<p>Detailed educational content for this calculator guide.</p>' };
-          this.knowledge.openArticleModal(article);
-        }
+        const artId = articleCard.dataset.id;
+        import('./data/articles.js').then(mod => {
+          const articles = mod.getKnowledgeArticles();
+          const article = articles.find(a => a.id === artId) || {
+            id: artId,
+            title: articleCard.querySelector('h3')?.textContent?.trim() || 'Educational Guide',
+            category: 'finance',
+            readTime: '5 min read',
+            content: '<p>Comprehensive educational content and mathematics guide for this calculator.</p>'
+          };
+          this.knowledge?.openArticleModal(article);
+        }).catch(() => {
+          const fallbackArticle = {
+            id: artId,
+            title: articleCard.querySelector('h3')?.textContent?.trim() || 'Educational Guide',
+            category: 'finance',
+            readTime: '5 min read',
+            content: '<p>Comprehensive educational content and mathematics guide for this calculator.</p>'
+          };
+          this.knowledge?.openArticleModal(fallbackArticle);
+        });
       }
     });
 
-    this.setupLegalModal();
-    this.setupEmbedModal();
-    this.setupExportModal();
-    this.setupDiagnosticsModal();
-    this.setupOfflineDetection();
-    this.setupNewsletter();
-    this.setupBackToTop();
-    this.setupKeyboardShortcuts();
+    this.safeExecute(() => this.setupLegalModal(), 'LegalModal');
+    this.safeExecute(() => this.setupEmbedModal(), 'EmbedModal');
+    this.safeExecute(() => this.setupExportModal(), 'ExportModal');
+    this.safeExecute(() => this.setupDiagnosticsModal(), 'DiagnosticsModal');
+    this.safeExecute(() => this.setupOfflineDetection(), 'OfflineDetection');
+    this.safeExecute(() => this.setupNewsletter(), 'Newsletter');
+    this.safeExecute(() => this.setupBackToTop(), 'BackToTop');
+    this.safeExecute(() => this.setupLanguageWelcomeModal(), 'LanguageWelcomeModal');
+    this.safeExecute(() => this.setupPrivacyDataWipe(), 'PrivacyDataWipe');
+    this.safeExecute(() => this.setupKeyboardShortcuts(), 'KeyboardShortcuts');
 
-    this.knowledge = new KnowledgeComponent(this);
-
-    // Detect calculator from clean path (e.g. /emi/) or hash (e.g. #emi)
-    const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
-    const pathParts = rawPath.split('/');
-    const cleanPathId = pathParts[pathParts.length - 1];
-    const hash = window.location.hash.replace('#', '');
+    // Detect calculator from clean path (e.g. /sip/, /sip/index.html) or hash (e.g. #sip)
+    const pathSegments = window.location.pathname.toLowerCase().split('/').filter(Boolean);
+    const hash = window.location.hash.replace('#', '').toLowerCase();
     
     let initialCalcId = 'emi';
-    if (cleanPathId && allCalculators.some(c => c.id === cleanPathId)) {
-      initialCalcId = cleanPathId;
+    const matchedPathId = pathSegments.find(seg => allCalculators.some(c => c.id === seg));
+    if (matchedPathId) {
+      initialCalcId = matchedPathId;
     } else if (hash && allCalculators.some(c => c.id === hash)) {
       initialCalcId = hash;
     }
     
-    this.switchCalculator(initialCalcId, false);
+    this.safeExecute(() => this.switchCalculator(initialCalcId, false), 'InitialSwitchCalc');
 
     window.addEventListener('popstate', () => {
-      const p = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/').pop();
-      if (p && allCalculators.some(c => c.id === p)) {
-        this.switchCalculator(p, false);
+      const segs = window.location.pathname.toLowerCase().split('/').filter(Boolean);
+      const pId = segs.find(seg => allCalculators.some(c => c.id === seg));
+      if (pId) {
+        this.switchCalculator(pId, false);
       }
     });
 
@@ -299,29 +361,19 @@ class App {
     const container = document.getElementById('category-pills-container');
     if (!container) return;
 
-    const categories = [
-      { id: 'all', label: t('allTools'), icon: 'layout-grid' },
-      { id: 'finance', label: t('finance'), icon: 'landmark' },
-      { id: 'health', label: t('health'), icon: 'heart-pulse' },
-      { id: 'medical', label: t('medical') || 'Clinical & Medical', icon: 'stethoscope' },
-      { id: 'math', label: t('math'), icon: 'function-square' }
+        const categories = [
+      { id: 'all', label: 'All Financial', icon: 'layout-grid' },
+      { id: 'loans', label: 'Loans & Mortgages', icon: 'landmark' },
+      { id: 'investing', label: 'Investing & Wealth', icon: 'trending-up' },
+      { id: 'taxes', label: 'Taxes & Spending', icon: 'receipt' }
     ];
 
     container.innerHTML = categories.map(cat => `
-      <button class="category-pill ${cat.id === this.activeCategory ? 'active' : ''}" data-cat="${cat.id}">
+      <button type="button" class="category-pill ${cat.id === this.activeCategory ? 'active' : ''}" data-cat="${cat.id}">
         <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
-        <span>${cat.label}</span>
+        <span data-i18n="${cat.id === 'all' ? 'allTools' : cat.id}">${cat.label}</span>
       </button>
     `).join('');
-
-    container.querySelectorAll('.category-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        container.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.activeCategory = btn.dataset.cat;
-        this.renderCalculatorGrid();
-      });
-    });
 
     if (window.lucide) window.lucide.createIcons();
   }
@@ -332,9 +384,15 @@ class App {
     const titleEl = document.getElementById('grid-category-title');
     if (!grid) return;
 
+        const getToolCategory = (c) => {
+      if (['emi', 'mortgage'].includes(c.id)) return 'loans';
+      if (['sip', 'compound-interest'].includes(c.id)) return 'investing';
+      return 'taxes';
+    };
+
     const filtered = this.activeCategory === 'all'
       ? allCalculators
-      : allCalculators.filter(c => c.category === this.activeCategory);
+      : allCalculators.filter(c => getToolCategory(c) === this.activeCategory);
 
     if (countEl) countEl.textContent = `${filtered.length} tools available`;
     if (titleEl) {
@@ -694,14 +752,16 @@ class App {
     const closeSearchBtn = document.getElementById('close-search-btn');
 
     const openSearch = () => {
-      searchModal.classList.add('open');
-      searchInput.value = '';
-      this.renderSearchResults('');
-      setTimeout(() => searchInput.focus(), 100);
+      this.openModal(searchModal);
+      if (searchInput) {
+        searchInput.value = '';
+        this.renderSearchResults('');
+        setTimeout(() => searchInput.focus(), 100);
+      }
     };
 
     const closeSearch = () => {
-      searchModal.classList.remove('open');
+      this.closeModal(searchModal);
     };
 
     openSearchBtns.forEach(btn => btn.addEventListener('click', openSearch));
@@ -716,6 +776,20 @@ class App {
     });
   }
 
+  openModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
+    modal.classList.add('open');
+  }
+
+  closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.classList.add('hidden');
+    modal.style.display = 'none';
+  }
+
   setupLegalModal() {
     const modal = document.getElementById('legal-modal');
     const closeBtn = document.getElementById('close-legal-modal-btn');
@@ -724,9 +798,9 @@ class App {
     const updatedEl = document.getElementById('legal-modal-updated');
     const bodyEl = document.getElementById('legal-modal-body');
 
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+    closeBtn?.addEventListener('click', () => this.closeModal(modal));
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('open');
+      if (e.target === modal) this.closeModal(modal);
     });
 
     document.querySelectorAll('.legal-link').forEach(link => {
@@ -739,7 +813,7 @@ class App {
           badgeEl.textContent = doc.badge;
           updatedEl.textContent = `Last Updated: ${doc.lastUpdated}`;
           bodyEl.innerHTML = doc.content;
-          modal.classList.add('open');
+          this.openModal(modal);
           if (window.lucide) window.lucide.createIcons();
         }
       });
@@ -757,18 +831,18 @@ class App {
       const calcId = this.currentCalc?.id || 'emi';
       const embedUrl = `${window.location.origin}${window.location.pathname}#${calcId}`;
       textarea.value = `<iframe src="${embedUrl}" width="100%" height="700" frameborder="0" style="border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);" title="${this.currentCalc?.title || 'Calculator'}"></iframe><p style="text-align:right; font-size:11px; color:#64748b;">Powered by <a href="${window.location.origin}" target="_blank" rel="noopener">Ledger & Lend</a></p>`;
-      modal.classList.add('open');
+      this.openModal(modal);
     });
 
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+    closeBtn?.addEventListener('click', () => this.closeModal(modal));
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('open');
+      if (e.target === modal) this.closeModal(modal);
     });
 
     copyBtn?.addEventListener('click', () => {
       navigator.clipboard.writeText(textarea.value).then(() => {
         this.showToast('Embed code copied to clipboard!');
-        modal.classList.remove('open');
+        this.closeModal(modal);
       });
     });
   }
@@ -893,7 +967,7 @@ class App {
         pane.classList.toggle('hidden', pane.id !== `tab-${targetTab}`);
       });
 
-      modal?.classList.add('open');
+      this.openModal(modal);
       if (window.lucide) window.lucide.createIcons();
     };
 
@@ -912,9 +986,9 @@ class App {
       });
     });
 
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+    closeBtn?.addEventListener('click', () => this.closeModal(modal));
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('open');
+      if (e.target === modal) this.closeModal(modal);
     });
 
     // Wire Header buttons to open Export Modal
@@ -963,7 +1037,7 @@ class App {
     const resultsList = document.getElementById('diagnostics-results-list');
 
     const openDiagnostics = () => {
-      modal?.classList.add('open');
+      this.openModal(modal);
       runTests();
     };
 
@@ -1005,9 +1079,9 @@ class App {
     });
 
     runBtn?.addEventListener('click', runTests);
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+    closeBtn?.addEventListener('click', () => this.closeModal(modal));
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal?.classList.remove('open');
+      if (e.target === modal) this.closeModal(modal);
     });
   }
 
@@ -1100,6 +1174,62 @@ class App {
     }
 
     if (window.lucide) window.lucide.createIcons();
+  }
+
+  
+  setupLanguageWelcomeModal() {
+    const isConfirmed = localStorage.getItem('buildmetric_lang_confirmed');
+    if (isConfirmed === 'true') return;
+
+    const modal = document.getElementById('lang-welcome-modal');
+    if (!modal) return;
+
+    const detectedLang = getLanguage();
+    const langObj = supportedLanguages[detectedLang] || supportedLanguages.en;
+    const detectedNameEl = document.getElementById('detected-lang-name');
+    if (detectedNameEl) {
+      detectedNameEl.textContent = `${langObj.flag} ${langObj.name}`;
+    }
+
+    setTimeout(() => {
+      modal.classList.remove('hidden');
+    }, 600);
+
+    const confirmBtn = document.getElementById('confirm-lang-btn');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        localStorage.setItem('buildmetric_lang_confirmed', 'true');
+        setLanguage(detectedLang);
+        modal.classList.add('hidden');
+      });
+    }
+
+    const changeSelect = document.getElementById('welcome-lang-select');
+    if (changeSelect) {
+      changeSelect.addEventListener('change', (e) => {
+        const selLang = e.target.value;
+        if (selLang) {
+          setLanguage(selLang);
+          localStorage.setItem('buildmetric_lang_confirmed', 'true');
+          modal.classList.add('hidden');
+        }
+      });
+    }
+  }
+
+  setupPrivacyDataWipe() {
+    document.addEventListener('click', (e) => {
+      const wipeBtn = e.target.closest('#privacy-data-wipe-btn, .privacy-wipe-trigger');
+      if (wipeBtn) {
+        e.preventDefault();
+        if (confirm('Are you sure you want to permanently clear all stored calculations, favorites, and preferences from your browser?')) {
+          localStorage.clear();
+          sessionStorage.clear();
+          alert('All client-side data has been permanently erased.');
+          window.location.reload();
+        }
+      }
+    });
   }
 
   renderHistoryDrawer() {

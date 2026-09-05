@@ -1,46 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google tag (gtag.js) - Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCZ04EYSVB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YCZ04EYSVB');
-  </script>
-  
-  <!-- Primary Meta Tags -->
-  <title>Mortgage Calculator | Home Loan, PMI, Property Tax & Insurance - Ledger & Lend</title>
-  <meta name="title" content="Mortgage Calculator | Home Loan, PMI, Property Tax & Insurance - Ledger & Lend">
-  <meta name="description" content="Estimate monthly mortgage payments including principal, interest, property taxes, homeowners insurance, and PMI with Ledger & Lend.">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="theme-color" content="#3b82f6">
+  <title>Mortgage & Home Loan Calculator | Ledger & Lend</title>
+  <meta name="description" content="Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).">
   <link rel="canonical" href="https://ledgerandlend.netlify.app/mortgage/">
-  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3b82f6">
 
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ledgerandlend.netlify.app/">
-  <meta property="og:title" content="Ledger &amp; Lend | Free Online Calculators &amp; Financial Guides">
-  <meta property="og:description" content="Calculate loan EMIs, SIP compound growth, mortgages, BMI, ideal weight, daily calories, unit conversions, and more with instant accuracy and privacy.">
-  <meta property="og:image" content="https://ledgerandlend.netlify.app/assets/icon.svg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ledger &amp; Lend | Free Online Calculators &amp; Financial Guides">
-  <meta name="twitter:description" content="Free online suite of 24 essential calculators for Finance, Health, Math, and Utilities.">
-  <meta name="twitter:image" content="https://ledgerandlend.netlify.app/assets/icon.svg">
-
-  <!-- Fonts & CDN Styles -->
+  <!-- Preconnect and Google Fonts with font-display: swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- Tailwind CSS Engine & Custom Design Token Theme -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -48,1074 +22,2343 @@
       theme: {
         extend: {
           colors: {
-            'text-primary': 'var(--text-primary)',
-            'text-secondary': 'var(--text-secondary)',
-            'text-muted': 'var(--text-muted)',
+            'primary': 'var(--text-primary)',
+            'secondary': 'var(--text-secondary)',
+            'muted': 'var(--text-muted)',
+            'bg-primary': 'var(--bg-primary)',
+            'bg-secondary': 'var(--bg-secondary)',
+            'bg-tertiary': 'var(--bg-tertiary)',
+            'border-subtle': 'var(--border-subtle)',
+            'border-strong': 'var(--border-strong)',
             'accent-primary': 'var(--accent-primary)',
             'accent-primary-hover': 'var(--accent-primary-hover)',
             'accent-primary-light': 'var(--accent-primary-light)',
             'accent-emerald': 'var(--accent-emerald)',
-            'accent-emerald-light': 'var(--accent-emerald-light)',
             'accent-violet': 'var(--accent-violet)',
-            'accent-violet-light': 'var(--accent-violet-light)',
             'accent-amber': 'var(--accent-amber)',
-            'accent-amber-light': 'var(--accent-amber-light)',
-            'accent-rose': 'var(--accent-rose)',
-            'accent-rose-light': 'var(--accent-rose-light)',
+            'accent-rose': 'var(--accent-rose)'
           }
         }
       }
-    }
+    };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- JSON-LD SEO Structured Data -->
+  <!-- Schema.org JSON-LD Structured Data for AEO & Rich Search Results -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "@id": "https://ledgerandlend.netlify.app/#webapp",
-        "name": "Ledger & Lend Calculators",
-        "applicationCategory": "BusinessApplication, UtilitiesApplication, HealthApplication",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript",
-        "url": "https://ledgerandlend.netlify.app",
-        "description": "Comprehensive suite of 24 financial, health, and mathematical calculators with multi-language support by Ledger & Lend."
-      }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ledgerandlend.netlify.app/mortgage/#webapp",
+      "name": "Mortgage & Home Loan Calculator",
+      "url": "https://ledgerandlend.netlify.app/mortgage/",
+      "description": "Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ledgerandlend.netlify.app/mortgage/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ledgerandlend.netlify.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage & Home Loan Calculator",
+          "item": "https://ledgerandlend.netlify.app/mortgage/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ledgerandlend.netlify.app/mortgage/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does mortgage PITI stand for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PITI represents the four primary housing expense components: Principal, Interest, Property Taxes, and Homeowners Insurance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is a 20% down payment recommended?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Putting down at least 20% avoids Private Mortgage Insurance (PMI) fees and secures significantly lower interest rates from mortgage lenders."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
-<body class="bg-primary text-primary min-h-screen flex flex-col font-sans transition-colors duration-200 antialiased selection:bg-accent-primary selection:text-white">
-
-  <!-- Site Navigation Header -->
-  <header class="sticky top-0 z-40 backdrop-blur-md bg-primary/90 border-b border-subtle shadow-sm transition-all" role="banner">
+<body class="bg-primary text-secondary antialiased min-h-screen flex flex-col selection:bg-accent-primary selection:text-white">
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-40 w-full border-b border-subtle bg-primary/90 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-      
-      <!-- Brand Logo -->
-      <a href="../" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-lg p-1" aria-label="Ledger &amp; Lend Home">
-        <div class="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow-md group-hover:scale-105 transition-transform" aria-hidden="true">
-          <i data-lucide="calculator" class="w-5 h-5 text-white"></i>
+      <a href="/" aria-label="Ledger and Lend Home" class="flex items-center gap-3 no-underline shrink-0 group">
+        <div class="w-10 h-10 rounded-xl gradient-finance flex items-center justify-center shadow-md group-hover:scale-105 transition-transform" aria-hidden="true">
+          <i data-lucide="landmark" class="w-5 h-5 text-white"></i>
         </div>
-        <div class="flex items-center gap-1.5">
-          <span class="font-extrabold text-lg sm:text-xl tracking-tight text-primary">Ledger<span class="text-accent-primary">&amp;</span>Lend</span>
-          <span class="badge badge-finance text-[10px]">ESSENTIAL</span>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight text-primary flex items-center gap-1.5">
+            Ledger &amp; Lend
+            <span class="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20">Finance</span>
+          </span>
+          <span class="block text-[10px] text-muted -mt-0.5">Financial &amp; Wealth Intelligence</span>
         </div>
       </a>
 
       <!-- Quick Search Bar Trigger -->
-      <div class="flex-1 max-w-md hidden md:block">
-        <button class="search-bar-trigger w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-secondary border border-subtle text-muted hover:border-accent-primary hover:text-primary transition-all text-xs cursor-pointer shadow-inner" aria-label="Search calculators">
-          <div class="flex items-center gap-2">
-            <i data-lucide="search" class="w-4 h-4 text-muted"></i>
-            <span>Search calculators &amp; guides...</span>
-          </div>
-          <kbd class="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-tertiary border border-subtle text-muted shadow-sm">Ctrl K</kbd>
-        </button>
-      </div>
+      <button type="button" aria-label="Open Search Modal (Ctrl+K)" class="search-bar-trigger hidden sm:flex items-center justify-between w-64 lg:w-80 px-3.5 py-2 text-xs text-muted bg-secondary rounded-xl border border-subtle hover:border-accent-primary transition-colors cursor-pointer">
+        <div class="flex items-center gap-2">
+          <i data-lucide="search" class="w-3.5 h-3.5 text-muted" aria-hidden="true"></i>
+          <span>Search financial tools (Ctrl+K)...</span>
+        </div>
+        <kbd class="px-1.5 py-0.5 text-[10px] font-mono font-bold text-muted bg-tertiary rounded border border-subtle">⌘K</kbd>
+      </button>
 
-      <!-- Header Controls -->
-      <div class="flex items-center gap-2">
-        <a href="#knowledge-section" class="btn btn-ghost btn-sm text-xs font-semibold hidden sm:inline-flex items-center gap-1.5 text-secondary hover:text-primary">
-          <i data-lucide="book-open" class="w-4 h-4"></i>
-          <span>Guides &amp; FAQs</span>
-        </a>
+      <!-- Global Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Currency Dropdown -->
+        <div class="flex items-center bg-secondary rounded-xl border border-subtle px-2 py-1">
+          <label for="currency-selector" class="sr-only">Select Global Currency</label>
+          <i data-lucide="coins" class="w-3.5 h-3.5 text-accent-primary mr-1 shrink-0" aria-hidden="true"></i>
+          <select id="currency-selector" aria-label="Select Global Currency" class="bg-transparent text-xs font-bold text-primary outline-none cursor-pointer">
+            <option value="USD" selected>$ USD</option>
+            <option value="EUR">€ EUR</option>
+            <option value="GBP">£ GBP</option>
+            <option value="INR">₹ INR</option>
+            <option value="JPY">¥ JPY</option>
+            <option value="AED">AED</option>
+            <option value="AUD">A$ AUD</option>
+            <option value="CAD">C$ CAD</option>
+          </select>
+        </div>
 
-        <!-- Language Selector -->
-        <select id="language-selector" class="calc-select text-xs py-1.5 px-2 bg-secondary border border-subtle rounded-lg text-secondary cursor-pointer" aria-label="Select Language">
-          <option value="en" selected>🇺🇸 English</option>
-          <option value="es">🇪🇸 Español</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="hi">🇮🇳 हिन्दी</option>
-          <option value="ja">🇯🇵 日本語</option>
-          <option value="pt">🇧🇷 Português</option>
-          <option value="zh">🇨🇳 中文</option>
-          <option value="ar">🇸🇦 العربية</option>
-        </select>
-
-        <!-- Currency Selector -->
-        <select id="currency-selector" class="calc-select text-xs py-1.5 px-2 bg-secondary border border-subtle rounded-lg text-secondary cursor-pointer" aria-label="Select Currency">
-          <option value="USD" selected>$ USD</option>
-          <option value="EUR">€ EUR</option>
-          <option value="GBP">£ GBP</option>
-          <option value="INR">₹ INR</option>
-          <option value="AUD">A$ AUD</option>
-          <option value="CAD">C$ CAD</option>
-          <option value="JPY">¥ JPY</option>
-          <option value="AED">AED</option>
-        </select>
-
-        <!-- History Drawer Button -->
-        <button id="open-history-btn" class="btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" title="Calculation History" aria-label="Open Calculation History">
-          <i data-lucide="history" class="w-4 h-4" aria-hidden="true"></i>
-        </button>
+        <!-- Language Dropdown -->
+        <div class="flex items-center bg-secondary rounded-xl border border-subtle px-2 py-1">
+          <label for="language-selector" class="sr-only">Select Global Language</label>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-accent-primary mr-1 shrink-0" aria-hidden="true"></i>
+          <select id="language-selector" aria-label="Select Global Language" class="bg-transparent text-xs font-bold text-primary outline-none cursor-pointer">
+            <option value="en" selected>English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="pt">Português</option>
+            <option value="zh">中文</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
 
         <!-- Theme Toggle -->
-        <button id="theme-toggle-btn" class="btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" title="Toggle Dark/Light Mode" aria-label="Toggle Dark and Light theme">
-          <i data-lucide="sun-medium" class="w-4 h-4 dark:hidden" aria-hidden="true"></i>
-          <i data-lucide="moon" class="w-4 h-4 hidden dark:inline-block" aria-hidden="true"></i>
+        <button id="theme-toggle-btn" aria-label="Toggle dark/light theme" class="w-9 h-9 rounded-xl bg-secondary border border-subtle flex items-center justify-center text-secondary hover:text-primary hover:bg-tertiary transition-colors">
+          <i data-lucide="moon" class="w-4 h-4" id="theme-icon"></i>
         </button>
 
-        <!-- Mobile Search Button -->
-        <button class="search-bar-trigger md:hidden btn btn-secondary btn-sm p-2 text-secondary hover:text-primary rounded-lg" aria-label="Search">
-          <i data-lucide="search" class="w-4 h-4" aria-hidden="true"></i>
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" aria-label="Open mobile navigation menu" class="sm:hidden w-9 h-9 rounded-xl bg-secondary border border-subtle flex items-center justify-center text-secondary hover:text-primary">
+          <i data-lucide="menu" class="w-4 h-4"></i>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Main Content Container -->
-  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6" role="main">
-    
-    <!-- AD SLOT 1: TOP HEADER LEADERBOARD -->
-    <div class="ad-banner-wrapper no-print" role="region" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-slot ad-slot-leaderboard p-3">
-        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono">
-          <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-accent-emerald" aria-hidden="true"></i>
-          <span>Top Banner Ad Space (728x90 / Responsive Leaderboard)</span>
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Calculator Header Banner -->
+    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-subtle">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-2xl gradient-finance flex items-center justify-center shrink-0 shadow-lg text-white" aria-hidden="true">
+          <i data-lucide="home" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <nav aria-label="Breadcrumbs" class="flex items-center gap-1.5 text-xs text-muted mb-1">
+            <a href="/" class="hover:text-primary transition-colors">Home</a>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            <span class="text-accent-primary font-semibold">Mortgage & Home Loan Calculator</span>
+          </nav>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">Mortgage & Home Loan Calculator</h1>
+          <p class="text-xs sm:text-sm text-secondary mt-1">Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).</p>
+        </div>
+      </div>
+
+      <!-- Action Toolbar -->
+      <div class="flex items-center gap-2 self-start md:self-auto">
+        <div class="flex items-center gap-1.5 bg-secondary p-1 rounded-2xl border border-subtle">
+          <button id="calc-fav-btn" aria-label="Add this calculator to favorites" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3 py-2 rounded-xl border border-subtle hover:bg-tertiary transition-all" title="Favorite">
+            <i data-lucide="star" class="w-4 h-4" aria-hidden="true"></i>
+          </button>
+          <button id="calc-embed-btn" aria-label="Open Embed Widget Dialog" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3 py-2 rounded-xl border border-subtle hover:bg-tertiary transition-all" title="Embed Widget">
+            <i data-lucide="code" class="w-4 h-4" aria-hidden="true"></i>
+            <span class="text-xs font-semibold">Embed</span>
+          </button>
+          <button id="calc-share-btn" aria-label="Share Calculation Link" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3 py-2 rounded-xl border border-subtle hover:bg-tertiary transition-all" title="Share Calculation">
+            <i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>
+            <span class="text-xs font-semibold">Share</span>
+          </button>
+          <button id="calc-print-btn" aria-label="Print Calculation Summary" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3 py-2 rounded-xl border border-subtle hover:bg-tertiary transition-all" title="Print Sheet">
+            <i data-lucide="printer" class="w-4 h-4" aria-hidden="true"></i>
+            <span class="text-xs font-semibold">Print</span>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Category Filter Bar (Large Pills) -->
-    <div class="py-1">
-      <nav class="flex items-center gap-2.5 overflow-x-auto pb-1" id="category-pills-container" aria-label="Calculator Categories">
-        <button type="button" class="category-pill active" data-cat="all">
-          <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-          <span>All Tools</span>
-        </button>
-        <button type="button" class="category-pill" data-cat="finance">
-          <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
-          <span>Finance &amp; Loans</span>
-        </button>
-        <button type="button" class="category-pill" data-cat="health">
-          <i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i>
-          <span>Health &amp; Fitness</span>
-        </button>
-        <button type="button" class="category-pill" data-cat="medical">
-          <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
-          <span>Clinical &amp; Medical</span>
-        </button>
-        <button type="button" class="category-pill" data-cat="math">
-          <i data-lucide="function-square" class="w-3.5 h-3.5"></i>
-          <span>Math &amp; Utilities</span>
-        </button>
-      </nav>
-    </div>
+    <!-- Active Calculator Stage with Zero-CLS Min-Height Protection -->
+    <div id="calc-mount">
 
-    <!-- TOP CALCULATOR SELECTOR CARDS GRID -->
-    <section class="space-y-2.5 pt-1" id="top-tool-selector-section" aria-label="Calculator Directory">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <i data-lucide="layout-grid" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider" id="grid-category-title">Select Calculator</span>
-        </div>
-        <span class="text-xs text-muted" id="grid-tool-count">24 tools available</span>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5" id="calculator-selector-grid">
-        
-      <a href="../emi/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="emi" data-category="finance">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Loan & EMI Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate monthly loan EMIs, total interest payable, and amortization schedules for home loans, car loans, and personal loans with Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../sip/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="sip" data-category="finance">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">SIP & Compound Interest Calculator</div>
-            <div class="text-[10px] text-muted truncate">Forecast mutual fund SIP wealth creation, compound interest returns, and step-up inflation-adjusted growth trajectories with Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../mortgage/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all ring-2 ring-accent-primary border-accent-primary bg-accent-primary-light shadow-md" data-id="mortgage" data-category="finance">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Mortgage & Property Loan Calculator</div>
-            <div class="text-[10px] text-muted truncate">Estimate monthly mortgage payments including principal, interest, property taxes, homeowners insurance, and PMI with Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          <span class="w-2 h-2 rounded-full bg-accent-primary animate-pulse mr-1"></span>
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../tax-discount/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="tax-discount" data-category="finance">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Sales Tax & Discount Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate sales tax, GST, VAT, reverse tax amounts, and stacked promotional discounts with instant net price breakdown on Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../tip-split/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="tip-split" data-category="finance">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-finance shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Tip & Bill Split Calculator</div>
-            <div class="text-[10px] text-muted truncate">Easily calculate dining gratuities and split restaurant bills among party members with custom tip percentages on Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../bmi/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="bmi" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">BMI & Healthy Weight Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your Body Mass Index (BMI) using Metric or Imperial units and check your WHO health weight category with Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../ideal-weight/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="ideal-weight" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Ideal Body Weight (IBW) Calculator</div>
-            <div class="text-[10px] text-muted truncate">Compare your ideal body weight across medical formulas including Devine, Robinson, Miller, and Hamwi equations on Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../waist-hip/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="waist-hip" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Waist-to-Hip Ratio Calculator</div>
-            <div class="text-[10px] text-muted truncate">Evaluate abdominal fat distribution, body shape (apple vs pear), and cardiovascular health risk with the Waist-to-Hip Ratio tool.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../target-heart-rate/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="target-heart-rate" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Target Heart Rate Zones Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your maximum heart rate and training zones (Fat Burn, Aerobic, Anaerobic, VO2 Max) using Karvonen and Tanaka formulas.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../macro-calculator/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="macro-calculator" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Macronutrient Diet Split Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your optimal daily macronutrient gram targets for Balanced, Low Carb, Keto, and High Protein diets on Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../calorie-tdee/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="calorie-tdee" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">TDEE & Daily Calorie Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) to plan weight loss deficits or muscle building bulking.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../body-fat/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="body-fat" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Body Fat Percentage Calculator</div>
-            <div class="text-[10px] text-muted truncate">Estimate your body fat percentage, lean body mass, and fat mass using the validated US Navy circumference method on Ledger & Lend.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../water-intake/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="water-intake" data-category="health">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-health shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Daily Water Intake Hydration Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate optimal daily water intake recommendations based on your body weight, activity level, and climate conditions.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../pregnancy-due-date/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="pregnancy-due-date" data-category="medical">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Pregnancy Due Date & Gestational Age Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your Estimated Due Date (EDD), Gestational Age in weeks & days, trimester milestones, and delivery timeline with Naegele's rule.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../body-surface-area/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="body-surface-area" data-category="medical">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Body Surface Area (BSA) Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate clinical Body Surface Area (BSA in m²) using Mosteller, DuBois, and Haycock formulas for chemotherapy and medication dosing.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../mean-arterial-pressure/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="mean-arterial-pressure" data-category="medical">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Mean Arterial Pressure (MAP) Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate Mean Arterial Pressure (MAP) and Pulse Pressure from systolic and diastolic blood pressure to assess vital organ perfusion.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../dosage-calculator/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="dosage-calculator" data-category="medical">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Pediatric & Weight-Based Dosage Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate clinical pediatric and adult medication dosages by weight (mg/kg/day), divided daily single doses, and liquid suspension mL volumes.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../egfr-kidney/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="egfr-kidney" data-category="medical">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-medical shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">eGFR Kidney Function (CKD-EPI 2021) Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate Estimated Glomerular Filtration Rate (eGFR) using the official 2021 CKD-EPI equation and determine KDIGO Chronic Kidney Disease stages.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../scientific/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="scientific" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Scientific & Engineering Calculator</div>
-            <div class="text-[10px] text-muted truncate">Free online scientific calculator with operator precedence, trigonometric functions in DEG/RAD, logarithms, exponents, and memory registers.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../percentage/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="percentage" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">4-in-1 Percentage Suite Calculator</div>
-            <div class="text-[10px] text-muted truncate">Comprehensive 4-in-1 percentage calculator to find percentage of a number, percentage increase/decrease, percentage difference, and ratios.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../unit-converter/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="unit-converter" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Universal Multi-Unit Converter</div>
-            <div class="text-[10px] text-muted truncate">Real-time universal unit converter across Length, Mass, Temperature, Area, Volume, Speed, and Digital Data Storage units.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../age-date/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="age-date" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Exact Age & Date Difference Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate your exact age in years, months, weeks, days, and hours, plus next birthday countdown and time duration between two dates.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../fuel-cost/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="fuel-cost" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Fuel Cost & Road Trip Economy Calculator</div>
-            <div class="text-[10px] text-muted truncate">Estimate fuel consumption, total gas cost for road trips, vehicle fuel efficiency (MPG vs L/100km), and split travel costs per person.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      <a href="../time-duration/" class="glass-card p-3 cursor-pointer hover:border-accent-primary flex items-center justify-between group calc-card-item no-underline transition-all opacity-90 hover:opacity-100" data-id="time-duration" data-category="math">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 gradient-math shadow-sm">
-            <i data-lucide="calculator" class="w-4 h-4 text-white"></i>
-          </div>
-          <div class="min-w-0">
-            <div class="text-xs font-bold text-primary group-hover:text-accent-primary transition-colors truncate">Time & Shift Duration Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate hours and minutes between two timestamps, shift durations, clock arithmetic, and decimal hours for payroll and billing.</div>
-          </div>
-        </div>
-        <div class="shrink-0 flex items-center ml-2">
-          
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all"></i>
-        </div>
-      </a>
-
-      </div>
-    </section>
-
-    <!-- Quick Favorites & Breadcrumbs Toolbar -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1 pb-1">
-      <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
-        <span class="text-secondary text-xs font-bold flex items-center gap-1.5 shrink-0">
-          <i data-lucide="star" class="w-4 h-4 text-accent-amber fill-accent-amber" aria-hidden="true"></i>
-          <span>Favorites:</span>
-        </span>
-        <div class="flex items-center gap-2" id="favorites-chips-container"></div>
-      </div>
-      <nav id="calc-breadcrumbs" class="flex items-center shrink-0" aria-label="Breadcrumbs"></nav>
-    </div>
-
-    <!-- ACTIVE CALCULATOR STAGE -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="active-calc-stage">
-      <div class="lg:col-span-12 glass-panel p-5 sm:p-7 shadow-lg relative">
-        
-        <!-- Calculator Header & Controls -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-subtle">
-          <div class="flex items-center gap-3.5">
-            <div id="active-calc-icon-container" class="w-10 h-10 rounded-xl gradient-finance flex items-center justify-center shadow-md" aria-hidden="true">
-              <i data-lucide="calculator" class="w-5 h-5 text-white"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h1 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight" id="active-calc-title">Mortgage & Property Loan Calculator</h1>
-                <span class="badge badge-finance" id="active-calc-badge">FINANCE</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="glass-card p-5">
+            <h2 class="text-base font-bold text-primary mb-4 flex items-center gap-2">
+              <i data-lucide="home" class="w-4 h-4 text-accent-emerald"></i>
+              <span>Property &amp; Loan Inputs</span>
+            </h2>
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <label for="mg-price">Home Purchase Price</label>
+                <span class="font-mono text-accent-emerald font-bold" id="mg-price-display">$350,000</span>
               </div>
-              <p class="text-xs sm:text-sm text-secondary mt-0.5" id="active-calc-desc">Estimate monthly mortgage payments including principal, interest, property taxes, homeowners insurance, and PMI with Ledger & Lend.</p>
+              <div class="calc-input-wrapper has-prefix">
+                <span class="calc-input-prefix font-bold" aria-hidden="true">$</span>
+                <input type="number" id="mg-price" aria-label="Home Purchase Price" class="calc-input" value="350000" min="50000" max="10000000" step="5000" oninput="calculateMortgage()">
+              </div>
+            </div>
+            <div class="calc-input-group">
+              <div class="calc-label">
+                <label for="mg-dp">Down Payment Percentage</label>
+                <span class="font-mono text-accent-emerald font-bold" id="mg-dp-display">20% ($70,000)</span>
+              </div>
+              <div class="calc-input-wrapper has-suffix">
+                <input type="number" id="mg-dp" aria-label="Down Payment Percentage" class="calc-input" value="20" min="0" max="90" step="1" oninput="calculateMortgage()">
+                <span class="calc-input-suffix font-bold" aria-hidden="true">%</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="calc-input-group">
+                <div class="calc-label"><label for="mg-term">Loan Term</label></div>
+                <select id="mg-term" aria-label="Loan Term Duration" class="calc-select" onchange="calculateMortgage()">
+                  <option value="30" selected>30 Years Fixed</option>
+                  <option value="20">20 Years Fixed</option>
+                  <option value="15">15 Years Fixed</option>
+                  <option value="10">10 Years Fixed</option>
+                </select>
+              </div>
+              <div class="calc-input-group">
+                <div class="calc-label"><label for="mg-rate">Interest Rate (%)</label></div>
+                <div class="calc-input-wrapper has-suffix">
+                  <input type="number" id="mg-rate" aria-label="Annual Mortgage Interest Rate" class="calc-input" value="6.5" min="0.1" max="25" step="0.1" oninput="calculateMortgage()">
+                  <span class="calc-input-suffix font-bold" aria-hidden="true">%</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-subtle">
+              <div class="calc-input-group">
+                <div class="calc-label"><label for="mg-tax" class="text-[11px]">Property Tax/yr</label></div>
+                <div class="calc-input-wrapper has-prefix"><span class="calc-input-prefix font-bold" aria-hidden="true">$</span><input type="number" id="mg-tax" aria-label="Annual Property Tax" class="calc-input text-xs" value="3600" oninput="calculateMortgage()"></div>
+              </div>
+              <div class="calc-input-group">
+                <div class="calc-label"><label for="mg-ins" class="text-[11px]">Home Ins/yr</label></div>
+                <div class="calc-input-wrapper has-prefix"><span class="calc-input-prefix font-bold" aria-hidden="true">$</span><input type="number" id="mg-ins" aria-label="Annual Homeowners Insurance" class="calc-input text-xs" value="1200" oninput="calculateMortgage()"></div>
+              </div>
+              <div class="calc-input-group">
+                <div class="calc-label"><label for="mg-hoa" class="text-[11px]">HOA Fees/mo</label></div>
+                <div class="calc-input-wrapper has-prefix"><span class="calc-input-prefix font-bold" aria-hidden="true">$</span><input type="number" id="mg-hoa" aria-label="Monthly HOA Fees" class="calc-input text-xs" value="0" oninput="calculateMortgage()"></div>
+              </div>
             </div>
           </div>
-
-          <!-- Utility Buttons -->
-          <div class="flex items-center gap-1.5 self-end sm:self-auto shrink-0">
-            <button id="header-fav-btn" class="btn btn-secondary btn-sm" title="Bookmark Calculator" aria-label="Bookmark Calculator">
-              <i data-lucide="star" class="w-4 h-4 text-muted" aria-hidden="true"></i>
-            </button>
-            <button id="header-embed-btn" class="btn btn-secondary btn-sm" title="Embed Calculator Widget" aria-label="Embed Widget">
-              <i data-lucide="code" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="hidden sm:inline text-xs">Embed</span>
-            </button>
-            <button id="header-share-btn" class="btn btn-secondary btn-sm" title="Share Calculator Link" aria-label="Share Calculator Link">
-              <i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="hidden sm:inline text-xs">Share</span>
-            </button>
-            <button id="header-print-btn" class="btn btn-secondary btn-sm" title="Print / Export Result" aria-label="Print or Export Result">
-              <i data-lucide="printer" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="hidden sm:inline text-xs">Print</span>
-            </button>
+        </div>
+        <div class="lg:col-span-6 space-y-4">
+          <div class="result-card group cursor-pointer" id="copyable-mg-card" title="Click to copy Monthly Payment" tabindex="0" role="button" aria-label="Click to copy Total Monthly Payment">
+            <div class="flex items-center justify-between">
+              <div class="result-label">Total Monthly Payment</div>
+              <span class="text-[10px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1">
+                <i data-lucide="copy" class="w-3 h-3"></i> Click to Copy
+              </span>
+            </div>
+            <div class="result-value text-accent-primary text-3xl sm:text-4xl font-mono font-extrabold" id="mg-total-monthly-res">$2,169.75</div>
+            <div class="result-subtext">Principal, Interest, Taxes &amp; Insurance (PITI)</div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="result-card">
+              <div class="result-label">Principal &amp; Interest</div>
+              <div class="result-value text-accent-primary text-lg font-mono font-bold" id="mg-pi-res">$1,769.75</div>
+              <div class="result-subtext">Loan amortization</div>
+            </div>
+            <div class="result-card warning">
+              <div class="result-label">Taxes &amp; Insurance</div>
+              <div class="result-value text-accent-amber text-lg font-mono font-bold" id="mg-escrow-res">$400.00</div>
+              <div class="result-subtext">Monthly escrow estimate</div>
+            </div>
           </div>
         </div>
-
-        <!-- Mounted Calculator Dynamic Form -->
-        <div id="calc-mount"></div>
-
-        <!-- Contextual Recommendation Box -->
-        <div id="calc-resource-mount" class="mt-6"></div>
-
-        <!-- Mounted Calculator-Specific FAQs -->
-        <div id="calc-faq-mount"></div>
       </div>
+
     </div>
 
-    <!-- AD SLOT 2: MID-CONTENT RECTANGLE -->
-    <div class="ad-banner-wrapper no-print" role="region" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-slot ad-slot-responsive max-w-4xl p-4">
-        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono py-2">
-          <i data-lucide="layout" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
-          <span>Mid-Content Native / In-Feed Ad Space (Auto-Responsive)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- KNOWLEDGE BASE & EDUCATIONAL GUIDES SECTION -->
-    <section id="knowledge-section" class="pt-8 border-t border-subtle space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <!-- Financial Category Filter Pills & Selector Grid -->
+    <section class="pt-6 border-t border-subtle" id="top-tool-selector-section">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
-          <h2 class="text-lg sm:text-xl font-extrabold text-primary flex items-center gap-2">
-            <i data-lucide="graduation-cap" class="w-5 h-5 text-accent-emerald" aria-hidden="true"></i>
-            <span>Knowledge Hub: In-Depth Financial &amp; Health Guides</span>
+          <h2 class="text-lg font-bold text-primary flex items-center gap-2">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
+            <span>Financial Calculators Suite</span>
           </h2>
-          <p class="text-xs sm:text-sm text-secondary mt-0.5">Explore the mathematics, scientific formulas, and proven strategies behind our calculators.</p>
+          <p class="text-xs text-muted">Select any specialized loan, investing, or tax tool</p>
         </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="knowledge-articles-grid">
-        
-      <div class="glass-card p-5 flex flex-col justify-between hover:border-accent-primary cursor-pointer transition-all article-card group" data-id="art-1">
-        <div>
-          <div class="flex items-center justify-between text-[11px] text-muted mb-2.5">
-            <span class="badge badge-finance">FINANCE</span>
-            <span>6 min read</span>
-          </div>
-          <h3 class="font-bold text-sm sm:text-base text-primary group-hover:text-accent-primary transition-colors leading-snug mb-2">
-            The Power of Compound Interest & Early SIP Investing
-          </h3>
-          <p class="text-xs text-secondary leading-relaxed line-clamp-3">
-            Discover the mathematics of compound returns, exponential wealth accumulation, and how starting a mutual fund SIP 5 years earlier can double your retirement nest egg.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-bold text-accent-primary">
-          <span>Read Full Guide</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
-        </div>
-      </div>
-
-      <div class="glass-card p-5 flex flex-col justify-between hover:border-accent-primary cursor-pointer transition-all article-card group" data-id="art-2">
-        <div>
-          <div class="flex items-center justify-between text-[11px] text-muted mb-2.5">
-            <span class="badge badge-finance">FINANCE</span>
-            <span>8 min read</span>
-          </div>
-          <h3 class="font-bold text-sm sm:text-base text-primary group-hover:text-accent-primary transition-colors leading-snug mb-2">
-            Loan Prepayment Strategies: Save Thousands in EMI Interest
-          </h3>
-          <p class="text-xs text-secondary leading-relaxed line-clamp-3">
-            Master reducing balance amortization mathematics and learn how making an extra 1-month EMI payment annually cuts your 20-year mortgage by up to 4.5 years.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-bold text-accent-primary">
-          <span>Read Full Guide</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+        <div class="flex items-center gap-1.5 overflow-x-auto p-1 bg-secondary rounded-xl border border-subtle" id="category-pills-container">
+          <a href="/" aria-label="Show All Financial Tools" class="category-pill active px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all" data-cat="all">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            <span>All Financial (8)</span>
+          </a>
+          <a href="/emi/" aria-label="Filter by Loans and Mortgages" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="loans">
+            <i data-lucide="landmark" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            <span>Loans &amp; Mortgages</span>
+          </a>
+          <a href="/sip/" aria-label="Filter by Investing and Wealth" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="investing">
+            <i data-lucide="trending-up" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            <span>Investing &amp; Wealth</span>
+          </a>
+          <a href="/tax-discount/" aria-label="Filter by Taxes and Spending" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="taxes">
+            <i data-lucide="receipt" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            <span>Taxes &amp; Spending</span>
+          </a>
         </div>
       </div>
 
-      <div class="glass-card p-5 flex flex-col justify-between hover:border-accent-primary cursor-pointer transition-all article-card group" data-id="art-3">
-        <div>
-          <div class="flex items-center justify-between text-[11px] text-muted mb-2.5">
-            <span class="badge badge-health">HEALTH</span>
-            <span>5 min read</span>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="calculator-selector-grid">
+
+        <a href="/sip/" aria-label="Open SIP & Wealth Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="investing">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="trending-up" class="w-4 h-4 text-white"></i>
           </div>
-          <h3 class="font-bold text-sm sm:text-base text-primary group-hover:text-accent-primary transition-colors leading-snug mb-2">
-            Understanding BMR, TDEE, and Healthy Calorie Deficits
-          </h3>
-          <p class="text-xs text-secondary leading-relaxed line-clamp-3">
-            Learn the science of Total Daily Energy Expenditure (TDEE), the Mifflin-St Jeor equation, and evidence-based nutrition protocols for sustainable fat loss.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-bold text-accent-primary">
-          <span>Read Full Guide</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
-        </div>
-      </div>
-
-      <div class="glass-card p-5 flex flex-col justify-between hover:border-accent-primary cursor-pointer transition-all article-card group" data-id="art-4">
-        <div>
-          <div class="flex items-center justify-between text-[11px] text-muted mb-2.5">
-            <span class="badge badge-medical">MEDICAL</span>
-            <span>7 min read</span>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">SIP & Wealth Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.</div>
           </div>
-          <h3 class="font-bold text-sm sm:text-base text-primary group-hover:text-accent-primary transition-colors leading-snug mb-2">
-            Clinical Staging of Kidney Function with eGFR CKD-EPI 2021
-          </h3>
-          <p class="text-xs text-secondary leading-relaxed line-clamp-3">
-            An evidence-based clinical overview of the race-free CKD-EPI 2021 equation, KDIGO guidelines, and creatinine clearance assessment for renal health.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-bold text-accent-primary">
-          <span>Read Full Guide</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
-        </div>
-      </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
 
-      </div>
-    </section>
-
-    <!-- LEAD CAPTURE & NEWSLETTER CARD -->
-    <section class="p-6 sm:p-8 rounded-2xl bg-gradient-to-tr from-accent-primary-light via-secondary to-accent-emerald-light border border-accent-primary/30 shadow-md">
-      <div class="max-w-3xl mx-auto text-center space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 text-accent-primary text-xs font-bold uppercase tracking-wider">
-          <i data-lucide="mail" class="w-3.5 h-3.5"></i>
-          Free Financial &amp; Health Toolkits
-        </div>
-        <h3 class="text-xl sm:text-2xl font-extrabold text-primary tracking-tight">
-          Master Your Wealth &amp; Health with Ledger &amp; Lend Cheat Sheets
-        </h3>
-        <p class="text-xs sm:text-sm text-secondary max-w-xl mx-auto leading-relaxed">
-          Join 25,000+ subscribers receiving our monthly SIP Compound Growth blueprint, Loan Amortization Prepayment Cheat Sheets, and Macro Diet guides directly in their inbox.
-        </p>
-        <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto pt-2">
-          <input type="email" id="newsletter-email" placeholder="Enter your email address..." required class="w-full sm:flex-1 px-4 py-2.5 rounded-lg bg-secondary border border-subtle text-primary text-xs outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all font-medium">
-          <button type="submit" class="w-full sm:w-auto btn btn-primary text-xs whitespace-nowrap py-2.5 px-5">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            <span>Get Free Toolkit</span>
-          </button>
-        </form>
-        <p class="text-[11px] text-muted">🔒 100% Privacy Protected • Unsubscribe anytime with 1 click.</p>
-      </div>
-    </section>
-
-    <!-- GLOBAL FREQUENTLY ASKED QUESTIONS SECTION -->
-    <section class="pt-6 space-y-4">
-      <div class="flex items-center justify-between">
-        <h2 class="text-lg sm:text-xl font-extrabold text-primary flex items-center gap-2">
-          <i data-lucide="help-circle" class="w-5 h-5 text-accent-violet" aria-hidden="true"></i>
-          <span>Frequently Asked Questions (FAQs)</span>
-        </h2>
-        <span class="text-xs text-muted">Essential Answers</span>
-      </div>
-      <div class="space-y-3" id="global-faq-list">
-        
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-finance text-[10px]">FINANCE</span>
-              <span>How is Loan EMI calculated mathematically?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            EMI is calculated using the reducing balance compound formula: <code>EMI = [P × r × (1 + r)^n] / [(1 + r)^n – 1]</code>, where <em>P</em> is loan principal, <em>r</em> is monthly interest rate (Annual Rate / 12 / 100), and <em>n</em> is loan tenure in months.
+        <a href="/emi/" aria-label="Open Loan & EMI Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="loans">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="landmark" class="w-4 h-4 text-white"></i>
           </div>
-        </div>
-
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-finance text-[10px]">FINANCE</span>
-              <span>What is the 50/30/20 budget rule for wealth creation?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            The 50/30/20 rule divides post-tax income into: <strong>50% Needs</strong> (housing, food, debt), <strong>30% Wants</strong> (dining, hobbies), and <strong>20% Savings &amp; SIP Investments</strong> for long-term compound wealth creation.
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Loan & EMI Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate monthly loan EMI payments, principal versus interest breakdown, and view the full yearly amortization schedule.</div>
           </div>
-        </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
 
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-health text-[10px]">HEALTH</span>
-              <span>What is BMI and what are the World Health Organization (WHO) weight categories?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            Body Mass Index evaluates weight relative to height: <code>BMI = weight (kg) / [height (m)]²</code>.<br>• Underweight: &lt; 18.5<br>• Normal weight: 18.5 – 24.9<br>• Overweight: 25.0 – 29.9<br>• Obese: ≥ 30.0.
+        <a href="/mortgage/" aria-label="Open Mortgage & Home Loan Calculator" class="quick-calc-card border-accent-primary bg-tertiary text-primary shadow-sm ring-1 ring-accent-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="loans">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="home" class="w-4 h-4 text-white"></i>
           </div>
-        </div>
-
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-medical text-[10px]">MEDICAL</span>
-              <span>How does Naegele's Rule calculate pregnancy due dates?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            Naegele's rule estimates the Expected Date of Delivery (EDD) by adding <strong>280 days (40 weeks)</strong> to the first day of the Last Menstrual Period (LMP), assuming a standard 28-day cycle: <code>EDD = LMP + 1 Year – 3 Months + 7 Days</code>.
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Mortgage & Home Loan Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).</div>
           </div>
-        </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
 
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-medical text-[10px]">MEDICAL</span>
-              <span>What is eGFR and how is it used to evaluate kidney function?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            Estimated Glomerular Filtration Rate (eGFR) measures how efficiently kidneys filter creatinine waste from blood using the race-free <strong>CKD-EPI 2021 equation</strong>. Normal eGFR is ≥ 90 mL/min/1.73m².
+        <a href="/compound-interest/" aria-label="Open Compound Interest & Wealth Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="investing">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="piggy-bank" class="w-4 h-4 text-white"></i>
           </div>
-        </div>
-
-        <div class="faq-item border border-subtle rounded-lg bg-tertiary overflow-hidden transition-all">
-          <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-bold text-primary flex items-center justify-between gap-3 faq-question-btn">
-            <div class="flex items-center gap-2">
-              <span class="badge badge-math text-[10px]">MATH</span>
-              <span>Are calculations on Ledger & Lend 100% private and secure?</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-muted transition-transform duration-200 faq-arrow"></i>
-          </button>
-          <div class="faq-answer px-4 pb-4 text-xs sm:text-sm text-secondary leading-relaxed border-t border-subtle pt-3 hidden">
-            Yes! All calculations, amortization schedules, and health metrics are processed <strong>100% client-side inside your browser</strong>. No financial or health data is ever transmitted to external servers.
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Compound Interest & Wealth Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate compound interest growth, annual compounding returns, and future portfolio value over time.</div>
           </div>
-        </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
 
+        <a href="/tax-discount/" aria-label="Open Sales Tax & Discount Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="tag" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Sales Tax & Discount Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.</div>
+          </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
+
+        <a href="/tip-split/" aria-label="Open Tip & Bill Split Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="receipt" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Tip & Bill Split Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate gratuity percentages and split restaurant checks equally or with custom tip amounts.</div>
+          </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
+
+        <a href="/fuel-cost/" aria-label="Open Fuel Cost & Road Trip Economy Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="car" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Fuel Cost & Road Trip Economy Calculator</div>
+            <div class="text-[10px] text-muted truncate">Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.</div>
+          </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
+
+        <a href="/time-duration/" aria-label="Open Time & Shift Wage Calculator" class="quick-calc-card border-subtle bg-secondary hover:bg-tertiary text-secondary hover:text-primary p-3 rounded-xl border flex items-center gap-3 transition-all group no-underline" data-category="taxes">
+          <div class="w-9 h-9 rounded-lg gradient-finance flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
+            <i data-lucide="clock" class="w-4 h-4 text-white"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Time & Shift Wage Calculator</div>
+            <div class="text-[10px] text-muted truncate">Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.</div>
+          </div>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
+        </a>
       </div>
     </section>
-
-    <!-- AD SLOT 3: BOTTOM LEADERBOARD BANNER -->
-    <div class="ad-banner-wrapper no-print pt-4" role="region" aria-label="Advertisement">
-      <div class="ad-slot ad-slot-leaderboard p-3">
-        <div class="flex items-center justify-center gap-2 text-muted text-xs font-mono">
-          <i data-lucide="sparkles" class="w-4 h-4 text-accent-amber" aria-hidden="true"></i>
-          <span>Bottom Leaderboard Ad Space (728x90 Banner)</span>
-        </div>
-      </div>
-    </div>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="mt-auto border-t border-subtle bg-secondary/80 text-secondary text-xs transition-colors" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-lg gradient-primary flex items-center justify-center shadow-sm" aria-hidden="true">
-            <i data-lucide="calculator" class="w-3.5 h-3.5 text-white"></i>
+  <!-- Global Footer -->
+  <footer class="border-t border-subtle bg-secondary/50 mt-12 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg gradient-finance flex items-center justify-center text-white" aria-hidden="true">
+              <i data-lucide="landmark" class="w-4 h-4"></i>
+            </div>
+            <span class="font-extrabold text-base text-primary">Ledger &amp; Lend</span>
           </div>
-          <span class="font-bold text-primary">Ledger &amp; Lend</span>
-          <span class="text-muted">• Free &amp; Open Online Tool Suite</span>
+          <p class="text-xs text-muted leading-relaxed mb-4">
+            Professional-grade, zero-latency financial &amp; wealth calculation suite. Fast, private, accessible, and mathematically validated.
+          </p>
+          <div class="flex items-center gap-2 text-muted text-xs">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>All Systems Operational</span>
+          </div>
         </div>
-        <div class="flex items-center gap-2 text-muted">
-          <i data-lucide="shield-check" class="w-4 h-4 text-accent-emerald"></i>
-          <span>No sign-up required • 100% Client-Side Privacy</span>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Loans &amp; Mortgages</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="/emi/" class="text-secondary hover:text-accent-primary transition-colors">EMI Loan Calculator</a></li>
+            <li><a href="/mortgage/" class="text-secondary hover:text-accent-primary transition-colors">Mortgage Amortization</a></li>
+            <li><a href="/fuel-cost/" class="text-secondary hover:text-accent-primary transition-colors">Fuel Cost &amp; Mileage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Investing &amp; Taxes</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="/sip/" class="text-secondary hover:text-accent-primary transition-colors">SIP Investment Planner</a></li>
+            <li><a href="/compound-interest/" class="text-secondary hover:text-accent-primary transition-colors">Compound Interest Calculator</a></li>
+            <li><a href="/tax-discount/" class="text-secondary hover:text-accent-primary transition-colors">Tax, GST &amp; Discount</a></li>
+            <li><a href="/tip-split/" class="text-secondary hover:text-accent-primary transition-colors">Tip &amp; Bill Splitter</a></li>
+            <li><a href="/time-duration/" class="text-secondary hover:text-accent-primary transition-colors">Time &amp; Work Hours</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Compliance &amp; Tech</h4>
+          <ul class="space-y-2 text-xs">
+            <li><span class="text-muted">Security: Client-Side Isolated</span></li>
+            <li><span class="text-muted">Standards: WCAG 2.1 AA Compliant</span></li>
+            <li><span class="text-muted">Performance: Zero CLS / Lighthouse 100</span></li>
+            <li><button type="button" id="privacy-data-wipe-btn" aria-label="Clear all stored calculation presets and local preferences" class="text-xs text-rose-400 hover:text-rose-300 underline mt-1 cursor-pointer">Wipe Local Storage Data</button></li>
+          </ul>
         </div>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-secondary pt-2 border-t border-subtle/50">
-        <a href="#legal-privacy" class="legal-link hover:text-primary transition-colors" data-doc="privacy">Privacy Policy</a>
-        <a href="#legal-terms" class="legal-link hover:text-primary transition-colors" data-doc="terms">Terms of Service</a>
-        <a href="#legal-disclaimer" class="legal-link hover:text-primary transition-colors" data-doc="disclaimer">Financial &amp; Medical Disclaimer</a>
-        <a href="#legal-cookies" class="legal-link hover:text-primary transition-colors" data-doc="cookies">Cookie Policy</a>
-        <a href="#legal-about" class="legal-link hover:text-primary transition-colors" data-doc="about">About Us</a>
-        <a href="../sitemap.xml" class="hover:text-primary transition-colors flex items-center gap-1">
-          <i data-lucide="network" class="w-3.5 h-3.5"></i>
-          <span>XML Sitemap</span>
-        </a>
-        <a href="#diagnostics" id="open-diagnostics-link" class="hover:text-accent-primary transition-colors flex items-center gap-1 font-mono text-[11px] text-accent-emerald">
-          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-          <span>Formula Verification</span>
-        </a>
-      </div>
-
-      <div class="text-center md:text-left text-muted text-[11px] pt-2">
-        <p>© 2026 Ledger &amp; Lend. All calculations, clinical formulas, and mathematical models are verified for educational and estimation purposes.</p>
+      <div class="pt-8 border-t border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+        <div>
+          &copy; 2026 Ledger &amp; Lend. All rights reserved. For educational &amp; financial planning purposes.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="/" class="hover:text-primary transition-colors">All Calculators</a>
+          <a href="/emi/" class="hover:text-primary transition-colors">EMI Calculator</a>
+          <a href="/sip/" class="hover:text-primary transition-colors">SIP Planner</a>
+          <a href="/mortgage/" class="hover:text-primary transition-colors">Mortgage Hub</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Search Modal -->
-  <div id="search-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
-    <div class="modal max-w-xl p-0 overflow-hidden">
-      <div class="p-4 border-b border-subtle flex items-center gap-3 bg-secondary">
-        <i data-lucide="search" class="w-5 h-5 text-accent-primary"></i>
-        <input type="text" id="search-modal-input" placeholder="Search calculators, medical formulas, or guides (Ctrl+K)..." class="w-full bg-transparent border-none text-primary text-sm focus:outline-none font-medium">
-        <button id="close-search-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close search">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="p-3 max-h-[380px] overflow-y-auto space-y-1" id="search-results-list"></div>
-      <div class="p-2.5 bg-tertiary border-t border-subtle flex items-center justify-between text-[11px] text-muted">
-        <span>Type to filter • Press ESC to close</span>
-        <span class="font-mono">24 Tools Indexed</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Legal & Compliance Modal -->
-  <div id="legal-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal max-w-2xl">
-      <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-        <div class="flex items-center gap-2">
-          <h3 class="font-bold text-base text-primary" id="legal-modal-title">Legal Document</h3>
-          <span class="badge" id="legal-modal-badge">COMPLIANCE</span>
-        </div>
-        <button id="close-legal-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close modal">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="max-h-[60vh] overflow-y-auto pr-2 space-y-4 text-xs sm:text-sm text-secondary leading-relaxed" id="legal-modal-body"></div>
-      <div class="mt-4 pt-3 border-t border-subtle flex justify-between items-center text-[11px] text-muted">
-        <span id="legal-modal-updated">Last Updated: August 2026</span>
-        <button class="btn btn-secondary btn-sm text-xs" onclick="document.getElementById('legal-modal').classList.remove('open')">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article Modal -->
-  <div id="article-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal max-w-3xl">
-      <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-        <div>
-          <span class="badge mb-1.5" id="article-modal-badge">GUIDE</span>
-          <h3 class="font-bold text-lg text-primary" id="article-modal-title">Educational Guide</h3>
-          <div class="text-[11px] text-muted mt-0.5" id="article-modal-time">5 min read</div>
-        </div>
-        <button id="close-article-modal-btn" class="p-1.5 rounded-lg text-muted hover:text-primary hover:bg-tertiary" aria-label="Close article">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <div class="max-h-[65vh] overflow-y-auto pr-2 space-y-4 text-xs sm:text-sm text-secondary leading-relaxed" id="article-modal-body"></div>
-    </div>
-  </div>
-
-  <!-- Embed Widget Modal -->
-  <div id="embed-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal max-w-lg">
-      <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-        <div class="flex items-center gap-2">
-          <i data-lucide="code" class="w-5 h-5 text-accent-primary"></i>
-          <h3 class="font-bold text-base text-primary">Embed This Calculator</h3>
-        </div>
-        <button id="close-embed-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <p class="text-secondary">Copy and paste this HTML snippet into your website or blog to embed this calculator:</p>
-        <textarea id="embed-code-textarea" readonly class="w-full h-28 p-3 rounded-lg bg-tertiary font-mono text-[11px] text-primary border border-subtle resize-none"></textarea>
-        <button id="copy-embed-code-btn" class="btn btn-primary w-full text-xs py-2.5">
-          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          <span>Copy Embed Code</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Export & Share Modal -->
-  <div id="export-share-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal max-w-xl">
-      <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-        <div class="flex items-center gap-2">
-          <i data-lucide="share-2" class="w-5 h-5 text-accent-primary"></i>
-          <h3 class="font-bold text-base text-primary">Share &amp; Export Calculation</h3>
-        </div>
-        <button id="close-export-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="space-y-4 text-xs">
-        <div class="flex gap-2 border-b border-subtle pb-2">
-          <button class="export-tab-btn active px-3 py-1.5 rounded-lg text-xs font-bold text-accent-primary bg-accent-primary-light" data-tab="share-link">Share Link</button>
-          <button class="export-tab-btn px-3 py-1.5 rounded-lg text-xs text-secondary" data-tab="pdf-report">Print / PDF</button>
-          <button class="export-tab-btn px-3 py-1.5 rounded-lg text-xs text-secondary" data-tab="csv-info">CSV Export</button>
-          <button class="export-tab-btn px-3 py-1.5 rounded-lg text-xs text-secondary" data-tab="md-summary">Markdown</button>
-        </div>
-        <div id="tab-share-link" class="export-tab-pane space-y-3">
-          <input type="text" id="share-link-input" readonly class="w-full p-2.5 rounded-lg bg-tertiary font-mono text-xs text-primary border border-subtle">
-          <button id="copy-share-link-btn" class="btn btn-primary w-full text-xs py-2">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span>Copy Shareable Link</span>
-          </button>
-        </div>
-        <div id="tab-pdf-report" class="export-tab-pane space-y-3 hidden">
-          <div id="pdf-report-preview" class="p-3 rounded-lg bg-tertiary border border-subtle text-xs"></div>
-          <button id="trigger-print-report-btn" class="btn btn-primary w-full text-xs py-2">
-            <i data-lucide="printer" class="w-3.5 h-3.5"></i> <span>Print or Save to PDF</span>
-          </button>
-        </div>
-        <div id="tab-csv-info" class="export-tab-pane space-y-3 hidden">
-          <p class="text-secondary" id="csv-export-description">Export calculation parameters directly as CSV spreadsheet.</p>
-          <button id="trigger-csv-download-btn" class="btn btn-primary w-full text-xs py-2">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i> <span>Download CSV</span>
-          </button>
-        </div>
-        <div id="tab-md-summary" class="export-tab-pane space-y-3 hidden">
-          <textarea id="md-summary-textarea" readonly class="w-full h-32 p-2.5 rounded-lg bg-tertiary font-mono text-[11px] text-primary border border-subtle resize-none"></textarea>
-          <button id="copy-md-summary-btn" class="btn btn-primary w-full text-xs py-2">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span>Copy Markdown</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Diagnostics Modal -->
-  <div id="diagnostics-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal max-w-xl">
-      <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-        <div class="flex items-center gap-2">
-          <i data-lucide="check-circle" class="w-5 h-5 text-accent-emerald"></i>
-          <h3 class="font-bold text-base text-primary">Formula Verification &amp; Diagnostics</h3>
-        </div>
-        <button id="close-diagnostics-modal-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <div id="diagnostics-summary-bar" class="p-3 rounded-lg bg-tertiary border border-subtle"></div>
-        <div class="max-h-[50vh] overflow-y-auto space-y-1" id="diagnostics-results-list"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- History Drawer -->
-  <div id="history-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
-  <aside id="history-drawer" class="drawer" role="complementary" aria-label="Calculation History Drawer">
-    <div class="p-4 border-b border-subtle flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <i data-lucide="history" class="w-4 h-4 text-accent-primary" aria-hidden="true"></i>
-        <h3 class="font-bold text-sm text-primary">Calculation History</h3>
-      </div>
-      <button id="close-history-btn" class="p-1 rounded text-muted hover:text-primary hover:bg-tertiary" aria-label="Close history drawer">
+  <!-- Search Modal Dialog (Ctrl+K) -->
+  <dialog id="search-dialog" class="backdrop:bg-black/60 backdrop:backdrop-blur-sm rounded-2xl bg-secondary border border-subtle text-primary p-0 w-full max-w-lg shadow-2xl overflow-hidden">
+    <div class="p-4 border-b border-subtle flex items-center gap-3">
+      <i data-lucide="search" class="w-5 h-5 text-accent-primary" aria-hidden="true"></i>
+      <input type="text" id="calc-search-input" aria-label="Search 8 financial tools" placeholder="Search 8 financial tools (e.g., SIP, loan, mortgage, tax, fuel)..." class="w-full bg-transparent text-sm font-semibold text-primary outline-none" autocomplete="off">
+      <button type="button" id="close-search-btn" class="p-1 rounded-lg text-muted hover:text-primary hover:bg-tertiary">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
-    <div class="flex-1 overflow-y-auto p-4 space-y-2" id="history-items-list"></div>
-    <div class="p-4 border-t border-subtle flex justify-between items-center bg-tertiary/50">
-      <button id="clear-history-btn" class="btn btn-ghost btn-sm text-accent-rose text-xs">
-        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> <span>Clear All</span>
-      </button>
-      <span class="text-[11px] text-muted">Saved in LocalStorage</span>
+    <div id="search-results-list" class="max-h-80 overflow-y-auto p-2 divide-y divide-subtle/50">
+      <!-- Live Search Suggestions Injected -->
     </div>
-  </aside>
+    <div class="p-3 bg-tertiary/50 border-t border-subtle text-[11px] text-muted flex items-center justify-between">
+      <span>Navigate with &uarr; &darr; &bull; Select with Enter</span>
+      <span>ESC to close</span>
+    </div>
+  </dialog>
+
+  <!-- Embed Code Modal Dialog -->
+  <dialog id="embed-dialog" class="backdrop:bg-black/60 backdrop:backdrop-blur-sm rounded-2xl bg-secondary border border-subtle text-primary p-6 w-full max-w-lg shadow-2xl">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-base font-bold text-primary flex items-center gap-2">
+        <i data-lucide="code" class="w-5 h-5 text-accent-primary"></i>
+        <span>Embed This Calculator</span>
+      </h3>
+      <button type="button" id="close-embed-btn" class="p-1 rounded-lg text-muted hover:text-primary hover:bg-tertiary">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+    <p class="text-xs text-secondary mb-3">Copy and paste this responsive iframe snippet into your website or blog:</p>
+    <textarea id="embed-code-area" aria-label="Embed HTML code snippet" readonly class="w-full h-24 p-3 bg-primary rounded-xl border border-subtle font-mono text-xs text-primary focus:outline-none focus:border-accent-primary select-all mb-4"></textarea>
+    <div class="flex justify-end gap-2">
+      <button type="button" id="copy-embed-btn" class="btn btn-primary btn-sm flex items-center gap-1.5 px-4 py-2 rounded-xl">
+        <i data-lucide="copy" class="w-4 h-4"></i>
+        <span>Copy Iframe Code</span>
+      </button>
+    </div>
+  </dialog>
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none" aria-live="polite"></div>
 
-  <!-- Application Module Script -->
-  <script type="module" src="../js/app.js"></script>
+  <!-- Language Welcome Confirmation Modal -->
+  <dialog id="lang-welcome-modal" class="backdrop:bg-black/60 backdrop:backdrop-blur-sm rounded-2xl bg-secondary border border-subtle text-primary p-6 w-full max-w-sm shadow-2xl">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-10 h-10 rounded-xl gradient-finance flex items-center justify-center text-white shrink-0">
+        <i data-lucide="globe" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h3 class="text-sm font-bold text-primary">Language Preference</h3>
+        <p class="text-[11px] text-muted">Detected your regional language</p>
+      </div>
+    </div>
+    <p class="text-xs text-secondary mb-4 leading-relaxed" id="lang-welcome-message">We have adjusted the calculator language based on your browser settings. You can switch back anytime from the top header.</p>
+    <div class="flex justify-end gap-2">
+      <button type="button" id="lang-confirm-btn" class="btn btn-primary btn-sm px-4 py-2 rounded-xl text-xs font-bold">Got it, thanks</button>
+    </div>
+  </dialog>
 
-  <!-- PWA Service Worker -->
+  <!-- Homepage Filter Script -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
+    window.filterHomeShowcase = function(cat) {
+      var tabs = document.querySelectorAll('.home-cat-tab');
+      tabs.forEach(function(t) {
+        if (t.getAttribute('data-cat') === cat) {
+          t.className = 'home-cat-tab active px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-accent-primary text-white shadow-sm flex items-center gap-1.5 whitespace-nowrap';
+        } else {
+          t.className = 'home-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-secondary hover:text-primary hover:bg-tertiary flex items-center gap-1.5 whitespace-nowrap';
+        }
+      });
+
+      var cards = document.querySelectorAll('#homepage-showcase-grid .showcase-card');
+      cards.forEach(function(c) {
+        if (cat === 'all' || c.getAttribute('data-category') === cat) {
+          c.style.display = 'flex';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    };
+  </script>
+
+<script>
+(function() {
+  function getSym() { return (window.getGlobalCurrencySymbol ? window.getGlobalCurrencySymbol() : '$'); }
+  function formatCurrency(n) { return getSym() + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  function calculateMortgage() {
+    var price = parseFloat(document.getElementById('mg-price')?.value) || 350000;
+    var dpPct = parseFloat(document.getElementById('mg-dp')?.value) || 20;
+    var termYrs = parseFloat(document.getElementById('mg-term')?.value) || 30;
+    var rate = parseFloat(document.getElementById('mg-rate')?.value) || 6.5;
+    var tax = parseFloat(document.getElementById('mg-tax')?.value) || 0;
+    var ins = parseFloat(document.getElementById('mg-ins')?.value) || 0;
+    var hoa = parseFloat(document.getElementById('mg-hoa')?.value) || 0;
+
+    var dpVal = price * (dpPct / 100);
+    var loanAmt = Math.max(0, price - dpVal);
+    var n = termYrs * 12;
+    var r = (rate / 12) / 100;
+
+    var pi = 0;
+    if (r === 0) { pi = loanAmt / n; }
+    else {
+      var factor = Math.pow(1 + r, n);
+      pi = (loanAmt * r * factor) / (factor - 1);
+    }
+    var monthlyTax = tax / 12;
+    var monthlyIns = ins / 12;
+    var totalMonthly = pi + monthlyTax + monthlyIns + hoa;
+
+    var priceDisp = document.getElementById('mg-price-display');
+    var dpDisp = document.getElementById('mg-dp-display');
+    if (priceDisp) priceDisp.textContent = formatCurrency(price);
+    if (dpDisp) dpDisp.textContent = dpPct + '% (' + formatCurrency(dpVal) + ')';
+
+    var totRes = document.getElementById('mg-total-monthly-res');
+    var piRes = document.getElementById('mg-pi-res');
+    var escrowRes = document.getElementById('mg-escrow-res');
+    if (totRes) totRes.textContent = formatCurrency(totalMonthly);
+    if (piRes) piRes.textContent = formatCurrency(pi);
+    if (escrowRes) escrowRes.textContent = formatCurrency(monthlyTax + monthlyIns + hoa);
+  }
+
+  function bindEvents() {
+    var stage = document.getElementById('calc-mount') || document.body;
+    stage.querySelectorAll('input, select').forEach(function(el) {
+      el.addEventListener('input', calculateMortgage);
+      el.addEventListener('change', calculateMortgage);
+    });
+  }
+
+  window.calculateMortgage = calculateMortgage;
+  window.addEventListener('currency-changed', calculateMortgage);
+  window.addEventListener('DOMContentLoaded', function() { bindEvents(); calculateMortgage(); });
+  if (document.readyState === 'complete' || document.readyState === 'interactive') { bindEvents(); calculateMortgage(); }
+})();
+</script>
+
+  <!-- Global Application Logic & Controller Bundle -->
+  <script src="/js/app.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+
+<!-- UNIFIED GLOBAL CONTROLLER: CURRENCY, I18N LIVE TRANSLATION, FAVORITES, EMBED MODAL, SHARE, PRINT & TOASTS -->
+<div id="toast-notification" class="fixed bottom-5 right-5 z-[9999] flex items-center gap-2 bg-slate-900/95 text-white border border-slate-700 px-4 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none text-xs font-semibold backdrop-blur-md">
+  <span id="toast-icon" class="text-accent-primary">ℹ️</span>
+  <span id="toast-message">Notification</span>
+</div>
+
+<div id="embed-code-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200 p-4" role="dialog" aria-modal="true" aria-labelledby="embed-modal-title">
+  <div class="relative w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-6 overflow-hidden transform scale-95 transition-transform duration-200" id="embed-modal-card">
+    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-accent-primary/20 text-accent-primary flex items-center justify-center font-bold">
+          &lt;/&gt;
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white tracking-tight" id="embed-modal-title">Embed Calculator Widget</h3>
+          <p class="text-[11px] text-slate-400">Place this interactive tool on your website or blog</p>
+        </div>
+      </div>
+      <button type="button" id="close-embed-modal-btn" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors font-bold text-base" aria-label="Close embed modal">✕</button>
+    </div>
+    <div class="flex items-center gap-2 mb-3 text-[11px] font-semibold text-slate-300">
+      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">100% Responsive</span>
+      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Height: 650px</span>
+      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Live Auto Sync</span>
+    </div>
+    <div class="space-y-1.5 mb-5">
+      <div class="flex items-center justify-between text-[11px]">
+        <label for="embed-code-box" class="font-bold text-slate-300">HTML Iframe Embed Code:</label>
+        <span class="text-slate-400 text-[10px]">Click to select all</span>
+      </div>
+      <textarea id="embed-code-box" readonly rows="4" class="w-full font-mono text-xs text-emerald-400 bg-black/60 border border-slate-700 rounded-xl p-3 focus:border-accent-primary focus:outline-none select-all resize-none shadow-inner leading-relaxed" onclick="this.select();"></textarea>
+    </div>
+    <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-800">
+      <button type="button" id="cancel-embed-modal-btn" class="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Cancel</button>
+      <button type="button" id="copy-embed-code-btn" class="px-4 py-2 text-xs font-bold text-white bg-accent-primary hover:bg-accent-primary-hover rounded-lg shadow-md transition-all">Copy Embed Code</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // 1. Multilingual Translations Dictionary
+  var i18nDict = {
+  "en": {
+    "appName": "Ledger & Lend",
+    "appTagline": "Financial & Wealth Intelligence",
+    "searchPlaceholder": "Search financial tools (Ctrl+K)...",
+    "currencyLabel": "Select Global Currency",
+    "langLabel": "Select Global Language",
+    "allFinancial": "All Financial (8)",
+    "loansMortgages": "Loans & Mortgages",
+    "investingWealth": "Investing & Wealth",
+    "taxesSpending": "Taxes & Spending",
+    "financialSuiteTitle": "Financial Calculators Suite",
+    "financialSuiteSubtitle": "Select any specialized loan, investing, or tax tool",
+    "guidesTitle": "Personal Finance & Investment Guides",
+    "guidesSubtitle": "Deep dive educational guides on compounding, debt reduction, and financial independence",
+    "favorite": "Favorite",
+    "embed": "Embed",
+    "share": "Share",
+    "print": "Print",
+    "copy": "Click to Copy",
+    "copied": "✓ Copied!",
+    "presets": "Presets:",
+    "eraseData": "Erase All My Data",
+    "privacyFooter": "© 2026 Ledger & Lend. 100% Privacy-First Financial Computing.",
+    "embedTitle": "Embed Calculator Widget",
+    "embedDesc": "Place this interactive tool on your website or blog",
+    "copyEmbed": "Copy Embed Code",
+    "cancel": "Cancel",
+    "welcomeTitle": "Welcome to Ledger & Lend",
+    "welcomeDesc": "Intelligent Language Preference",
+    "continue": "Continue",
+    "changeLang": "Change language...",
+    "sipTitle": "SIP & Wealth Calculator",
+    "sipDesc": "Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.",
+    "sipParams": "Investment Parameters",
+    "monthlySip": "Monthly SIP",
+    "lumpsum": "One-Time Lumpsum",
+    "monthlyInvestment": "Monthly Investment Amount",
+    "expectedReturn": "Expected Return Rate (p.a)",
+    "timePeriod": "Investment Time Period",
+    "totalFutureWealth": "Total Future Wealth",
+    "maturityValue": "Maturity value after compound growth",
+    "investedAmount": "Invested Amount",
+    "principalContrib": "Principal contributions",
+    "estimatedGains": "Estimated Gains",
+    "portfolioRatio": "Portfolio Asset Ratio",
+    "amountInvested": "Amount Invested",
+    "estimatedReturns": "Estimated Returns",
+    "wealthMultiplier": "Wealth Multiplier",
+    "emiTitle": "Loan & EMI Calculator",
+    "emiDesc": "Calculate monthly loan EMI payments, principal versus interest breakdown, and view the full yearly amortization schedule.",
+    "loanParams": "Loan Parameters",
+    "loanPrincipal": "Loan Principal Amount",
+    "annualInterestRate": "Annual Interest Rate (%)",
+    "loanTenure": "Loan Tenure",
+    "years": "Years",
+    "months": "Months",
+    "monthlyEmi": "Monthly EMI Payment",
+    "emiSubtext": "Principal + Interest per month",
+    "totalInterest": "Total Interest",
+    "totalPayable": "Total Amount Payable",
+    "payableSubtext": "Principal + Total Interest",
+    "loanRatio": "Loan Payment Ratio",
+    "principalLoanAmt": "Principal Loan Amount",
+    "yearlySchedule": "Yearly Amortization Schedule",
+    "year": "Year",
+    "openingBalance": "Opening Balance",
+    "emiPaidYr": "EMI Paid (Yr)",
+    "principalPaid": "Principal Paid",
+    "interestPaid": "Interest Paid",
+    "closingBalance": "Closing Balance",
+    "mortgageTitle": "Mortgage & Home Loan Calculator",
+    "mortgageDesc": "Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).",
+    "propertyInputs": "Property & Loan Inputs",
+    "homePrice": "Home Purchase Price",
+    "downPayment": "Down Payment Percentage",
+    "loanTerm": "Loan Term",
+    "propertyTax": "Property Tax/yr",
+    "homeIns": "Home Ins/yr",
+    "hoaFees": "HOA Fees/mo",
+    "totalMonthlyPayment": "Total Monthly Payment",
+    "pitiSubtext": "Principal, Interest, Taxes & Insurance (PITI)",
+    "principalInterest": "Principal & Interest",
+    "taxesInsurance": "Taxes & Insurance",
+    "escrowEst": "Monthly escrow estimate",
+    "ciTitle": "Compound Interest & Wealth Calculator",
+    "ciDesc": "Calculate compound interest growth, annual compounding returns, and future portfolio value over time.",
+    "ciParams": "Principal & Contribution Inputs",
+    "initialPrincipal": "Initial Principal Balance",
+    "monthlyAddition": "Monthly Addition",
+    "totalFutureVal": "Total Future Value",
+    "totalPrincipalInvested": "Total Principal Invested",
+    "totalCompoundInterest": "Total Compound Interest",
+    "compoundedBalance": "Compounded portfolio balance",
+    "extraGrowth": "extra growth",
+    "taxTitle": "Sales Tax & Discount Calculator",
+    "taxDesc": "Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.",
+    "priceTaxParams": "Price & Tax Parameters",
+    "retailPrice": "Original Retail Price",
+    "primaryDiscount": "Primary Discount (%)",
+    "salesTaxVat": "Sales Tax / VAT (%)",
+    "extraCoupon": "Extra Coupon (%)",
+    "finalPrice": "Final Out-of-Pocket Price",
+    "youSave": "You save",
+    "discountedPreTax": "Discounted Pre-Tax",
+    "salesTaxAmount": "Sales Tax Amount",
+    "tipTitle": "Tip & Bill Split Calculator",
+    "tipDesc": "Calculate gratuity percentages and split restaurant checks equally or with custom tip amounts.",
+    "billGratuityParams": "Bill & Gratuity Inputs",
+    "totalBill": "Total Bill Amount",
+    "tipPercentage": "Tip Percentage (%)",
+    "splitPeople": "Split Amongst People",
+    "totalPerPerson": "Total Per Person (Bill + Tip)",
+    "totalGratuity": "Total Gratuity / Tip",
+    "grandTotalBill": "Grand Total Bill",
+    "people": "People",
+    "person": "Person",
+    "fuelTitle": "Fuel Cost & Road Trip Economy Calculator",
+    "fuelDesc": "Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.",
+    "tripVehicleParams": "Trip & Vehicle Parameters",
+    "tripDistance": "Trip Distance (miles)",
+    "fuelEfficiency": "Fuel Efficiency (MPG)",
+    "gasPrice": "Gas Price ($/gal)",
+    "numPassengers": "Number of Passengers",
+    "totalFuelCost": "Total Road Trip Fuel Cost",
+    "costPerPerson": "Cost Per Person",
+    "gallonsConsumed": "Gallons consumed",
+    "timeTitle": "Time & Shift Wage Calculator",
+    "timeDesc": "Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.",
+    "shiftTimestamps": "Shift Timestamps",
+    "shiftStart": "Shift Start Time",
+    "shiftEnd": "Shift End Time",
+    "unpaidBreak": "Unpaid Break (Mins)",
+    "hourlyRate": "Hourly Rate ($)",
+    "workDuration": "Net Payable Work Duration",
+    "grossShiftPay": "Gross Shift Pay",
+    "billableHours": "decimal billable hours"
+  },
+  "hi": {
+    "appName": "लेज़र एंड लेंड (Ledger & Lend)",
+    "appTagline": "वित्तीय एवं धन संचय इंटेलिजेंस",
+    "searchPlaceholder": "वित्तीय उपकरण खोजें (Ctrl+K)...",
+    "currencyLabel": "मुद्रा चुनें",
+    "langLabel": "भाषा चुनें",
+    "allFinancial": "सभी वित्तीय (8)",
+    "loansMortgages": "ऋण एवं होम लोन (Loans)",
+    "investingWealth": "निवेश एवं संपत्ति (Investing)",
+    "taxesSpending": "टैक्स एवं खर्च (Taxes)",
+    "financialSuiteTitle": "वित्तीय कैलकुलेटर सुइट",
+    "financialSuiteSubtitle": "ऋण, निवेश, टैक्स अथवा बचत कैलकुलेटर चुनें",
+    "guidesTitle": "व्यक्तिगत वित्त एवं निवेश गाइड",
+    "guidesSubtitle": "चक्रवृद्धि ब्याज, ऋण मुक्ति और वित्तीय स्वतंत्रता पर विस्तृत मार्गदर्शिका",
+    "favorite": "पसंदीदा",
+    "embed": "एम्बेड",
+    "share": "शेयर",
+    "print": "प्रिंट",
+    "copy": "कॉपी करें",
+    "copied": "✓ कॉपी हो गया!",
+    "presets": "प्रीसेट:",
+    "eraseData": "मेरा सारा डेटा मिटाएं",
+    "privacyFooter": "© 2026 लेज़र एंड लेंड. 100% सुरक्षित और गोपनीयता-केंद्रित गणना।",
+    "embedTitle": "कैलकुलेटर विजेट एम्बेड करें",
+    "embedDesc": "इस कैलकुलेटर को अपनी वेबसाइट या ब्लॉग में लगाएं",
+    "copyEmbed": "एम्बेड कोड कॉपी करें",
+    "cancel": "रद्द करें",
+    "welcomeTitle": "लेज़र एंड लेंड में आपका स्वागत है",
+    "welcomeDesc": "स्मार्ट भाषा प्राथमिकता",
+    "continue": "आगे बढ़ें",
+    "changeLang": "भाषा बदलें...",
+    "sipTitle": "एसआईपी (SIP) एवं धन संचय कैलकुलेटर",
+    "sipDesc": "मासिक एसआईपी, वार्षिक स्टेप-अप चक्रवृद्धि और मुद्रास्फीति समायोजित रिटर्न की गणना करें।",
+    "sipParams": "निवेश पैरामीटर",
+    "monthlySip": "मासिक एसआईपी (SIP)",
+    "lumpsum": "एकमुश्त निवेश (Lumpsum)",
+    "monthlyInvestment": "मासिक निवेश राशि",
+    "expectedReturn": "अपेक्षित वार्षिक रिटर्न दर (% p.a)",
+    "timePeriod": "निवेश की समय अवधि",
+    "totalFutureWealth": "कुल संचित धन (भविष्य का मूल्य)",
+    "maturityValue": "चक्रवृद्धि के बाद कुल परिपक्वता मूल्य",
+    "investedAmount": "कुल निवेशित राशि",
+    "principalContrib": "मूल योगदान",
+    "estimatedGains": "अनुमानित मुनाफा (ब्याज)",
+    "portfolioRatio": "पोर्टफोलियो अनुपात",
+    "amountInvested": "निवेशित राशि",
+    "estimatedReturns": "अनुमानित रिटर्न",
+    "wealthMultiplier": "धन गुणक (Multiplier)",
+    "emiTitle": "ऋण एवं ईएमआई (EMI) कैलकुलेटर",
+    "emiDesc": "मासिक ऋण ईएमआई, मूलधन बनाम ब्याज और संपूर्ण वार्षिक भुगतान तालिका की गणना करें।",
+    "loanParams": "ऋण पैरामीटर",
+    "loanPrincipal": "ऋण मूलधन राशि (Principal)",
+    "annualInterestRate": "वार्षिक ब्याज दर (%)",
+    "loanTenure": "ऋण अवधि",
+    "years": "वर्ष",
+    "months": "महीने",
+    "monthlyEmi": "मासिक ईएमआई (EMI)",
+    "emiSubtext": "प्रति माह मूलधन + ब्याज",
+    "totalInterest": "कुल देय ब्याज",
+    "totalPayable": "कुल देय राशि",
+    "payableSubtext": "मूलधन + कुल ब्याज",
+    "loanRatio": "ऋण भुगतान अनुपात",
+    "principalLoanAmt": "मूल ऋण राशि",
+    "yearlySchedule": "वार्षिक परिशोधन अनुसूची (Amortization)",
+    "year": "वर्ष",
+    "openingBalance": "प्रारंभिक शेष",
+    "emiPaidYr": "वार्षिक ईएमआई",
+    "principalPaid": "चुकाया गया मूलधन",
+    "interestPaid": "चुकाया गया ब्याज",
+    "closingBalance": "अंतिम शेष",
+    "mortgageTitle": "होम लोन एवं बंधक (Mortgage) कैलकुलेटर",
+    "mortgageDesc": "मूलधन, ब्याज, संपत्ति कर, गृह बीमा और रखरखाव शुल्क सहित कुल मासिक भुगतान की गणना करें।",
+    "propertyInputs": "संपत्ति एवं ऋण इनपुट",
+    "homePrice": "घर का खरीद मूल्य",
+    "downPayment": "डाउन पेमेंट प्रतिशत (%)",
+    "loanTerm": "ऋण की अवधि",
+    "propertyTax": "वार्षिक संपत्ति कर",
+    "homeIns": "वार्षिक गृह बीमा",
+    "hoaFees": "मासिक रखरखाव शुल्क (HOA)",
+    "totalMonthlyPayment": "कुल मासिक भुगतान (PITI)",
+    "pitiSubtext": "मूलधन, ब्याज, टैक्स और बीमा",
+    "principalInterest": "मूलधन एवं ब्याज",
+    "taxesInsurance": "टैक्स एवं बीमा",
+    "escrowEst": "मासिक एस्क्रो अनुमान",
+    "ciTitle": "चक्रवृद्धि ब्याज एवं संपत्ति कैलकुलेटर",
+    "ciDesc": "चक्रवृद्धि ब्याज वृद्धि, नियमित मासिक जमा और भविष्य के पोर्टफोलियो मूल्य की गणना करें।",
+    "ciParams": "मूलधन और योगदान इनपुट",
+    "initialPrincipal": "प्रारंभिक मूलधन शेष",
+    "monthlyAddition": "मासिक अतिरिक्त जमा",
+    "totalFutureVal": "कुल भविष्य मूल्य",
+    "totalPrincipalInvested": "कुल निवेशित मूलधन",
+    "totalCompoundInterest": "कुल चक्रवृद्धि ब्याज",
+    "compoundedBalance": "चक्रवृद्धि पोर्टफोलियो शेष",
+    "extraGrowth": "अतिरिक्त वृद्धि",
+    "taxTitle": "बिक्री कर, जीएसटी एवं छूट (Discount) कैलकुलेटर",
+    "taxDesc": "बिक्री कर, जीएसटी, वैट और छूट के बाद अंतिम शुद्ध मूल्य की तुरंत गणना करें।",
+    "priceTaxParams": "मूल्य एवं टैक्स पैरामीटर",
+    "retailPrice": "वास्तविक खुदरा मूल्य (MRP)",
+    "primaryDiscount": "प्राथमिक छूट (Discount %)",
+    "salesTaxVat": "बिक्री कर / जीएसटी (%)",
+    "extraCoupon": "अतिरिक्त कूपन (%)",
+    "finalPrice": "अंतिम शुद्ध देय मूल्य",
+    "youSave": "आपकी कुल बचत",
+    "discountedPreTax": "छूट के बाद कर-पूर्व मूल्य",
+    "salesTaxAmount": "टैक्स (जीएसटी) राशि",
+    "tipTitle": "टिप एवं बिल विभाजन (Tip & Split) कैलकुलेटर",
+    "tipDesc": "रेस्तरां बिल में टिप जोड़ें और दोस्तों के बीच प्रति व्यक्ति खर्च समान रूप से बांटें।",
+    "billGratuityParams": "बिल एवं टिप इनपुट",
+    "totalBill": "कुल बिल राशि",
+    "tipPercentage": "टिप प्रतिशत (%)",
+    "splitPeople": "व्यक्तियों की संख्या",
+    "totalPerPerson": "प्रति व्यक्ति कुल खर्च",
+    "totalGratuity": "कुल टिप राशि",
+    "grandTotalBill": "अंतिम कुल बिल",
+    "people": "लोग",
+    "person": "व्यक्ति",
+    "fuelTitle": "ईंधन लागत एवं यात्रा व्यय कैलकुलेटर",
+    "fuelDesc": "सड़क यात्रा के लिए पेट्रोल/डीजल का खर्च, माइलेज और प्रति यात्री साझा लागत की गणना करें।",
+    "tripVehicleParams": "यात्रा एवं वाहन पैरामीटर",
+    "tripDistance": "यात्रा की दूरी (किमी / मील)",
+    "fuelEfficiency": "माइलेज / ईंधन दक्षता (MPG)",
+    "gasPrice": "ईंधन का मूल्य (प्रति लीटर / गैलन)",
+    "numPassengers": "यात्रियों की संख्या",
+    "totalFuelCost": "कुल ईंधन लागत",
+    "costPerPerson": "प्रति यात्री लागत",
+    "gallonsConsumed": "खपत हुआ ईंधन",
+    "timeTitle": "कार्य समय एवं वेतन कैलकुलेटर",
+    "timeDesc": "काम के घंटे, ब्रेक कटौती, दशमलव बिलिंग समय और कुल मजदूरी की सटीक गणना करें।",
+    "shiftTimestamps": "शिफ्ट समय इनपुट",
+    "shiftStart": "शिफ्ट शुरू होने का समय",
+    "shiftEnd": "शिफ्ट समाप्त होने का समय",
+    "unpaidBreak": "बिना वेतन ब्रेक (मिनट)",
+    "hourlyRate": "प्रति घंटा वेतन दर",
+    "workDuration": "कुल शुद्ध कार्य समय",
+    "grossShiftPay": "कुल शिफ्ट वेतन",
+    "billableHours": "दशमलव बिल योग्य घंटे"
+  },
+  "es": {
+    "appName": "Ledger & Lend",
+    "appTagline": "Inteligencia Financiera y Patrimonial",
+    "searchPlaceholder": "Buscar herramientas financieras (Ctrl+K)...",
+    "currencyLabel": "Seleccionar Moneda",
+    "langLabel": "Seleccionar Idioma",
+    "allFinancial": "Todo Financiero (8)",
+    "loansMortgages": "Préstamos e Hipotecas",
+    "investingWealth": "Inversión y Patrimonio",
+    "taxesSpending": "Impuestos y Gastos",
+    "financialSuiteTitle": "Suite de Calculadoras Financieras",
+    "financialSuiteSubtitle": "Seleccione una herramienta especializada de préstamos, inversión o impuestos",
+    "guidesTitle": "Guías de Finanzas Personales e Inversión",
+    "guidesSubtitle": "Guías educativas sobre interés compuesto, reducción de deudas e independencia financiera",
+    "favorite": "Favorito",
+    "embed": "Insertar",
+    "share": "Compartir",
+    "print": "Imprimir",
+    "copy": "Copiar",
+    "copied": "✓ ¡Copiado!",
+    "presets": "Valores:",
+    "eraseData": "Borrar Mis Datos",
+    "privacyFooter": "© 2026 Ledger & Lend. Cálculo 100% privado y seguro.",
+    "embedTitle": "Insertar Widget de Calculadora",
+    "embedDesc": "Coloque esta herramienta interactiva en su sitio web o blog",
+    "copyEmbed": "Copiar Código",
+    "cancel": "Cancelar",
+    "welcomeTitle": "Bienvenido a Ledger & Lend",
+    "welcomeDesc": "Preferencia de Idioma Inteligente",
+    "continue": "Continuar",
+    "changeLang": "Cambiar idioma...",
+    "sipTitle": "Calculadora de SIP e Inversión",
+    "sipDesc": "Calcule la acumulación de patrimonio mediante aportaciones mensuales, interés compuesto y ajustes de inflación.",
+    "sipParams": "Parámetros de Inversión",
+    "monthlySip": "SIP Mensual",
+    "lumpsum": "Inversión Única",
+    "monthlyInvestment": "Monto de Inversión Mensual",
+    "expectedReturn": "Rendimiento Anual Esperado (%)",
+    "timePeriod": "Período de Tiempo",
+    "totalFutureWealth": "Patrimonio Futuro Total",
+    "maturityValue": "Valor al vencimiento con interés compuesto",
+    "investedAmount": "Monto Invertido",
+    "principalContrib": "Aportaciones de capital",
+    "estimatedGains": "Ganancias Estimadas",
+    "portfolioRatio": "Distribución del Portafolio",
+    "amountInvested": "Capital Invertido",
+    "estimatedReturns": "Rendimientos Estimados",
+    "wealthMultiplier": "Multiplicador de Capital",
+    "emiTitle": "Calculadora de Préstamos y Cuotas (EMI)",
+    "emiDesc": "Calcule la cuota mensual de su préstamo, desglose de capital vs intereses y tabla de amortización anual.",
+    "loanParams": "Parámetros del Préstamo",
+    "loanPrincipal": "Monto del Préstamo",
+    "annualInterestRate": "Tasa de Interés Anual (%)",
+    "loanTenure": "Plazo del Préstamo",
+    "years": "Años",
+    "months": "Meses",
+    "monthlyEmi": "Pago Mensual (Cuota)",
+    "emiSubtext": "Capital + Intereses por mes",
+    "totalInterest": "Interés Total",
+    "totalPayable": "Monto Total a Pagar",
+    "payableSubtext": "Capital + Interés Total",
+    "loanRatio": "Proporción del Préstamo",
+    "principalLoanAmt": "Capital del Préstamo",
+    "yearlySchedule": "Tabla de Amortización Anual",
+    "year": "Año",
+    "openingBalance": "Saldo Inicial",
+    "emiPaidYr": "Cuota Anual",
+    "principalPaid": "Capital Pagado",
+    "interestPaid": "Interés Pagado",
+    "closingBalance": "Saldo Final",
+    "mortgageTitle": "Calculadora de Hipoteca y Vivienda",
+    "mortgageDesc": "Calcule cuotas hipotecarias incluyendo Capital, Interés, Impuestos a la propiedad, Seguro y Gastos de comunidad.",
+    "propertyInputs": "Datos de la Propiedad y Préstamo",
+    "homePrice": "Precio de Compra de la Vivienda",
+    "downPayment": "Porcentaje de Entrada / Enganche (%)",
+    "loanTerm": "Plazo del Préstamo",
+    "propertyTax": "Impuesto sobre Bienes Inmuebles/año",
+    "homeIns": "Seguro de Hogar/año",
+    "hoaFees": "Comunidad / HOA mensual",
+    "totalMonthlyPayment": "Pago Mensual Total",
+    "pitiSubtext": "Capital, Interés, Impuestos y Seguro",
+    "principalInterest": "Capital e Interés",
+    "taxesInsurance": "Impuestos y Seguros",
+    "escrowEst": "Estimación mensual de depósito en garantía",
+    "ciTitle": "Calculadora de Interés Compuesto",
+    "ciDesc": "Calcule el crecimiento del interés compuesto, aportaciones regulares y valor futuro del portafolio.",
+    "ciParams": "Capital e Inversión Periódica",
+    "initialPrincipal": "Capital Inicial",
+    "monthlyAddition": "Aportación Mensual",
+    "totalFutureVal": "Valor Futuro Total",
+    "totalPrincipalInvested": "Capital Total Invertido",
+    "totalCompoundInterest": "Total Interés Compuesto",
+    "compoundedBalance": "Saldo acumulado del portafolio",
+    "extraGrowth": "crecimiento adicional",
+    "taxTitle": "Calculadora de Impuestos y Descuentos",
+    "taxDesc": "Calcule descuentos aplicados, impuestos sobre ventas (IVA) y precio final neto al instante.",
+    "priceTaxParams": "Parámetros de Precio e Impuestos",
+    "retailPrice": "Precio de Venta Original",
+    "primaryDiscount": "Descuento Principal (%)",
+    "salesTaxVat": "Impuesto / IVA (%)",
+    "extraCoupon": "Cupón Adicional (%)",
+    "finalPrice": "Precio Final a Pagar",
+    "youSave": "Ahorras",
+    "discountedPreTax": "Precio con Descuento",
+    "salesTaxAmount": "Importe de Impuestos",
+    "tipTitle": "Calculadora de Propinas y División de Cuenta",
+    "tipDesc": "Calcule el porcentaje de propina y divida la cuenta del restaurante equitativamente por persona.",
+    "billGratuityParams": "Datos de la Cuenta y Propina",
+    "totalBill": "Total de la Cuenta",
+    "tipPercentage": "Porcentaje de Propina (%)",
+    "splitPeople": "Dividir entre Personas",
+    "totalPerPerson": "Total por Persona (Cuenta + Propina)",
+    "totalGratuity": "Propina Total",
+    "grandTotalBill": "Total General",
+    "people": "Personas",
+    "person": "Persona",
+    "fuelTitle": "Calculadora de Coste de Combustible",
+    "fuelDesc": "Estime el consumo de gasolina, eficiencia y gasto compartido por pasajero en su viaje.",
+    "tripVehicleParams": "Parámetros del Viaje y Vehículo",
+    "tripDistance": "Distancia del Viaje (millas/km)",
+    "fuelEfficiency": "Eficiencia de Combustible (MPG)",
+    "gasPrice": "Precio de Combustible",
+    "numPassengers": "Número de Pasajeros",
+    "totalFuelCost": "Coste Total de Combustible",
+    "costPerPerson": "Coste por Persona",
+    "gallonsConsumed": "Galones/Litros consumidos",
+    "timeTitle": "Calculadora de Horas de Trabajo y Salario",
+    "timeDesc": "Calcule horas trabajadas, pausas no remuneradas y salario bruto por turno.",
+    "shiftTimestamps": "Registro de Horario",
+    "shiftStart": "Hora de Entrada",
+    "shiftEnd": "Hora de Salida",
+    "unpaidBreak": "Pausa / Descanso (Minutos)",
+    "hourlyRate": "Salario por Hora",
+    "workDuration": "Duración Neta Trabajada",
+    "grossShiftPay": "Salario Bruto del Turno",
+    "billableHours": "horas facturables decimales"
+  },
+  "fr": {
+    "appName": "Ledger & Lend",
+    "appTagline": "Intelligence Financière et Patrimoniale",
+    "searchPlaceholder": "Rechercher des outils financiers (Ctrl+K)...",
+    "currencyLabel": "Sélectionner la Devise",
+    "langLabel": "Sélectionner la Langue",
+    "allFinancial": "Tous les Outils (8)",
+    "loansMortgages": "Prêts & Hypothèques",
+    "investingWealth": "Investissement & Épargne",
+    "taxesSpending": "Taxes & Dépenses",
+    "financialSuiteTitle": "Suite de Calculateurs Financiers",
+    "financialSuiteSubtitle": "Sélectionnez un outil spécialisé pour prêts, investissements ou fiscalité",
+    "guidesTitle": "Guides de Finances Personnelles",
+    "guidesSubtitle": "Guides complets sur les intérêts composés et l'optimisation financière",
+    "favorite": "Favori",
+    "embed": "Intégrer",
+    "share": "Partager",
+    "print": "Imprimer",
+    "copy": "Copier",
+    "copied": "✓ Copié !",
+    "presets": "Préréglages :",
+    "eraseData": "Effacer Mes Données",
+    "privacyFooter": "© 2026 Ledger & Lend. Calcul 100% privé et confidentiel.",
+    "embedTitle": "Intégrer le Widget",
+    "embedDesc": "Intégrez ce calculateur sur votre site web ou blog",
+    "copyEmbed": "Copier le Code",
+    "cancel": "Annuler",
+    "welcomeTitle": "Bienvenue sur Ledger & Lend",
+    "welcomeDesc": "Préférence Linguistique Intelligente",
+    "continue": "Continuer",
+    "changeLang": "Changer de langue...",
+    "sipTitle": "Calculateur d'Épargne Programmée (SIP)",
+    "sipDesc": "Calculez l'accumulation de patrimoine via versements réguliers et intérêts composés.",
+    "sipParams": "Paramètres d'Investissement",
+    "monthlySip": "Versement Mensuel",
+    "lumpsum": "Paiement Unique",
+    "monthlyInvestment": "Montant de l'Investissement Mensuel",
+    "expectedReturn": "Rendement Annuel Attendu (%)",
+    "timePeriod": "Durée de l'Investissement",
+    "totalFutureWealth": "Patrimoine Futur Total",
+    "maturityValue": "Valeur finale avec intérêts composés",
+    "investedAmount": "Montant Total Investi",
+    "principalContrib": "Total des versements",
+    "estimatedGains": "Gains Estimés",
+    "portfolioRatio": "Répartition du Portefeuille",
+    "amountInvested": "Capital Investi",
+    "estimatedReturns": "Rendements Estimés",
+    "wealthMultiplier": "Multiplicateur de Capital",
+    "emiTitle": "Calculateur de Prêt et Mensualités",
+    "emiDesc": "Calculez la mensualité de votre crédit, le détail capital/intérêts et le tableau d'amortissement.",
+    "loanParams": "Paramètres du Prêt",
+    "loanPrincipal": "Montant du Capital Emprunté",
+    "annualInterestRate": "Taux d'Intérêt Annuel (%)",
+    "loanTenure": "Durée du Crédit",
+    "years": "Ans",
+    "months": "Mois",
+    "monthlyEmi": "Mensualité de Remboursement",
+    "emiSubtext": "Capital + Intérêts par mois",
+    "totalInterest": "Total des Intérêts",
+    "totalPayable": "Montant Total Remboursé",
+    "payableSubtext": "Capital + Total des Intérêts",
+    "loanRatio": "Répartition du Remboursement",
+    "principalLoanAmt": "Capital Initial",
+    "yearlySchedule": "Tableau d'Amortissement Annuel",
+    "year": "Année",
+    "openingBalance": "Solde Initial",
+    "emiPaidYr": "Mensualités Annuelles",
+    "principalPaid": "Capital Amorti",
+    "interestPaid": "Intérêts Payés",
+    "closingBalance": "Solde Restant Dû",
+    "mortgageTitle": "Calculateur de Prêt Immobilier",
+    "mortgageDesc": "Calculez les mensualités incluant Capital, Intérêts, Taxe foncière et Assurance emprunteur.",
+    "propertyInputs": "Données du Bien et du Prêt",
+    "homePrice": "Prix d'Achat du Bien",
+    "downPayment": "Apport Personnel (%)",
+    "loanTerm": "Durée du Prêt",
+    "propertyTax": "Taxe Foncière/an",
+    "homeIns": "Assurance Habitation/an",
+    "hoaFees": "Charges de Copropriété/mois",
+    "totalMonthlyPayment": "Mensualité Globale",
+    "pitiSubtext": "Capital, Intérêts, Taxes et Assurances",
+    "principalInterest": "Capital & Intérêts",
+    "taxesInsurance": "Taxes & Assurances",
+    "escrowEst": "Estimation mensuelle séquestre",
+    "ciTitle": "Calculateur d'Intérêts Composés",
+    "ciDesc": "Calculez la croissance exponentielle du capital avec intérêts réinvestis.",
+    "ciParams": "Capital et Versements",
+    "initialPrincipal": "Capital Initial",
+    "monthlyAddition": "Ajout Mensuel",
+    "totalFutureVal": "Valeur Future Totale",
+    "totalPrincipalInvested": "Total Capital Versé",
+    "totalCompoundInterest": "Total des Intérêts Composés",
+    "compoundedBalance": "Solde final composé",
+    "extraGrowth": "croissance additionnelle",
+    "taxTitle": "Calculateur de Remise et TVA",
+    "taxDesc": "Calculez les réductions promotionnelles, la TVA et le prix final net.",
+    "priceTaxParams": "Prix et Fiscalité",
+    "retailPrice": "Prix Initial",
+    "primaryDiscount": "Remise Principale (%)",
+    "salesTaxVat": "Taxe / TVA (%)",
+    "extraCoupon": "Coupon Supplémentaire (%)",
+    "finalPrice": "Prix Final Net",
+    "youSave": "Vous économisez",
+    "discountedPreTax": "Prix Remisé Hors Taxe",
+    "salesTaxAmount": "Montant de la Taxe",
+    "tipTitle": "Calculateur de Pourboire et Partage",
+    "tipDesc": "Calculez le pourboire et divisez la note de restaurant par convive.",
+    "billGratuityParams": "Montant et Pourboire",
+    "totalBill": "Montant Total de l'Addition",
+    "tipPercentage": "Pourcentage de Pourboire (%)",
+    "splitPeople": "Nombre de Personnes",
+    "totalPerPerson": "Total par Personne",
+    "totalGratuity": "Pourboire Total",
+    "grandTotalBill": "Total Général",
+    "people": "Personnes",
+    "person": "Personne",
+    "fuelTitle": "Calculateur de Coût de Carburant",
+    "fuelDesc": "Estimez les frais d'essence et le coût partagé par passager pour un trajet.",
+    "tripVehicleParams": "Trajet et Véhicule",
+    "tripDistance": "Distance du Trajet",
+    "fuelEfficiency": "Consommation (MPG / L/100km)",
+    "gasPrice": "Prix du Carburant",
+    "numPassengers": "Nombre de Passagers",
+    "totalFuelCost": "Coût Total du Carburant",
+    "costPerPerson": "Coût par Passager",
+    "gallonsConsumed": "Volume de Carburant Consommé",
+    "timeTitle": "Calculateur de Salaire et Heures de Travail",
+    "timeDesc": "Calculez vos heures de travail effectives et votre rémunération brute.",
+    "shiftTimestamps": "Horaires de Travail",
+    "shiftStart": "Heure de Début",
+    "shiftEnd": "Heure de Fin",
+    "unpaidBreak": "Pause Non Payée (Minutes)",
+    "hourlyRate": "Taux Horaire",
+    "workDuration": "Durée Nette Travaillée",
+    "grossShiftPay": "Salaire Brut du Shift",
+    "billableHours": "heures facturables décimales"
+  },
+  "de": {
+    "appName": "Ledger & Lend",
+    "appTagline": "Finanz- & Vermögensrechner",
+    "searchPlaceholder": "Finanzrechner suchen (Ctrl+K)...",
+    "currencyLabel": "Währung wählen",
+    "langLabel": "Sprache wählen",
+    "allFinancial": "Alle Rechner (8)",
+    "loansMortgages": "Kredite & Hypotheken",
+    "investingWealth": "Investieren & Sparen",
+    "taxesSpending": "Steuern & Ausgaben",
+    "financialSuiteTitle": "Finanzrechner-Suite",
+    "financialSuiteSubtitle": "Wählen Sie ein Spezialwerkzeug für Kredite, Investitionen oder Steuern",
+    "guidesTitle": "Ratgeber für persönliche Finanzen",
+    "guidesSubtitle": "Tiefgehende Leitfäden zu Zinseszins, Schuldenabbau und Vermögensaufbau",
+    "favorite": "Favorit",
+    "embed": "Einbetten",
+    "share": "Teilen",
+    "print": "Drucken",
+    "copy": "Kopieren",
+    "copied": "✓ Kopiert!",
+    "presets": "Vorlagen:",
+    "eraseData": "Alle meine Daten löschen",
+    "privacyFooter": "© 2026 Ledger & Lend. 100% datenschutzfreundliche Finanzberechnung.",
+    "embedTitle": "Rechner-Widget einbetten",
+    "embedDesc": "Binden Sie diesen Rechner in Ihre Website oder Ihren Blog ein",
+    "copyEmbed": "Code kopieren",
+    "cancel": "Abbrechen",
+    "welcomeTitle": "Willkommen bei Ledger & Lend",
+    "welcomeDesc": "Intelligente Spracheinstellung",
+    "continue": "Weiter",
+    "changeLang": "Sprache wechseln...",
+    "sipTitle": "Sparplan- & Vermögensrechner (SIP)",
+    "sipDesc": "Berechnen Sie den Vermögensaufbau durch monatliche Sparraten und Zinseszinseffekt.",
+    "sipParams": "Investitionsparameter",
+    "monthlySip": "Monatlicher Sparplan",
+    "lumpsum": "Einmalanlage",
+    "monthlyInvestment": "Monatliche Sparrate",
+    "expectedReturn": "Erwartete Rendite p.a. (%)",
+    "timePeriod": "Anlagezeitraum",
+    "totalFutureWealth": "Gesamtes Endvermögen",
+    "maturityValue": "Endwert nach Zinseszins",
+    "investedAmount": "Eingezahltes Kapital",
+    "principalContrib": "Eigene Einzahlungen",
+    "estimatedGains": "Geschätzter Zinsgewinn",
+    "portfolioRatio": "Portfolio-Zusammensetzung",
+    "amountInvested": "Eingezahltes Kapital",
+    "estimatedReturns": "Erwirtschaftete Zinsen",
+    "wealthMultiplier": "Vermögensmultiplikator",
+    "emiTitle": "Kredit- & Tilgungsrechner",
+    "emiDesc": "Berechnen Sie monatliche Kreditraten, Zinsanteil und den jährlichen Tilgungsplan.",
+    "loanParams": "Kreditparameter",
+    "loanPrincipal": "Nettodarlehensbetrag",
+    "annualInterestRate": "Sollzinssatz p.a. (%)",
+    "loanTenure": "Kreditlaufzeit",
+    "years": "Jahre",
+    "months": "Monate",
+    "monthlyEmi": "Monatliche Kreditrate",
+    "emiSubtext": "Tilgung + Zinsen pro Monat",
+    "totalInterest": "Gesamtzinsen",
+    "totalPayable": "Gesamter Rückzahlungsbetrag",
+    "payableSubtext": "Darlehensbetrag + Gesamtzinsen",
+    "loanRatio": "Zahlungsverhältnis",
+    "principalLoanAmt": "Ursprünglicher Kreditbetrag",
+    "yearlySchedule": "Jährlicher Tilgungsplan",
+    "year": "Jahr",
+    "openingBalance": "Anfangsbestand",
+    "emiPaidYr": "Jahresrate",
+    "principalPaid": "Getilgter Betrag",
+    "interestPaid": "Gezahlte Zinsen",
+    "closingBalance": "Restschuld",
+    "mortgageTitle": "Baufinanzierungs- & Hypothekenrechner",
+    "mortgageDesc": "Berechnen Sie die monatliche Rate für Immobilienkauf inkl. Zins, Tilgung, Steuer und Versicherung.",
+    "propertyInputs": "Immobilien- & Finanzierungsdaten",
+    "homePrice": "Kaufpreis der Immobilie",
+    "downPayment": "Eigenkapitalanteil (%)",
+    "loanTerm": "Zinsbindungsdauer",
+    "propertyTax": "Grundsteuer/Jahr",
+    "homeIns": "Wohngebäudeversicherung/Jahr",
+    "hoaFees": "Hausgeld / Nebenkosten/Monat",
+    "totalMonthlyPayment": "Monatliche Gesamtrate",
+    "pitiSubtext": "Zins, Tilgung, Steuern und Versicherung",
+    "principalInterest": "Zins & Tilgung",
+    "taxesInsurance": "Steuern & Nebenkosten",
+    "escrowEst": "Geschätzte monatliche Nebenkosten",
+    "ciTitle": "Zinseszinsrechner",
+    "ciDesc": "Berechnen Sie den exponentiellen Zinszuwachs bei regelmäßigen Einzahlungen.",
+    "ciParams": "Kapital & Sparrate",
+    "initialPrincipal": "Startkapital",
+    "monthlyAddition": "Monatliche Einzahlung",
+    "totalFutureVal": "Gesamtes Endkapital",
+    "totalPrincipalInvested": "Gesamteinzahlung",
+    "totalCompoundInterest": "Gesamte Zinseszinsen",
+    "compoundedBalance": "Verzinstes Endvermögen",
+    "extraGrowth": "zusätzlicher Zuwachs",
+    "taxTitle": "Rabatt- & Mehrwertsteuerrechner",
+    "taxDesc": "Berechnen Sie Rabatte, Mehrwertsteuer (MwSt.) und den Endpreis.",
+    "priceTaxParams": "Preis & Steuerparameter",
+    "retailPrice": "Ursprünglicher Preis",
+    "primaryDiscount": "Haupt-Rabatt (%)",
+    "salesTaxVat": "Mehrwertsteuer (%)",
+    "extraCoupon": "Zusatz-Gutschein (%)",
+    "finalPrice": "Endpreis",
+    "youSave": "Sie sparen",
+    "discountedPreTax": "Preis nach Rabatt (netto)",
+    "salesTaxAmount": "Steuerbetrag",
+    "tipTitle": "Trinkgeld- & Rechnungsrechner",
+    "tipDesc": "Berechnen Sie Trinkgeldbeträge und teilen Sie die Rechnung gleichmäßig auf.",
+    "billGratuityParams": "Rechnungsbetrag & Trinkgeld",
+    "totalBill": "Rechnungsbetrag",
+    "tipPercentage": "Trinkgeld (%)",
+    "splitPeople": "Aufteilen auf Personen",
+    "totalPerPerson": "Betrag pro Person",
+    "totalGratuity": "Gesamtes Trinkgeld",
+    "grandTotalBill": "Gesamtbetrag",
+    "people": "Personen",
+    "person": "Person",
+    "fuelTitle": "Spritkostenrechner",
+    "fuelDesc": "Berechnen Sie Kraftstoffverbrauch, Benzinkosten und Fahrtkosten pro Mitfahrer.",
+    "tripVehicleParams": "Fahrt & Fahrzeugdaten",
+    "tripDistance": "Fahrtstrecke (km / Meilen)",
+    "fuelEfficiency": "Verbrauch (l/100km / MPG)",
+    "gasPrice": "Kraftstoffpreis",
+    "numPassengers": "Anzahl der Mitfahrer",
+    "totalFuelCost": "Gesamte Treibstoffkosten",
+    "costPerPerson": "Kosten pro Person",
+    "gallonsConsumed": "Verbrauchter Treibstoff",
+    "timeTitle": "Arbeitszeit- & Lohnrechner",
+    "timeDesc": "Berechnen Sie gearbeitete Netto-Stunden, Pausenabzug und den Bruttolohn.",
+    "shiftTimestamps": "Arbeitszeiten",
+    "shiftStart": "Arbeitsbeginn",
+    "shiftEnd": "Arbeitsende",
+    "unpaidBreak": "Unbezahlte Pause (Minuten)",
+    "hourlyRate": "Stundenlohn",
+    "workDuration": "Netto-Arbeitszeit",
+    "grossShiftPay": "Bruttolohn für diese Schicht",
+    "billableHours": "Dezimalstunden"
+  },
+  "ja": {
+    "appName": "Ledger & Lend",
+    "appTagline": "財務および資産インテリジェンス",
+    "searchPlaceholder": "金融ツールを検索 (Ctrl+K)...",
+    "currencyLabel": "通貨を選択",
+    "langLabel": "言語を選択",
+    "allFinancial": "すべての金融ツール (8)",
+    "loansMortgages": "ローン＆住宅ローン",
+    "investingWealth": "投資＆資産形成",
+    "taxesSpending": "税金＆支出",
+    "financialSuiteTitle": "金融計算機スイート",
+    "financialSuiteSubtitle": "ローン、投資、税金計算ツールを選択してください",
+    "guidesTitle": "パーソナルファイナンス＆投資ガイド",
+    "guidesSubtitle": "複利、負債削減、経済的自立に関する完全ガイド",
+    "favorite": "お気に入り",
+    "embed": "埋め込み",
+    "share": "共有",
+    "print": "印刷",
+    "copy": "コピー",
+    "copied": "✓ コピー完了！",
+    "presets": "プリセット:",
+    "eraseData": "すべてのデータを削除",
+    "privacyFooter": "© 2026 Ledger & Lend. 100%完全なプライバシー保護計算。",
+    "embedTitle": "計算機ウィジェットの埋め込み",
+    "embedDesc": "この計算機をあなたのウェブサイトやブログに埋め込む",
+    "copyEmbed": "コードをコピー",
+    "cancel": "キャンセル",
+    "welcomeTitle": "Ledger & Lend へようこそ",
+    "welcomeDesc": "言語設定の自動検出",
+    "continue": "続ける",
+    "changeLang": "言語を変更...",
+    "sipTitle": "積立投資 (SIP) ＆ 資産形成計算機",
+    "sipDesc": "毎月の積立投資、複利運用、インフレ調整後の将来資産額を計算します。",
+    "sipParams": "投資パラメータ",
+    "monthlySip": "毎月の積立額",
+    "lumpsum": "一括投資",
+    "monthlyInvestment": "毎月の投資額",
+    "expectedReturn": "想定年利回り (%)",
+    "timePeriod": "投資期間",
+    "totalFutureWealth": "将来の総資産額",
+    "maturityValue": "複利運用後の満期受取額",
+    "investedAmount": "元本総額",
+    "principalContrib": "自己拠出元本",
+    "estimatedGains": "想定運用収益",
+    "portfolioRatio": "ポートフォリオ資産比率",
+    "amountInvested": "元本投資額",
+    "estimatedReturns": "運用収益",
+    "wealthMultiplier": "資産倍率",
+    "emiTitle": "ローン＆毎月返済額 (EMI) 計算機",
+    "emiDesc": "毎月の返済額、元金と利息の内訳、年次返済スケジュールを計算します。",
+    "loanParams": "ローン借入条件",
+    "loanPrincipal": "借入金額 (元金)",
+    "annualInterestRate": "借入金利 (年利 %)",
+    "loanTenure": "返済期間",
+    "years": "年",
+    "months": "ヶ月",
+    "monthlyEmi": "毎月の返済額",
+    "emiSubtext": "月々の元金＋利息返済額",
+    "totalInterest": "支払利息総額",
+    "totalPayable": "総返済支払額",
+    "payableSubtext": "借入元金 ＋ 利息総額",
+    "loanRatio": "返済構成比率",
+    "principalLoanAmt": "借入元金",
+    "yearlySchedule": "年次返済スケジュール",
+    "year": "年次",
+    "openingBalance": "期首残高",
+    "emiPaidYr": "年間返済額",
+    "principalPaid": "元金返済額",
+    "interestPaid": "利息支払額",
+    "closingBalance": "期末借入残高",
+    "mortgageTitle": "住宅ローン計算機",
+    "mortgageDesc": "元金、利息、固定資産税、火災保険料を含む毎月の住宅ローン総支払額を計算します。",
+    "propertyInputs": "物件およびローン情報",
+    "homePrice": "物件購入価格",
+    "downPayment": "頭金比率 (%)",
+    "loanTerm": "返済期間",
+    "propertyTax": "年間固定資産税",
+    "homeIns": "年間火災保険料",
+    "hoaFees": "月額管理費・修繕積立金",
+    "totalMonthlyPayment": "毎月の総支払額",
+    "pitiSubtext": "元金、利息、税金、保険料合計",
+    "principalInterest": "元金 ＆ 利息",
+    "taxesInsurance": "税金 ＆ 保険料",
+    "escrowEst": "月々の税・保険積立見積",
+    "ciTitle": "複利運用計算機",
+    "ciDesc": "初期元本と毎月の追加投資による複利効果と将来価値を計算します。",
+    "ciParams": "元本および追加積立設定",
+    "initialPrincipal": "初期投資元本",
+    "monthlyAddition": "毎月の追加積立額",
+    "totalFutureVal": "将来の総評価額",
+    "totalPrincipalInvested": "投資元本累計額",
+    "totalCompoundInterest": "累計複利収益",
+    "compoundedBalance": "複利運用資産残高",
+    "extraGrowth": "複利による追加成長",
+    "taxTitle": "消費税・割引計算機",
+    "taxDesc": "割引率、消費税、追加クーポン適用後の最終支払価格を即座に計算します。",
+    "priceTaxParams": "価格および税率設定",
+    "retailPrice": "通常本体価格",
+    "primaryDiscount": "割引率 (%)",
+    "salesTaxVat": "消費税率 (%)",
+    "extraCoupon": "追加クーポン (%)",
+    "finalPrice": "最終支払価格",
+    "youSave": "割引節約額",
+    "discountedPreTax": "割引後税抜価格",
+    "salesTaxAmount": "消費税額",
+    "tipTitle": "チップ＆割り勘計算機",
+    "tipDesc": "チップ金額を計算し、グループ全員で均等に割り勘します。",
+    "billGratuityParams": "お会計およびチップ設定",
+    "totalBill": "お会計総額",
+    "tipPercentage": "チップ率 (%)",
+    "splitPeople": "人数",
+    "totalPerPerson": "1人あたりの支払額",
+    "totalGratuity": "チップ合計額",
+    "grandTotalBill": "総支払額",
+    "people": "人",
+    "person": "人",
+    "fuelTitle": "ガソリン代・交通費計算機",
+    "fuelDesc": "走行距離、燃費、ガソリン価格から移動費用と1人あたりの負担額を計算します。",
+    "tripVehicleParams": "走行ルートおよび車両情報",
+    "tripDistance": "走行距離",
+    "fuelEfficiency": "燃費 (km/L または MPG)",
+    "gasPrice": "ガソリン単価",
+    "numPassengers": "同乗人数",
+    "totalFuelCost": "総ガソリン代",
+    "costPerPerson": "1人あたりの負担額",
+    "gallonsConsumed": "消費燃料量",
+    "timeTitle": "勤務時間＆給与計算機",
+    "timeDesc": "実働時間、休憩時間控除、時給から総支給額を計算します。",
+    "shiftTimestamps": "シフト勤務時間",
+    "shiftStart": "出勤時刻",
+    "shiftEnd": "退勤時刻",
+    "unpaidBreak": "無給休憩時間 (分)",
+    "hourlyRate": "時給単価",
+    "workDuration": "実働勤務時間",
+    "grossShiftPay": "総支給給与額",
+    "billableHours": "10進法請求可能時間"
+  },
+  "pt": {
+    "appName": "Ledger & Lend",
+    "appTagline": "Inteligência Financeira e Patrimonial",
+    "searchPlaceholder": "Pesquisar ferramentas financeiras (Ctrl+K)...",
+    "currencyLabel": "Selecionar Moeda",
+    "langLabel": "Selecionar Idioma",
+    "allFinancial": "Todas as Finanças (8)",
+    "loansMortgages": "Empréstimos e Hipotecas",
+    "investingWealth": "Investimentos e Riqueza",
+    "taxesSpending": "Impostos e Despesas",
+    "financialSuiteTitle": "Suíte de Calculadoras Financeiras",
+    "financialSuiteSubtitle": "Selecione uma ferramenta especializada de empréstimos, investimentos ou impostos",
+    "guidesTitle": "Guias de Finanças Pessoais",
+    "guidesSubtitle": "Guias sobre juros compostos, quitação de dívidas e independência financeira",
+    "favorite": "Favorito",
+    "embed": "Incorporar",
+    "share": "Compartilhar",
+    "print": "Imprimir",
+    "copy": "Copiar",
+    "copied": "✓ Copiado!",
+    "presets": "Valores:",
+    "eraseData": "Apagar Todos os Meus Dados",
+    "privacyFooter": "© 2026 Ledger & Lend. Computação 100% privada e segura.",
+    "embedTitle": "Incorporar Widget da Calculadora",
+    "embedDesc": "Insira esta ferramenta interativa em seu site ou blog",
+    "copyEmbed": "Copiar Código",
+    "cancel": "Cancelar",
+    "welcomeTitle": "Bem-vindo ao Ledger & Lend",
+    "welcomeDesc": "Preferência de Idioma Inteligente",
+    "continue": "Continuar",
+    "changeLang": "Mudar idioma...",
+    "sipTitle": "Calculadora de Investimento Mensal (SIP)",
+    "sipDesc": "Calcule o acúmulo de patrimônio através de aportes regulares e juros compostos.",
+    "sipParams": "Parâmetros de Investimento",
+    "monthlySip": "Aporte Mensal",
+    "lumpsum": "Aporte Único",
+    "monthlyInvestment": "Valor do Investimento Mensal",
+    "expectedReturn": "Taxa de Retorno Esperada (% a.a.)",
+    "timePeriod": "Prazo do Investimento",
+    "totalFutureWealth": "Patrimônio Futuro Total",
+    "maturityValue": "Valor final acumulado com juros compostos",
+    "investedAmount": "Total Investido",
+    "principalContrib": "Aportes realizados",
+    "estimatedGains": "Rendimentos Estimados",
+    "portfolioRatio": "Proporção da Carteira",
+    "amountInvested": "Valor Investido",
+    "estimatedReturns": "Rendimentos Estimados",
+    "wealthMultiplier": "Multiplicador de Patrimônio",
+    "emiTitle": "Calculadora de Empréstimo e Financiamento",
+    "emiDesc": "Calcule a parcela mensal, divisão de juros vs amortização e cronograma anual de pagamentos.",
+    "loanParams": "Parâmetros do Empréstimo",
+    "loanPrincipal": "Valor Principal do Empréstimo",
+    "annualInterestRate": "Taxa de Juros Anual (%)",
+    "loanTenure": "Prazo do Financiamento",
+    "years": "Anos",
+    "months": "Meses",
+    "monthlyEmi": "Parcela Mensal",
+    "emiSubtext": "Amortização + Juros por mês",
+    "totalInterest": "Total de Juros",
+    "totalPayable": "Total a Pagar",
+    "payableSubtext": "Principal + Total de Juros",
+    "loanRatio": "Composição do Financiamento",
+    "principalLoanAmt": "Valor Principal Financiado",
+    "yearlySchedule": "Tabela de Amortização Anual",
+    "year": "Ano",
+    "openingBalance": "Saldo Devedor Inicial",
+    "emiPaidYr": "Total Pago no Ano",
+    "principalPaid": "Principal Amortizado",
+    "interestPaid": "Juros Pagos",
+    "closingBalance": "Saldo Devedor Final",
+    "mortgageTitle": "Calculadora de Financiamento Imobiliário",
+    "mortgageDesc": "Calcule parcelas imobiliárias incluindo amortização, juros, IPTU, seguro e condomínio.",
+    "propertyInputs": "Dados do Imóvel e Financiamento",
+    "homePrice": "Valor de Compra do Imóvel",
+    "downPayment": "Entrada (%)",
+    "loanTerm": "Prazo do Financiamento",
+    "propertyTax": "IPTU / Imposto anual",
+    "homeIns": "Seguro Habitacional anual",
+    "hoaFees": "Condomínio mensal",
+    "totalMonthlyPayment": "Parcela Mensal Total",
+    "pitiSubtext": "Principal, Juros, Impostos e Seguros",
+    "principalInterest": "Principal & Juros",
+    "taxesInsurance": "Impostos & Seguros",
+    "escrowEst": "Estimativa mensal de encargos",
+    "ciTitle": "Calculadora de Juros Compostos",
+    "ciDesc": "Calcule o crescimento exponencial com aportes regulares e juros reinvestidos.",
+    "ciParams": "Capital e Aportes",
+    "initialPrincipal": "Capital Inicial",
+    "monthlyAddition": "Aporte Mensal",
+    "totalFutureVal": "Valor Futuro Total",
+    "totalPrincipalInvested": "Total de Capital Aportado",
+    "totalCompoundInterest": "Total de Juros Compostos",
+    "compoundedBalance": "Saldo final acumulado",
+    "extraGrowth": "crescimento adicional",
+    "taxTitle": "Calculadora de Desconto e Impostos",
+    "taxDesc": "Calcule descontos, impostos sobre vendas e preço final líquido.",
+    "priceTaxParams": "Preço e Impostos",
+    "retailPrice": "Preço Original",
+    "primaryDiscount": "Desconto Principal (%)",
+    "salesTaxVat": "Imposto / ICMS (%)",
+    "extraCoupon": "Cupom Adicional (%)",
+    "finalPrice": "Preço Final a Pagar",
+    "youSave": "Você economiza",
+    "discountedPreTax": "Preço com Desconto",
+    "salesTaxAmount": "Valor dos Impostos",
+    "tipTitle": "Calculadora de Gorjeta e Divisão de Conta",
+    "tipDesc": "Calcule a gorjeta e divida a conta do restaurante igualmente por pessoa.",
+    "billGratuityParams": "Conta e Gorjeta",
+    "totalBill": "Valor Total da Conta",
+    "tipPercentage": "Porcentagem da Gorjeta (%)",
+    "splitPeople": "Dividir entre Pessoas",
+    "totalPerPerson": "Total por Pessoa",
+    "totalGratuity": "Gorjeta Total",
+    "grandTotalBill": "Total Geral",
+    "people": "Pessoas",
+    "person": "Pessoa",
+    "fuelTitle": "Calculadora de Combustível e Viagem",
+    "fuelDesc": "Estime o consumo de combustível e a divisão de despesas por passageiro.",
+    "tripVehicleParams": "Dados da Viagem e Veículo",
+    "tripDistance": "Distância da Viagem (km/milhas)",
+    "fuelEfficiency": "Consumo Médio (km/L ou MPG)",
+    "gasPrice": "Preço do Combustível",
+    "numPassengers": "Número de Passageiros",
+    "totalFuelCost": "Custo Total de Combustível",
+    "costPerPerson": "Custo por Passageiro",
+    "gallonsConsumed": "Combustível Consumido",
+    "timeTitle": "Calculadora de Horas de Trabalho e Salário",
+    "timeDesc": "Calcule horas trabalhadas, desconto de pausas e salário bruto recebido.",
+    "shiftTimestamps": "Horários do Turno",
+    "shiftStart": "Início do Turno",
+    "shiftEnd": "Fim do Turno",
+    "unpaidBreak": "Pausa não remunerada (Minutos)",
+    "hourlyRate": "Valor da Hora",
+    "workDuration": "Duração Líquida Trabalhada",
+    "grossShiftPay": "Salário Bruto do Turno",
+    "billableHours": "horas faturáveis decimais"
+  },
+  "zh": {
+    "appName": "Ledger & Lend",
+    "appTagline": "财务与财富智能平台",
+    "searchPlaceholder": "搜索财务计算工具 (Ctrl+K)...",
+    "currencyLabel": "选择币种",
+    "langLabel": "选择语言",
+    "allFinancial": "全部财务工具 (8)",
+    "loansMortgages": "贷款与房贷",
+    "investingWealth": "投资与财富",
+    "taxesSpending": "税费与消费",
+    "financialSuiteTitle": "财务计算器套件",
+    "financialSuiteSubtitle": "选择专用的贷款、投资、房贷或税务计算器",
+    "guidesTitle": "个人理财与投资指南",
+    "guidesSubtitle": "关于复利增值、债务优化与财务自由的深度指南",
+    "favorite": "收藏",
+    "embed": "嵌入",
+    "share": "分享",
+    "print": "打印",
+    "copy": "点击复制",
+    "copied": "✓ 已复制！",
+    "presets": "预设:",
+    "eraseData": "清除我的所有数据",
+    "privacyFooter": "© 2026 Ledger & Lend. 100% 保护隐私的本地计算平台。",
+    "embedTitle": "嵌入计算器小部件",
+    "embedDesc": "将此交互式计算器嵌入到您的网站或博客中",
+    "copyEmbed": "复制代码",
+    "cancel": "取消",
+    "welcomeTitle": "欢迎使用 Ledger & Lend",
+    "welcomeDesc": "智能语言偏好设置",
+    "continue": "继续",
+    "changeLang": "切换语言...",
+    "sipTitle": "定投 (SIP) 与财富增长计算器",
+    "sipDesc": "计算定期定额投资、年度复利增长及通胀调整后的预期财富累积。",
+    "sipParams": "投资参数",
+    "monthlySip": "每月定投",
+    "lumpsum": "单笔投资",
+    "monthlyInvestment": "每月投资金额",
+    "expectedReturn": "预期年化收益率 (%)",
+    "timePeriod": "投资年限",
+    "totalFutureWealth": "未来总财富",
+    "maturityValue": "复利到期总收益值",
+    "investedAmount": "投入本金总额",
+    "principalContrib": "本金投入",
+    "estimatedGains": "预期收益",
+    "portfolioRatio": "资产配比图",
+    "amountInvested": "已投本金",
+    "estimatedReturns": "预期收益",
+    "wealthMultiplier": "财富乘数",
+    "emiTitle": "贷款与等额月供 (EMI) 计算器",
+    "emiDesc": "计算每月还款额、本金与利息明细以及完整的年度还款计划表。",
+    "loanParams": "贷款参数",
+    "loanPrincipal": "贷款本金总额",
+    "annualInterestRate": "年利率 (%)",
+    "loanTenure": "贷款期限",
+    "years": "年",
+    "months": "个月",
+    "monthlyEmi": "每月还款额 (月供)",
+    "emiSubtext": "每月本金 + 利息",
+    "totalInterest": "支付利息总额",
+    "totalPayable": "还款总金额",
+    "payableSubtext": "贷款本金 + 全部利息",
+    "loanRatio": "还款比例",
+    "principalLoanAmt": "贷款本金",
+    "yearlySchedule": "年度还款计划表",
+    "year": "年份",
+    "openingBalance": "期初余额",
+    "emiPaidYr": "年度还款",
+    "principalPaid": "已偿还本金",
+    "interestPaid": "已支付利息",
+    "closingBalance": "期末剩余本金",
+    "mortgageTitle": "房贷与购房月供计算器",
+    "mortgageDesc": "计算包括本金、利息、房产税、房屋保险和物业费在内的每月综合还款。",
+    "propertyInputs": "房产与贷款输入",
+    "homePrice": "房屋购买价格",
+    "downPayment": "首付比例 (%)",
+    "loanTerm": "贷款年限",
+    "propertyTax": "年度房产税",
+    "homeIns": "年度房屋保险",
+    "hoaFees": "每月物业费",
+    "totalMonthlyPayment": "每月综合还款总额",
+    "pitiSubtext": "本金、利息、税费与保险综合支出",
+    "principalInterest": "本金与利息",
+    "taxesInsurance": "税金与保险",
+    "escrowEst": "月度托管估算",
+    "ciTitle": "复利增值计算器",
+    "ciDesc": "计算复利投资在定期追加投入下的指数级增长与未来资产规模。",
+    "ciParams": "本金与追加投入",
+    "initialPrincipal": "初始本金余额",
+    "monthlyAddition": "每月追加投入",
+    "totalFutureVal": "未来总价值",
+    "totalPrincipalInvested": "投入本金总计",
+    "totalCompoundInterest": "累计复利收益",
+    "compoundedBalance": "复利资产净值",
+    "extraGrowth": "复利带来的超额增长",
+    "taxTitle": "销售税、折扣与增值税计算器",
+    "taxDesc": "即时计算促销折扣、多重优惠券叠加及含税实付总额。",
+    "priceTaxParams": "价格与税率参数",
+    "retailPrice": "原始零售价",
+    "primaryDiscount": "基础折扣 (%)",
+    "salesTaxVat": "销售税 / 增值税 (%)",
+    "extraCoupon": "额外优惠券 (%)",
+    "finalPrice": "最终实付总价",
+    "youSave": "为您节省",
+    "discountedPreTax": "折后税前价格",
+    "salesTaxAmount": "税费金额",
+    "tipTitle": "小费与AA账单分摊计算器",
+    "tipDesc": "计算就餐小费并按人数均摊餐费。",
+    "billGratuityParams": "账单与小费输入",
+    "totalBill": "账单总金额",
+    "tipPercentage": "小费比例 (%)",
+    "splitPeople": "分摊人数",
+    "totalPerPerson": "每人应付总额",
+    "totalGratuity": "小费总额",
+    "grandTotalBill": "最终账单总计",
+    "people": "人",
+    "person": "人",
+    "fuelTitle": "自驾燃油费用分摊计算器",
+    "fuelDesc": "估算长途自驾燃油消耗、百公里油耗及乘客AA分摊费用。",
+    "tripVehicleParams": "行程与车辆参数",
+    "tripDistance": "行程距离 (公里/英里)",
+    "fuelEfficiency": "燃油经济性 (MPG / 油耗)",
+    "gasPrice": "油价 (每升/加仑)",
+    "numPassengers": "乘车人数",
+    "totalFuelCost": "总燃油费用",
+    "costPerPerson": "每人分摊费用",
+    "gallonsConsumed": "燃油消耗总量",
+    "timeTitle": "工时与薪资计算器",
+    "timeDesc": "计算实际出勤工时、扣除无薪休息时间及应得薪资总额。",
+    "shiftTimestamps": "班次打卡时间",
+    "shiftStart": "上班打卡时间",
+    "shiftEnd": "下班打卡时间",
+    "unpaidBreak": "无薪休息时长 (分钟)",
+    "hourlyRate": "时薪标准",
+    "workDuration": "净出勤工时",
+    "grossShiftPay": "本班次应得税前薪资",
+    "billableHours": "十进制计费工时"
+  },
+  "ar": {
+    "appName": "ليدجر آند ليند (Ledger & Lend)",
+    "appTagline": "الذكاء المالي وإدارة الثروات",
+    "searchPlaceholder": "البحث في الأدوات المالية (Ctrl+K)...",
+    "currencyLabel": "اختر العملة",
+    "langLabel": "اختر اللغة",
+    "allFinancial": "جميع الأدوات المالية (8)",
+    "loansMortgages": "القروض والتمويل العقاري",
+    "investingWealth": "الاستثمار وبناء الثروة",
+    "taxesSpending": "الضرائب والمصروفات",
+    "financialSuiteTitle": "مجموعة الآلات الحاسبة المالية",
+    "financialSuiteSubtitle": "اختر أي أداة متخصصة للقروض أو الاستثمار أو الضرائب",
+    "guidesTitle": "أدلة التمويل الشخصي والاستثمار",
+    "guidesSubtitle": "أدلة تعليمية متعمقة حول الفائدة المركبة، وسداد الديون، والحرية المالية",
+    "favorite": "المفضلة",
+    "embed": "تضمين",
+    "share": "مشاركة",
+    "print": "طباعة",
+    "copy": "انقر للنسخ",
+    "copied": "✓ تم النسخ!",
+    "presets": "القيم الافتراضية:",
+    "eraseData": "مسح جميع بياناتي",
+    "privacyFooter": "© 2026 ليدجر آند ليند. حسابات مالية خاصة وآمنة بنسبة 100%.",
+    "embedTitle": "تضمين أداة الحاسبة",
+    "embedDesc": "ضع هذه الحاسبة التفاعلية في موقعك أو مدونتك",
+    "copyEmbed": "نسخ الكود",
+    "cancel": "إلغاء",
+    "welcomeTitle": "مرحبًا بك في Ledger & Lend",
+    "welcomeDesc": "تفضيل اللغة الذكي",
+    "continue": "متابعة",
+    "changeLang": "تغيير اللغة...",
+    "sipTitle": "حاسبة الاستثمار الشهري (SIP) وبناء الثروة",
+    "sipDesc": "احسب تراكم الثروة عبر الاستثمارات الدورية المنتظمة، والفائدة المركبة، وتعديل التضخم.",
+    "sipParams": "معايير الاستثمار",
+    "monthlySip": "الاستثمار الشهري",
+    "lumpsum": "استثمار بمبلغ إجمالي",
+    "monthlyInvestment": "مبلغ الاستثمار الشهري",
+    "expectedReturn": "معدل العائد السنوي المتوقع (%)",
+    "timePeriod": "فترة الاستثمار",
+    "totalFutureWealth": "إجمالي الثروة المستقبلية",
+    "maturityValue": "قيمة الاستحقاق بعد النمو المركب",
+    "investedAmount": "المبلغ المستثمر الإجمالي",
+    "principalContrib": "إجمالي المساهمات الأصلية",
+    "estimatedGains": "الأرباح التقديرية",
+    "portfolioRatio": "نسبة مكونات المحفظة",
+    "amountInvested": "المبلغ المستثمر",
+    "estimatedReturns": "العوائد المقدرة",
+    "wealthMultiplier": "مضاعف الثروة",
+    "emiTitle": "حاسبة القروض والأقساط الشهرية (EMI)",
+    "emiDesc": "احسب القسط الشهري للقرض، وتوزيع الأصل مقابل الفائدة، وجدول السداد السنوي الكامل.",
+    "loanParams": "معايير القرض",
+    "loanPrincipal": "مبلغ القرض الأساسي",
+    "annualInterestRate": "معدل الفائدة السنوي (%)",
+    "loanTenure": "مدة القرض",
+    "years": "سنوات",
+    "months": "أشهر",
+    "monthlyEmi": "القسط الشهري للقرض",
+    "emiSubtext": "الأصل + الفائدة شهرياً",
+    "totalInterest": "إجمالي الفوائد",
+    "totalPayable": "إجمالي المبلغ المستحق للدفع",
+    "payableSubtext": "أصل القرض + إجمالي الفوائد",
+    "loanRatio": "نسبة سداد القرض",
+    "principalLoanAmt": "أصل مبلغ القرض",
+    "yearlySchedule": "جدول استهلاك القرض السنوي",
+    "year": "السنة",
+    "openingBalance": "الرصيد الافتتاحي",
+    "emiPaidYr": "الأقساط السنوية",
+    "principalPaid": "الأصل المسدد",
+    "interestPaid": "الفائدة المسددة",
+    "closingBalance": "الرصيد المتبقي",
+    "mortgageTitle": "حاسبة التمويل العقاري والرهن",
+    "mortgageDesc": "احسب الدفعات الشهرية لشراء منزل شاملة الأصل والفائدة والضرائب والتأمين ورسوم الخدمات.",
+    "propertyInputs": "بيانات العقار والقرض",
+    "homePrice": "سعر شراء العقار",
+    "downPayment": "نسبة الدفعة الأولى (%)",
+    "loanTerm": "مدة التمويل",
+    "propertyTax": "ضريبة العقار السنوية",
+    "homeIns": "تأمين المنزل السنوي",
+    "hoaFees": "رسوم الصيانة الشهرية",
+    "totalMonthlyPayment": "إجمالي الدفعة الشهرية",
+    "pitiSubtext": "الأصل والفائدة والضرائب والتأمين",
+    "principalInterest": "الأصل والفائدة",
+    "taxesInsurance": "الضرائب والتأمين",
+    "escrowEst": "تقدير الضمان الشهري",
+    "ciTitle": "حاسبة الفائدة المركبة",
+    "ciDesc": "احسب النمو المتضاعف للفائدة المركبة مع الإيداعات الدورية وقيمة المحفظة المستقبلية.",
+    "ciParams": "الأصل والإيداعات الدورية",
+    "initialPrincipal": "الرصيد الأولي للأصل",
+    "monthlyAddition": "الإيداع الإضافي الشهري",
+    "totalFutureVal": "القيمة المستقبلية الإجمالية",
+    "totalPrincipalInvested": "إجمالي رأس المال المستثمر",
+    "totalCompoundInterest": "إجمالي الفائدة المركبة",
+    "compoundedBalance": "رصيد المحفظة المركب",
+    "extraGrowth": "نمو إضافي",
+    "taxTitle": "حاسبة ضريبة المبيعات والخصم",
+    "taxDesc": "احسب الخصومات، وضريبة القيمة المضافة (VAT)، والسعر النهائي الصافي فوراً.",
+    "priceTaxParams": "معايير السعر والضريبة",
+    "retailPrice": "سعر البيع الأصلي",
+    "primaryDiscount": "نسبة الخصم الأساسي (%)",
+    "salesTaxVat": "ضريبة المبيعات / القيمة المضافة (%)",
+    "extraCoupon": "كوبون إضافي (%)",
+    "finalPrice": "السعر النهائي للدفع",
+    "youSave": "إجمالي التوفير",
+    "discountedPreTax": "السعر بعد الخصم وقبل الضريبة",
+    "salesTaxAmount": "مبلغ الضريبة",
+    "tipTitle": "حاسبة الإكرامية وتقسيم الفاتورة",
+    "tipDesc": "احسب نسبة الإكرامية وقسم فاتورة المطعم بالتساوي على عدد الأشخاص.",
+    "billGratuityParams": "الفاتورة والإكرامية",
+    "totalBill": "إجمالي مبلغ الفاتورة",
+    "tipPercentage": "نسبة الإكرامية (%)",
+    "splitPeople": "تقسيم على عدد الأشخاص",
+    "totalPerPerson": "الإجمالي لكل شخص",
+    "totalGratuity": "إجمالي الإكرامية",
+    "grandTotalBill": "إجمالي الفاتورة النهائي",
+    "people": "أشخاص",
+    "person": "شخص",
+    "fuelTitle": "حاسبة تكلفة الوقود وتقاسم السفر",
+    "fuelDesc": "احسب استهلاك الوقود للرحلات، وكفاءة استهلاك البنزين، وتقاسم التكلفة مع الركاب.",
+    "tripVehicleParams": "معايير الرحلة والمركبة",
+    "tripDistance": "مسافة الرحلة (كم / ميل)",
+    "fuelEfficiency": "كفاءة استهلاك الوقود (MPG)",
+    "gasPrice": "سعر الوقود",
+    "numPassengers": "عدد الركاب",
+    "totalFuelCost": "إجمالي تكلفة الوقود للرحلة",
+    "costPerPerson": "التكلفة لكل راكب",
+    "gallonsConsumed": "كمية الوقود المستهلكة",
+    "timeTitle": "حاسبة ساعات العمل والراتب",
+    "timeDesc": "احسب ساعات العمل الفعلية، وخصم فترات الاستراحة، وإجمالي الراتب المستحق للوردية.",
+    "shiftTimestamps": "مواعيد الوردية",
+    "shiftStart": "وقت بدء العمل",
+    "shiftEnd": "وقت انتهاء العمل",
+    "unpaidBreak": "استراحة غير مدفوعة (دقائق)",
+    "hourlyRate": "أجر الساعة",
+    "workDuration": "صافي مدة العمل المستحقة",
+    "grossShiftPay": "إجمالي أجر الوردية",
+    "billableHours": "ساعات العمل العشرية القابلة للفوترة"
+  }
+};
+
+  // 2. Toast Notification System
+  window.showToast = function(msg, icon) {
+    var toast = document.getElementById('toast-notification');
+    var msgEl = document.getElementById('toast-message');
+    var iconEl = document.getElementById('toast-icon');
+    if (!toast || !msgEl) return;
+    msgEl.textContent = msg;
+    if (iconEl) iconEl.textContent = icon || '✓';
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    clearTimeout(window._toastTimeout);
+    window._toastTimeout = setTimeout(function() {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    }, 2800);
+  };
+
+  // 3. Currency Management
+  var currencyMap = {
+    USD: { symbol: '$', name: 'US Dollar', locale: 'en-US' },
+    EUR: { symbol: '€', name: 'Euro', locale: 'de-DE' },
+    GBP: { symbol: '£', name: 'British Pound', locale: 'en-GB' },
+    INR: { symbol: '₹', name: 'Indian Rupee', locale: 'en-IN' },
+    AUD: { symbol: 'A$', name: 'Australian Dollar', locale: 'en-AU' },
+    CAD: { symbol: 'C$', name: 'Canadian Dollar', locale: 'en-CA' },
+    JPY: { symbol: '¥', name: 'Japanese Yen', locale: 'ja-JP' },
+    AED: { symbol: 'AED ', name: 'UAE Dirham', locale: 'ar-AE' }
+  };
+
+  function getGlobalCurrency() {
+    var saved = localStorage.getItem('calc_currency');
+    return (saved && currencyMap[saved]) ? saved : 'USD';
+  }
+
+  function getGlobalCurrencySymbol() {
+    var curr = getGlobalCurrency();
+    return currencyMap[curr]?.symbol || '$';
+  }
+  window.getGlobalCurrency = getGlobalCurrency;
+  window.getGlobalCurrencySymbol = getGlobalCurrencySymbol;
+
+  function updateCurrencyDOM() {
+    var sym = getGlobalCurrencySymbol();
+    document.querySelectorAll('.calc-input-prefix').forEach(function(el) {
+      el.textContent = sym;
+    });
+
+    document.querySelectorAll('[id$="-presets"] button').forEach(function(btn) {
+      var val = btn.getAttribute('data-val');
+      if (val && !isNaN(val)) {
+        var num = Number(val);
+        var formatted = num >= 1000 ? (num / 1000) + 'k' : num;
+        btn.textContent = sym + formatted;
+      }
+    });
+
+    window.dispatchEvent(new CustomEvent('currency-changed', { detail: { symbol: sym, currency: getGlobalCurrency() } }));
+
+    if (typeof window.calculateSIP === 'function') window.calculateSIP();
+    if (typeof window.calculateEMI === 'function') window.calculateEMI();
+    if (typeof window.calculateMortgage === 'function') window.calculateMortgage();
+    if (typeof window.calculateCI === 'function') window.calculateCI();
+    if (typeof window.calculateTaxDiscount === 'function') window.calculateTaxDiscount();
+    if (typeof window.calculateTip === 'function') window.calculateTip();
+    if (typeof window.calculateFuel === 'function') window.calculateFuel();
+    if (typeof window.calculateTimeDuration === 'function') window.calculateTimeDuration();
+  }
+  window.updateCurrencyDOM = updateCurrencyDOM;
+
+  // 4. Language & Live DOM Translation Engine
+  var langNames = {
+    en: { name: 'English', dir: 'ltr' },
+    hi: { name: 'हिन्दी', dir: 'ltr' },
+    es: { name: 'Español', dir: 'ltr' },
+    fr: { name: 'Français', dir: 'ltr' },
+    de: { name: 'Deutsch', dir: 'ltr' },
+    ja: { name: '日本語', dir: 'ltr' },
+    pt: { name: 'Português', dir: 'ltr' },
+    zh: { name: '中文', dir: 'ltr' },
+    ar: { name: 'العربية', dir: 'rtl' }
+  };
+
+  function getGlobalLanguage() {
+    return localStorage.getItem('calc_hub_lang') || localStorage.getItem('calc_language') || 'en';
+  }
+
+  function t(key, lang) {
+    var l = lang || getGlobalLanguage();
+    var dict = i18nDict[l] || i18nDict.en || {};
+    return dict[key] || (i18nDict.en ? i18nDict.en[key] : key) || key;
+  }
+  window.t = t;
+
+  function updateLanguageDOM() {
+    var lang = getGlobalLanguage();
+    var dict = i18nDict[lang] || i18nDict.en || {};
+    var dir = langNames[lang]?.dir || 'ltr';
+
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', lang);
+
+    // Translate Core UI Elements
+    var titleEl = document.querySelector('header a span.font-extrabold');
+    if (titleEl && dict.appName) {
+      titleEl.innerHTML = dict.appName + ' <span class="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20">Finance</span>';
+    }
+    var subtitleEl = document.querySelector('header a span.block');
+    if (subtitleEl && dict.appTagline) subtitleEl.textContent = dict.appTagline;
+
+    var searchInput = document.querySelector('.search-bar-trigger span');
+    if (searchInput && dict.searchPlaceholder) searchInput.textContent = dict.searchPlaceholder;
+
+    // Action Buttons text
+    var embedBtnText = document.querySelector('#calc-embed-btn span, #header-embed-btn span');
+    if (embedBtnText && dict.embed) embedBtnText.textContent = dict.embed;
+    var shareBtnText = document.querySelector('#calc-share-btn span, #header-share-btn span');
+    if (shareBtnText && dict.share) shareBtnText.textContent = dict.share;
+    var printBtnText = document.querySelector('#calc-print-btn span, #header-print-btn span');
+    if (printBtnText && dict.print) printBtnText.textContent = dict.print;
+
+    // Category Filter Pills
+    var pills = document.querySelectorAll('#category-pills-container a');
+    if (pills && pills.length >= 4) {
+      if (pills[0].querySelector('span')) pills[0].querySelector('span').textContent = dict.allFinancial || 'All Financial (8)';
+      if (pills[1].querySelector('span')) pills[1].querySelector('span').textContent = dict.loansMortgages || 'Loans & Mortgages';
+      if (pills[2].querySelector('span')) pills[2].querySelector('span').textContent = dict.investingWealth || 'Investing & Wealth';
+      if (pills[3].querySelector('span')) pills[3].querySelector('span').textContent = dict.taxesSpending || 'Taxes & Spending';
+    }
+
+    // Section Titles
+    var suiteH2 = document.querySelector('#top-tool-selector-section h2 span');
+    if (suiteH2 && dict.financialSuiteTitle) suiteH2.textContent = dict.financialSuiteTitle;
+    var suiteP = document.querySelector('#top-tool-selector-section p');
+    if (suiteP && dict.financialSuiteSubtitle) suiteP.textContent = dict.financialSuiteSubtitle;
+
+    var guidesH2 = document.querySelector('section:last-of-type h2 span');
+    if (guidesH2 && dict.guidesTitle) guidesH2.textContent = dict.guidesTitle;
+    var guidesP = document.querySelector('section:last-of-type p');
+    if (guidesP && dict.guidesSubtitle) guidesP.textContent = dict.guidesSubtitle;
+
+    // Active Calculator Titles & Fields based on current page
+    var currentPath = window.location.pathname.replace(/^\/|\/$/g, '') || 'home';
+    if (currentPath === 'sip' || currentPath.indexOf('sip') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.sipTitle) h1.textContent = dict.sipTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.sipDesc) desc.textContent = dict.sipDesc;
+      var pLbl = document.querySelector('label[for="sip-amount"]'); if (pLbl && dict.monthlyInvestment) pLbl.textContent = dict.monthlyInvestment;
+      var rLbl = document.querySelector('label[for="sip-rate"]'); if (rLbl && dict.expectedReturn) rLbl.textContent = dict.expectedReturn;
+      var yLbl = document.querySelector('label[for="sip-years"]'); if (yLbl && dict.timePeriod) yLbl.textContent = dict.timePeriod;
+      var bSip = document.getElementById('sip-mode-sip'); if (bSip && dict.monthlySip) bSip.textContent = dict.monthlySip;
+      var bLump = document.getElementById('sip-mode-lump'); if (bLump && dict.lumpsum) bLump.textContent = dict.lumpsum;
+      var cLbl = document.querySelector('#copyable-sip-card .result-label'); if (cLbl && dict.totalFutureWealth) cLbl.textContent = dict.totalFutureWealth;
+      var cSub = document.querySelector('#copyable-sip-card .result-subtext'); if (cSub && dict.maturityValue) cSub.textContent = dict.maturityValue;
+      var invLbl = document.querySelector('#sip-invested-res')?.parentElement?.querySelector('.result-label'); if (invLbl && dict.investedAmount) invLbl.textContent = dict.investedAmount;
+      var gnLbl = document.querySelector('#sip-gains-res')?.parentElement?.querySelector('.result-label'); if (gnLbl && dict.estimatedGains) gnLbl.textContent = dict.estimatedGains;
+    } else if (currentPath === 'emi' || currentPath.indexOf('emi') !== -1 || currentPath === 'home' || currentPath === '') {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.emiTitle) h1.textContent = dict.emiTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.emiDesc) desc.textContent = dict.emiDesc;
+      var pLbl = document.querySelector('label[for="emi-amount"]'); if (pLbl && dict.loanPrincipal) pLbl.textContent = dict.loanPrincipal;
+      var rLbl = document.querySelector('label[for="emi-rate"]'); if (rLbl && dict.annualInterestRate) rLbl.textContent = dict.annualInterestRate;
+      var tLbl = document.querySelector('label[for="emi-tenure"]'); if (tLbl && dict.loanTenure) tLbl.textContent = dict.loanTenure;
+      var uYr = document.getElementById('emi-unit-yr'); if (uYr && dict.years) uYr.textContent = dict.years;
+      var uMo = document.getElementById('emi-unit-mo'); if (uMo && dict.months) uMo.textContent = dict.months;
+      var emiLbl = document.querySelector('#copyable-emi-card .result-label'); if (emiLbl && dict.monthlyEmi) emiLbl.textContent = dict.monthlyEmi;
+      var emiSub = document.querySelector('#copyable-emi-card .result-subtext'); if (emiSub && dict.emiSubtext) emiSub.textContent = dict.emiSubtext;
+      var intLbl = document.querySelector('#emi-interest-res')?.parentElement?.querySelector('.result-label'); if (intLbl && dict.totalInterest) intLbl.textContent = dict.totalInterest;
+      var totLbl = document.querySelector('#emi-total-res')?.parentElement?.querySelector('.result-label'); if (totLbl && dict.totalPayable) totLbl.textContent = dict.totalPayable;
+      
+      var ths = document.querySelectorAll('#emi-schedule-table th');
+      if (ths && ths.length >= 6) {
+        if (dict.year) ths[0].textContent = dict.year;
+        if (dict.openingBalance) ths[1].textContent = dict.openingBalance;
+        if (dict.emiPaidYr) ths[2].textContent = dict.emiPaidYr;
+        if (dict.principalPaid) ths[3].textContent = dict.principalPaid;
+        if (dict.interestPaid) ths[4].textContent = dict.interestPaid;
+        if (dict.closingBalance) ths[5].textContent = dict.closingBalance;
+      }
+    } else if (currentPath === 'mortgage' || currentPath.indexOf('mortgage') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.mortgageTitle) h1.textContent = dict.mortgageTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.mortgageDesc) desc.textContent = dict.mortgageDesc;
+      var pLbl = document.querySelector('label[for="mg-price"]'); if (pLbl && dict.homePrice) pLbl.textContent = dict.homePrice;
+      var dpLbl = document.querySelector('label[for="mg-dp"]'); if (dpLbl && dict.downPayment) dpLbl.textContent = dict.downPayment;
+      var trmLbl = document.querySelector('label[for="mg-term"]'); if (trmLbl && dict.loanTerm) trmLbl.textContent = dict.loanTerm;
+      var mgLbl = document.querySelector('#copyable-mg-card .result-label'); if (mgLbl && dict.totalMonthlyPayment) mgLbl.textContent = dict.totalMonthlyPayment;
+      var mgSub = document.querySelector('#copyable-mg-card .result-subtext'); if (mgSub && dict.pitiSubtext) mgSub.textContent = dict.pitiSubtext;
+      var piLbl = document.querySelector('#mg-pi-res')?.parentElement?.querySelector('.result-label'); if (piLbl && dict.principalInterest) piLbl.textContent = dict.principalInterest;
+      var escLbl = document.querySelector('#mg-escrow-res')?.parentElement?.querySelector('.result-label'); if (escLbl && dict.taxesInsurance) escLbl.textContent = dict.taxesInsurance;
+    } else if (currentPath === 'compound-interest' || currentPath.indexOf('compound-interest') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.ciTitle) h1.textContent = dict.ciTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.ciDesc) desc.textContent = dict.ciDesc;
+      var pLbl = document.querySelector('label[for="ci-principal"]'); if (pLbl && dict.initialPrincipal) pLbl.textContent = dict.initialPrincipal;
+      var aLbl = document.querySelector('label[for="ci-addition"]'); if (aLbl && dict.monthlyAddition) aLbl.textContent = dict.monthlyAddition;
+      var ciLbl = document.querySelector('#copyable-ci-card .result-label'); if (ciLbl && dict.totalFutureVal) ciLbl.textContent = dict.totalFutureVal;
+      var ciSub = document.querySelector('#copyable-ci-card .result-subtext'); if (ciSub && dict.compoundedBalance) ciSub.textContent = dict.compoundedBalance;
+      var tpLbl = document.querySelector('#ci-total-principal')?.parentElement?.querySelector('.result-label'); if (tpLbl && dict.totalPrincipalInvested) tpLbl.textContent = dict.totalPrincipalInvested;
+      var tiLbl = document.querySelector('#ci-total-interest')?.parentElement?.querySelector('.result-label'); if (tiLbl && dict.totalCompoundInterest) tiLbl.textContent = dict.totalCompoundInterest;
+    } else if (currentPath === 'tax-discount' || currentPath.indexOf('tax-discount') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.taxTitle) h1.textContent = dict.taxTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.taxDesc) desc.textContent = dict.taxDesc;
+      var pLbl = document.querySelector('label[for="td-price"]'); if (pLbl && dict.retailPrice) pLbl.textContent = dict.retailPrice;
+      var dLbl = document.querySelector('label[for="td-disc"]'); if (dLbl && dict.primaryDiscount) dLbl.textContent = dict.primaryDiscount;
+      var tLbl = document.querySelector('label[for="td-tax"]'); if (tLbl && dict.salesTaxVat) tLbl.textContent = dict.salesTaxVat;
+      var cLbl = document.querySelector('label[for="td-coupon"]'); if (cLbl && dict.extraCoupon) cLbl.textContent = dict.extraCoupon;
+      var resLbl = document.querySelector('#copyable-td-card .result-label'); if (resLbl && dict.finalPrice) resLbl.textContent = dict.finalPrice;
+      var ptLbl = document.querySelector('#td-pretax-res')?.parentElement?.querySelector('.result-label'); if (ptLbl && dict.discountedPreTax) ptLbl.textContent = dict.discountedPreTax;
+      var txLbl = document.querySelector('#td-tax-amt-res')?.parentElement?.querySelector('.result-label'); if (txLbl && dict.salesTaxAmount) txLbl.textContent = dict.salesTaxAmount;
+    } else if (currentPath === 'tip-split' || currentPath.indexOf('tip-split') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.tipTitle) h1.textContent = dict.tipTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.tipDesc) desc.textContent = dict.tipDesc;
+      var bLbl = document.querySelector('label[for="tip-bill"]'); if (bLbl && dict.totalBill) bLbl.textContent = dict.totalBill;
+      var pLbl = document.querySelector('label[for="tip-pct"]'); if (pLbl && dict.tipPercentage) pLbl.textContent = dict.tipPercentage;
+      var sLbl = document.querySelector('label[for="tip-people"]'); if (sLbl && dict.splitPeople) sLbl.textContent = dict.splitPeople;
+      var resLbl = document.querySelector('#copyable-tip-card .result-label'); if (resLbl && dict.totalPerPerson) resLbl.textContent = dict.totalPerPerson;
+      var grLbl = document.querySelector('#tip-total-amt-res')?.parentElement?.querySelector('.result-label'); if (grLbl && dict.totalGratuity) grLbl.textContent = dict.totalGratuity;
+      var totLbl = document.querySelector('#tip-grand-total-res')?.parentElement?.querySelector('.result-label'); if (totLbl && dict.grandTotalBill) totLbl.textContent = dict.grandTotalBill;
+    } else if (currentPath === 'fuel-cost' || currentPath.indexOf('fuel-cost') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.fuelTitle) h1.textContent = dict.fuelTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.fuelDesc) desc.textContent = dict.fuelDesc;
+      var dLbl = document.querySelector('label[for="fuel-dist"]'); if (dLbl && dict.tripDistance) dLbl.textContent = dict.tripDistance;
+      var eLbl = document.querySelector('label[for="fuel-mpg"]'); if (eLbl && dict.fuelEfficiency) eLbl.textContent = dict.fuelEfficiency;
+      var pLbl = document.querySelector('label[for="fuel-price"]'); if (pLbl && dict.gasPrice) pLbl.textContent = dict.gasPrice;
+      var nLbl = document.querySelector('label[for="fuel-passengers"]'); if (nLbl && dict.numPassengers) nLbl.textContent = dict.numPassengers;
+      var resLbl = document.querySelector('#copyable-fuel-card .result-label'); if (resLbl && dict.totalFuelCost) resLbl.textContent = dict.totalFuelCost;
+      var cpLbl = document.querySelector('#fuel-per-person-res')?.parentElement?.querySelector('.result-label'); if (cpLbl && dict.costPerPerson) cpLbl.textContent = dict.costPerPerson;
+    } else if (currentPath === 'time-duration' || currentPath.indexOf('time-duration') !== -1) {
+      var h1 = document.getElementById('active-calc-title'); if (h1 && dict.timeTitle) h1.textContent = dict.timeTitle;
+      var desc = document.getElementById('active-calc-desc'); if (desc && dict.timeDesc) desc.textContent = dict.timeDesc;
+      var sLbl = document.querySelector('label[for="time-start"]'); if (sLbl && dict.shiftStart) sLbl.textContent = dict.shiftStart;
+      var eLbl = document.querySelector('label[for="time-end"]'); if (eLbl && dict.shiftEnd) eLbl.textContent = dict.shiftEnd;
+      var bLbl = document.querySelector('label[for="time-break"]'); if (bLbl && dict.unpaidBreak) bLbl.textContent = dict.unpaidBreak;
+      var rLbl = document.querySelector('label[for="time-rate"]'); if (rLbl && dict.hourlyRate) rLbl.textContent = dict.hourlyRate;
+      var resLbl = document.querySelector('#copyable-time-card .result-label'); if (resLbl && dict.workDuration) resLbl.textContent = dict.workDuration;
+      var gpLbl = document.querySelector('#time-pay-res')?.parentElement?.querySelector('.result-label'); if (gpLbl && dict.grossShiftPay) gpLbl.textContent = dict.grossShiftPay;
+    }
+
+    // Presets Label
+    document.querySelectorAll('[id$="-presets"] > span:first-child').forEach(function(el) {
+      if (dict.presets) el.textContent = dict.presets;
+    });
+
+    // Footer & Data Wipe
+    var eraseBtn = document.getElementById('privacy-data-wipe-btn');
+    if (eraseBtn && dict.eraseData) eraseBtn.textContent = dict.eraseData;
+    var footerSpan = document.querySelector('footer div.flex span');
+    if (footerSpan && dict.privacyFooter) footerSpan.textContent = dict.privacyFooter;
+
+    // Dispatch global language-changed event and recalculate
+    window.dispatchEvent(new CustomEvent('language-changed', { detail: { lang: lang, dir: dir } }));
+
+    if (typeof window.calculateSIP === 'function') window.calculateSIP();
+    if (typeof window.calculateEMI === 'function') window.calculateEMI();
+    if (typeof window.calculateMortgage === 'function') window.calculateMortgage();
+    if (typeof window.calculateCI === 'function') window.calculateCI();
+    if (typeof window.calculateTaxDiscount === 'function') window.calculateTaxDiscount();
+    if (typeof window.calculateTip === 'function') window.calculateTip();
+    if (typeof window.calculateFuel === 'function') window.calculateFuel();
+    if (typeof window.calculateTimeDuration === 'function') window.calculateTimeDuration();
+  }
+  window.updateLanguageDOM = updateLanguageDOM;
+
+  function setGlobalLanguage(lang) {
+    if (langNames[lang]) {
+      localStorage.setItem('calc_hub_lang', lang);
+      localStorage.setItem('calc_language', lang);
+      updateLanguageDOM();
+    }
+  }
+  window.setGlobalLanguage = setGlobalLanguage;
+
+  // 5. Header Actions: Favorite, Embed Modal, Share, Print
+  function initHeaderActions() {
+    // A. Currency Dropdown
+    var currSelect = document.getElementById('currency-selector');
+    if (currSelect) {
+      currSelect.value = getGlobalCurrency();
+      currSelect.addEventListener('change', function(e) {
+        var val = e.target.value;
+        localStorage.setItem('calc_currency', val);
+        updateCurrencyDOM();
+        showToast('Currency changed to ' + val + ' (' + getGlobalCurrencySymbol() + ')', '💰');
       });
     }
-  </script>
+
+    // B. Language Dropdown
+    var langSelect = document.getElementById('language-selector');
+    if (langSelect) {
+      langSelect.value = getGlobalLanguage();
+      langSelect.addEventListener('change', function(e) {
+        var val = e.target.value;
+        setGlobalLanguage(val);
+        showToast('Language changed to ' + (langNames[val]?.name || val), '🌐');
+      });
+    }
+
+    // Initial Currency & Language DOM update
+    updateCurrencyDOM();
+    updateLanguageDOM();
+
+    // C. Favorite Button
+    var currentPath = window.location.pathname.replace(/^\/|\/$/g, '') || 'home';
+    var favBtn = document.getElementById('calc-fav-btn') || document.getElementById('header-fav-btn');
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('calc_favorites') || '[]'); } catch (e) {}
+    var isFav = favs.indexOf(currentPath) !== -1;
+
+    function renderFavIcon() {
+      if (!favBtn) return;
+      if (isFav) {
+        favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+        favBtn.classList.add('border-accent-amber');
+      } else {
+        favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+        favBtn.classList.remove('border-accent-amber');
+      }
+    }
+    renderFavIcon();
+
+    if (favBtn) {
+      favBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        try { favs = JSON.parse(localStorage.getItem('calc_favorites') || '[]'); } catch (e) { favs = []; }
+        var idx = favs.indexOf(currentPath);
+        if (idx === -1) {
+          favs.push(currentPath);
+          isFav = true;
+          showToast('Added to Favorites!', '⭐');
+        } else {
+          favs.splice(idx, 1);
+          isFav = false;
+          showToast('Removed from Favorites', '☆');
+        }
+        try { localStorage.setItem('calc_favorites', JSON.stringify(favs)); } catch (e) {}
+        renderFavIcon();
+      });
+    }
+
+    // D. Embed Modal
+    var embedBtn = document.getElementById('calc-embed-btn') || document.getElementById('header-embed-btn');
+    var embedModal = document.getElementById('embed-code-modal');
+    var embedCard = document.getElementById('embed-modal-card');
+    var embedBox = document.getElementById('embed-code-box');
+    var closeEmbedBtn = document.getElementById('close-embed-modal-btn');
+    var cancelEmbedBtn = document.getElementById('cancel-embed-modal-btn');
+    var copyEmbedBtn = document.getElementById('copy-embed-code-btn');
+
+    function openEmbed() {
+      if (!embedModal || !embedBox) return;
+      var currentUrl = window.location.href;
+      var title = document.title || 'Financial Calculator';
+      var iframeHtml = '<iframe src="' + currentUrl + '" width="100%" height="650" frameborder="0" style="border-radius:12px; border:1px solid #334155; box-shadow:0 8px 24px rgba(0,0,0,0.2);" title="' + title + '"></iframe>\n<p style="text-align:right; font-size:11px; color:#64748b;">Powered by <a href="' + window.location.origin + '" target="_blank" rel="noopener">Ledger &amp; Lend</a></p>';
+      embedBox.value = iframeHtml;
+      embedModal.classList.remove('hidden');
+      setTimeout(function() {
+        embedModal.classList.remove('opacity-0');
+        if (embedCard) embedCard.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeEmbed() {
+      if (!embedModal) return;
+      embedModal.classList.add('opacity-0');
+      if (embedCard) embedCard.classList.add('scale-95');
+      setTimeout(function() {
+        embedModal.classList.add('hidden');
+        if (copyEmbedBtn) copyEmbedBtn.textContent = 'Copy Embed Code';
+      }, 200);
+    }
+
+    if (embedBtn) embedBtn.addEventListener('click', function(e) { e.preventDefault(); openEmbed(); });
+    if (closeEmbedBtn) closeEmbedBtn.addEventListener('click', closeEmbed);
+    if (cancelEmbedBtn) cancelEmbedBtn.addEventListener('click', closeEmbed);
+    if (embedModal) {
+      embedModal.addEventListener('click', function(e) {
+        if (e.target === embedModal) closeEmbed();
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && embedModal && !embedModal.classList.contains('hidden')) {
+        closeEmbed();
+      }
+    });
+
+    if (copyEmbedBtn) {
+      copyEmbedBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (embedBox) {
+          navigator.clipboard.writeText(embedBox.value).then(function() {
+            copyEmbedBtn.textContent = '✓ Copied!';
+            showToast('Embed snippet copied to clipboard!', '📋');
+            setTimeout(closeEmbed, 1000);
+          }).catch(function() {
+            embedBox.select();
+            document.execCommand('copy');
+            copyEmbedBtn.textContent = '✓ Copied!';
+            showToast('Embed snippet copied to clipboard!', '📋');
+            setTimeout(closeEmbed, 1000);
+          });
+        }
+      });
+    }
+
+    // E. Share Button
+    var shareBtn = document.getElementById('calc-share-btn') || document.getElementById('header-share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href
+          }).catch(function() {});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(window.location.href).then(function() {
+            showToast('Calculator link copied to clipboard!', '🔗');
+          });
+        } else {
+          showToast('Link: ' + window.location.href, '🔗');
+        }
+      });
+    }
+
+    // F. Print Button
+    var printBtn = document.getElementById('calc-print-btn') || document.getElementById('header-print-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.print();
+      });
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', initHeaderActions);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initHeaderActions();
+  }
+})();
+</script>
+
 </body>
 </html>

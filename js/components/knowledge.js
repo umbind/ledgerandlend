@@ -171,9 +171,9 @@ export class KnowledgeComponent {
     const modal = document.getElementById('article-modal');
     const closeBtn = document.getElementById('close-article-modal-btn');
 
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+    closeBtn?.addEventListener('click', () => this.app?.closeModal(modal));
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('open');
+      if (e.target === modal) this.app?.closeModal(modal);
     });
   }
 
@@ -192,7 +192,7 @@ export class KnowledgeComponent {
     timeEl.textContent = article.readTime;
     bodyEl.innerHTML = article.content;
 
-    modal.classList.add('open');
+    this.app?.openModal(modal);
     if (window.lucide) window.lucide.createIcons();
   }
 }
