@@ -191,9 +191,7 @@
             <i data-lucide="shield-check" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span>100% Client-Side &bull; Bank-Grade Precision</span>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">
-            Financial &amp; Wealth Calculators
-          </h1>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight" data-i18n="financialSuiteTitle">Financial &amp; Wealth Calculators</h1>
           <p class="text-xs sm:text-sm text-secondary mt-1 max-w-xl">
             8 precision financial tools for loans, investments, mortgages, interest, and taxes with real-time interactive charts.
           </p>
@@ -207,15 +205,15 @@
           </button>
           <button type="button" class="home-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-secondary hover:text-primary hover:bg-tertiary flex items-center gap-1.5 whitespace-nowrap" data-cat="loans" onclick="filterHomeShowcase('loans')">
             <i data-lucide="landmark" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Loans &amp; Mortgages</span>
+            <span data-i18n="loansMortgages">Loans &amp; Mortgages</span>
           </button>
           <button type="button" class="home-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-secondary hover:text-primary hover:bg-tertiary flex items-center gap-1.5 whitespace-nowrap" data-cat="investing" onclick="filterHomeShowcase('investing')">
             <i data-lucide="trending-up" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Investing &amp; Wealth</span>
+            <span data-i18n="investingWealth">Investing &amp; Wealth</span>
           </button>
           <button type="button" class="home-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-secondary hover:text-primary hover:bg-tertiary flex items-center gap-1.5 whitespace-nowrap" data-cat="taxes" onclick="filterHomeShowcase('taxes')">
             <i data-lucide="receipt" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Taxes &amp; Spending</span>
+            <span data-i18n="taxesSpending">Taxes &amp; Spending</span>
           </button>
         </div>
       </div>
@@ -294,7 +292,7 @@
               </span>
             </div>
             <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-accent-primary transition-colors">
-              <a href="/mortgage/" class="focus:outline-none focus:underline">Mortgage & Home Loan Calculator</a>
+              <a href="/mortgage/" class="focus:outline-none focus:underline" data-i18n="mortgageTitle">Mortgage & Home Loan Calculator</a>
             </h3>
             <p class="text-sm text-secondary leading-relaxed mb-6">
               Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).
@@ -352,7 +350,7 @@
               </span>
             </div>
             <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-accent-primary transition-colors">
-              <a href="/tax-discount/" class="focus:outline-none focus:underline">Sales Tax & Discount Calculator</a>
+              <a href="/tax-discount/" class="focus:outline-none focus:underline" data-i18n="taxTitle">Sales Tax & Discount Calculator</a>
             </h3>
             <p class="text-sm text-secondary leading-relaxed mb-6">
               Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.
@@ -410,7 +408,7 @@
               </span>
             </div>
             <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-accent-primary transition-colors">
-              <a href="/fuel-cost/" class="focus:outline-none focus:underline">Fuel Cost & Road Trip Economy Calculator</a>
+              <a href="/fuel-cost/" class="focus:outline-none focus:underline" data-i18n="fuelTitle">Fuel Cost & Road Trip Economy Calculator</a>
             </h3>
             <p class="text-sm text-secondary leading-relaxed mb-6">
               Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.
@@ -439,7 +437,7 @@
               </span>
             </div>
             <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-accent-primary transition-colors">
-              <a href="/time-duration/" class="focus:outline-none focus:underline">Time & Shift Wage Calculator</a>
+              <a href="/time-duration/" class="focus:outline-none focus:underline" data-i18n="timeTitle">Time & Shift Wage Calculator</a>
             </h3>
             <p class="text-sm text-secondary leading-relaxed mb-6">
               Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.
@@ -466,21 +464,21 @@
           <i data-lucide="lock" class="w-5 h-5"></i>
         </div>
         <h3 class="text-base font-bold text-primary mb-2">100% Private &amp; Client-Side</h3>
-        <p class="text-xs text-secondary leading-relaxed">No financial numbers or inputs ever leave your device. All calculations, charts, and schedules run locally in your browser.</p>
+        <p class="text-xs text-secondary leading-relaxed" id="active-calc-desc">No financial numbers or inputs ever leave your device. All calculations, charts, and schedules run locally in your browser.</p>
       </div>
       <div class="p-6 rounded-2xl bg-secondary border border-subtle">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 font-bold">
           <i data-lucide="pie-chart" class="w-5 h-5"></i>
         </div>
         <h3 class="text-base font-bold text-primary mb-2">Interactive Visual Analytics</h3>
-        <p class="text-xs text-secondary leading-relaxed">Dynamic SVG doughnut charts, amortization timelines, comparison sliders, and real-time breakdowns for complete clarity.</p>
+        <p class="text-xs text-secondary leading-relaxed" id="active-calc-desc">Dynamic SVG doughnut charts, amortization timelines, comparison sliders, and real-time breakdowns for complete clarity.</p>
       </div>
       <div class="p-6 rounded-2xl bg-secondary border border-subtle">
         <div class="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center mb-4 font-bold">
           <i data-lucide="globe" class="w-5 h-5"></i>
         </div>
         <h3 class="text-base font-bold text-primary mb-2">Multi-Currency &amp; Multilingual</h3>
-        <p class="text-xs text-secondary leading-relaxed">Instant currency switching across USD, EUR, GBP, INR, JPY, AED, AUD, CAD and complete live translation across 9 languages.</p>
+        <p class="text-xs text-secondary leading-relaxed" id="active-calc-desc">Instant currency switching across USD, EUR, GBP, INR, JPY, AED, AUD, CAD and complete live translation across 9 languages.</p>
       </div>
     </section>
 
@@ -576,7 +574,7 @@
         </div>
 
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Loans &amp; Mortgages</h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3" data-i18n="loansMortgages">Loans &amp; Mortgages</h4>
           <ul class="space-y-2 text-xs">
             <li><a href="/emi/" class="text-secondary hover:text-accent-primary transition-colors">EMI Loan Calculator</a></li>
             <li><a href="/mortgage/" class="text-secondary hover:text-accent-primary transition-colors">Mortgage Amortization</a></li>
@@ -649,7 +647,7 @@
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
-    <p class="text-xs text-secondary mb-3">Copy and paste this responsive iframe snippet into your website or blog:</p>
+    <p class="text-xs text-secondary mb-3" id="active-calc-desc">Copy and paste this responsive iframe snippet into your website or blog:</p>
     <textarea id="embed-code-area" aria-label="Embed HTML code snippet" readonly class="w-full h-24 p-3 bg-primary rounded-xl border border-subtle font-mono text-xs text-primary focus:outline-none focus:border-accent-primary select-all mb-4"></textarea>
     <div class="flex justify-end gap-2">
       <button type="button" id="copy-embed-btn" class="btn btn-primary btn-sm flex items-center gap-1.5 px-4 py-2 rounded-xl">
@@ -2963,6 +2961,7 @@
 })();
 </script>
 
+  
   <script src="/js/controller.js" defer></script>
 </body>
 </html>

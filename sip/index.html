@@ -193,8 +193,8 @@
             <i data-lucide="chevron-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span class="text-accent-primary font-semibold" data-i18n="sipTitle">SIP & Wealth Calculator</span>
           </nav>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight" data-i18n="sipTitle">SIP & Wealth Calculator</h1>
-          <p class="text-xs sm:text-sm text-secondary mt-1">Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.</p>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight" data-i18n="sipTitle" id="active-calc-title">SIP & Wealth Calculator</h1>
+          <p class="text-xs sm:text-sm text-secondary mt-1" id="active-calc-desc" data-i18n="sipDesc">Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.</p>
         </div>
       </div>
 
@@ -346,15 +346,15 @@
           </a>
           <a href="/emi/" aria-label="Filter by Loans and Mortgages" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="loans">
             <i data-lucide="landmark" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Loans &amp; Mortgages</span>
+            <span data-i18n="loansMortgages">Loans &amp; Mortgages</span>
           </a>
           <a href="/sip/" aria-label="Filter by Investing and Wealth" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="investing">
             <i data-lucide="trending-up" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Investing &amp; Wealth</span>
+            <span data-i18n="investingWealth">Investing &amp; Wealth</span>
           </a>
           <a href="/tax-discount/" aria-label="Filter by Taxes and Spending" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="taxes">
             <i data-lucide="receipt" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span>Taxes &amp; Spending</span>
+            <span data-i18n="taxesSpending">Taxes &amp; Spending</span>
           </a>
         </div>
       </div>
@@ -367,7 +367,7 @@
           </div>
           <div class="min-w-0 flex-1">
             <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="sipTitle">SIP & Wealth Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="sipDesc">Calculate wealth accumulation via monthly systematic investments, annual step-up compounding, and inflation adjustments.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -378,7 +378,7 @@
           </div>
           <div class="min-w-0 flex-1">
             <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="emiTitle">Loan & EMI Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate monthly loan EMI payments, principal versus interest breakdown, and view the full yearly amortization schedule.</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="emiDesc">Calculate monthly loan EMI payments, principal versus interest breakdown, and view the full yearly amortization schedule.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -388,8 +388,8 @@
             <i data-lucide="home" class="w-4 h-4 text-white"></i>
           </div>
           <div class="min-w-0 flex-1">
-            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Mortgage & Home Loan Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).</div>
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="mortgageTitle">Mortgage & Home Loan Calculator</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="mortgageDesc">Calculate monthly home loan payments including Principal, Interest, Property Taxes, Home Insurance, and HOA dues (PITI).</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -400,7 +400,7 @@
           </div>
           <div class="min-w-0 flex-1">
             <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="ciTitle">Compound Interest & Wealth Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate compound interest growth, annual compounding returns, and future portfolio value over time.</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="ciDesc">Calculate compound interest growth, annual compounding returns, and future portfolio value over time.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -410,8 +410,8 @@
             <i data-lucide="tag" class="w-4 h-4 text-white"></i>
           </div>
           <div class="min-w-0 flex-1">
-            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Sales Tax & Discount Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.</div>
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="taxTitle">Sales Tax & Discount Calculator</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="taxDesc">Calculate sales tax, GST, VAT, and stacked promotional discounts with instant net price breakdown.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -422,7 +422,7 @@
           </div>
           <div class="min-w-0 flex-1">
             <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="tipTitle">Tip & Bill Split Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate gratuity percentages and split restaurant checks equally or with custom tip amounts.</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="tipDesc">Calculate gratuity percentages and split restaurant checks equally or with custom tip amounts.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -432,8 +432,8 @@
             <i data-lucide="car" class="w-4 h-4 text-white"></i>
           </div>
           <div class="min-w-0 flex-1">
-            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Fuel Cost & Road Trip Economy Calculator</div>
-            <div class="text-[10px] text-muted truncate">Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.</div>
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="fuelTitle">Fuel Cost & Road Trip Economy Calculator</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="fuelDesc">Estimate road trip fuel expenses, vehicle MPG economy, and split gas cost per passenger.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -443,8 +443,8 @@
             <i data-lucide="clock" class="w-4 h-4 text-white"></i>
           </div>
           <div class="min-w-0 flex-1">
-            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors">Time & Shift Wage Calculator</div>
-            <div class="text-[10px] text-muted truncate">Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.</div>
+            <div class="font-bold text-xs truncate group-hover:text-accent-primary transition-colors" data-i18n="timeTitle">Time & Shift Wage Calculator</div>
+            <div class="text-[10px] text-muted truncate" data-i18n="timeDesc">Calculate exact payable shift hours, decimal billable timesheet duration, and gross hourly earnings.</div>
           </div>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-muted group-hover:text-accent-primary group-hover:translate-x-0.5 transition-all shrink-0" aria-hidden="true"></i>
         </a>
@@ -530,7 +530,7 @@
         </div>
 
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Loans &amp; Mortgages</h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary mb-3" data-i18n="loansMortgages">Loans &amp; Mortgages</h4>
           <ul class="space-y-2 text-xs">
             <li><a href="/emi/" class="text-secondary hover:text-accent-primary transition-colors">EMI Loan Calculator</a></li>
             <li><a href="/mortgage/" class="text-secondary hover:text-accent-primary transition-colors">Mortgage Amortization</a></li>
@@ -603,7 +603,7 @@
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
-    <p class="text-xs text-secondary mb-3">Copy and paste this responsive iframe snippet into your website or blog:</p>
+    <p class="text-xs text-secondary mb-3" id="active-calc-desc">Copy and paste this responsive iframe snippet into your website or blog:</p>
     <textarea id="embed-code-area" aria-label="Embed HTML code snippet" readonly class="w-full h-24 p-3 bg-primary rounded-xl border border-subtle font-mono text-xs text-primary focus:outline-none focus:border-accent-primary select-all mb-4"></textarea>
     <div class="flex justify-end gap-2">
       <button type="button" id="copy-embed-btn" class="btn btn-primary btn-sm flex items-center gap-1.5 px-4 py-2 rounded-xl">
@@ -2992,6 +2992,7 @@
 })();
 </script>
 
+  
   <script src="/js/controller.js" defer></script>
 </body>
 </html>
