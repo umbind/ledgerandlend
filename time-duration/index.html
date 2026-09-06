@@ -284,23 +284,23 @@
           </h2>
           <p class="text-xs text-muted" data-i18n="financialSuiteSubtitle">Select any specialized loan, investing, or tax tool</p>
         </div>
-        <div class="flex items-center gap-1.5 overflow-x-auto p-1 bg-secondary rounded-xl border border-subtle" id="category-pills-container">
-          <a href="/" aria-label="Show All Financial Tools" class="category-pill active px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all" data-cat="all">
+                <div class="flex items-center gap-1.5 overflow-x-auto p-1 bg-secondary rounded-xl border border-subtle" id="category-pills-container">
+          <button type="button" aria-label="Show All Financial Tools" class="category-pill active px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all bg-accent-primary text-white shadow-sm cursor-pointer" data-cat="all" onclick="filterToolGrid('all')">
             <i data-lucide="layout-grid" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span data-i18n="allFinancial">All Financial (8)</span>
-          </a>
-          <a href="/emi/" aria-label="Filter by Loans and Mortgages" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="loans">
+          </button>
+          <button type="button" aria-label="Filter by Loans and Mortgages" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all text-secondary hover:text-primary hover:bg-tertiary cursor-pointer" data-cat="loans" onclick="filterToolGrid('loans')">
             <i data-lucide="landmark" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span data-i18n="loansMortgages">Loans &amp; Mortgages</span>
-          </a>
-          <a href="/sip/" aria-label="Filter by Investing and Wealth" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="investing">
+          </button>
+          <button type="button" aria-label="Filter by Investing and Wealth" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all text-secondary hover:text-primary hover:bg-tertiary cursor-pointer" data-cat="investing" onclick="filterToolGrid('investing')">
             <i data-lucide="trending-up" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span data-i18n="investingWealth">Investing &amp; Wealth</span>
-          </a>
-          <a href="/tax-discount/" aria-label="Filter by Taxes and Spending" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg no-underline flex items-center gap-1.5 transition-all text-secondary hover:text-primary" data-cat="taxes">
+          </button>
+          <button type="button" aria-label="Filter by Taxes and Spending" class="category-pill px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all text-secondary hover:text-primary hover:bg-tertiary cursor-pointer" data-cat="taxes" onclick="filterToolGrid('taxes')">
             <i data-lucide="receipt" class="w-3.5 h-3.5" aria-hidden="true"></i>
             <span data-i18n="taxesSpending">Taxes &amp; Spending</span>
-          </a>
+          </button>
         </div>
       </div>
 

@@ -485,6 +485,50 @@
   }
   window.showToast = showToast;
 
+
+  // 4. Category Filter Controllers
+  function filterToolGrid(cat) {
+    var pills = document.querySelectorAll('.category-pill');
+    pills.forEach(function(btn) {
+      if (btn.getAttribute('data-cat') === cat) {
+        btn.className = 'category-pill active px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all bg-accent-primary text-white shadow-sm cursor-pointer';
+      } else {
+        btn.className = 'category-pill px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all text-secondary hover:text-primary hover:bg-tertiary cursor-pointer';
+      }
+    });
+
+    var cards = document.querySelectorAll('#calculator-selector-grid .quick-calc-card');
+    cards.forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-category') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+  window.filterToolGrid = filterToolGrid;
+
+  function filterHomeShowcase(cat) {
+    var tabs = document.querySelectorAll('.home-cat-tab');
+    tabs.forEach(function(t) {
+      if (t.getAttribute('data-cat') === cat) {
+        t.className = 'home-cat-tab active px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-accent-primary text-white shadow-sm flex items-center gap-1.5 whitespace-nowrap cursor-pointer';
+      } else {
+        t.className = 'home-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-secondary hover:text-primary hover:bg-tertiary flex items-center gap-1.5 whitespace-nowrap cursor-pointer';
+      }
+    });
+
+    var cards = document.querySelectorAll('#homepage-showcase-grid .showcase-card');
+    cards.forEach(function(c) {
+      if (cat === 'all' || c.getAttribute('data-category') === cat) {
+        c.style.display = 'flex';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+  window.filterHomeShowcase = filterHomeShowcase;
+
   // 9. Main App Initialization
   function initApp() {
     var currSelect = document.getElementById('currency-selector');
@@ -511,6 +555,24 @@
 
     updateCurrencyDOM();
     updateLanguageDOM();
+
+    // Delegated Category Filter Click Handlers
+    document.addEventListener('click', function(e) {
+      var catPill = e.target.closest('.category-pill');
+      if (catPill) {
+        e.preventDefault();
+        var cat = catPill.getAttribute('data-cat');
+        if (cat) filterToolGrid(cat);
+      }
+
+      var homeTab = e.target.closest('.home-cat-tab');
+      if (homeTab) {
+        e.preventDefault();
+        var cat = homeTab.getAttribute('data-cat');
+        if (cat) filterHomeShowcase(cat);
+      }
+    });
+
     initSearchModal();
     initFaqAccordions();
     initEmbedModal();
