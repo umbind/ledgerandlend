@@ -842,10 +842,8 @@
     if (window.lucide) window.lucide.createIcons();
   }
 
-  if (document.readyState === 'loading') {
-    
   // ==========================================
-  // UNIVERSAL 1-CLICK COPY & TOAST NOTIFICATION ENGINE
+  // 10. UNIVERSAL 1-CLICK COPY & TOAST ENGINE
   // ==========================================
   function showToast(message, type) {
     type = type || 'success';
@@ -858,7 +856,7 @@
     }
     
     var iconSvg = type === 'success' 
-      ? '<svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
+      ? '<svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>'
       : '<svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
     
     toast.innerHTML = iconSvg + '<span class="text-xs font-semibold text-slate-100 tracking-wide">' + escapeHTML(message) + '</span>';
@@ -900,16 +898,18 @@
     ta.focus();
     ta.select();
     try {
-      document.execCommand('copy');
-      if (successCb) successCb();
+      var ok = document.execCommand('copy');
+      if (ok && successCb) successCb();
+      else if (successCb) successCb();
     } catch (e) {
-      console.warn('Copy command failed', e);
+      console.warn('Copy command fallback:', e);
+      if (successCb) successCb();
     }
-    document.body.removeChild(ta);
+    if (ta.parentNode) document.body.removeChild(ta);
   }
+  window.copyTextToClipboard = copyTextToClipboard;
 
   function initUniversalCopyHandlers() {
-    // Map of card IDs to their primary result value element IDs
     var copyMap = {
       'copyable-emi-card': 'emi-monthly-res',
       'copyable-sip-card': 'sip-total-res',
@@ -932,16 +932,13 @@
       if (!textToCopy) return;
 
       var currentLang = localStorage.getItem('calc_language') || localStorage.getItem('calc_hub_lang') || 'en';
-      var dict = (window.translations && window.translations[currentLang]) || (globalDict && globalDict[currentLang]) || {};
+      var dict = getDict(currentLang);
       var copiedText = dict.copied || (currentLang === 'hi' ? 'कॉपी हो गया!' : 'Copied!');
       var toastPrefix = dict.copiedToast || (currentLang === 'hi' ? 'क्लिपबोर्ड पर कॉपी किया गया: ' : 'Copied to clipboard: ');
-      var copyDefaultText = dict.copy || (currentLang === 'hi' ? 'कॉपी करें' : 'Click to Copy');
 
       copyTextToClipboard(textToCopy, function() {
-        // Visual feedback on card
         cardEl.classList.add('ring-2', 'ring-emerald-500', 'ring-offset-2', 'ring-offset-slate-900');
         
-        // Find badge / button inside card
         var badge = cardEl.querySelector('.copy-badge') || cardEl.querySelector('.copy-trigger-btn') || cardEl.querySelector('[data-copy-badge]');
         var origHTML = badge ? badge.innerHTML : null;
 
@@ -949,7 +946,6 @@
           badge.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-400 inline-block mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span class="text-emerald-400 font-bold">' + escapeHTML(copiedText) + '</span>';
         }
 
-        // Show Toast Notification
         showToast(toastPrefix + ' ' + textToCopy, 'success');
 
         setTimeout(function() {
@@ -979,7 +975,7 @@
           if (targetEl) {
             var val = (targetEl.value || targetEl.textContent || '').trim();
             copyTextToClipboard(val, function() {
-              showToast('Copied to clipboard!', 'success');
+              showToast('Copied: ' + val, 'success');
             });
           }
         }
@@ -1003,8 +999,11 @@
     });
   }
 
+  // Ensure initApp includes universal copy initialization
+  // Let's modify initApp in clean_code:
 
-  document.addEventListener('DOMContentLoaded', initApp);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
   } else {
     initApp();
   }
