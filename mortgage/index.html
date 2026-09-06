@@ -103,6 +103,104 @@
   ]
 }
   </script>
+  <script>
+    // Universal 1-Click Copy Result Helper
+    window.copyCalculatorResult = function(triggerEl, targetId) {
+      try {
+        var resEl = targetId ? document.getElementById(targetId) : null;
+        var card = triggerEl ? (triggerEl.closest ? (triggerEl.closest('[id^="copyable-"]') || triggerEl) : triggerEl) : null;
+        if (!resEl && card) {
+          resEl = card.querySelector('.result-value');
+        }
+        if (!resEl) return;
+
+        var textToCopy = (resEl.textContent || '').trim();
+        if (!textToCopy) return;
+
+        // Clipboard Copy (Modern API + Textarea ExecCommand Fallback)
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).catch(function() {
+            fallbackCopy(textToCopy);
+          });
+        } else {
+          fallbackCopy(textToCopy);
+        }
+
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.top = '0';
+          ta.style.left = '0';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) { console.warn(e); }
+          if (ta.parentNode) document.body.removeChild(ta);
+        }
+
+        var lang = localStorage.getItem('calc_language') || localStorage.getItem('calc_hub_lang') || 'en';
+        var copiedLabels = {
+          en: 'Copied!', hi: 'कॉपी हो गया!', es: '¡Copiado!', fr: 'Copié !',
+          de: 'Kopiert!', ja: 'コピー完了!', pt: 'Copiado!', zh: '已复制!', ar: 'تم النسخ!'
+        };
+        var toastLabels = {
+          en: 'Copied to clipboard: ', hi: 'क्लिपबोर्ड पर कॉपी किया गया: ',
+          es: 'Copiado al portapapeles: ', fr: 'Copié dans le presse-papiers : ',
+          de: 'In die Zwischenablage kopiert: ', ja: 'クリップボードにコピーしました: ',
+          pt: 'Copiado para a área de transferência: ', zh: '已复制到剪贴板: ', ar: 'تم النسخ إلى الحافظة: '
+        };
+
+        var copiedText = copiedLabels[lang] || 'Copied!';
+        var toastPrefix = toastLabels[lang] || 'Copied to clipboard: ';
+
+        // Visual feedback on button
+        if (card) {
+          var badge = card.querySelector('.copy-badge') || card.querySelector('.copy-trigger-btn');
+          if (badge) {
+            if (!badge.getAttribute('data-orig-html')) {
+              badge.setAttribute('data-orig-html', badge.innerHTML);
+            }
+            badge.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-400 inline-block mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span class="text-emerald-400 font-bold">' + copiedText + '</span>';
+            
+            if (badge._resetTimer) clearTimeout(badge._resetTimer);
+            badge._resetTimer = setTimeout(function() {
+              badge.innerHTML = badge.getAttribute('data-orig-html') || '<i data-lucide="copy" class="w-3.5 h-3.5"></i> <span class="copy-label" data-i18n="copy">Click to Copy</span>';
+              if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+            }, 2000);
+          }
+
+          // Visual ring on card
+          card.classList.add('ring-2', 'ring-emerald-500', 'ring-offset-2', 'ring-offset-slate-900');
+          setTimeout(function() {
+            card.classList.remove('ring-2', 'ring-emerald-500', 'ring-offset-2', 'ring-offset-slate-900');
+          }, 2000);
+        }
+
+        // Floating Toast Notification
+        var toast = document.getElementById('global-copy-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'global-copy-toast';
+          toast.className = 'fixed bottom-6 right-6 z-[9999] flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900/95 text-white border border-emerald-500/40 shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-8 opacity-0 pointer-events-none';
+          document.body.appendChild(toast);
+        }
+        toast.innerHTML = '<svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span class="text-xs font-semibold text-slate-100 tracking-wide">' + toastPrefix + textToCopy + '</span>';
+        toast.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        if (window._globalToastTimer) clearTimeout(window._globalToastTimer);
+        window._globalToastTimer = setTimeout(function() {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+        }, 2500);
+      } catch (err) {
+        console.error('Error during copy:', err);
+      }
+    };
+  </script>
+
 </head>
 <body class="bg-primary text-secondary antialiased min-h-screen flex flex-col selection:bg-accent-primary selection:text-white">
   <!-- Top Navigation Header -->
@@ -285,10 +383,10 @@
           </div>
         </div>
         <div class="lg:col-span-6 space-y-4">
-          <div class="result-card group cursor-pointer" id="copyable-mg-card" title="Click to copy Monthly Payment" tabindex="0" role="button" aria-label="Click to copy Total Monthly Payment">
+          <div class="result-card group cursor-pointer" id="copyable-mg-card" onclick="window.copyCalculatorResult(this, 'mg-total-res')" title="Click to copy Monthly Payment" tabindex="0" role="button" aria-label="Click to copy Total Monthly Payment">
             <div class="flex items-center justify-between">
               <div class="result-label" data-i18n="totalMonthlyPayment">Total Monthly Payment</div>
-              <button type="button" class="copy-trigger-btn copy-badge text-[11px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-800/40 hover:bg-slate-700/60 border border-slate-700/50 transition-all cursor-pointer" aria-label="Click to copy Monthly Payment" title="Click to copy Monthly Payment"><i data-lucide="copy" class="w-3.5 h-3.5"></i> <span class="copy-label" data-i18n="copy">Click to Copy</span></button>
+              <button type="button" class="copy-trigger-btn copy-badge text-[11px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-800/40 hover:bg-slate-700/60 border border-slate-700/50 transition-all cursor-pointer" onclick="event.stopPropagation(); window.copyCalculatorResult(this, 'mg-total-res')" aria-label="Click to copy Monthly Payment" title="Click to copy Monthly Payment"><i data-lucide="copy" class="w-3.5 h-3.5"></i> <span class="copy-label" data-i18n="copy">Click to Copy</span></button>
             </div>
             <div class="result-value text-accent-primary text-3xl sm:text-4xl font-mono font-extrabold" id="mg-total-monthly-res">$2,169.75</div>
             <div class="result-subtext" data-i18n="pitiSubtext">Principal, Interest, Taxes &amp; Insurance (PITI)</div>
