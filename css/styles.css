@@ -13,8 +13,8 @@
   --border-strong: #cbd5e1;
   
   --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
+  --text-secondary: #334155;
+  --text-muted: #94a3b8;
   
   --accent-primary: #3b82f6;
   --accent-primary-hover: #2563eb;
@@ -53,7 +53,7 @@
   
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   
   --accent-primary-light: rgba(59, 130, 246, 0.15);
   --accent-emerald-light: rgba(16, 185, 129, 0.15);
