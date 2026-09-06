@@ -263,9 +263,7 @@
           <div class="result-card group cursor-pointer" id="copyable-tip-card" title="Click to copy Per Person Total" tabindex="0" role="button" aria-label="Click to copy Per Person Total Amount">
             <div class="flex items-center justify-between">
               <div class="result-label" data-i18n="totalPerPerson">Total Per Person (Bill + Tip)</div>
-              <span class="text-[10px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1">
-                <i data-lucide="copy" class="w-3 h-3"></i> Click to Copy
-              </span>
+              <button type="button" class="copy-trigger-btn copy-badge text-[11px] font-bold text-muted group-hover:text-accent-primary flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-800/40 hover:bg-slate-700/60 border border-slate-700/50 transition-all cursor-pointer" aria-label="Click to copy Per Person Total" title="Click to copy Per Person Total"><i data-lucide="copy" class="w-3.5 h-3.5"></i> <span class="copy-label" data-i18n="copy">Click to Copy</span></button>
             </div>
             <div class="result-value text-accent-primary text-3xl sm:text-4xl font-mono font-extrabold" id="tip-per-person-res">$59.00</div>
             <div class="result-subtext" id="tip-ppl-breakdown">$50.00 bill + $9.00 tip per person</div>
@@ -850,7 +848,7 @@
     "ans_time_1": "Minutes are converted to decimals by dividing by 60 (e.g., 7 hours and 30 minutes equals 7.50 decimal hours), which is multiplied by your hourly wage.",
     "faq_time_2": "Does this calculator support overnight shifts crossing midnight?",
     "ans_time_2": "Yes! When your shift ends the next morning (e.g., 10:00 PM to 6:00 AM), the calculator seamlessly computes the 24-hour rollover and subtracts unpaid breaks accurately."
-  },
+  , "copiedToast": "Copied to clipboard:"},
   "hi": {
     "appName": "लेज़र एंड लेंड (Ledger & Lend)",
     "appTagline": "वित्तीय एवं धन संचय इंटेलिजेंस",
@@ -1033,7 +1031,7 @@
     "ans_time_1": "मिनटों को 60 से विभाजित करके दशमलव में बदला जाता है (उदाहरण के लिए, 7 घंटे 30 मिनट = 7.50 दशमलव घंटे), जिसे आपके प्रति घंटे वेतन से गुणा किया जाता है।",
     "faq_time_2": "क्या यह कैलकुलेटर आधी रात (Midnight) पार करने वाली नाइट शिफ्ट का समर्थन करता है?",
     "ans_time_2": "हाँ! जब आपकी शिफ्ट अगली सुबह समाप्त होती है (जैसे, रात 10:00 बजे से सुबह 6:00 बजे तक), तो कैलकुलेटर निर्बाध रूप से 24 घंटे के रोलओवर की गणना करता है।"
-  },
+  , "copiedToast": "क्लिपबोर्ड पर कॉपी किया गया:"},
   "es": {
     "appName": "Ledger & Lend",
     "appTagline": "Inteligencia Financiera y Patrimonial",
@@ -1216,7 +1214,7 @@
     "ans_time_1": "Los minutos se dividen entre 60 (p. ej., 7 horas y 30 min = 7,50 horas decimales) para multiplicarse por el salario por hora.",
     "faq_time_2": "¿Admite turnos nocturnos que cruzan la medianoche?",
     "ans_time_2": "¡Sí! Si el turno termina a la mañana siguiente, calcula automáticamente el ciclo de 24 horas y resta los descansos."
-  },
+  , "copiedToast": "Copiado al portapapeles:"},
   "fr": {
     "appName": "Ledger & Lend",
     "appTagline": "Intelligence Financière et Patrimoniale",
@@ -1399,7 +1397,7 @@
     "ans_time_1": "Les minutes sont divisées par 60 (ex. 7h30 = 7,50 heures décimales) pour être multipliées par le taux horaire.",
     "faq_time_2": "Prend-il en charge les quarts de nuit après minuit ?",
     "ans_time_2": "Oui ! Si votre quart se termine le lendemain matin, il gère automatiquement le cycle de 24 heures et déduit les pauses."
-  },
+  , "copiedToast": "Copié dans le presse-papiers :"},
   "de": {
     "appName": "Ledger & Lend",
     "appTagline": "Finanz- & Vermögensrechner",
@@ -1582,7 +1580,7 @@
     "ans_time_1": "Minuten werden durch 60 geteilt (z.B. 7 Std. 30 Min. = 7,50 Dezimalstunden) und mit dem Stundensatz multipliziert.",
     "faq_time_2": "Werden Nachtschichten über Mitternacht hinweg unterstützt?",
     "ans_time_2": "Ja! Wenn die Schicht am nächsten Morgen endet, wird der 24-Stunden-Übertrag automatisch berücksichtigt."
-  },
+  , "copiedToast": "In die Zwischenablage kopiert:"},
   "ja": {
     "appName": "Ledger & Lend",
     "appTagline": "財務および資産インテリジェンス",
@@ -1765,7 +1763,7 @@
     "ans_time_1": "分を60で割って小数に換算します（例：7時間30分 = 7.50時間）。これに時給を掛けて総支給額を算出します。",
     "faq_time_2": "深夜（日をまたぐ）シフトの計算に対応していますか？",
     "ans_time_2": "はい！夜10時から翌朝6時までのような日をまたぐ勤務でも、正確に総労働時間と休憩時間を計算します。"
-  },
+  , "copiedToast": "クリップボードにコピーしました:"},
   "pt": {
     "appName": "Ledger & Lend",
     "appTagline": "Inteligência Financeira e Patrimonial",
@@ -1948,7 +1946,7 @@
     "ans_time_1": "Os minutos são divididos por 60 (ex: 7h30 = 7,50 horas decimais) e multiplicados pelo valor da hora.",
     "faq_time_2": "A calculadora suporta turnos noturnos que passam da meia-noite?",
     "ans_time_2": "Sim! Quando o turno termina no dia seguinte, calcula automaticamente o período de 24 horas."
-  },
+  , "copiedToast": "Copiado para a área de transferência:"},
   "zh": {
     "appName": "Ledger & Lend",
     "appTagline": "财务与财富智能平台",
@@ -2131,7 +2129,7 @@
     "ans_time_1": "工作分钟数除以60换算为十进制（例如7小时30分钟换算为7.50工时），再乘以时薪得出应付总工资。",
     "faq_time_2": "该计算器支持跨午夜的通宵夜班打卡吗？",
     "ans_time_2": "支持！当您的下班时间在次日清晨（例如晚10点到早6点），系统会自动按24小时制跨日计算并准确扣除休息时间。"
-  },
+  , "copiedToast": "已复制到剪贴板:"},
   "ar": {
     "appName": "ليدجر آند ليند (Ledger & Lend)",
     "appTagline": "الذكاء المالي وإدارة الثروات",
@@ -2314,7 +2312,7 @@
     "ans_time_1": "يتم تحويل الدقائق إلى كسور عشرية بالقسمة على 60 (مثلاً 7 ساعات و30 دقيقة = 7.50 ساعة) وتُضرب في الأجر بالساعة.",
     "faq_time_2": "هل تدعم هذه الحاسبة المناوبات الليلية التي تتجاوز منتصف الليل؟",
     "ans_time_2": "نعم! عندما تنتهي مناوبتك في صباح اليوم التالي، تحسب الحاسبة دورة الـ 24 ساعة بدقة مع خصم فترات الراحة."
-  }
+  , "copiedToast": "تم النسخ إلى الحافظة:"}
 };
 
   // 2. Currencies Map

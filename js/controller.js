@@ -95,16 +95,25 @@
   function getGlobalLanguage() {
     return localStorage.getItem('calc_language') || localStorage.getItem('calc_hub_lang') || 'en';
   }
+  function getDict(l) {
+    var lang = l || getGlobalLanguage();
+    if (typeof window !== 'undefined' && window.translations && window.translations[lang]) return window.translations[lang];
+    if (typeof translations !== 'undefined' && translations[lang]) return translations[lang];
+    if (typeof i18nDict !== 'undefined' && i18nDict[lang]) return i18nDict[lang];
+    if (typeof window !== 'undefined' && window.translations && window.translations.en) return window.translations.en;
+    if (typeof translations !== 'undefined' && translations.en) return translations.en;
+    return {};
+  }
+
   function t(key, lang) {
-    var l = lang || getGlobalLanguage();
-    var dict = i18nDict[l] || i18nDict.en || {};
-    return dict[key] || (i18nDict.en ? i18nDict.en[key] : key) || key;
+    var dict = getDict(lang);
+    return dict[key] || key;
   }
   window.t = t;
 
   function updateLanguageDOM() {
     var lang = getGlobalLanguage();
-    var dict = i18nDict[lang] || i18nDict.en || {};
+    var dict = getDict(lang);
     var dir = (langNames[lang] && langNames[lang].dir) ? langNames[lang].dir : 'ltr';
 
     document.documentElement.setAttribute('lang', lang);
@@ -210,6 +219,7 @@
       localStorage.setItem('calc_language', lang);
       localStorage.setItem('calc_hub_lang', lang);
       updateLanguageDOM();
+    initUniversalCopyHandlers();
     updateNumberInWordsHints();
     updatePlainLanguageSummaries();
 
@@ -833,7 +843,168 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
+    
+  // ==========================================
+  // UNIVERSAL 1-CLICK COPY & TOAST NOTIFICATION ENGINE
+  // ==========================================
+  function showToast(message, type) {
+    type = type || 'success';
+    var toast = document.getElementById('global-copy-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'global-copy-toast';
+      toast.className = 'fixed bottom-6 right-6 z-[9999] flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900/95 text-white border border-emerald-500/40 shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-8 opacity-0 pointer-events-none';
+      document.body.appendChild(toast);
+    }
+    
+    var iconSvg = type === 'success' 
+      ? '<svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
+      : '<svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+    
+    toast.innerHTML = iconSvg + '<span class="text-xs font-semibold text-slate-100 tracking-wide">' + escapeHTML(message) + '</span>';
+    toast.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    if (window._toastTimeout) clearTimeout(window._toastTimeout);
+    window._toastTimeout = setTimeout(function() {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+    }, 2800);
+  }
+  window.showToast = showToast;
+  if (!window.calcApp) window.calcApp = {};
+  window.calcApp.showToast = showToast;
+
+  function copyTextToClipboard(text, successCb) {
+    if (!text) return;
+    text = text.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        if (successCb) successCb();
+      }).catch(function() {
+        fallbackCopyText(text, successCb);
+      });
+    } else {
+      fallbackCopyText(text, successCb);
+    }
+  }
+
+  function fallbackCopyText(text, successCb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.left = '0';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+      if (successCb) successCb();
+    } catch (e) {
+      console.warn('Copy command failed', e);
+    }
+    document.body.removeChild(ta);
+  }
+
+  function initUniversalCopyHandlers() {
+    // Map of card IDs to their primary result value element IDs
+    var copyMap = {
+      'copyable-emi-card': 'emi-monthly-res',
+      'copyable-sip-card': 'sip-total-res',
+      'copyable-ci-card': 'ci-total-res',
+      'copyable-mg-card': 'mg-total-res',
+      'copyable-td-card': 'tax-final-res',
+      'copyable-tip-card': 'tip-per-person-res',
+      'copyable-fuel-card': 'fuel-total-res',
+      'copyable-time-card': 'time-duration-res'
+    };
+
+    function triggerCardCopy(cardEl) {
+      if (!cardEl) return;
+      var cardId = cardEl.id;
+      var targetResId = copyMap[cardId];
+      var resEl = targetResId ? document.getElementById(targetResId) : cardEl.querySelector('.result-value');
+      if (!resEl) return;
+
+      var textToCopy = (resEl.textContent || '').trim();
+      if (!textToCopy) return;
+
+      var currentLang = localStorage.getItem('calc_language') || localStorage.getItem('calc_hub_lang') || 'en';
+      var dict = (window.translations && window.translations[currentLang]) || (globalDict && globalDict[currentLang]) || {};
+      var copiedText = dict.copied || (currentLang === 'hi' ? 'कॉपी हो गया!' : 'Copied!');
+      var toastPrefix = dict.copiedToast || (currentLang === 'hi' ? 'क्लिपबोर्ड पर कॉपी किया गया: ' : 'Copied to clipboard: ');
+      var copyDefaultText = dict.copy || (currentLang === 'hi' ? 'कॉपी करें' : 'Click to Copy');
+
+      copyTextToClipboard(textToCopy, function() {
+        // Visual feedback on card
+        cardEl.classList.add('ring-2', 'ring-emerald-500', 'ring-offset-2', 'ring-offset-slate-900');
+        
+        // Find badge / button inside card
+        var badge = cardEl.querySelector('.copy-badge') || cardEl.querySelector('.copy-trigger-btn') || cardEl.querySelector('[data-copy-badge]');
+        var origHTML = badge ? badge.innerHTML : null;
+
+        if (badge) {
+          badge.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-400 inline-block mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg><span class="text-emerald-400 font-bold">' + escapeHTML(copiedText) + '</span>';
+        }
+
+        // Show Toast Notification
+        showToast(toastPrefix + ' ' + textToCopy, 'success');
+
+        setTimeout(function() {
+          cardEl.classList.remove('ring-2', 'ring-emerald-500', 'ring-offset-2', 'ring-offset-slate-900');
+          if (badge && origHTML) {
+            badge.innerHTML = origHTML;
+            if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+          }
+        }, 2200);
+      });
+    }
+
+    // Delegated click listener for all copyable cards and buttons
+    document.addEventListener('click', function(e) {
+      var copyBtn = e.target.closest('.copy-trigger-btn, .copy-badge, [data-action="copy-result"]');
+      var card = e.target.closest('[id^="copyable-"]');
+      
+      if (copyBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parentCard = copyBtn.closest('[id^="copyable-"]');
+        if (parentCard) {
+          triggerCardCopy(parentCard);
+        } else {
+          var targetId = copyBtn.getAttribute('data-copy-target');
+          var targetEl = targetId ? document.getElementById(targetId) : null;
+          if (targetEl) {
+            var val = (targetEl.value || targetEl.textContent || '').trim();
+            copyTextToClipboard(val, function() {
+              showToast('Copied to clipboard!', 'success');
+            });
+          }
+        }
+        return;
+      }
+
+      if (card) {
+        triggerCardCopy(card);
+      }
+    });
+
+    // Keyboard Accessibility (Enter / Space on focused card)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        var card = document.activeElement && document.activeElement.closest('[id^="copyable-"]');
+        if (card) {
+          e.preventDefault();
+          triggerCardCopy(card);
+        }
+      }
+    });
+  }
+
+
+  document.addEventListener('DOMContentLoaded', initApp);
   } else {
     initApp();
   }
