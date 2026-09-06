@@ -67,6 +67,17 @@
         btn.textContent = sym + formatted;
       }
     });
+    updateNumberInWordsHints();
+    updatePlainLanguageSummaries();
+
+    // Real-time Number in Words Live Listener
+    document.addEventListener('input', function(e) {
+      if (e.target && e.target.type === 'number' || e.target.type === 'range') {
+        updateNumberInWordsHints();
+        updatePlainLanguageSummaries();
+      }
+    });
+
     window.dispatchEvent(new CustomEvent('currency-changed', { detail: { symbol: sym, currency: getGlobalCurrency() } }));
 
     if (typeof window.calculateSIP === 'function') window.calculateSIP();
@@ -179,6 +190,17 @@
     if (typeof window.calculateFuel === 'function') window.calculateFuel();
     if (typeof window.calculateTimeDuration === 'function') window.calculateTimeDuration();
 
+    updateNumberInWordsHints();
+    updatePlainLanguageSummaries();
+
+    // Real-time Number in Words Live Listener
+    document.addEventListener('input', function(e) {
+      if (e.target && e.target.type === 'number' || e.target.type === 'range') {
+        updateNumberInWordsHints();
+        updatePlainLanguageSummaries();
+      }
+    });
+
     window.dispatchEvent(new CustomEvent('language-changed', { detail: { lang: lang, dir: dir } }));
   }
   window.updateLanguageDOM = updateLanguageDOM;
@@ -188,6 +210,17 @@
       localStorage.setItem('calc_language', lang);
       localStorage.setItem('calc_hub_lang', lang);
       updateLanguageDOM();
+    updateNumberInWordsHints();
+    updatePlainLanguageSummaries();
+
+    // Real-time Number in Words Live Listener
+    document.addEventListener('input', function(e) {
+      if (e.target && e.target.type === 'number' || e.target.type === 'range') {
+        updateNumberInWordsHints();
+        updatePlainLanguageSummaries();
+      }
+    });
+
     }
   }
   window.setGlobalLanguage = setGlobalLanguage;
@@ -486,6 +519,190 @@
   window.showToast = showToast;
 
 
+  
+  // =========================================================================
+  // Beginner-Friendly UX Engine: Words Converter & Plain Language Summaries
+  // =========================================================================
+
+  function formatNumberToWords(num, curr, lang) {
+    if (!num || isNaN(num) || num <= 0) return '';
+    var n = Math.round(Number(num));
+    var c = curr || getGlobalCurrency();
+    var l = lang || getGlobalLanguage();
+
+    if (c === 'INR') {
+      // Indian numbering format (Lakhs, Crores, Hazaar)
+      if (n >= 10000000) {
+        var cr = (n / 10000000).toFixed(2).replace(/\.00$/, '');
+        return l === 'hi' ? (cr + ' करोड़ (₹' + n.toLocaleString('en-IN') + ')') : (cr + ' Crore (₹' + n.toLocaleString('en-IN') + ')');
+      } else if (n >= 100000) {
+        var lk = (n / 100000).toFixed(2).replace(/\.00$/, '');
+        return l === 'hi' ? (lk + ' लाख (₹' + n.toLocaleString('en-IN') + ')') : (lk + ' Lakh (₹' + n.toLocaleString('en-IN') + ')');
+      } else if (n >= 1000) {
+        var th = (n / 1000).toFixed(1).replace(/\.0$/, '');
+        return l === 'hi' ? (th + ' हज़ार (₹' + n.toLocaleString('en-IN') + ')') : (th + ' Thousand (₹' + n.toLocaleString('en-IN') + ')');
+      } else {
+        return '₹' + n;
+      }
+    } else {
+      // International numbering format (Thousands, Millions, Billions)
+      var sym = getGlobalCurrencySymbol(c);
+      if (n >= 1000000000) {
+        var b = (n / 1000000000).toFixed(2).replace(/\.00$/, '');
+        return b + ' Billion (' + sym + n.toLocaleString() + ')';
+      } else if (n >= 1000000) {
+        var m = (n / 1000000).toFixed(2).replace(/\.00$/, '');
+        return m + ' Million (' + sym + n.toLocaleString() + ')';
+      } else if (n >= 1000) {
+        var k = (n / 1000).toFixed(1).replace(/\.0$/, '');
+        return k + ' Thousand (' + sym + n.toLocaleString() + ')';
+      } else {
+        return sym + n;
+      }
+    }
+  }
+  window.formatNumberToWords = formatNumberToWords;
+
+  function updateNumberInWordsHints() {
+    var curr = getGlobalCurrency();
+    var lang = getGlobalLanguage();
+
+    // Map input IDs to their display hints
+    var inputs = [
+      'sip-amount', 'emi-amount', 'mg-price', 'ci-principal', 'tax-price', 'tip-bill'
+    ];
+
+    inputs.forEach(function(id) {
+      var input = document.getElementById(id);
+      if (input) {
+        var parent = input.closest('.calc-input-group') || input.parentElement;
+        var hint = parent.querySelector('.num-words-hint');
+        if (!hint) {
+          hint = document.createElement('div');
+          hint.className = 'num-words-hint';
+          parent.appendChild(hint);
+        }
+        var wordText = formatNumberToWords(input.value, curr, lang);
+        if (wordText) {
+          hint.style.display = 'inline-flex';
+          hint.innerHTML = '<i data-lucide="sparkles" class="w-3 h-3 text-accent-primary shrink-0"></i> <span>' + wordText + '</span>';
+        } else {
+          hint.style.display = 'none';
+        }
+      }
+    });
+
+    if (window.lucide) window.lucide.createIcons();
+  }
+  window.updateNumberInWordsHints = updateNumberInWordsHints;
+
+  // Live Plain Language Result Summaries
+  function updatePlainLanguageSummaries() {
+    var curr = getGlobalCurrency();
+    var sym = getGlobalCurrencySymbol(curr);
+    var lang = getGlobalLanguage();
+    var isHi = (lang === 'hi');
+
+    // 1. SIP Summary Box
+    var sipBox = document.getElementById('sip-friendly-summary');
+    var sipTotalEl = document.getElementById('sip-total-res');
+    var sipInvEl = document.getElementById('sip-invested-res');
+    var sipGainsEl = document.getElementById('sip-gains-res');
+    if (sipBox && sipTotalEl && sipInvEl && sipGainsEl) {
+      if (isHi) {
+        sipBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: कुल ' + sipInvEl.textContent + ' जमा करने पर आपको ' + sipGainsEl.textContent + ' का शुद्ध मुनाफा मिलेगा — कुल परिपक्वता राशि ' + sipTotalEl.textContent + ' होगी!</div><div class="plain-summary-sub">यह चक्रवृद्धि ब्याज (Compounding) की शक्ति से संभव होता है।</div></div>';
+      } else {
+        sipBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: By investing a total of ' + sipInvEl.textContent + ', you earn ' + sipGainsEl.textContent + ' in profit — reaching a maturity corpus of ' + sipTotalEl.textContent + '!</div><div class="plain-summary-sub">Powered by the exponential law of compound interest.</div></div>';
+      }
+    }
+
+    // 2. EMI Summary Box
+    var emiBox = document.getElementById('emi-friendly-summary');
+    var emiMonthlyEl = document.getElementById('emi-monthly-res');
+    var emiIntEl = document.getElementById('emi-interest-res');
+    var emiTotEl = document.getElementById('emi-total-res');
+    if (emiBox && emiMonthlyEl && emiIntEl && emiTotEl) {
+      if (isHi) {
+        emiBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: आपकी हर महीने की किस्त ' + emiMonthlyEl.textContent + ' बनेगी। पूरे लोन में बैंक को कुल ' + emiIntEl.textContent + ' का ब्याज देना होगा।</div><div class="plain-summary-sub">समय से पहले अतिरिक्त भुगतान (Prepayment) करके ब्याज कम किया जा सकता है।</div></div>';
+      } else {
+        emiBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: Your affordable monthly EMI is ' + emiMonthlyEl.textContent + '. Over the full tenure, total bank interest is ' + emiIntEl.textContent + '.</div><div class="plain-summary-sub">Tip: Making periodic prepayments saves substantial interest costs.</div></div>';
+      }
+    }
+
+    // 3. Mortgage Summary Box
+    var mgBox = document.getElementById('mg-friendly-summary');
+    var mgTotEl = document.getElementById('mg-total-monthly-res');
+    var mgPiEl = document.getElementById('mg-pi-res');
+    if (mgBox && mgTotEl && mgPiEl) {
+      if (isHi) {
+        mgBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: घर के लिए हर महीने कुल ' + mgTotEl.textContent + ' का भुगतान करना होगा (मूलधन, ब्याज, टैक्स और बीमा मिलाकर)।</div><div class="plain-summary-sub">मूलधन व ब्याज का हिस्सा ' + mgPiEl.textContent + ' प्रति माह है।</div></div>';
+      } else {
+        mgBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: Your complete monthly housing cost is ' + mgTotEl.textContent + ' (including Principal, Interest, Property Taxes & Insurance).</div><div class="plain-summary-sub">Base Principal & Interest portion is ' + mgPiEl.textContent + '/mo.</div></div>';
+      }
+    }
+
+    // 4. Compound Interest Summary Box
+    var ciBox = document.getElementById('ci-friendly-summary');
+    var ciTotEl = document.getElementById('ci-total-res');
+    var ciIntEl = document.getElementById('ci-interest-res');
+    if (ciBox && ciTotEl && ciIntEl) {
+      if (isHi) {
+        ciBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: चक्रवृद्धि ब्याज के कारण आपको ' + ciIntEl.textContent + ' का अतिरिक्त ब्याज मुनाफा मिला — कुल पोर्टफोलियो ' + ciTotEl.textContent + ' हो गया!</div><div class="plain-summary-sub">जितना अधिक समय निवेश रखेंगे, मुनाफा उतना ही तेजी से बढ़ेगा।</div></div>';
+      } else {
+        ciBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: Thanks to compounding, your money generated ' + ciIntEl.textContent + ' in pure interest profit — growing to ' + ciTotEl.textContent + '!</div><div class="plain-summary-sub">The longer you remain invested, the faster your wealth accelerates.</div></div>';
+      }
+    }
+
+    // 5. Tax & Discount Summary Box
+    var taxBox = document.getElementById('tax-friendly-summary');
+    var taxFinalEl = document.getElementById('tax-final-res');
+    var taxSaveEl = document.getElementById('tax-savings-res');
+    if (taxBox && taxFinalEl && taxSaveEl) {
+      if (isHi) {
+        taxBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: छूट के बाद आपको सिर्फ ' + taxFinalEl.textContent + ' चुकाने होंगे और आपकी कुल बचत ' + taxSaveEl.textContent + ' होगी!</div><div class="plain-summary-sub">टैक्स छूट के बाद के शुद्ध मूल्य पर ही जोड़ा गया है।</div></div>';
+      } else {
+        taxBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: After all discounts, you pay only ' + taxFinalEl.textContent + ' and save a total of ' + taxSaveEl.textContent + '!</div><div class="plain-summary-sub">Applicable taxes are calculated strictly on the discounted net price.</div></div>';
+      }
+    }
+
+    // 6. Tip & Split Summary Box
+    var tipBox = document.getElementById('tip-friendly-summary');
+    var tipPerPersonEl = document.getElementById('tip-per-person-res');
+    var tipTotEl = document.getElementById('tip-grand-total-res');
+    if (tipBox && tipPerPersonEl && tipTotEl) {
+      if (isHi) {
+        tipBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: बिल और टिप मिलाकर प्रति व्यक्ति सिर्फ ' + tipPerPersonEl.textContent + ' का खर्च आएगा (कुल बिल: ' + tipTotEl.textContent + ')।</div><div class="plain-summary-sub">सभी दोस्तों में बराबर और निष्पक्ष बंटवारा।</div></div>';
+      } else {
+        tipBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: Each person pays exactly ' + tipPerPersonEl.textContent + ' including bill and tip (Grand Total: ' + tipTotEl.textContent + ').</div><div class="plain-summary-sub">Even and fair split with no manual bill calculation hassle.</div></div>';
+      }
+    }
+
+    // 7. Fuel Summary Box
+    var fuelBox = document.getElementById('fuel-friendly-summary');
+    var fuelCostEl = document.getElementById('fuel-cost-res');
+    var fuelPerPersonEl = document.getElementById('fuel-person-res');
+    if (fuelBox && fuelCostEl && fuelPerPersonEl) {
+      if (isHi) {
+        fuelBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: पूरी यात्रा का पेट्रोल/डीजल खर्च ' + fuelCostEl.textContent + ' होगा — यानी प्रति यात्री ' + fuelPerPersonEl.textContent + '।</div><div class="plain-summary-sub">कारपूल और रोड ट्रिप के लिए सबसे आसान और निष्पक्ष तरीका।</div></div>';
+      } else {
+        fuelBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: Total journey fuel expense is ' + fuelCostEl.textContent + ' — which equals ' + fuelPerPersonEl.textContent + ' per passenger.</div><div class="plain-summary-sub">Fair and transparent cost-sharing for road trips and daily commutes.</div></div>';
+      }
+    }
+
+    // 8. Time Duration Summary Box
+    var timeBox = document.getElementById('time-friendly-summary');
+    var timePayEl = document.getElementById('time-pay-res');
+    var timeDurEl = document.getElementById('time-duration-res');
+    if (timeBox && timePayEl && timeDurEl) {
+      if (isHi) {
+        timeBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">सरल शब्दों में: ब्रेक घटाने के बाद कुल शुद्ध कार्य समय ' + timeDurEl.textContent + ' है, जिसका कुल वेतन ' + timePayEl.textContent + ' बनता है।</div><div class="plain-summary-sub">वेतन की गणना दशमलव कार्य घंटों के आधार पर सटीक की गई है।</div></div>';
+      } else {
+        timeBox.innerHTML = '<div class="plain-summary-icon">💡</div><div><div class="plain-summary-text">In Simple Words: After subtracting unpaid breaks, net working time is ' + timeDurEl.textContent + ', giving a total shift wage of ' + timePayEl.textContent + '.</div><div class="plain-summary-sub">Accurate decimal timesheet calculation based on your hourly rate.</div></div>';
+      }
+    }
+  }
+  window.updatePlainLanguageSummaries = updatePlainLanguageSummaries;
+
   // 4. Category Filter Controllers
   function filterToolGrid(cat) {
     var pills = document.querySelectorAll('.category-pill');
@@ -555,6 +772,17 @@
 
     updateCurrencyDOM();
     updateLanguageDOM();
+    updateNumberInWordsHints();
+    updatePlainLanguageSummaries();
+
+    // Real-time Number in Words Live Listener
+    document.addEventListener('input', function(e) {
+      if (e.target && e.target.type === 'number' || e.target.type === 'range') {
+        updateNumberInWordsHints();
+        updatePlainLanguageSummaries();
+      }
+    });
+
 
     // Delegated Category Filter Click Handlers
     document.addEventListener('click', function(e) {

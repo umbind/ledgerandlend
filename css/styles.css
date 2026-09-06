@@ -867,3 +867,91 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
   white-space: nowrap;
   border-width: 0;
 }
+
+
+/* ==========================================================================
+   Beginner-Friendly & Low-Literacy Accessible UX Tokens
+   ========================================================================== */
+
+/* Human-Readable Number in Words Helper */
+.num-words-hint {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 8px;
+  padding: 3px 8px;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Plain-Language 1-Sentence Result Explainer Box */
+.plain-summary-box {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.plain-summary-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.plain-summary-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.plain-summary-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* High-Touch Mobile Friendly Sliders */
+.calc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 9999px;
+  outline: none;
+  margin: 12px 0 6px 0;
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+}
+.calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(59, 130, 246, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.calc-range::-webkit-slider-thumb:hover, .calc-range::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+/* Friendly Touch Targets */
+.calc-input {
+  min-height: 44px;
+  font-size: 15px !important;
+  font-weight: 700;
+}
