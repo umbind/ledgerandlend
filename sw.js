@@ -1,58 +1,25 @@
 /**
  * Ledger & Lend - Service Worker
- * Comprehensive Offline Pre-caching, Stale Cache Cleanup & Network-Resilient Strategies
+ * Version 12.0.0 - Production Dynamic Cache & Immediate Update Engine
  */
 
-const CACHE_NAME = 'ledger-lend-v11.0-complete-emi-ui';
+const CACHE_NAME = 'ledger-lend-v12.0-unified';
 
 const STATIC_ASSETS = [
-  './',
-  './index.html',
-  './css/styles.css',
-  './manifest.json',
-  './assets/icon.svg',
-  './js/app.js',
-  './js/components/knowledge.js',
-  './js/data/resources.js',
-  './js/data/articles.js',
-  './js/data/faqs.js',
-  './js/data/i18n.js',
-  './js/data/legal.js',
-  './js/data/searchIndex.js',
-  './js/data/diagnosticRunner.js',
-  './js/utils/charts.js',
-  './js/utils/formatters.js',
-  './js/utils/mathParser.js',
-  './js/utils/storage.js',
-  './js/utils/exportShare.js',
-  // Finance Calculators
-  './js/calculators/finance/emi.js',
-  './js/calculators/finance/sip.js',
-  './js/calculators/finance/mortgage.js',
-  './js/calculators/finance/tax-discount.js',
-  './js/calculators/finance/tip-split.js',
-  // Health Calculators
-  './js/calculators/health/bmi.js',
-  './js/calculators/health/body-fat.js',
-  './js/calculators/health/calorie-tdee.js',
-  './js/calculators/health/ideal-weight.js',
-  './js/calculators/health/macro-calculator.js',
-  './js/calculators/health/target-heart-rate.js',
-  './js/calculators/health/waist-hip.js',
-  './js/calculators/health/water-intake.js',
-  // Medical & Clinical Calculators
-  './js/calculators/medical/pregnancy-due-date.js',
-  './js/calculators/medical/body-surface-area.js',
-  './js/calculators/medical/mean-arterial-pressure.js',
-  './js/calculators/medical/dosage-calculator.js',
-  './js/calculators/medical/egfr-kidney.js',
-  // Math & Utility Calculators
-  './js/calculators/math/age-date.js',
-  './js/calculators/math/fuel-cost.js',
-  './js/calculators/math/percentage.js',
-  './js/calculators/math/scientific.js',
-  './js/calculators/math/time-duration.js',
-  './js/calculators/math/unit-converter.js'
+  '/',
+  '/index.html',
+  '/css/styles.css',
+  '/manifest.json',
+  '/js/lucide.min.js',
+  '/js/controller.js',
+  '/sip/',
+  '/emi/',
+  '/mortgage/',
+  '/compound-interest/',
+  '/tax-discount/',
+  '/tip-split/',
+  '/fuel-cost/',
+  '/time-duration/'
 ];
 
 self.addEventListener('install', (event) => {
@@ -60,17 +27,19 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    }).catch((err) => {
+      console.warn('SW cache.addAll non-fatal error:', err);
+    })
   );
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(clients.claim());
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
+            console.log('Purging legacy cache:', key);
             return caches.delete(key);
           }
         })
@@ -82,7 +51,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // For same-origin static assets: Network First, Cache Fallback (Ensures fresh code on normal refresh)
+  // Network First, Cache Fallback for all same-origin HTML and scripts
   if (url.origin === location.origin) {
     event.respondWith(
       fetch(event.request).then((networkResponse) => {
@@ -100,7 +69,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For external resources (Fonts, Tailwind, Lucide): Network First with Cache Fallback
+  // External CDNs: Network first with cache fallback
   event.respondWith(
     fetch(event.request).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {
