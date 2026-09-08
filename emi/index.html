@@ -9,10 +9,13 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#3b82f6">
 
-  <!-- Preconnect and Google Fonts with font-display: swap -->
+    <!-- Preconnect and Async Google Fonts for 100/100 Lighthouse Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+  </noscript>
   
   <!-- Tailwind CSS Engine & Custom Design Token Theme -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -900,7 +903,7 @@
   function getSym() { return (window.getGlobalCurrencySymbol ? window.getGlobalCurrencySymbol() : '$'); }
   function formatCurrency(n) { return getSym() + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
-  function calculateEMI() {
+    function calculateEMI() {
     var p = parseFloat(document.getElementById('emi-amount')?.value) || 100000;
     var rAnnual = parseFloat(document.getElementById('emi-rate')?.value) || 8.5;
     var tenureVal = parseFloat(document.getElementById('emi-tenure')?.value) || 15;
@@ -933,6 +936,62 @@
     if (emiRes) emiRes.textContent = formatCurrency(emi);
     if (intRes) intRes.textContent = formatCurrency(totalInterest);
     if (totRes) totRes.textContent = formatCurrency(totalPayable);
+
+    // Dynamic Donut Chart & Payment Ratio
+    var donutTotal = document.getElementById('emi-donut-total');
+    if (donutTotal) donutTotal.textContent = formatCurrency(totalPayable);
+
+    var principalPct = totalPayable > 0 ? ((p / totalPayable) * 100).toFixed(1) : '50.0';
+    var interestPct = totalPayable > 0 ? ((totalInterest / totalPayable) * 100).toFixed(1) : '50.0';
+
+    var ratioSpans = document.querySelectorAll('#emi-chart-container .text-right span');
+    if (ratioSpans && ratioSpans.length >= 2) {
+      ratioSpans[0].textContent = principalPct + '%';
+      ratioSpans[1].textContent = interestPct + '%';
+    }
+
+    var slices = document.querySelectorAll('#emi-chart-container .chart-slice');
+    if (slices && slices.length >= 2) {
+      var totalCirc = 2 * Math.PI * 53.2; // 334.27
+      var pDash = (parseFloat(principalPct) / 100) * totalCirc;
+      var iDash = totalCirc - pDash;
+      slices[0].setAttribute('stroke-dasharray', pDash.toFixed(1) + ' ' + totalCirc.toFixed(2));
+      slices[0].setAttribute('stroke-dashoffset', '0');
+      slices[1].setAttribute('stroke-dasharray', iDash.toFixed(1) + ' ' + totalCirc.toFixed(2));
+      slices[1].setAttribute('stroke-dashoffset', '-' + pDash.toFixed(1));
+    }
+
+    // Amortization Schedule Table Generator
+    var tbody = document.querySelector('#emi-schedule-table tbody') || document.getElementById('emi-schedule-body');
+    if (tbody) {
+      var balance = p;
+      var rowsHtml = '';
+      var numYears = Math.ceil(months / 12);
+      for (var y = 1; y <= numYears; y++) {
+        var yrOpening = balance;
+        var yrPrincipal = 0;
+        var yrInterest = 0;
+        var mInYr = Math.min(12, months - (y - 1) * 12);
+        for (var m = 1; m <= mInYr; m++) {
+          var mInt = balance * rMonthly;
+          var mPrin = emi - mInt;
+          if (mPrin > balance) mPrin = balance;
+          yrInterest += mInt;
+          yrPrincipal += mPrin;
+          balance = Math.max(0, balance - mPrin);
+        }
+        var yrPaid = yrPrincipal + yrInterest;
+        rowsHtml += '<tr class="border-b border-subtle/50 hover:bg-tertiary/50 transition-colors">' +
+          '<td class="p-3 font-bold">' + y + '</td>' +
+          '<td class="p-3">' + formatCurrency(yrOpening) + '</td>' +
+          '<td class="p-3 font-semibold">' + formatCurrency(yrPaid) + '</td>' +
+          '<td class="p-3 text-accent-primary font-bold">' + formatCurrency(yrPrincipal) + '</td>' +
+          '<td class="p-3 text-accent-amber font-bold">' + formatCurrency(yrInterest) + '</td>' +
+          '<td class="p-3 font-mono font-bold">' + formatCurrency(balance) + '</td>' +
+          '</tr>';
+      }
+      tbody.innerHTML = rowsHtml;
+    }
   }
 
   window.setEmiAmount = function(val) {

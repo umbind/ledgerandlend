@@ -9,10 +9,13 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#3b82f6">
 
-  <!-- Preconnect and Google Fonts with font-display: swap -->
+    <!-- Preconnect and Async Google Fonts for 100/100 Lighthouse Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+  </noscript>
   
   <!-- Tailwind CSS Engine & Custom Design Token Theme -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -758,7 +761,7 @@
   function getSym() { return (window.getGlobalCurrencySymbol ? window.getGlobalCurrencySymbol() : '$'); }
   function formatCurrency(n) { return getSym() + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
 
-  function calculateSIP() {
+    function calculateSIP() {
     var p = parseFloat(document.getElementById('sip-amount')?.value) || 500;
     var r = parseFloat(document.getElementById('sip-rate')?.value) || 12;
     var y = parseFloat(document.getElementById('sip-years')?.value) || 10;
@@ -785,6 +788,28 @@
     if (invRes) invRes.textContent = formatCurrency(totalInvested);
     if (gnRes) gnRes.textContent = formatCurrency(estGains);
     if (multRes) multRes.textContent = mult + 'x Wealth Multiplier';
+
+    // Dynamic Portfolio Asset Ratio & SVG Donut Slices
+    var donutTotal = document.getElementById('sip-donut-total');
+    var invPctEl = document.getElementById('sip-inv-pct');
+    var gnPctEl = document.getElementById('sip-gn-pct');
+    if (donutTotal) donutTotal.textContent = formatCurrency(futureVal);
+
+    var invPct = futureVal > 0 ? ((totalInvested / futureVal) * 100).toFixed(1) : '50.0';
+    var gnPct = futureVal > 0 ? ((estGains / futureVal) * 100).toFixed(1) : '50.0';
+    if (invPctEl) invPctEl.textContent = invPct + '%';
+    if (gnPctEl) gnPctEl.textContent = gnPct + '%';
+
+    var slices = document.querySelectorAll('#sip-chart-container .chart-slice');
+    if (slices && slices.length >= 2) {
+      var totalCirc = 2 * Math.PI * 51.3; // 322.33
+      var invDash = (parseFloat(invPct) / 100) * totalCirc;
+      var gnDash = totalCirc - invDash;
+      slices[0].setAttribute('stroke-dasharray', invDash.toFixed(1) + ' ' + totalCirc.toFixed(2));
+      slices[0].setAttribute('stroke-dashoffset', '0');
+      slices[1].setAttribute('stroke-dasharray', gnDash.toFixed(1) + ' ' + totalCirc.toFixed(2));
+      slices[1].setAttribute('stroke-dashoffset', '-' + invDash.toFixed(1));
+    }
   }
 
   window.setSipMode = function(mode) {
